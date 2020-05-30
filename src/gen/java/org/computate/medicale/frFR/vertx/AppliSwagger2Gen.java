@@ -2,6 +2,7 @@ package org.computate.medicale.frFR.vertx;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.frFR.cluster.Cluster;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
 import org.computate.medicale.frFR.contexte.SiteContexteFrFR;
 import org.apache.commons.lang3.StringUtils;
@@ -109,7 +110,7 @@ public abstract class AppliSwagger2Gen<DEV> extends Object {
 		if(!siteContexteCouverture.dejaInitialise) {
 			_siteContexte(siteContexte);
 		}
-		siteContexte.initLoinPourClasse(null);
+		siteContexte.initLoinPourClasse(requeteSite_);
 		siteContexteCouverture.dejaInitialise(true);
 		return (AppliSwagger2)this;
 	}
@@ -148,6 +149,8 @@ public abstract class AppliSwagger2Gen<DEV> extends Object {
 			if(configSite == null)
 				setConfigSite(configSiteCouverture.o);
 		}
+		if(configSite != null)
+			configSite.initLoinPourClasse(requeteSite_);
 		configSiteCouverture.dejaInitialise(true);
 		return (AppliSwagger2)this;
 	}
@@ -735,7 +738,7 @@ public abstract class AppliSwagger2Gen<DEV> extends Object {
 				setW(wCouverture.o);
 		}
 		if(w != null)
-			w.initLoinPourClasse(null);
+			w.initLoinPourClasse(requeteSite_);
 		wCouverture.dejaInitialise(true);
 		return (AppliSwagger2)this;
 	}
@@ -775,7 +778,7 @@ public abstract class AppliSwagger2Gen<DEV> extends Object {
 				setWChemins(wCheminsCouverture.o);
 		}
 		if(wChemins != null)
-			wChemins.initLoinPourClasse(null);
+			wChemins.initLoinPourClasse(requeteSite_);
 		wCheminsCouverture.dejaInitialise(true);
 		return (AppliSwagger2)this;
 	}
@@ -815,7 +818,7 @@ public abstract class AppliSwagger2Gen<DEV> extends Object {
 				setWCorpsRequetes(wCorpsRequetesCouverture.o);
 		}
 		if(wCorpsRequetes != null)
-			wCorpsRequetes.initLoinPourClasse(null);
+			wCorpsRequetes.initLoinPourClasse(requeteSite_);
 		wCorpsRequetesCouverture.dejaInitialise(true);
 		return (AppliSwagger2)this;
 	}
@@ -855,7 +858,7 @@ public abstract class AppliSwagger2Gen<DEV> extends Object {
 				setWSchemas(wSchemasCouverture.o);
 		}
 		if(wSchemas != null)
-			wSchemas.initLoinPourClasse(null);
+			wSchemas.initLoinPourClasse(requeteSite_);
 		wSchemasCouverture.dejaInitialise(true);
 		return (AppliSwagger2)this;
 	}
@@ -867,6 +870,7 @@ public abstract class AppliSwagger2Gen<DEV> extends Object {
 	protected boolean dejaInitialiseAppliSwagger2 = false;
 
 	public AppliSwagger2 initLoinAppliSwagger2(RequeteSiteFrFR requeteSite_) {
+		setRequeteSite_(requeteSite_);
 		if(!dejaInitialiseAppliSwagger2) {
 			dejaInitialiseAppliSwagger2 = true;
 			initLoinAppliSwagger2();
@@ -899,6 +903,25 @@ public abstract class AppliSwagger2Gen<DEV> extends Object {
 
 	public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) {
 		initLoinAppliSwagger2(requeteSite_);
+	}
+
+	/////////////////
+	// requeteSite //
+	/////////////////
+
+	public void requeteSiteAppliSwagger2(RequeteSiteFrFR requeteSite_) {
+		if(w != null)
+			w.setRequeteSite_(requeteSite_);
+		if(wChemins != null)
+			wChemins.setRequeteSite_(requeteSite_);
+		if(wCorpsRequetes != null)
+			wCorpsRequetes.setRequeteSite_(requeteSite_);
+		if(wSchemas != null)
+			wSchemas.setRequeteSite_(requeteSite_);
+	}
+
+	public void requeteSitePourClasse(RequeteSiteFrFR requeteSite_) {
+		requeteSiteAppliSwagger2(requeteSite_);
 	}
 
 	/////////////
@@ -1006,6 +1029,18 @@ public abstract class AppliSwagger2Gen<DEV> extends Object {
 		switch(var) {
 			default:
 				return null;
+		}
+	}
+
+	//////////////////
+	// requeteApi //
+	//////////////////
+
+	public void requeteApiAppliSwagger2() {
+		RequeteApi requeteApi = Optional.ofNullable(requeteSite_).map(RequeteSiteFrFR::getRequeteApi_).orElse(null);
+		Object o = Optional.ofNullable(requeteApi).map(RequeteApi::getOriginal).orElse(null);
+		if(o != null && o instanceof AppliSwagger2) {
+			AppliSwagger2 original = (AppliSwagger2)o;
 		}
 	}
 

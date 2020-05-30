@@ -61,6 +61,7 @@ public abstract class UtilisateurSiteGen<DEV> extends Cluster {
 	public static final String UtilisateurSite_NomSingulier = "utilisateur du site";
 	public static final String UtilisateurSite_NomPluriel = "utilisateurs du site";
 	public static final String UtilisateurSite_NomActuel = "utilisateur du site actuel";
+	public static final String UtilisateurSite_Tous = "all ";
 	public static final String UtilisateurSite_TousNom = "tous les utilisateurs du site";
 	public static final String UtilisateurSite_RechercherTousNomPar = "rechercher utilisateurs du site par ";
 	public static final String UtilisateurSite_RechercherTousNom = "rechercher utilisateurs du site";
@@ -265,119 +266,6 @@ public abstract class UtilisateurSiteGen<DEV> extends Cluster {
 							{ e("div").a("class", "w3-cell ").f();
 								{ e("div").a("class", "w3-rest ").f();
 									e("span").f().sx(strInscriptionCles()).g("span");
-								} g("div");
-							} g("div");
-						} g("div");
-					} g("div");
-				} g("div");
-			}
-		} g("div");
-	}
-
-	//////////////////
-	// paiementCles //
-	//////////////////
-
-	/**	L'entité « paiementCles »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> paiementCles = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Couverture<List<Long>> paiementClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("paiementCles").o(paiementCles);
-
-	/**	<br/>L'entité « paiementCles »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.utilisateur.UtilisateurSite&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:paiementCles">Trouver l'entité paiementCles dans Solr</a>
-	 * <br/>
-	 * @param paiementCles est l'entité déjà construit. 
-	 **/
-	protected abstract void _paiementCles(List<Long> o);
-
-	public List<Long> getPaiementCles() {
-		return paiementCles;
-	}
-
-	public void setPaiementCles(List<Long> paiementCles) {
-		this.paiementCles = paiementCles;
-		this.paiementClesCouverture.dejaInitialise = true;
-	}
-	public UtilisateurSite addPaiementCles(Long...objets) {
-		for(Long o : objets) {
-			addPaiementCles(o);
-		}
-		return (UtilisateurSite)this;
-	}
-	public UtilisateurSite addPaiementCles(Long o) {
-		if(o != null && !paiementCles.contains(o))
-			this.paiementCles.add(o);
-		return (UtilisateurSite)this;
-	}
-	public UtilisateurSite setPaiementCles(JsonArray objets) {
-		paiementCles.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addPaiementCles(o);
-		}
-		return (UtilisateurSite)this;
-	}
-	public UtilisateurSite addPaiementCles(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addPaiementCles(p);
-		}
-		return (UtilisateurSite)this;
-	}
-	protected UtilisateurSite paiementClesInit() {
-		if(!paiementClesCouverture.dejaInitialise) {
-			_paiementCles(paiementCles);
-		}
-		paiementClesCouverture.dejaInitialise(true);
-		return (UtilisateurSite)this;
-	}
-
-	public List<Long> solrPaiementCles() {
-		return paiementCles;
-	}
-
-	public String strPaiementCles() {
-		return paiementCles == null ? "" : paiementCles.toString();
-	}
-
-	public String jsonPaiementCles() {
-		return paiementCles == null ? "" : paiementCles.toString();
-	}
-
-	public String nomAffichagePaiementCles() {
-		return "paiements";
-	}
-
-	public String htmTooltipPaiementCles() {
-		return null;
-	}
-
-	public String htmPaiementCles() {
-		return paiementCles == null ? "" : StringEscapeUtils.escapeHtml4(strPaiementCles());
-	}
-
-	public void inputPaiementCles(String classeApiMethodeMethode) {
-		UtilisateurSite s = (UtilisateurSite)this;
-	}
-
-	public void htmPaiementCles(String classeApiMethodeMethode) {
-		UtilisateurSite s = (UtilisateurSite)this;
-		{ e("div").a("class", "w3-cell w3-cell-top w3-center w3-mobile ").f();
-			if("Page".equals(classeApiMethodeMethode)) {
-				{ e("div").a("class", "w3-padding ").f();
-					{ e("div").a("class", "w3-card ").f();
-						{ e("div").a("class", "w3-cell-row w3-gray ").f();
-							e("label").a("class", "").f().sx("paiements").g("label");
-						} g("div");
-						{ e("div").a("class", "w3-cell-row  ").f();
-							{ e("div").a("class", "w3-cell ").f();
-								{ e("div").a("class", "w3-rest ").f();
-									e("span").f().sx(strPaiementCles()).g("span");
 								} g("div");
 							} g("div");
 						} g("div");
@@ -1454,7 +1342,6 @@ public abstract class UtilisateurSiteGen<DEV> extends Cluster {
 	public void initUtilisateurSite() {
 		utilisateurClesInit();
 		inscriptionClesInit();
-		paiementClesInit();
 		utilisateurNomInit();
 		utilisateurMailInit();
 		utilisateurPrenomInit();
@@ -1507,8 +1394,6 @@ public abstract class UtilisateurSiteGen<DEV> extends Cluster {
 				return oUtilisateurSite.utilisateurCles;
 			case "inscriptionCles":
 				return oUtilisateurSite.inscriptionCles;
-			case "paiementCles":
-				return oUtilisateurSite.paiementCles;
 			case "utilisateurNom":
 				return oUtilisateurSite.utilisateurNom;
 			case "utilisateurMail":
@@ -1643,12 +1528,6 @@ public abstract class UtilisateurSiteGen<DEV> extends Cluster {
 				List<Long> inscriptionCles = (List<Long>)solrDocument.get("inscriptionCles_stored_longs");
 				if(inscriptionCles != null)
 					oUtilisateurSite.inscriptionCles.addAll(inscriptionCles);
-			}
-
-			if(sauvegardesUtilisateurSite.contains("paiementCles")) {
-				List<Long> paiementCles = (List<Long>)solrDocument.get("paiementCles_stored_longs");
-				if(paiementCles != null)
-					oUtilisateurSite.paiementCles.addAll(paiementCles);
 			}
 
 			if(sauvegardesUtilisateurSite.contains("utilisateurNom")) {
@@ -1796,14 +1675,6 @@ public abstract class UtilisateurSiteGen<DEV> extends Cluster {
 				document.addField("inscriptionCles_stored_longs", o);
 			}
 		}
-		if(paiementCles != null) {
-			for(java.lang.Long o : paiementCles) {
-				document.addField("paiementCles_indexed_longs", o);
-			}
-			for(java.lang.Long o : paiementCles) {
-				document.addField("paiementCles_stored_longs", o);
-			}
-		}
 		if(utilisateurNom != null) {
 			document.addField("utilisateurNom_indexed_string", utilisateurNom);
 			document.addField("utilisateurNom_stored_string", utilisateurNom);
@@ -1871,8 +1742,6 @@ public abstract class UtilisateurSiteGen<DEV> extends Cluster {
 				return "utilisateurCles_indexed_longs";
 			case "inscriptionCles":
 				return "inscriptionCles_indexed_longs";
-			case "paiementCles":
-				return "paiementCles_indexed_longs";
 			case "utilisateurNom":
 				return "utilisateurNom_indexed_string";
 			case "utilisateurMail":
@@ -1929,10 +1798,6 @@ public abstract class UtilisateurSiteGen<DEV> extends Cluster {
 		List<Long> inscriptionCles = (List<Long>)solrDocument.get("inscriptionCles_stored_longs");
 		if(inscriptionCles != null)
 			oUtilisateurSite.inscriptionCles.addAll(inscriptionCles);
-
-		List<Long> paiementCles = (List<Long>)solrDocument.get("paiementCles_stored_longs");
-		if(paiementCles != null)
-			oUtilisateurSite.paiementCles.addAll(paiementCles);
 
 		String utilisateurNom = (String)solrDocument.get("utilisateurNom_stored_string");
 		if(utilisateurNom != null)

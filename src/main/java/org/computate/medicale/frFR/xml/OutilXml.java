@@ -1,4 +1,4 @@
-package org.computate.medicale.frFR.xml;
+package org.computate.medicale.frFR.xml; 
 
 /**
  * NomCanonique.enUS: org.computate.medicale.enUS.xml.UtilXml

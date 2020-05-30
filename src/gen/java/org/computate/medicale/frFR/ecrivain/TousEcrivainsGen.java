@@ -2,6 +2,7 @@ package org.computate.medicale.frFR.ecrivain;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.frFR.cluster.Cluster;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
@@ -127,6 +128,7 @@ public abstract class TousEcrivainsGen<DEV> extends Object {
 	protected boolean dejaInitialiseTousEcrivains = false;
 
 	public TousEcrivains initLoinTousEcrivains(RequeteSiteFrFR requeteSite_) {
+		setRequeteSite_(requeteSite_);
 		if(!dejaInitialiseTousEcrivains) {
 			dejaInitialiseTousEcrivains = true;
 			initLoinTousEcrivains();
@@ -145,6 +147,17 @@ public abstract class TousEcrivainsGen<DEV> extends Object {
 
 	public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) {
 		initLoinTousEcrivains(requeteSite_);
+	}
+
+	/////////////////
+	// requeteSite //
+	/////////////////
+
+	public void requeteSiteTousEcrivains(RequeteSiteFrFR requeteSite_) {
+	}
+
+	public void requeteSitePourClasse(RequeteSiteFrFR requeteSite_) {
+		requeteSiteTousEcrivains(requeteSite_);
 	}
 
 	/////////////
@@ -224,6 +237,18 @@ public abstract class TousEcrivainsGen<DEV> extends Object {
 		switch(var) {
 			default:
 				return null;
+		}
+	}
+
+	//////////////////
+	// requeteApi //
+	//////////////////
+
+	public void requeteApiTousEcrivains() {
+		RequeteApi requeteApi = Optional.ofNullable(requeteSite_).map(RequeteSiteFrFR::getRequeteApi_).orElse(null);
+		Object o = Optional.ofNullable(requeteApi).map(RequeteApi::getOriginal).orElse(null);
+		if(o != null && o instanceof TousEcrivains) {
+			TousEcrivains original = (TousEcrivains)o;
 		}
 	}
 

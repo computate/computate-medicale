@@ -1,4 +1,4 @@
-package org.computate.medicale.frFR.vertx; 
+package org.computate.medicale.frFR.vertx;  
 
 
 import org.computate.medicale.frFR.config.ConfigSite;

@@ -1,4 +1,4 @@
-package org.computate.medicale.frFR.utilisateur;             
+package org.computate.medicale.frFR.utilisateur;          
 
 import java.util.List;
 
@@ -77,21 +77,6 @@ public class UtilisateurSite extends UtilisateurSiteGen<Cluster> {
 	 * NomAffichage.enUS: enrollments
 	 */              
 	protected void _inscriptionCles(List<Long> o) {}
-
-	/**
-	 * {@inheritDoc}
-	 * Var.enUS: paymentKeys
-	 * Indexe: true
-	 * Stocke: true
-	 * Attribuer: Paiementmedicale.utilisateurCles
-	 * HtmlLigne: 4
-	 * HtmlCellule: 2
-	 * Description.frFR: La clé primaire des contacts d'urgence dans la base de données. 
-	 * Description.enUS: The primary key of the school emergency contacts in the database. 
-	 * NomAffichage.frFR: paiements
-	 * NomAffichage.enUS: payments
-	 */              
-	protected void _paiementCles(List<Long> o) {}
 
 	/**
 	 * Var.enUS: userName

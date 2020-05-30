@@ -2,6 +2,7 @@ package org.computate.medicale.frFR.vertx;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.frFR.cluster.Cluster;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
@@ -41,6 +42,7 @@ public abstract class AppliOpenApi3Gen<DEV> extends AppliSwagger2 {
 	protected boolean dejaInitialiseAppliOpenApi3 = false;
 
 	public AppliOpenApi3 initLoinAppliOpenApi3(RequeteSiteFrFR requeteSite_) {
+		setRequeteSite_(requeteSite_);
 		if(!dejaInitialiseAppliOpenApi3) {
 			dejaInitialiseAppliOpenApi3 = true;
 			initLoinAppliOpenApi3();
@@ -50,20 +52,33 @@ public abstract class AppliOpenApi3Gen<DEV> extends AppliSwagger2 {
 
 	public void initLoinAppliOpenApi3() {
 		initAppliOpenApi3();
+		super.initLoinAppliSwagger2(requeteSite_);
 	}
 
 	public void initAppliOpenApi3() {
 	}
 
-	public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) {
+	@Override public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) {
 		initLoinAppliOpenApi3(requeteSite_);
+	}
+
+	/////////////////
+	// requeteSite //
+	/////////////////
+
+	public void requeteSiteAppliOpenApi3(RequeteSiteFrFR requeteSite_) {
+			super.requeteSiteAppliSwagger2(requeteSite_);
+	}
+
+	public void requeteSitePourClasse(RequeteSiteFrFR requeteSite_) {
+		requeteSiteAppliOpenApi3(requeteSite_);
 	}
 
 	/////////////
 	// obtenir //
 	/////////////
 
-	public Object obtenirPourClasse(String var) {
+	@Override public Object obtenirPourClasse(String var) {
 		String[] vars = StringUtils.split(var, ".");
 		Object o = null;
 		for(String v : vars) {
@@ -80,7 +95,7 @@ public abstract class AppliOpenApi3Gen<DEV> extends AppliSwagger2 {
 		AppliOpenApi3 oAppliOpenApi3 = (AppliOpenApi3)this;
 		switch(var) {
 			default:
-				return null;
+				return super.obtenirAppliSwagger2(var);
 		}
 	}
 
@@ -88,7 +103,7 @@ public abstract class AppliOpenApi3Gen<DEV> extends AppliSwagger2 {
 	// attribuer //
 	///////////////
 
-	public boolean attribuerPourClasse(String var, Object val) {
+	@Override public boolean attribuerPourClasse(String var, Object val) {
 		String[] vars = StringUtils.split(var, ".");
 		Object o = null;
 		for(String v : vars) {
@@ -105,7 +120,7 @@ public abstract class AppliOpenApi3Gen<DEV> extends AppliSwagger2 {
 		AppliOpenApi3 oAppliOpenApi3 = (AppliOpenApi3)this;
 		switch(var) {
 			default:
-				return null;
+				return super.attribuerAppliSwagger2(var, val);
 		}
 	}
 
@@ -113,7 +128,7 @@ public abstract class AppliOpenApi3Gen<DEV> extends AppliSwagger2 {
 	// definir //
 	/////////////
 
-	public boolean definirPourClasse(String var, String val) {
+	@Override public boolean definirPourClasse(String var, String val) {
 		String[] vars = StringUtils.split(var, ".");
 		Object o = null;
 		if(val != null) {
@@ -131,7 +146,20 @@ public abstract class AppliOpenApi3Gen<DEV> extends AppliSwagger2 {
 	public Object definirAppliOpenApi3(String var, String val) {
 		switch(var) {
 			default:
-				return null;
+				return super.definirAppliSwagger2(var, val);
+		}
+	}
+
+	//////////////////
+	// requeteApi //
+	//////////////////
+
+	public void requeteApiAppliOpenApi3() {
+		RequeteApi requeteApi = Optional.ofNullable(requeteSite_).map(RequeteSiteFrFR::getRequeteApi_).orElse(null);
+		Object o = Optional.ofNullable(requeteApi).map(RequeteApi::getOriginal).orElse(null);
+		if(o != null && o instanceof AppliOpenApi3) {
+			AppliOpenApi3 original = (AppliOpenApi3)o;
+			super.requeteApiAppliSwagger2();
 		}
 	}
 
@@ -140,7 +168,7 @@ public abstract class AppliOpenApi3Gen<DEV> extends AppliSwagger2 {
 	//////////////
 
 	@Override public int hashCode() {
-		return Objects.hash();
+		return Objects.hash(super.hashCode());
 	}
 
 	////////////
@@ -153,7 +181,7 @@ public abstract class AppliOpenApi3Gen<DEV> extends AppliSwagger2 {
 		if(!(o instanceof AppliOpenApi3))
 			return false;
 		AppliOpenApi3 that = (AppliOpenApi3)o;
-		return true;
+		return super.equals(o);
 	}
 
 	//////////////
@@ -162,6 +190,7 @@ public abstract class AppliOpenApi3Gen<DEV> extends AppliSwagger2 {
 
 	@Override public String toString() {
 		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString() + "\n");
 		sb.append("AppliOpenApi3 { ");
 		sb.append(" }");
 		return sb.toString();

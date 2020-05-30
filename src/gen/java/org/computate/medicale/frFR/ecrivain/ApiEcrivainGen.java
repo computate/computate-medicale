@@ -2,6 +2,7 @@ package org.computate.medicale.frFR.ecrivain;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.frFR.cluster.Cluster;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
 import org.computate.medicale.frFR.contexte.SiteContexteFrFR;
 import org.apache.commons.lang3.StringUtils;
@@ -346,6 +347,8 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 			if(appSwagger2 == null)
 				setAppSwagger2(appSwagger2Couverture.o);
 		}
+		if(appSwagger2 != null)
+			appSwagger2.initLoinPourClasse(requeteSite_);
 		appSwagger2Couverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -673,7 +676,7 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 				setWChemins(wCheminsCouverture.o);
 		}
 		if(wChemins != null)
-			wChemins.initLoinPourClasse(null);
+			wChemins.initLoinPourClasse(requeteSite_);
 		wCheminsCouverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -713,7 +716,7 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 				setWCorpsRequetes(wCorpsRequetesCouverture.o);
 		}
 		if(wCorpsRequetes != null)
-			wCorpsRequetes.initLoinPourClasse(null);
+			wCorpsRequetes.initLoinPourClasse(requeteSite_);
 		wCorpsRequetesCouverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -753,7 +756,7 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 				setWSchemas(wSchemasCouverture.o);
 		}
 		if(wSchemas != null)
-			wSchemas.initLoinPourClasse(null);
+			wSchemas.initLoinPourClasse(requeteSite_);
 		wSchemasCouverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -793,7 +796,7 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 				setSiteContexte(siteContexteCouverture.o);
 		}
 		if(siteContexte != null)
-			siteContexte.initLoinPourClasse(null);
+			siteContexte.initLoinPourClasse(requeteSite_);
 		siteContexteCouverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -832,6 +835,8 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 			if(configSite == null)
 				setConfigSite(configSiteCouverture.o);
 		}
+		if(configSite != null)
+			configSite.initLoinPourClasse(requeteSite_);
 		configSiteCouverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -871,7 +876,7 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 				setWRequeteEnTete(wRequeteEnTeteCouverture.o);
 		}
 		if(wRequeteEnTete != null)
-			wRequeteEnTete.initLoinPourClasse(null);
+			wRequeteEnTete.initLoinPourClasse(requeteSite_);
 		wRequeteEnTeteCouverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -911,7 +916,7 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 				setWRequeteDescription(wRequeteDescriptionCouverture.o);
 		}
 		if(wRequeteDescription != null)
-			wRequeteDescription.initLoinPourClasse(null);
+			wRequeteDescription.initLoinPourClasse(requeteSite_);
 		wRequeteDescriptionCouverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -951,7 +956,7 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 				setWReponseDescription(wReponseDescriptionCouverture.o);
 		}
 		if(wReponseDescription != null)
-			wReponseDescription.initLoinPourClasse(null);
+			wReponseDescription.initLoinPourClasse(requeteSite_);
 		wReponseDescriptionCouverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -991,7 +996,7 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 				setWRequeteCorps(wRequeteCorpsCouverture.o);
 		}
 		if(wRequeteCorps != null)
-			wRequeteCorps.initLoinPourClasse(null);
+			wRequeteCorps.initLoinPourClasse(requeteSite_);
 		wRequeteCorpsCouverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -1031,7 +1036,7 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 				setWReponseCorps(wReponseCorpsCouverture.o);
 		}
 		if(wReponseCorps != null)
-			wReponseCorps.initLoinPourClasse(null);
+			wReponseCorps.initLoinPourClasse(requeteSite_);
 		wReponseCorpsCouverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -1071,7 +1076,7 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 				setWRequeteSchema(wRequeteSchemaCouverture.o);
 		}
 		if(wRequeteSchema != null)
-			wRequeteSchema.initLoinPourClasse(null);
+			wRequeteSchema.initLoinPourClasse(requeteSite_);
 		wRequeteSchemaCouverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -1111,7 +1116,7 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 				setWReponseSchema(wReponseSchemaCouverture.o);
 		}
 		if(wReponseSchema != null)
-			wReponseSchema.initLoinPourClasse(null);
+			wReponseSchema.initLoinPourClasse(requeteSite_);
 		wReponseSchemaCouverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -1151,7 +1156,7 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 				setEcrivains(ecrivainsCouverture.o);
 		}
 		if(ecrivains != null)
-			ecrivains.initLoinPourClasse(null);
+			ecrivains.initLoinPourClasse(requeteSite_);
 		ecrivainsCouverture.dejaInitialise(true);
 		return (ApiEcrivain)this;
 	}
@@ -2848,6 +2853,7 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 	protected boolean dejaInitialiseApiEcrivain = false;
 
 	public ApiEcrivain initLoinApiEcrivain(RequeteSiteFrFR requeteSite_) {
+		setRequeteSite_(requeteSite_);
 		if(!dejaInitialiseApiEcrivain) {
 			dejaInitialiseApiEcrivain = true;
 			initLoinApiEcrivain();
@@ -2913,6 +2919,39 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 
 	public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) {
 		initLoinApiEcrivain(requeteSite_);
+	}
+
+	/////////////////
+	// requeteSite //
+	/////////////////
+
+	public void requeteSiteApiEcrivain(RequeteSiteFrFR requeteSite_) {
+		if(wChemins != null)
+			wChemins.setRequeteSite_(requeteSite_);
+		if(wCorpsRequetes != null)
+			wCorpsRequetes.setRequeteSite_(requeteSite_);
+		if(wSchemas != null)
+			wSchemas.setRequeteSite_(requeteSite_);
+		if(wRequeteEnTete != null)
+			wRequeteEnTete.setRequeteSite_(requeteSite_);
+		if(wRequeteDescription != null)
+			wRequeteDescription.setRequeteSite_(requeteSite_);
+		if(wReponseDescription != null)
+			wReponseDescription.setRequeteSite_(requeteSite_);
+		if(wRequeteCorps != null)
+			wRequeteCorps.setRequeteSite_(requeteSite_);
+		if(wReponseCorps != null)
+			wReponseCorps.setRequeteSite_(requeteSite_);
+		if(wRequeteSchema != null)
+			wRequeteSchema.setRequeteSite_(requeteSite_);
+		if(wReponseSchema != null)
+			wReponseSchema.setRequeteSite_(requeteSite_);
+		if(ecrivains != null)
+			ecrivains.setRequeteSite_(requeteSite_);
+	}
+
+	public void requeteSitePourClasse(RequeteSiteFrFR requeteSite_) {
+		requeteSiteApiEcrivain(requeteSite_);
 	}
 
 	/////////////
@@ -3086,6 +3125,18 @@ public abstract class ApiEcrivainGen<DEV> extends Object {
 		switch(var) {
 			default:
 				return null;
+		}
+	}
+
+	//////////////////
+	// requeteApi //
+	//////////////////
+
+	public void requeteApiApiEcrivain() {
+		RequeteApi requeteApi = Optional.ofNullable(requeteSite_).map(RequeteSiteFrFR::getRequeteApi_).orElse(null);
+		Object o = Optional.ofNullable(requeteApi).map(RequeteApi::getOriginal).orElse(null);
+		if(o != null && o instanceof ApiEcrivain) {
+			ApiEcrivain original = (ApiEcrivain)o;
 		}
 	}
 

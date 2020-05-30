@@ -274,119 +274,6 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 		} g("div");
 	}
 
-	/////////////////
-	// paymentKeys //
-	/////////////////
-
-	/**	L'entité « paymentKeys »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> paymentKeys = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Wrap<List<Long>> paymentKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("paymentKeys").o(paymentKeys);
-
-	/**	<br/>L'entité « paymentKeys »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:paymentKeys">Trouver l'entité paymentKeys dans Solr</a>
-	 * <br/>
-	 * @param paymentKeys est l'entité déjà construit. 
-	 **/
-	protected abstract void _paymentKeys(List<Long> o);
-
-	public List<Long> getPaymentKeys() {
-		return paymentKeys;
-	}
-
-	public void setPaymentKeys(List<Long> paymentKeys) {
-		this.paymentKeys = paymentKeys;
-		this.paymentKeysWrap.alreadyInitialized = true;
-	}
-	public SiteUser addPaymentKeys(Long...objets) {
-		for(Long o : objets) {
-			addPaymentKeys(o);
-		}
-		return (SiteUser)this;
-	}
-	public SiteUser addPaymentKeys(Long o) {
-		if(o != null && !paymentKeys.contains(o))
-			this.paymentKeys.add(o);
-		return (SiteUser)this;
-	}
-	public SiteUser setPaymentKeys(JsonArray objets) {
-		paymentKeys.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addPaymentKeys(o);
-		}
-		return (SiteUser)this;
-	}
-	public SiteUser addPaymentKeys(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addPaymentKeys(p);
-		}
-		return (SiteUser)this;
-	}
-	protected SiteUser paymentKeysInit() {
-		if(!paymentKeysWrap.alreadyInitialized) {
-			_paymentKeys(paymentKeys);
-		}
-		paymentKeysWrap.alreadyInitialized(true);
-		return (SiteUser)this;
-	}
-
-	public List<Long> solrPaymentKeys() {
-		return paymentKeys;
-	}
-
-	public String strPaymentKeys() {
-		return paymentKeys == null ? "" : paymentKeys.toString();
-	}
-
-	public String jsonPaymentKeys() {
-		return paymentKeys == null ? "" : paymentKeys.toString();
-	}
-
-	public String nomAffichagePaymentKeys() {
-		return "payments";
-	}
-
-	public String htmTooltipPaymentKeys() {
-		return null;
-	}
-
-	public String htmPaymentKeys() {
-		return paymentKeys == null ? "" : StringEscapeUtils.escapeHtml4(strPaymentKeys());
-	}
-
-	public void inputPaymentKeys(String classApiMethodMethod) {
-		SiteUser s = (SiteUser)this;
-	}
-
-	public void htmPaymentKeys(String classApiMethodMethod) {
-		SiteUser s = (SiteUser)this;
-		{ e("div").a("class", "w3-cell w3-cell-top w3-center w3-mobile ").f();
-			if("Page".equals(classApiMethodMethod)) {
-				{ e("div").a("class", "w3-padding ").f();
-					{ e("div").a("class", "w3-card ").f();
-						{ e("div").a("class", "w3-cell-row w3-gray ").f();
-							e("label").a("class", "").f().sx("payments").g("label");
-						} g("div");
-						{ e("div").a("class", "w3-cell-row  ").f();
-							{ e("div").a("class", "w3-cell ").f();
-								{ e("div").a("class", "w3-rest ").f();
-									e("span").f().sx(strPaymentKeys()).g("span");
-								} g("div");
-							} g("div");
-						} g("div");
-					} g("div");
-				} g("div");
-			}
-		} g("div");
-	}
-
 	//////////////
 	// userName //
 	//////////////
@@ -1454,7 +1341,6 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	public void initSiteUser() {
 		userKeysInit();
 		enrollmentKeysInit();
-		paymentKeysInit();
 		userNameInit();
 		userEmailInit();
 		userFirstNameInit();
@@ -1507,8 +1393,6 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 				return oSiteUser.userKeys;
 			case "enrollmentKeys":
 				return oSiteUser.enrollmentKeys;
-			case "paymentKeys":
-				return oSiteUser.paymentKeys;
 			case "userName":
 				return oSiteUser.userName;
 			case "userEmail":
@@ -1643,12 +1527,6 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 				List<Long> enrollmentKeys = (List<Long>)solrDocument.get("enrollmentKeys_stored_longs");
 				if(enrollmentKeys != null)
 					oSiteUser.enrollmentKeys.addAll(enrollmentKeys);
-			}
-
-			if(savesSiteUser.contains("paymentKeys")) {
-				List<Long> paymentKeys = (List<Long>)solrDocument.get("paymentKeys_stored_longs");
-				if(paymentKeys != null)
-					oSiteUser.paymentKeys.addAll(paymentKeys);
 			}
 
 			if(savesSiteUser.contains("userName")) {
@@ -1796,14 +1674,6 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 				document.addField("enrollmentKeys_stored_longs", o);
 			}
 		}
-		if(paymentKeys != null) {
-			for(java.lang.Long o : paymentKeys) {
-				document.addField("paymentKeys_indexed_longs", o);
-			}
-			for(java.lang.Long o : paymentKeys) {
-				document.addField("paymentKeys_stored_longs", o);
-			}
-		}
 		if(userName != null) {
 			document.addField("userName_indexed_string", userName);
 			document.addField("userName_stored_string", userName);
@@ -1871,8 +1741,6 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 				return "userKeys_indexed_longs";
 			case "enrollmentKeys":
 				return "enrollmentKeys_indexed_longs";
-			case "paymentKeys":
-				return "paymentKeys_indexed_longs";
 			case "userName":
 				return "userName_indexed_string";
 			case "userEmail":
@@ -1929,10 +1797,6 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 		List<Long> enrollmentKeys = (List<Long>)solrDocument.get("enrollmentKeys_stored_longs");
 		if(enrollmentKeys != null)
 			oSiteUser.enrollmentKeys.addAll(enrollmentKeys);
-
-		List<Long> paymentKeys = (List<Long>)solrDocument.get("paymentKeys_stored_longs");
-		if(paymentKeys != null)
-			oSiteUser.paymentKeys.addAll(paymentKeys);
 
 		String userName = (String)solrDocument.get("userName_stored_string");
 		if(userName != null)

@@ -442,18 +442,20 @@ public class ConfigSite extends ConfigSiteGen<Object> implements Serializable {
 	}
 
 	/**	
-	 * Var.enUS: jdbcInitialPoolSize
+	 * Var.enUS: jdbcMaxWaitQueueSize
 	 * frFR: La taille initiale du piscine pour la base de données. 
-	 * enUS: The max pool size for the database. 
+	 * enUS: Set the maximum connection request allowed in the wait queue, 
+	 * enUS: any requests beyond the max size will result in an failure. 
+	 * enUS: If the value is set to a negative number then the queue will be unbounded. 
 	 * r: prefixeEchappe
 	 * r.enUS: prefixEscaped
 	 * **/
-	protected void _jdbcTailleInitialePiscine(Couverture<Integer> c) {
+	protected void _jdbcMaxFileAttente(Couverture<Integer> c) {
 		Integer o;
 		if(config == null)
-			o = NumberUtils.toInt(System.getenv(c.var), 3);
+			o = NumberUtils.toInt(System.getenv(c.var), -1);
 		else
-			o = config.getInt(prefixeEchappe + c.var, 3);
+			o = config.getInt(prefixeEchappe + c.var, -1);
 		c.o(o);
 	}
 
@@ -515,9 +517,41 @@ public class ConfigSite extends ConfigSiteGen<Object> implements Serializable {
 	protected void _jdbcTempsInactiviteMax(Couverture<Integer> c) {
 		Integer o;
 		if(config == null)
-			o = NumberUtils.toInt(System.getenv(c.var), 0);
+			o = NumberUtils.toInt(System.getenv(c.var), 10);
 		else
-			o = config.getInt(prefixeEchappe + c.var, 0);
+			o = config.getInt(prefixeEchappe + c.var, 10);
+		c.o(o);
+	}
+
+	/**	
+	 * Var.enUS: jdbcConnectTimeout
+	 * frFR: Le temps d'inactivité maximale pour connexion àla base de données. 
+	 * enUS: The max idle time for the connection to the database. 
+	 * r: prefixeEchappe
+	 * r.enUS: prefixEscaped
+	 * **/
+	protected void _jdbcDelaiConnexion(Couverture<Integer> c) {
+		Integer o;
+		if(config == null)
+			o = NumberUtils.toInt(System.getenv(c.var), 10);
+		else
+			o = config.getInt(prefixeEchappe + c.var, 10);
+		c.o(o);
+	}
+
+	/**	
+	 * Var.enUS: jdbcHost
+	 * frFR: L'URL JDBC vers la base de données. 
+	 * enUS: The JDBC URL to the database. 
+	 * r: prefixeEchappe
+	 * r.enUS: prefixEscaped
+	 * **/ 
+	protected void _jdbcHote(Couverture<String> c) {
+		String o;
+		if(config == null)
+			o = System.getenv(c.var);
+		else
+			o = config.getString(prefixeEchappe + c.var);
 		c.o(o);
 	}
 
@@ -527,7 +561,23 @@ public class ConfigSite extends ConfigSiteGen<Object> implements Serializable {
 	 * r: prefixeEchappe
 	 * r.enUS: prefixEscaped
 	 * **/ 
-	protected void _jdbcUrl(Couverture<String> c) {
+	protected void _jdbcPort(Couverture<Integer> c) {
+		Integer o;
+		if(config == null)
+			o = Integer.parseInt(ObjectUtils.defaultIfNull(System.getenv(c.var), "5432"));
+		else
+			o = config.getInt(prefixeEchappe + c.var, 5432);
+		c.o(o);
+	}
+
+	/**	
+	 * Var.enUS: jdbcDatabase
+	 * frFR: L'URL JDBC vers la base de données. 
+	 * enUS: The JDBC URL to the database. 
+	 * r: prefixeEchappe
+	 * r.enUS: prefixEscaped
+	 * **/ 
+	protected void _jdbcBaseDeDonnees(Couverture<String> c) {
 		String o;
 		if(config == null)
 			o = System.getenv(c.var);
@@ -1065,7 +1115,7 @@ public class ConfigSite extends ConfigSiteGen<Object> implements Serializable {
 		c.o(o);
 	}
 
-	/**	
+	/**
 	 * Var.enUS: paymentNext
 	 * r: paiementJour
 	 * r.enUS: paymentDay

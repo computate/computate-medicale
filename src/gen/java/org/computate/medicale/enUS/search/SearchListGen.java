@@ -2,6 +2,7 @@ package org.computate.medicale.enUS.search;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.enUS.cluster.Cluster;
 import org.apache.solr.common.SolrDocumentList;
 import org.computate.medicale.enUS.request.api.ApiRequest;
 import org.apache.commons.lang3.StringUtils;
@@ -17,6 +18,7 @@ import io.vertx.core.logging.Logger;
 import org.computate.medicale.enUS.wrap.Wrap;
 import java.math.MathContext;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.computate.medicale.enUS.writer.AllWriter;
 import org.apache.commons.text.StringEscapeUtils;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -495,6 +497,7 @@ public abstract class SearchListGen<DEV> {
 	protected boolean alreadyInitializedSearchList = false;
 
 	public SearchList initDeepSearchList(SiteRequestEnUS siteRequest_) {
+		setSiteRequest_(siteRequest_);
 		if(!alreadyInitializedSearchList) {
 			alreadyInitializedSearchList = true;
 			initDeepSearchList();
@@ -520,6 +523,17 @@ public abstract class SearchListGen<DEV> {
 
 	public void initDeepForClass(SiteRequestEnUS siteRequest_) {
 		initDeepSearchList(siteRequest_);
+	}
+
+	/////////////////
+	// siteRequest //
+	/////////////////
+
+	public void siteRequestSearchList(SiteRequestEnUS siteRequest_) {
+	}
+
+	public void siteRequestForClass(SiteRequestEnUS siteRequest_) {
+		siteRequestSearchList(siteRequest_);
 	}
 
 	/////////////
@@ -613,6 +627,18 @@ public abstract class SearchListGen<DEV> {
 		switch(var) {
 			default:
 				return null;
+		}
+	}
+
+	//////////////////
+	// apiRequest //
+	//////////////////
+
+	public void apiRequestSearchList() {
+		ApiRequest apiRequest = Optional.ofNullable(siteRequest_).map(SiteRequestEnUS::getApiRequest_).orElse(null);
+		Object o = Optional.ofNullable(apiRequest).map(ApiRequest::getOriginal).orElse(null);
+		if(o != null && o instanceof SearchList) {
+			SearchList original = (SearchList)o;
 		}
 	}
 

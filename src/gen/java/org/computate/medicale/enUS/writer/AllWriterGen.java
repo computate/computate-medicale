@@ -2,6 +2,7 @@ package org.computate.medicale.enUS.writer;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.enUS.cluster.Cluster;
 import org.computate.medicale.enUS.request.api.ApiRequest;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
@@ -17,6 +18,7 @@ import java.io.PrintWriter;
 import org.computate.medicale.enUS.wrap.Wrap;
 import java.math.MathContext;
 import java.io.StringWriter;
+import org.computate.medicale.enUS.writer.AllWriter;
 import org.apache.commons.text.StringEscapeUtils;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -365,6 +367,7 @@ public abstract class AllWriterGen<DEV> extends Object {
 	protected boolean alreadyInitializedAllWriter = false;
 
 	public AllWriter initDeepAllWriter(SiteRequestEnUS siteRequest_) {
+		setSiteRequest_(siteRequest_);
 		if(!alreadyInitializedAllWriter) {
 			alreadyInitializedAllWriter = true;
 			initDeepAllWriter();
@@ -388,6 +391,17 @@ public abstract class AllWriterGen<DEV> extends Object {
 
 	public void initDeepForClass(SiteRequestEnUS siteRequest_) {
 		initDeepAllWriter(siteRequest_);
+	}
+
+	/////////////////
+	// siteRequest //
+	/////////////////
+
+	public void siteRequestAllWriter(SiteRequestEnUS siteRequest_) {
+	}
+
+	public void siteRequestForClass(SiteRequestEnUS siteRequest_) {
+		siteRequestAllWriter(siteRequest_);
 	}
 
 	/////////////
@@ -477,6 +491,18 @@ public abstract class AllWriterGen<DEV> extends Object {
 		switch(var) {
 			default:
 				return null;
+		}
+	}
+
+	//////////////////
+	// apiRequest //
+	//////////////////
+
+	public void apiRequestAllWriter() {
+		ApiRequest apiRequest = Optional.ofNullable(siteRequest_).map(SiteRequestEnUS::getApiRequest_).orElse(null);
+		Object o = Optional.ofNullable(apiRequest).map(ApiRequest::getOriginal).orElse(null);
+		if(o != null && o instanceof AllWriter) {
+			AllWriter original = (AllWriter)o;
 		}
 	}
 

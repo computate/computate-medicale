@@ -2,6 +2,7 @@ package org.computate.medicale.enUS.writer;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.enUS.cluster.Cluster;
 import org.computate.medicale.enUS.request.api.ApiRequest;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
@@ -127,6 +128,7 @@ public abstract class AllWritersGen<DEV> extends Object {
 	protected boolean alreadyInitializedAllWriters = false;
 
 	public AllWriters initDeepAllWriters(SiteRequestEnUS siteRequest_) {
+		setSiteRequest_(siteRequest_);
 		if(!alreadyInitializedAllWriters) {
 			alreadyInitializedAllWriters = true;
 			initDeepAllWriters();
@@ -145,6 +147,17 @@ public abstract class AllWritersGen<DEV> extends Object {
 
 	public void initDeepForClass(SiteRequestEnUS siteRequest_) {
 		initDeepAllWriters(siteRequest_);
+	}
+
+	/////////////////
+	// siteRequest //
+	/////////////////
+
+	public void siteRequestAllWriters(SiteRequestEnUS siteRequest_) {
+	}
+
+	public void siteRequestForClass(SiteRequestEnUS siteRequest_) {
+		siteRequestAllWriters(siteRequest_);
 	}
 
 	/////////////
@@ -224,6 +237,18 @@ public abstract class AllWritersGen<DEV> extends Object {
 		switch(var) {
 			default:
 				return null;
+		}
+	}
+
+	//////////////////
+	// apiRequest //
+	//////////////////
+
+	public void apiRequestAllWriters() {
+		ApiRequest apiRequest = Optional.ofNullable(siteRequest_).map(SiteRequestEnUS::getApiRequest_).orElse(null);
+		Object o = Optional.ofNullable(apiRequest).map(ApiRequest::getOriginal).orElse(null);
+		if(o != null && o instanceof AllWriters) {
+			AllWriters original = (AllWriters)o;
 		}
 	}
 

@@ -256,7 +256,7 @@ public abstract class ClusterGen<DEV> extends Object {
 						{ s.e("div").a("class", "w3-cell-row  ").f();
 							{ s.e("div").a("class", "w3-cell ").f();
 								{ s.e("div").a("class", "w3-rest ").f();
-									s.e("span").f().sx(strPk()).g("span");
+									s.e("a").a("href", pageUrlPk).f().sx(strPk()).g("a");
 								} s.g("div");
 							} s.g("div");
 						} s.g("div");
@@ -1657,7 +1657,7 @@ public abstract class ClusterGen<DEV> extends Object {
 						{ s.e("div").a("class", "w3-cell-row  ").f();
 							{ s.e("div").a("class", "w3-cell ").f();
 								{ s.e("div").a("class", "w3-rest ").f();
-									s.e("span").f().sx(strObjectId()).g("span");
+									s.e("a").a("href", pageUrlId).f().sx(strObjectId()).g("a");
 								} s.g("div");
 							} s.g("div");
 						} s.g("div");

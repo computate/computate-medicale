@@ -1,4 +1,4 @@
-package org.computate.medicale.frFR.requete.api;  
+package org.computate.medicale.frFR.requete.api;   
 
 import java.time.ZonedDateTime;
 import java.util.List;

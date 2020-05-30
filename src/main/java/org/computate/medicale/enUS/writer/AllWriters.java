@@ -10,7 +10,7 @@ public class AllWriters extends AllWritersGen<Object> {
 	protected void _siteRequest_(Wrap<SiteRequestEnUS> c) {
 	}
 
-	public static TousEcrivains create(SiteRequestEnUS siteRequest_, AllWriter...writers) {
+	public static AllWriters create(SiteRequestEnUS siteRequest_, AllWriter...writers) {
 		AllWriters o = new AllWriters();
 		o.initDeepForClass(siteRequest_);
 		o.addWriters(writers);
@@ -20,28 +20,28 @@ public class AllWriters extends AllWritersGen<Object> {
 	protected void _writers(List<AllWriter> c) {
 	}
 
-	public TousEcrivains t(int numberTabs, Object...objects) {
+	public AllWriters t(int numberTabs, Object...objects) {
 		for(AllWriter writer : writers) {
 			writer.t(numberTabs, objects);
 		}
 		return this;
 	}
 
-	public TousEcrivains tl(int numberTabs, Object...objects) {
+	public AllWriters tl(int numberTabs, Object...objects) {
 		for(AllWriter writer : writers) {
 			writer.tl(numberTabs, objects);
 		}
 		return this;
 	}
 
-	public TousEcrivains l(Object...objects) {
+	public AllWriters l(Object...objects) {
 		for(AllWriter writer : writers) {
 			writer.l(objects);
 		}
 		return this;
 	}
 
-	public TousEcrivains s(Object...objects) { 
+	public AllWriters s(Object...objects) { 
 		for(AllWriter writer : writers) {
 			writer.s(objects);
 		}

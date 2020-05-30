@@ -9,7 +9,7 @@ import org.computate.medicale.frFR.page.MiseEnPage;
  * NomCanonique.enUS: org.computate.medicale.enUS.page.part.PagePart
  * MotCle: classeNomSimplePagePart
  */ 
-public abstract class PagePart extends PagePartGen<Cluster> {  
+public abstract class PagePart extends PagePartGen<Cluster> {   
 
 	protected void _page_(Couverture<MiseEnPage> c) {}
 

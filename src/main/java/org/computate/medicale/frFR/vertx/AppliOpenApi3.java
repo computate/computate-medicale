@@ -1,4 +1,4 @@
-package org.computate.medicale.frFR.vertx;   
+package org.computate.medicale.frFR.vertx;      
 
 
 import org.computate.medicale.frFR.contexte.SiteContexteFrFR;
@@ -7,7 +7,7 @@ import org.computate.medicale.frFR.requete.RequeteSiteFrFR;
 /**
  * NomCanonique.enUS: org.computate.medicale.enUS.vertx.AppOpenApi3
  */
-public class AppliOpenApi3 extends AppliOpenApi3Gen<AppliSwagger2> {  
+public class AppliOpenApi3 extends AppliOpenApi3Gen<AppliSwagger2> {     
 
 	@Override protected void _apiVersion(Couverture<String> c) {
 		c.o("3.0.0");

@@ -10,11 +10,14 @@ import io.vertx.core.Vertx;
 import io.vertx.core.WorkerExecutor;
 import io.vertx.ext.auth.oauth2.OAuth2Auth;
 import io.vertx.ext.mail.MailClient;
-import io.vertx.ext.sql.SQLClient;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory;
 import io.vertx.ext.web.handler.OAuth2AuthHandler;
+import io.vertx.pgclient.PgPool;
 
+/**
+ * CanonicalName: org.computate.medicale.frFR.contexte.SiteContexteFrFR
+ **/
 public class SiteContextEnUS extends SiteContextEnUSGen<Object> {
 
 	protected Logger log = LoggerFactory.getLogger(getClass());
@@ -58,7 +61,7 @@ public class SiteContextEnUS extends SiteContextEnUSGen<Object> {
 	protected void _siteConfig(SiteConfig o) { 
 	}
 
-	protected void _sqlClient(Wrap<SQLClient> c) {
+	protected void _pgPool(Wrap<PgPool> c) {
 	}
 
 	protected void _solrClient(Wrap<HttpSolrClient> c) {

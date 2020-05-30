@@ -4,7 +4,10 @@ import org.computate.medicale.enUS.context.SiteContextEnUS;
 import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 
-public class AppOpenApi3 extends AppOpenApi3Gen<AppliSwagger2> {
+/**
+ * CanonicalName: org.computate.medicale.frFR.vertx.AppliOpenApi3
+ **/
+public class AppOpenApi3 extends AppOpenApi3Gen<AppSwagger2> {
 
 	@Override()
 	protected void  _apiVersion(Wrap<String> c) {

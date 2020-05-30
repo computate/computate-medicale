@@ -2,6 +2,7 @@ package org.computate.medicale.enUS.search;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.enUS.cluster.Cluster;
 import org.computate.medicale.enUS.request.api.ApiRequest;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
@@ -15,6 +16,7 @@ import java.lang.String;
 import io.vertx.core.logging.Logger;
 import org.computate.medicale.enUS.wrap.Wrap;
 import java.math.MathContext;
+import org.computate.medicale.enUS.writer.AllWriter;
 import org.apache.commons.text.StringEscapeUtils;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -189,6 +191,7 @@ public abstract class SearchResultGen<DEV> extends Object {
 	protected boolean alreadyInitializedSearchResult = false;
 
 	public SearchResult initDeepSearchResult(SiteRequestEnUS siteRequest_) throws Exception {
+		setSiteRequest_(siteRequest_);
 		if(!alreadyInitializedSearchResult) {
 			alreadyInitializedSearchResult = true;
 			initDeepSearchResult();
@@ -208,6 +211,17 @@ public abstract class SearchResultGen<DEV> extends Object {
 
 	public void initDeepForClass(SiteRequestEnUS siteRequest_) throws Exception {
 		initDeepSearchResult(siteRequest_);
+	}
+
+	/////////////////
+	// siteRequest //
+	/////////////////
+
+	public void siteRequestSearchResult(SiteRequestEnUS siteRequest_) {
+	}
+
+	public void siteRequestForClass(SiteRequestEnUS siteRequest_) {
+		siteRequestSearchResult(siteRequest_);
 	}
 
 	/////////////
@@ -289,6 +303,18 @@ public abstract class SearchResultGen<DEV> extends Object {
 		switch(var) {
 			default:
 				return null;
+		}
+	}
+
+	//////////////////
+	// apiRequest //
+	//////////////////
+
+	public void apiRequestSearchResult() {
+		ApiRequest apiRequest = Optional.ofNullable(siteRequest_).map(SiteRequestEnUS::getApiRequest_).orElse(null);
+		Object o = Optional.ofNullable(apiRequest).map(ApiRequest::getOriginal).orElse(null);
+		if(o != null && o instanceof SearchResult) {
+			SearchResult original = (SearchResult)o;
 		}
 	}
 

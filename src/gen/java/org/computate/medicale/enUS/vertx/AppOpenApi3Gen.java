@@ -2,6 +2,7 @@ package org.computate.medicale.enUS.vertx;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.enUS.cluster.Cluster;
 import org.computate.medicale.enUS.request.api.ApiRequest;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
@@ -11,7 +12,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.vertx.core.logging.Logger;
-import org.computate.medicale.frFR.vertx.AppliSwagger2;
+import org.computate.medicale.enUS.vertx.AppSwagger2;
 import org.computate.medicale.enUS.wrap.Wrap;
 import java.math.MathContext;
 import org.computate.medicale.enUS.writer.AllWriter;
@@ -31,7 +32,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
  * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.vertx.AppOpenApi3&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
  * <br/>
  **/
-public abstract class AppOpenApi3Gen<DEV> extends AppliSwagger2 {
+public abstract class AppOpenApi3Gen<DEV> extends AppSwagger2 {
 	protected static final Logger LOGGER = LoggerFactory.getLogger(AppOpenApi3.class);
 
 	//////////////
@@ -41,6 +42,7 @@ public abstract class AppOpenApi3Gen<DEV> extends AppliSwagger2 {
 	protected boolean alreadyInitializedAppOpenApi3 = false;
 
 	public AppOpenApi3 initDeepAppOpenApi3(SiteRequestEnUS siteRequest_) {
+		setSiteRequest_(siteRequest_);
 		if(!alreadyInitializedAppOpenApi3) {
 			alreadyInitializedAppOpenApi3 = true;
 			initDeepAppOpenApi3();
@@ -50,20 +52,33 @@ public abstract class AppOpenApi3Gen<DEV> extends AppliSwagger2 {
 
 	public void initDeepAppOpenApi3() {
 		initAppOpenApi3();
+		super.initDeepAppSwagger2(siteRequest_);
 	}
 
 	public void initAppOpenApi3() {
 	}
 
-	public void initDeepForClass(SiteRequestEnUS siteRequest_) {
+	@Override public void initDeepForClass(SiteRequestEnUS siteRequest_) {
 		initDeepAppOpenApi3(siteRequest_);
+	}
+
+	/////////////////
+	// siteRequest //
+	/////////////////
+
+	public void siteRequestAppOpenApi3(SiteRequestEnUS siteRequest_) {
+			super.siteRequestAppSwagger2(siteRequest_);
+	}
+
+	public void siteRequestForClass(SiteRequestEnUS siteRequest_) {
+		siteRequestAppOpenApi3(siteRequest_);
 	}
 
 	/////////////
 	// obtain //
 	/////////////
 
-	public Object obtainForClass(String var) {
+	@Override public Object obtainForClass(String var) {
 		String[] vars = StringUtils.split(var, ".");
 		Object o = null;
 		for(String v : vars) {
@@ -80,7 +95,7 @@ public abstract class AppOpenApi3Gen<DEV> extends AppliSwagger2 {
 		AppOpenApi3 oAppOpenApi3 = (AppOpenApi3)this;
 		switch(var) {
 			default:
-				return null;
+				return super.obtainAppSwagger2(var);
 		}
 	}
 
@@ -88,7 +103,7 @@ public abstract class AppOpenApi3Gen<DEV> extends AppliSwagger2 {
 	// attribute //
 	///////////////
 
-	public boolean attributeForClass(String var, Object val) {
+	@Override public boolean attributeForClass(String var, Object val) {
 		String[] vars = StringUtils.split(var, ".");
 		Object o = null;
 		for(String v : vars) {
@@ -105,7 +120,7 @@ public abstract class AppOpenApi3Gen<DEV> extends AppliSwagger2 {
 		AppOpenApi3 oAppOpenApi3 = (AppOpenApi3)this;
 		switch(var) {
 			default:
-				return null;
+				return super.attributeAppSwagger2(var, val);
 		}
 	}
 
@@ -113,7 +128,7 @@ public abstract class AppOpenApi3Gen<DEV> extends AppliSwagger2 {
 	// define //
 	/////////////
 
-	public boolean defineForClass(String var, String val) {
+	@Override public boolean defineForClass(String var, String val) {
 		String[] vars = StringUtils.split(var, ".");
 		Object o = null;
 		if(val != null) {
@@ -131,7 +146,20 @@ public abstract class AppOpenApi3Gen<DEV> extends AppliSwagger2 {
 	public Object defineAppOpenApi3(String var, String val) {
 		switch(var) {
 			default:
-				return null;
+				return super.defineAppSwagger2(var, val);
+		}
+	}
+
+	//////////////////
+	// apiRequest //
+	//////////////////
+
+	public void apiRequestAppOpenApi3() {
+		ApiRequest apiRequest = Optional.ofNullable(siteRequest_).map(SiteRequestEnUS::getApiRequest_).orElse(null);
+		Object o = Optional.ofNullable(apiRequest).map(ApiRequest::getOriginal).orElse(null);
+		if(o != null && o instanceof AppOpenApi3) {
+			AppOpenApi3 original = (AppOpenApi3)o;
+			super.apiRequestAppSwagger2();
 		}
 	}
 
@@ -140,7 +168,7 @@ public abstract class AppOpenApi3Gen<DEV> extends AppliSwagger2 {
 	//////////////
 
 	@Override public int hashCode() {
-		return Objects.hash();
+		return Objects.hash(super.hashCode());
 	}
 
 	////////////
@@ -153,7 +181,7 @@ public abstract class AppOpenApi3Gen<DEV> extends AppliSwagger2 {
 		if(!(o instanceof AppOpenApi3))
 			return false;
 		AppOpenApi3 that = (AppOpenApi3)o;
-		return true;
+		return super.equals(o);
 	}
 
 	//////////////
@@ -162,6 +190,7 @@ public abstract class AppOpenApi3Gen<DEV> extends AppliSwagger2 {
 
 	@Override public String toString() {
 		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString() + "\n");
 		sb.append("AppOpenApi3 { ");
 		sb.append(" }");
 		return sb.toString();

@@ -24,8 +24,11 @@ import org.apache.solr.common.params.FacetParams;
 import org.apache.solr.common.params.ModifiableSolrParams;
 import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
-import org.computate.medicale.frFR.utilisateur.UtilisateurSite;
+import org.computate.medicale.enUS.user.SiteUser;
 
+/**
+ * CanonicalName: org.computate.medicale.frFR.recherche.ListeRecherche
+ **/
 public class SearchList<DEV> extends SearchListGen<DEV> {
 
 	protected void _c(Wrap<Class<DEV>> c) {

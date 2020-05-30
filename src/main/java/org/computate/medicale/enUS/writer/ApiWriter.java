@@ -11,13 +11,13 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.util.ClientUtils;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
-import org.computate.medicale.frFR.config.ConfigSite;
+import org.computate.medicale.enUS.config.SiteConfig;
 import org.computate.medicale.enUS.context.SiteContextEnUS;
 import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
-import org.computate.medicale.frFR.vertx.AppliSwagger2;
+import org.computate.medicale.enUS.vertx.AppSwagger2;
 
-public class ApiWriter extends ApiWriterGen<Object> implements Comparable<ApiEcrivain> {
+public class ApiWriter extends ApiWriterGen<Object> implements Comparable<ApiWriter> {
 
 	protected void _siteRequest_(Wrap<SiteRequestEnUS> c) {
 	}
@@ -34,7 +34,7 @@ public class ApiWriter extends ApiWriterGen<Object> implements Comparable<ApiEcr
 	protected void _openApiVersion(Wrap<String> c) {
 	}
 
-	protected void _appSwagger2(Wrap<AppliSwagger2> c) { 
+	protected void _appSwagger2(Wrap<AppSwagger2> c) { 
 	}
 
 	protected void _classUris(Wrap<List<String>> c) {
@@ -71,7 +71,7 @@ public class ApiWriter extends ApiWriterGen<Object> implements Comparable<ApiEcr
 		c.o(siteRequest_.getSiteContext_());
 	}
 
-	protected void _siteConfig(Wrap<ConfigSite> c) {
+	protected void _siteConfig(Wrap<SiteConfig> c) {
 		c.o(siteRequest_.getSiteConfig_());
 	}
 
@@ -859,7 +859,7 @@ public class ApiWriter extends ApiWriterGen<Object> implements Comparable<ApiEcr
 	}
 
 	@Override()
-	public int compareTo(ApiEcrivain o) {
+	public int compareTo(ApiWriter o) {
 		return ObjectUtils.compare(classApiUriMethod, o.getClassApiUriMethod());
 	}
 

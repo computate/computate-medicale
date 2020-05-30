@@ -1,4 +1,4 @@
-package org.computate.medicale.frFR.cluster;             
+package org.computate.medicale.frFR.cluster;              
 
 import java.text.Normalizer;
 import java.time.ZoneId;

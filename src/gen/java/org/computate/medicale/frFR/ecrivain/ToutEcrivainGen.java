@@ -2,6 +2,7 @@ package org.computate.medicale.frFR.ecrivain;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.frFR.cluster.Cluster;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
@@ -17,6 +18,7 @@ import java.io.PrintWriter;
 import org.computate.medicale.frFR.couverture.Couverture;
 import java.math.MathContext;
 import java.io.StringWriter;
+import org.computate.medicale.frFR.ecrivain.ToutEcrivain;
 import org.apache.commons.text.StringEscapeUtils;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -365,6 +367,7 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	protected boolean dejaInitialiseToutEcrivain = false;
 
 	public ToutEcrivain initLoinToutEcrivain(RequeteSiteFrFR requeteSite_) {
+		setRequeteSite_(requeteSite_);
 		if(!dejaInitialiseToutEcrivain) {
 			dejaInitialiseToutEcrivain = true;
 			initLoinToutEcrivain();
@@ -388,6 +391,17 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 
 	public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) {
 		initLoinToutEcrivain(requeteSite_);
+	}
+
+	/////////////////
+	// requeteSite //
+	/////////////////
+
+	public void requeteSiteToutEcrivain(RequeteSiteFrFR requeteSite_) {
+	}
+
+	public void requeteSitePourClasse(RequeteSiteFrFR requeteSite_) {
+		requeteSiteToutEcrivain(requeteSite_);
 	}
 
 	/////////////
@@ -477,6 +491,18 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 		switch(var) {
 			default:
 				return null;
+		}
+	}
+
+	//////////////////
+	// requeteApi //
+	//////////////////
+
+	public void requeteApiToutEcrivain() {
+		RequeteApi requeteApi = Optional.ofNullable(requeteSite_).map(RequeteSiteFrFR::getRequeteApi_).orElse(null);
+		Object o = Optional.ofNullable(requeteApi).map(RequeteApi::getOriginal).orElse(null);
+		if(o != null && o instanceof ToutEcrivain) {
+			ToutEcrivain original = (ToutEcrivain)o;
 		}
 	}
 

@@ -22,27 +22,27 @@ public class AllWriter extends AllWriterGen<Object> {
 		c.o("\t");
 	}
 
-	public static ToutEcrivain create(SiteRequestEnUS siteRequest_) {
+	public static AllWriter create(SiteRequestEnUS siteRequest_) {
 		AllWriter o = new AllWriter();
 		o.initDeepForClass(siteRequest_);
 		return o;
 	}
 
-	public static ToutEcrivain create(SiteRequestEnUS siteRequest_, String tabStr) {
+	public static AllWriter create(SiteRequestEnUS siteRequest_, String tabStr) {
 		AllWriter o = new AllWriter();
 		o.setTabStr(tabStr);
 		o.initDeepForClass(siteRequest_);
 		return o;
 	}
 
-	public static ToutEcrivain create(SiteRequestEnUS siteRequest_, File file) {
+	public static AllWriter create(SiteRequestEnUS siteRequest_, File file) {
 		AllWriter o = new AllWriter();
 		o.setFile(file);
 		o.initDeepForClass(siteRequest_);
 		return o;
 	}
 
-	public static ToutEcrivain create(SiteRequestEnUS siteRequest_, File file, String tabStr) {
+	public static AllWriter create(SiteRequestEnUS siteRequest_, File file, String tabStr) {
 		AllWriter o = new AllWriter();
 		o.setFile(file);
 		o.setTabStr(tabStr);
@@ -50,14 +50,14 @@ public class AllWriter extends AllWriterGen<Object> {
 		return o;
 	}
 
-	public static ToutEcrivain create(SiteRequestEnUS siteRequest_, Buffer buffer) {
+	public static AllWriter create(SiteRequestEnUS siteRequest_, Buffer buffer) {
 		AllWriter o = new AllWriter();
 		o.setBuffer(buffer);
 		o.initDeepForClass(siteRequest_);
 		return o;
 	}
 
-	public static ToutEcrivain create(SiteRequestEnUS siteRequest_, Buffer buffer, String tabStr) {
+	public static AllWriter create(SiteRequestEnUS siteRequest_, Buffer buffer, String tabStr) {
 		AllWriter o = new AllWriter();
 		o.setBuffer(buffer);
 		o.setTabStr(tabStr);
@@ -94,14 +94,14 @@ public class AllWriter extends AllWriterGen<Object> {
 		c.o(true);
 	}
 
-	public ToutEcrivain t(int tabNumber, Object...objects) {
+	public AllWriter t(int tabNumber, Object...objects) {
 		for(int i = 0; i < tabNumber; i++)
 			s(tabStr);
 		s(objects);
 		return this;
 	}
 
-	public ToutEcrivain tl(int tabNumber, Object...objects) {
+	public AllWriter tl(int tabNumber, Object...objects) {
 		for(int i = 0; i < tabNumber; i++)
 			s(tabStr);
 		s(objects);
@@ -109,13 +109,13 @@ public class AllWriter extends AllWriterGen<Object> {
 		return this;
 	}
 
-	public ToutEcrivain l(Object...objects) {
+	public AllWriter l(Object...objects) {
 		s(objects);
 		s("\n");
 		return this;
 	}
 
-	public ToutEcrivain s(Object...objects) { 
+	public AllWriter s(Object...objects) { 
 		for(Object object : objects) {
 			if(object != null) {
 				if(object instanceof List) {
@@ -149,7 +149,7 @@ public class AllWriter extends AllWriterGen<Object> {
 		return this;
 	}
 
-	public ToutEcrivain string(Object...objects) {
+	public AllWriter string(Object...objects) {
 		s("\"");
 		for(Object object : objects)
 			if(object != null)
@@ -186,7 +186,7 @@ public class AllWriter extends AllWriterGen<Object> {
 		return o.toString();
 	}
 
-	public ToutEcrivain yamlStr(int tabNumber, Object...objects) {
+	public AllWriter yamlStr(int tabNumber, Object...objects) {
 		StringWriter stringWriter = new StringWriter();
 		PrintWriter printWriter = new PrintWriter(stringWriter);
 		for(Object object : objects) {

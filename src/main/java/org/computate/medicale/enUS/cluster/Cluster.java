@@ -10,11 +10,30 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.writer.AllWriter;
-import org.computate.medicale.frFR.page.MiseEnPage;
+import org.computate.medicale.enUS.page.PageLayout;
 import org.computate.medicale.frFR.page.part.PagePart;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
-import org.computate.medicale.frFR.xml.OutilXml;
+import org.computate.medicale.enUS.xml.UtilXml;
 
+/**
+ * Model: true
+ * Api: true
+ * Page: true
+ * Saved: true
+ * RoleUser: true
+ * Color: gray
+ * IconGroup: regular
+ * IconName: fort-awesome
+ * Role.enUS: SiteAdmin
+ * ApiUri.enUS: /api/cluster
+ * ApiTag.enUS: Cluster
+ * AName.enUS: a cluster
+ * Role.frFR: SiteAdmin
+ * ApiUri.frFR: /api/cluster
+ * ApiTag.frFR: Cluster
+ * AName.frFR: un cluster
+ * CanonicalName: org.computate.medicale.frFR.cluster.Cluster
+ **/
 public class Cluster extends ClusterGen<Object> {
 
 	protected void _siteRequest_(Wrap<SiteRequestEnUS> c) {}

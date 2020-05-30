@@ -102,8 +102,6 @@ public class UtilisateurSiteGenPage extends UtilisateurSiteGenPageGen<ClusterPag
 
 	@Override public void htmlScriptsUtilisateurSiteGenPage() {
 		e("script").a("src", statiqueUrlBase, "/js/frFR/UtilisateurSitePage.js").f().g("script");
-		e("script").a("src", statiqueUrlBase, "/js/frFR/InscriptionPage.js").f().g("script");
-		e("script").a("src", statiqueUrlBase, "/js/frFR/PaiementPage.js").f().g("script");
 	}
 
 	@Override public void htmlScriptUtilisateurSiteGenPage() {
@@ -123,22 +121,6 @@ public class UtilisateurSiteGenPage extends UtilisateurSiteGenPageGen<ClusterPag
 		tl(1, "window.eventBus = new EventBus('/eventbus');");
 		tl(1, "var pk = ", Optional.ofNullable(requeteSite_.getRequetePk()).map(l -> l.toString()).orElse("null"), ";");
 		tl(1, "if(pk != null) {");
-		if(
-				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
-				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
-				) {
-			tl(2, "suggereUtilisateurSiteInscriptionCles([{'name':'fq','value':'utilisateurCles:' + pk}], $('#listUtilisateurSiteInscriptionCles_Page'), pk, true); ");
-		} else {
-			tl(2, "suggereUtilisateurSiteInscriptionCles([{'name':'fq','value':'utilisateurCles:' + pk}], $('#listUtilisateurSiteInscriptionCles_Page'), pk, false); ");
-		}
-		if(
-				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
-				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
-				) {
-			tl(2, "suggereUtilisateurSitePaiementCles([{'name':'fq','value':'utilisateurCles:' + pk}], $('#listUtilisateurSitePaiementCles_Page'), pk, true); ");
-		} else {
-			tl(2, "suggereUtilisateurSitePaiementCles([{'name':'fq','value':'utilisateurCles:' + pk}], $('#listUtilisateurSitePaiementCles_Page'), pk, false); ");
-		}
 		tl(1, "}");
 		tl(1, "websocketUtilisateurSite(websocketUtilisateurSiteInner);");
 		l("});");
@@ -163,7 +145,6 @@ public class UtilisateurSiteGenPage extends UtilisateurSiteGenPageGen<ClusterPag
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInscriptionCles("Page");
-			o.htmPaiementCles("Page");
 		} g("div");
 	}
 
@@ -186,7 +167,6 @@ public class UtilisateurSiteGenPage extends UtilisateurSiteGenPageGen<ClusterPag
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInscriptionCles("POST");
-			o.htmPaiementCles("POST");
 		} g("div");
 	}
 
@@ -230,10 +210,6 @@ public class UtilisateurSiteGenPage extends UtilisateurSiteGenPageGen<ClusterPag
 			o.htmCustomerProfileId("PUTCopie");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmInscriptionCles("PUTCopie");
-			o.htmPaiementCles("PUTCopie");
-		} g("div");
-		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInheritPk("PUTCopie");
 			o.htmSessionId("PUTCopie");
 			o.htmUtilisateurId("PUTCopie");
@@ -257,10 +233,6 @@ public class UtilisateurSiteGenPage extends UtilisateurSiteGenPageGen<ClusterPag
 			o.htmVoirArchive("PATCH");
 			o.htmVoirSupprime("PATCH");
 			o.htmCustomerProfileId("PATCH");
-		} g("div");
-		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmInscriptionCles("PATCH");
-			o.htmPaiementCles("PATCH");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInheritPk("PATCH");
@@ -291,7 +263,6 @@ public class UtilisateurSiteGenPage extends UtilisateurSiteGenPageGen<ClusterPag
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInscriptionCles("Recherche");
-			o.htmPaiementCles("Recherche");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInheritPk("Recherche");

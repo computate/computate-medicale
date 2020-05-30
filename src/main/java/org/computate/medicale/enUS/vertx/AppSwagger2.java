@@ -13,13 +13,16 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.util.ClientUtils;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
-import org.computate.medicale.frFR.config.ConfigSite;
+import org.computate.medicale.enUS.config.SiteConfig;
 import org.computate.medicale.enUS.context.SiteContextEnUS;
 import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.writer.ApiWriter;
 import org.computate.medicale.enUS.writer.AllWriter;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 
+/**
+ * CanonicalName: org.computate.medicale.frFR.vertx.AppliSwagger2
+ **/
 public class AppSwagger2 extends AppSwagger2Gen<Object> {
 
 	public static void  main(String[] args) {
@@ -34,7 +37,7 @@ public class AppSwagger2 extends AppSwagger2Gen<Object> {
 	protected void _siteContext(SiteContextEnUS o) { 
 	}
 
-	protected void _siteConfig(Wrap<ConfigSite> c) {
+	protected void _siteConfig(Wrap<SiteConfig> c) {
 		c.o(siteContext.getSiteConfig());
 	}
 
@@ -173,6 +176,33 @@ public class AppSwagger2 extends AppSwagger2Gen<Object> {
 			wPaths.tl(3, "operationId: logout");
 			wPaths.tl(3, "x-vertx-event-bus: ", appName, "-", languageName, "-logout");
 			wPaths.tl(3, "description: >+");
+			wPaths.tl(3, "responses:");
+			wPaths.tl(4, "'200':");
+			wPaths.tl(5, "description: >+");
+			wPaths.tl(5, "content:");
+			wPaths.tl(6, "application/json; charset=utf-8:");
+			wPaths.tl(7, "schema:");
+			wPaths.tl(8, "type: string");
+			wPaths.l();
+			wPaths.tl(1, "/photo:");
+			wPaths.tl(2, "post:");
+			wPaths.tl(3, "operationId: photo");
+			wPaths.tl(3, "x-vertx-event-bus: ", appName, "-", languageName, "-photo");
+			wPaths.tl(3, "description: >+");
+			wPaths.tl(3, "requestBody:");
+			wPaths.tl(4, "required: true");
+			wPaths.tl(4, "content:");
+			wPaths.tl(5, "multipart/form-data:");
+			wPaths.tl(6, "schema:");
+			wPaths.tl(7, "type: object");
+			wPaths.tl(7, "properties:");
+			wPaths.tl(8, "pk:");
+			wPaths.tl(9, "type: string");
+			wPaths.tl(8, "classeNomCanonique:");
+			wPaths.tl(9, "type: string");
+			wPaths.tl(8, "photo:");
+			wPaths.tl(9, "type: string");
+			wPaths.tl(9, "format: binary");
 			wPaths.tl(3, "responses:");
 			wPaths.tl(4, "'200':");
 			wPaths.tl(5, "description: >+");

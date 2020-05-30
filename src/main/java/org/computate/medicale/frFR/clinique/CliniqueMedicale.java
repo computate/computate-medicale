@@ -1,4 +1,4 @@
-package org.computate.medicale.frFR.clinique;                                   
+package org.computate.medicale.frFR.clinique;      
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.computate.medicale.frFR.couverture.Couverture;
 
 
 
-/**                
- * NomCanonique.enUS: org.computate.medicale.enUS.clinic.Clinic
+/**          
+ * NomCanonique.enUS: org.computate.medicale.enUS.clinic.MedicalClinic
  * Modele: true
  * Api: true
  * Indexe: true
@@ -51,7 +51,7 @@ import org.computate.medicale.frFR.couverture.Couverture;
  * 
  * Role.frFR: SiteAdmin
  * Role.enUS: SiteAdmin
- */              
+ */                 
 public class CliniqueMedicale extends CliniqueMedicaleGen<Cluster> {   
 
 	/**

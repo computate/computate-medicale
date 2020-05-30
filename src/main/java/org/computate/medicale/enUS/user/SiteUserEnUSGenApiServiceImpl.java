@@ -78,7 +78,7 @@ import java.time.ZonedDateTime;
 import org.apache.solr.common.util.SimpleOrderedMap;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.BooleanUtils;
-import org.computate.medicale.frFR.utilisateur.UtilisateurSiteFrFRApiServiceImpl;
+import org.computate.medicale.enUS.user.SiteUserEnUSApiServiceImpl;
 import org.computate.medicale.enUS.search.SearchList;
 import org.computate.medicale.enUS.writer.AllWriter;
 

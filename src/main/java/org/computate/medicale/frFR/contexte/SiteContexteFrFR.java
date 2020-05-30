@@ -11,10 +11,10 @@ import io.vertx.core.Vertx;
 import io.vertx.core.WorkerExecutor;
 import io.vertx.ext.auth.oauth2.OAuth2Auth;
 import io.vertx.ext.mail.MailClient;
-import io.vertx.ext.sql.SQLClient;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory;
 import io.vertx.ext.web.handler.OAuth2AuthHandler;
+import io.vertx.pgclient.PgPool;
 
 
 /**   
@@ -22,7 +22,7 @@ import io.vertx.ext.web.handler.OAuth2AuthHandler;
  * MotCle: classeNomSimpleSiteContexte
  * NomCanonique.enUS: org.computate.medicale.enUS.context.SiteContextEnUS
  */  
-public class SiteContexteFrFR extends SiteContexteFrFRGen<Object> {  
+public class SiteContexteFrFR extends SiteContexteFrFRGen<Object> { 
 	protected Logger log = LoggerFactory.getLogger(getClass());
 
 	/**
@@ -164,10 +164,9 @@ public class SiteContexteFrFR extends SiteContexteFrFRGen<Object> {
 	}
 
 	/**	
-	 * Var.enUS: sqlClient
 	 * frFR: Le source de données du site. 
 	 * **/ 
-	protected void _clientSql(Couverture<SQLClient> c) {
+	protected void _pgPool(Couverture<PgPool> c) {
 	}
 //
 //	/**	L'URL JNDI vers le source de courriels dans Tomcat. **/

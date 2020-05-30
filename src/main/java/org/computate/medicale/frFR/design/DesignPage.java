@@ -1,12 +1,9 @@
-package org.computate.medicale.frFR.design;  
+package org.computate.medicale.frFR.design;     
 
 import java.util.List;
 
-import org.computate.medicale.frFR.annee.Anneemedicale;
 import org.computate.medicale.frFR.cluster.Cluster;
 import org.computate.medicale.frFR.couverture.Couverture;
-import org.computate.medicale.frFR.html.part.PartHtml;
-import org.computate.medicale.frFR.recherche.ListeRecherche;
 
 /**    
  * NomCanonique.enUS: org.computate.medicale.enUS.design.PageDesign
@@ -111,7 +108,7 @@ import org.computate.medicale.frFR.recherche.ListeRecherche;
  * Tri.asc: designPageNomComplet
  * 
  * Lignes: 100
-*/    
+*/  
 public class DesignPage extends DesignPageGen<Cluster> {
 
 	/**
@@ -190,10 +187,7 @@ public class DesignPage extends DesignPageGen<Cluster> {
 	 */ 
 	protected void _designPageNomComplet(Couverture<String> c) {
 		String o;
-//		if(anneeNomComplet == null)
-			o = String.format("design d'inscription");
-//		else
-//			o = String.format("design d'inscription pour l'%s", anneeNomComplet);
+		o = String.format("design de page");
 		c.o(o);
 	}
 

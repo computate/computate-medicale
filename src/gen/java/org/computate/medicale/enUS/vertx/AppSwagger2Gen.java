@@ -2,6 +2,7 @@ package org.computate.medicale.enUS.vertx;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.enUS.cluster.Cluster;
 import org.computate.medicale.enUS.request.api.ApiRequest;
 import org.computate.medicale.enUS.context.SiteContextEnUS;
 import org.apache.commons.lang3.StringUtils;
@@ -12,7 +13,7 @@ import org.apache.commons.collections.CollectionUtils;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.computate.medicale.frFR.config.ConfigSite;
+import org.computate.medicale.enUS.config.SiteConfig;
 import java.lang.String;
 import io.vertx.core.logging.Logger;
 import org.computate.medicale.enUS.wrap.Wrap;
@@ -109,7 +110,7 @@ public abstract class AppSwagger2Gen<DEV> extends Object {
 		if(!siteContextWrap.alreadyInitialized) {
 			_siteContext(siteContext);
 		}
-		siteContext.initDeepForClass(null);
+		siteContext.initDeepForClass(siteRequest_);
 		siteContextWrap.alreadyInitialized(true);
 		return (AppSwagger2)this;
 	}
@@ -122,9 +123,9 @@ public abstract class AppSwagger2Gen<DEV> extends Object {
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected ConfigSite siteConfig;
+	protected SiteConfig siteConfig;
 	@JsonIgnore
-	public Wrap<ConfigSite> siteConfigWrap = new Wrap<ConfigSite>().p(this).c(ConfigSite.class).var("siteConfig").o(siteConfig);
+	public Wrap<SiteConfig> siteConfigWrap = new Wrap<SiteConfig>().p(this).c(SiteConfig.class).var("siteConfig").o(siteConfig);
 
 	/**	<br/>L'entité « siteConfig »
 	 *  est défini comme null avant d'être initialisé. 
@@ -132,13 +133,13 @@ public abstract class AppSwagger2Gen<DEV> extends Object {
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _siteConfig(Wrap<ConfigSite> c);
+	protected abstract void _siteConfig(Wrap<SiteConfig> c);
 
-	public ConfigSite getSiteConfig() {
+	public SiteConfig getSiteConfig() {
 		return siteConfig;
 	}
 
-	public void setSiteConfig(ConfigSite siteConfig) {
+	public void setSiteConfig(SiteConfig siteConfig) {
 		this.siteConfig = siteConfig;
 		this.siteConfigWrap.alreadyInitialized = true;
 	}
@@ -148,6 +149,8 @@ public abstract class AppSwagger2Gen<DEV> extends Object {
 			if(siteConfig == null)
 				setSiteConfig(siteConfigWrap.o);
 		}
+		if(siteConfig != null)
+			siteConfig.initDeepForClass(siteRequest_);
 		siteConfigWrap.alreadyInitialized(true);
 		return (AppSwagger2)this;
 	}
@@ -735,7 +738,7 @@ public abstract class AppSwagger2Gen<DEV> extends Object {
 				setW(wWrap.o);
 		}
 		if(w != null)
-			w.initDeepForClass(null);
+			w.initDeepForClass(siteRequest_);
 		wWrap.alreadyInitialized(true);
 		return (AppSwagger2)this;
 	}
@@ -775,7 +778,7 @@ public abstract class AppSwagger2Gen<DEV> extends Object {
 				setWPaths(wPathsWrap.o);
 		}
 		if(wPaths != null)
-			wPaths.initDeepForClass(null);
+			wPaths.initDeepForClass(siteRequest_);
 		wPathsWrap.alreadyInitialized(true);
 		return (AppSwagger2)this;
 	}
@@ -815,7 +818,7 @@ public abstract class AppSwagger2Gen<DEV> extends Object {
 				setWRequestBodies(wRequestBodiesWrap.o);
 		}
 		if(wRequestBodies != null)
-			wRequestBodies.initDeepForClass(null);
+			wRequestBodies.initDeepForClass(siteRequest_);
 		wRequestBodiesWrap.alreadyInitialized(true);
 		return (AppSwagger2)this;
 	}
@@ -855,7 +858,7 @@ public abstract class AppSwagger2Gen<DEV> extends Object {
 				setWSchemas(wSchemasWrap.o);
 		}
 		if(wSchemas != null)
-			wSchemas.initDeepForClass(null);
+			wSchemas.initDeepForClass(siteRequest_);
 		wSchemasWrap.alreadyInitialized(true);
 		return (AppSwagger2)this;
 	}
@@ -867,6 +870,7 @@ public abstract class AppSwagger2Gen<DEV> extends Object {
 	protected boolean alreadyInitializedAppSwagger2 = false;
 
 	public AppSwagger2 initDeepAppSwagger2(SiteRequestEnUS siteRequest_) {
+		setSiteRequest_(siteRequest_);
 		if(!alreadyInitializedAppSwagger2) {
 			alreadyInitializedAppSwagger2 = true;
 			initDeepAppSwagger2();
@@ -899,6 +903,25 @@ public abstract class AppSwagger2Gen<DEV> extends Object {
 
 	public void initDeepForClass(SiteRequestEnUS siteRequest_) {
 		initDeepAppSwagger2(siteRequest_);
+	}
+
+	/////////////////
+	// siteRequest //
+	/////////////////
+
+	public void siteRequestAppSwagger2(SiteRequestEnUS siteRequest_) {
+		if(w != null)
+			w.setSiteRequest_(siteRequest_);
+		if(wPaths != null)
+			wPaths.setSiteRequest_(siteRequest_);
+		if(wRequestBodies != null)
+			wRequestBodies.setSiteRequest_(siteRequest_);
+		if(wSchemas != null)
+			wSchemas.setSiteRequest_(siteRequest_);
+	}
+
+	public void siteRequestForClass(SiteRequestEnUS siteRequest_) {
+		siteRequestAppSwagger2(siteRequest_);
 	}
 
 	/////////////
@@ -1006,6 +1029,18 @@ public abstract class AppSwagger2Gen<DEV> extends Object {
 		switch(var) {
 			default:
 				return null;
+		}
+	}
+
+	//////////////////
+	// apiRequest //
+	//////////////////
+
+	public void apiRequestAppSwagger2() {
+		ApiRequest apiRequest = Optional.ofNullable(siteRequest_).map(SiteRequestEnUS::getApiRequest_).orElse(null);
+		Object o = Optional.ofNullable(apiRequest).map(ApiRequest::getOriginal).orElse(null);
+		if(o != null && o instanceof AppSwagger2) {
+			AppSwagger2 original = (AppSwagger2)o;
 		}
 	}
 

@@ -4,6 +4,27 @@ import java.util.List;
 import org.computate.medicale.enUS.cluster.Cluster;
 import org.computate.medicale.enUS.wrap.Wrap;
 
+/**
+ * Model: true
+ * Api: true
+ * Page: true
+ * Saved: true
+ * RoleUser: true
+ * Color: gray
+ * IconGroup: regular
+ * IconName: user-cog
+ * Role.enUS: SiteAdmin
+ * Role.enUS: SiteAdmin
+ * ApiUri.enUS: /api/user
+ * ApiTag.enUS: User
+ * AName.enUS: a site user
+ * Role.frFR: SiteAdmin
+ * Role.frFR: SiteAdmin
+ * ApiUri.frFR: /api/utilisateur
+ * ApiTag.frFR: Utilisateur
+ * AName.frFR: un utilisateur du site
+ * CanonicalName: org.computate.medicale.frFR.utilisateur.UtilisateurSite
+ **/
 public class SiteUser extends SiteUserGen<Cluster> {
 
 	protected void _userKeys(List<Long> l) {
@@ -11,8 +32,6 @@ public class SiteUser extends SiteUserGen<Cluster> {
 	}
 
 	protected void _enrollmentKeys(List<Long> o) {}
-
-	protected void _paymentKeys(List<Long> o) {}
 
 	protected void _userName(Wrap<String> c) {
 		String o = siteRequest_.getUserName();

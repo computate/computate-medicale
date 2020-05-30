@@ -2,6 +2,7 @@ package org.computate.medicale.frFR.recherche;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.frFR.cluster.Cluster;
 import org.apache.solr.common.SolrDocumentList;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
 import org.apache.commons.lang3.StringUtils;
@@ -17,6 +18,7 @@ import io.vertx.core.logging.Logger;
 import org.computate.medicale.frFR.couverture.Couverture;
 import java.math.MathContext;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.computate.medicale.frFR.ecrivain.ToutEcrivain;
 import org.apache.commons.text.StringEscapeUtils;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -495,6 +497,7 @@ public abstract class ListeRechercheGen<DEV> {
 	protected boolean dejaInitialiseListeRecherche = false;
 
 	public ListeRecherche initLoinListeRecherche(RequeteSiteFrFR requeteSite_) {
+		setRequeteSite_(requeteSite_);
 		if(!dejaInitialiseListeRecherche) {
 			dejaInitialiseListeRecherche = true;
 			initLoinListeRecherche();
@@ -520,6 +523,17 @@ public abstract class ListeRechercheGen<DEV> {
 
 	public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) {
 		initLoinListeRecherche(requeteSite_);
+	}
+
+	/////////////////
+	// requeteSite //
+	/////////////////
+
+	public void requeteSiteListeRecherche(RequeteSiteFrFR requeteSite_) {
+	}
+
+	public void requeteSitePourClasse(RequeteSiteFrFR requeteSite_) {
+		requeteSiteListeRecherche(requeteSite_);
 	}
 
 	/////////////
@@ -613,6 +627,18 @@ public abstract class ListeRechercheGen<DEV> {
 		switch(var) {
 			default:
 				return null;
+		}
+	}
+
+	//////////////////
+	// requeteApi //
+	//////////////////
+
+	public void requeteApiListeRecherche() {
+		RequeteApi requeteApi = Optional.ofNullable(requeteSite_).map(RequeteSiteFrFR::getRequeteApi_).orElse(null);
+		Object o = Optional.ofNullable(requeteApi).map(RequeteApi::getOriginal).orElse(null);
+		if(o != null && o instanceof ListeRecherche) {
+			ListeRecherche original = (ListeRecherche)o;
 		}
 	}
 

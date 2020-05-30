@@ -11,4 +11,4 @@ public class UtilisateurSiteFrFRApiServiceImpl extends UtilisateurSiteFrFRGenApi
 	public UtilisateurSiteFrFRApiServiceImpl(SiteContexteFrFR siteContexte) {
 		super(siteContexte);
 	}
-}
+} 

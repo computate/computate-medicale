@@ -2,6 +2,7 @@ package org.computate.medicale.frFR.recherche;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.frFR.cluster.Cluster;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
@@ -15,6 +16,7 @@ import java.lang.String;
 import io.vertx.core.logging.Logger;
 import org.computate.medicale.frFR.couverture.Couverture;
 import java.math.MathContext;
+import org.computate.medicale.frFR.ecrivain.ToutEcrivain;
 import org.apache.commons.text.StringEscapeUtils;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -189,6 +191,7 @@ public abstract class ResultatRechercheGen<DEV> extends Object {
 	protected boolean dejaInitialiseResultatRecherche = false;
 
 	public ResultatRecherche initLoinResultatRecherche(RequeteSiteFrFR requeteSite_) throws Exception {
+		setRequeteSite_(requeteSite_);
 		if(!dejaInitialiseResultatRecherche) {
 			dejaInitialiseResultatRecherche = true;
 			initLoinResultatRecherche();
@@ -208,6 +211,17 @@ public abstract class ResultatRechercheGen<DEV> extends Object {
 
 	public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) throws Exception {
 		initLoinResultatRecherche(requeteSite_);
+	}
+
+	/////////////////
+	// requeteSite //
+	/////////////////
+
+	public void requeteSiteResultatRecherche(RequeteSiteFrFR requeteSite_) {
+	}
+
+	public void requeteSitePourClasse(RequeteSiteFrFR requeteSite_) {
+		requeteSiteResultatRecherche(requeteSite_);
 	}
 
 	/////////////
@@ -289,6 +303,18 @@ public abstract class ResultatRechercheGen<DEV> extends Object {
 		switch(var) {
 			default:
 				return null;
+		}
+	}
+
+	//////////////////
+	// requeteApi //
+	//////////////////
+
+	public void requeteApiResultatRecherche() {
+		RequeteApi requeteApi = Optional.ofNullable(requeteSite_).map(RequeteSiteFrFR::getRequeteApi_).orElse(null);
+		Object o = Optional.ofNullable(requeteApi).map(RequeteApi::getOriginal).orElse(null);
+		if(o != null && o instanceof ResultatRecherche) {
+			ResultatRecherche original = (ResultatRecherche)o;
 		}
 	}
 

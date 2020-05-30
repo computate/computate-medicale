@@ -2,6 +2,7 @@ package org.computate.medicale.enUS.writer;
 
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.computate.medicale.enUS.cluster.Cluster;
 import org.computate.medicale.enUS.request.api.ApiRequest;
 import org.computate.medicale.enUS.context.SiteContextEnUS;
 import org.apache.commons.lang3.StringUtils;
@@ -15,9 +16,9 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Boolean;
 import java.lang.String;
-import org.computate.medicale.frFR.config.ConfigSite;
+import org.computate.medicale.enUS.config.SiteConfig;
 import io.vertx.core.logging.Logger;
-import org.computate.medicale.frFR.vertx.AppliSwagger2;
+import org.computate.medicale.enUS.vertx.AppSwagger2;
 import org.computate.medicale.enUS.wrap.Wrap;
 import java.math.MathContext;
 import org.computate.medicale.enUS.writer.AllWriter;
@@ -320,9 +321,9 @@ public abstract class ApiWriterGen<DEV> extends Object {
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected AppliSwagger2 appSwagger2;
+	protected AppSwagger2 appSwagger2;
 	@JsonIgnore
-	public Wrap<AppliSwagger2> appSwagger2Wrap = new Wrap<AppliSwagger2>().p(this).c(AppliSwagger2.class).var("appSwagger2").o(appSwagger2);
+	public Wrap<AppSwagger2> appSwagger2Wrap = new Wrap<AppSwagger2>().p(this).c(AppSwagger2.class).var("appSwagger2").o(appSwagger2);
 
 	/**	<br/>L'entité « appSwagger2 »
 	 *  est défini comme null avant d'être initialisé. 
@@ -330,13 +331,13 @@ public abstract class ApiWriterGen<DEV> extends Object {
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _appSwagger2(Wrap<AppliSwagger2> c);
+	protected abstract void _appSwagger2(Wrap<AppSwagger2> c);
 
-	public AppliSwagger2 getAppSwagger2() {
+	public AppSwagger2 getAppSwagger2() {
 		return appSwagger2;
 	}
 
-	public void setAppSwagger2(AppliSwagger2 appSwagger2) {
+	public void setAppSwagger2(AppSwagger2 appSwagger2) {
 		this.appSwagger2 = appSwagger2;
 		this.appSwagger2Wrap.alreadyInitialized = true;
 	}
@@ -346,6 +347,8 @@ public abstract class ApiWriterGen<DEV> extends Object {
 			if(appSwagger2 == null)
 				setAppSwagger2(appSwagger2Wrap.o);
 		}
+		if(appSwagger2 != null)
+			appSwagger2.initDeepForClass(siteRequest_);
 		appSwagger2Wrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -673,7 +676,7 @@ public abstract class ApiWriterGen<DEV> extends Object {
 				setWPaths(wPathsWrap.o);
 		}
 		if(wPaths != null)
-			wPaths.initDeepForClass(null);
+			wPaths.initDeepForClass(siteRequest_);
 		wPathsWrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -713,7 +716,7 @@ public abstract class ApiWriterGen<DEV> extends Object {
 				setWRequestBodies(wRequestBodiesWrap.o);
 		}
 		if(wRequestBodies != null)
-			wRequestBodies.initDeepForClass(null);
+			wRequestBodies.initDeepForClass(siteRequest_);
 		wRequestBodiesWrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -753,7 +756,7 @@ public abstract class ApiWriterGen<DEV> extends Object {
 				setWSchemas(wSchemasWrap.o);
 		}
 		if(wSchemas != null)
-			wSchemas.initDeepForClass(null);
+			wSchemas.initDeepForClass(siteRequest_);
 		wSchemasWrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -793,7 +796,7 @@ public abstract class ApiWriterGen<DEV> extends Object {
 				setSiteContext(siteContextWrap.o);
 		}
 		if(siteContext != null)
-			siteContext.initDeepForClass(null);
+			siteContext.initDeepForClass(siteRequest_);
 		siteContextWrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -806,9 +809,9 @@ public abstract class ApiWriterGen<DEV> extends Object {
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected ConfigSite siteConfig;
+	protected SiteConfig siteConfig;
 	@JsonIgnore
-	public Wrap<ConfigSite> siteConfigWrap = new Wrap<ConfigSite>().p(this).c(ConfigSite.class).var("siteConfig").o(siteConfig);
+	public Wrap<SiteConfig> siteConfigWrap = new Wrap<SiteConfig>().p(this).c(SiteConfig.class).var("siteConfig").o(siteConfig);
 
 	/**	<br/>L'entité « siteConfig »
 	 *  est défini comme null avant d'être initialisé. 
@@ -816,13 +819,13 @@ public abstract class ApiWriterGen<DEV> extends Object {
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _siteConfig(Wrap<ConfigSite> c);
+	protected abstract void _siteConfig(Wrap<SiteConfig> c);
 
-	public ConfigSite getSiteConfig() {
+	public SiteConfig getSiteConfig() {
 		return siteConfig;
 	}
 
-	public void setSiteConfig(ConfigSite siteConfig) {
+	public void setSiteConfig(SiteConfig siteConfig) {
 		this.siteConfig = siteConfig;
 		this.siteConfigWrap.alreadyInitialized = true;
 	}
@@ -832,6 +835,8 @@ public abstract class ApiWriterGen<DEV> extends Object {
 			if(siteConfig == null)
 				setSiteConfig(siteConfigWrap.o);
 		}
+		if(siteConfig != null)
+			siteConfig.initDeepForClass(siteRequest_);
 		siteConfigWrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -871,7 +876,7 @@ public abstract class ApiWriterGen<DEV> extends Object {
 				setWRequestHeaders(wRequestHeadersWrap.o);
 		}
 		if(wRequestHeaders != null)
-			wRequestHeaders.initDeepForClass(null);
+			wRequestHeaders.initDeepForClass(siteRequest_);
 		wRequestHeadersWrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -911,7 +916,7 @@ public abstract class ApiWriterGen<DEV> extends Object {
 				setWRequestDescription(wRequestDescriptionWrap.o);
 		}
 		if(wRequestDescription != null)
-			wRequestDescription.initDeepForClass(null);
+			wRequestDescription.initDeepForClass(siteRequest_);
 		wRequestDescriptionWrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -951,7 +956,7 @@ public abstract class ApiWriterGen<DEV> extends Object {
 				setWResponseDescription(wResponseDescriptionWrap.o);
 		}
 		if(wResponseDescription != null)
-			wResponseDescription.initDeepForClass(null);
+			wResponseDescription.initDeepForClass(siteRequest_);
 		wResponseDescriptionWrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -991,7 +996,7 @@ public abstract class ApiWriterGen<DEV> extends Object {
 				setWRequestBody(wRequestBodyWrap.o);
 		}
 		if(wRequestBody != null)
-			wRequestBody.initDeepForClass(null);
+			wRequestBody.initDeepForClass(siteRequest_);
 		wRequestBodyWrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -1031,7 +1036,7 @@ public abstract class ApiWriterGen<DEV> extends Object {
 				setWResponseBody(wResponseBodyWrap.o);
 		}
 		if(wResponseBody != null)
-			wResponseBody.initDeepForClass(null);
+			wResponseBody.initDeepForClass(siteRequest_);
 		wResponseBodyWrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -1071,7 +1076,7 @@ public abstract class ApiWriterGen<DEV> extends Object {
 				setWRequestSchema(wRequestSchemaWrap.o);
 		}
 		if(wRequestSchema != null)
-			wRequestSchema.initDeepForClass(null);
+			wRequestSchema.initDeepForClass(siteRequest_);
 		wRequestSchemaWrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -1111,7 +1116,7 @@ public abstract class ApiWriterGen<DEV> extends Object {
 				setWResponseSchema(wResponseSchemaWrap.o);
 		}
 		if(wResponseSchema != null)
-			wResponseSchema.initDeepForClass(null);
+			wResponseSchema.initDeepForClass(siteRequest_);
 		wResponseSchemaWrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -1151,7 +1156,7 @@ public abstract class ApiWriterGen<DEV> extends Object {
 				setWriters(writersWrap.o);
 		}
 		if(writers != null)
-			writers.initDeepForClass(null);
+			writers.initDeepForClass(siteRequest_);
 		writersWrap.alreadyInitialized(true);
 		return (ApiWriter)this;
 	}
@@ -2848,6 +2853,7 @@ public abstract class ApiWriterGen<DEV> extends Object {
 	protected boolean alreadyInitializedApiWriter = false;
 
 	public ApiWriter initDeepApiWriter(SiteRequestEnUS siteRequest_) {
+		setSiteRequest_(siteRequest_);
 		if(!alreadyInitializedApiWriter) {
 			alreadyInitializedApiWriter = true;
 			initDeepApiWriter();
@@ -2913,6 +2919,39 @@ public abstract class ApiWriterGen<DEV> extends Object {
 
 	public void initDeepForClass(SiteRequestEnUS siteRequest_) {
 		initDeepApiWriter(siteRequest_);
+	}
+
+	/////////////////
+	// siteRequest //
+	/////////////////
+
+	public void siteRequestApiWriter(SiteRequestEnUS siteRequest_) {
+		if(wPaths != null)
+			wPaths.setSiteRequest_(siteRequest_);
+		if(wRequestBodies != null)
+			wRequestBodies.setSiteRequest_(siteRequest_);
+		if(wSchemas != null)
+			wSchemas.setSiteRequest_(siteRequest_);
+		if(wRequestHeaders != null)
+			wRequestHeaders.setSiteRequest_(siteRequest_);
+		if(wRequestDescription != null)
+			wRequestDescription.setSiteRequest_(siteRequest_);
+		if(wResponseDescription != null)
+			wResponseDescription.setSiteRequest_(siteRequest_);
+		if(wRequestBody != null)
+			wRequestBody.setSiteRequest_(siteRequest_);
+		if(wResponseBody != null)
+			wResponseBody.setSiteRequest_(siteRequest_);
+		if(wRequestSchema != null)
+			wRequestSchema.setSiteRequest_(siteRequest_);
+		if(wResponseSchema != null)
+			wResponseSchema.setSiteRequest_(siteRequest_);
+		if(writers != null)
+			writers.setSiteRequest_(siteRequest_);
+	}
+
+	public void siteRequestForClass(SiteRequestEnUS siteRequest_) {
+		siteRequestApiWriter(siteRequest_);
 	}
 
 	/////////////
@@ -3086,6 +3125,18 @@ public abstract class ApiWriterGen<DEV> extends Object {
 		switch(var) {
 			default:
 				return null;
+		}
+	}
+
+	//////////////////
+	// apiRequest //
+	//////////////////
+
+	public void apiRequestApiWriter() {
+		ApiRequest apiRequest = Optional.ofNullable(siteRequest_).map(SiteRequestEnUS::getApiRequest_).orElse(null);
+		Object o = Optional.ofNullable(apiRequest).map(ApiRequest::getOriginal).orElse(null);
+		if(o != null && o instanceof ApiWriter) {
+			ApiWriter original = (ApiWriter)o;
 		}
 	}
 

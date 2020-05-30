@@ -1,4 +1,4 @@
-package org.computate.medicale.frFR.recherche;  
+package org.computate.medicale.frFR.recherche; 
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

@@ -2,11 +2,29 @@ package org.computate.medicale.enUS.html.part;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import org.computate.medicale.frFR.cluster.Cluster;
+import org.computate.medicale.enUS.cluster.Cluster;
 import org.computate.medicale.enUS.wrap.Wrap;
-import org.computate.medicale.frFR.design.DesignPage;
+import org.computate.medicale.enUS.design.PageDesign;
 import org.computate.medicale.enUS.search.SearchList;
 
+/**
+ * Model: true
+ * Api: true
+ * Page: true
+ * Saved: true
+ * Color: yellow
+ * IconGroup: regular
+ * IconName: sun
+ * Role.enUS: SiteAdmin
+ * ApiUri.enUS: /api/html-part
+ * ApiTag.enUS: Html Part
+ * AName.enUS: an HTML part
+ * Role.frFR: SiteAdmin
+ * ApiUri.frFR: /api/part-html
+ * ApiTag.frFR: Part de Html
+ * AName.frFR: un part de HTML
+ * CanonicalName: org.computate.medicale.frFR.html.part.PartHtml
+ **/
 public class HtmlPart extends HtmlPartGen<Cluster> {
 
 	protected void _htmlPartKey(Wrap<Long> c) {

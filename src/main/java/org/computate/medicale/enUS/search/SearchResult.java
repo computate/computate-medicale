@@ -14,4 +14,4 @@ public class SearchResult extends SearchResultGen<Object> {
 
 	protected void _resultIndex(Wrap<Long> c) {
 	}
-}
+} 

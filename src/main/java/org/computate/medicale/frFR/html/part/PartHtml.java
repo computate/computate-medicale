@@ -1,4 +1,4 @@
-package org.computate.medicale.frFR.html.part;           
+package org.computate.medicale.frFR.html.part;            
 
 import java.util.List;
 import java.util.stream.Collectors;

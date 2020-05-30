@@ -26,23 +26,27 @@ import io.vertx.core.http.CaseInsensitiveHeaders;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.auth.oauth2.KeycloakHelper;
-import io.vertx.ext.sql.SQLConnection;
 import io.vertx.ext.web.api.OperationRequest;
+import io.vertx.sqlclient.SqlConnection;
+import io.vertx.sqlclient.Transaction;
 
+/**
+ * CanonicalName: org.computate.medicale.frFR.requete.RequeteSiteFrFR
+ **/
 public class SiteRequestEnUS extends SiteRequestEnUSGen<Object> implements Serializable {
 
 	private static final long serialVersionUID = -6737494107881513257L;
 
-	/**	
-	 *	The site context with global site information. 
+	/**
+	 * The site context with global site information. 
 	 **/
 	protected void _siteContext_(Wrap<SiteContextEnUS> c) {
 	}
 
 	private static final Pattern PATTERN_SESSION = Pattern.compile(".*vertx-web.session=(\\w+).*");
 
-	/**	
-	 *	The site configuration. 
+	/**
+	 * The site configuration. 
 	 **/
 	protected void _siteConfig_(Wrap<SiteConfig> c) {
 		SiteConfig o = siteContext_.getSiteConfig();
@@ -208,7 +212,10 @@ public class SiteRequestEnUS extends SiteRequestEnUSGen<Object> implements Seria
 			c.o(operationRequest.getParams().getLong("pk"));
 	}
 
-	protected void _sqlConnection(Wrap<SQLConnection> c) {
+	protected void _tx(Wrap<Transaction> c) {
+	}
+
+	protected void _sqlConnection(Wrap<SqlConnection> c) {
 	}
 
 	protected void _requestHeaders(Wrap<CaseInsensitiveHeaders> c) {
@@ -226,7 +233,7 @@ public class SiteRequestEnUS extends SiteRequestEnUSGen<Object> implements Seria
 		o.setUserKey(userKey);
 		o.setSolrDocument(solrDocument);
 		o.setPageAdmin(pageAdmin);
-		o.setSqlConnection(sqlConnection);
+		o.setTx(tx);
 		o.setRequestHeaders(requestHeaders);
 		o.setRequestVars(requestVars);
 		return o;

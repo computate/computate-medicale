@@ -71,6 +71,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	public static final String Cluster_NomSingulier = "cluster";
 	public static final String Cluster_NomPluriel = "clusters";
 	public static final String Cluster_NomActuel = "cluster actuel";
+	public static final String Cluster_Tous = "all ";
 	public static final String Cluster_TousNom = "tous les clusters";
 	public static final String Cluster_RechercherTousNomPar = "rechercher clusters par ";
 	public static final String Cluster_RechercherTousNom = "rechercher clusters";
@@ -256,7 +257,7 @@ public abstract class ClusterGen<DEV> extends Object {
 						{ s.e("div").a("class", "w3-cell-row  ").f();
 							{ s.e("div").a("class", "w3-cell ").f();
 								{ s.e("div").a("class", "w3-rest ").f();
-									s.e("span").f().sx(strPk()).g("span");
+									s.e("a").a("href", pageUrlPk).f().sx(strPk()).g("a");
 								} s.g("div");
 							} s.g("div");
 						} s.g("div");
@@ -1657,7 +1658,7 @@ public abstract class ClusterGen<DEV> extends Object {
 						{ s.e("div").a("class", "w3-cell-row  ").f();
 							{ s.e("div").a("class", "w3-cell ").f();
 								{ s.e("div").a("class", "w3-rest ").f();
-									s.e("span").f().sx(strObjetId()).g("span");
+									s.e("a").a("href", pageUrlId).f().sx(strObjetId()).g("a");
 								} s.g("div");
 							} s.g("div");
 						} s.g("div");
