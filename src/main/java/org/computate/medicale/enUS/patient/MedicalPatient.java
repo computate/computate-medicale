@@ -5,11 +5,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
-
 import org.computate.medicale.enUS.cluster.Cluster;
+import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.enrollment.MedicalEnrollment;
 import org.computate.medicale.enUS.search.SearchList;
-import org.computate.medicale.enUS.wrap.Wrap;
 
 /**
  * Model: true
@@ -20,28 +19,24 @@ import org.computate.medicale.enUS.wrap.Wrap;
  * RoleUser: true
  * Color: orange
  * IconGroup: regular
- * IconName: child
+ * IconName: patient
  * Role.enUS: SiteAdmin
- * ApiUri.enUS: /api/child
+ * ApiUri.enUS: /api/patient
  * ApiTag.enUS: Child
- * AName.enUS: a child
+ * AName.enUS: a patient
  * Role.frFR: SiteAdmin
- * ApiUri.frFR: /api/enfant
+ * ApiUri.frFR: /api/patient
  * ApiTag.frFR: Enfant
- * AName.frFR: un enfant
+ * AName.frFR: un patient
  * CanonicalName: org.computate.medicale.frFR.patient.PatientMedicale
  **/
 public class MedicalPatient extends MedicalPatientGen<Cluster> {
 
-	protected void _childKey(Wrap<Long> c) {
+	protected void _patientKey(Wrap<Long> c) {
 		c.o(pk);
 	}
 
 	protected void _enrollmentKeys(List<Long> o) {}
-
-	protected void _familySort(Wrap<Integer> c) {
-		c.o(1);
-	}
 
 	protected void _schoolSort(Wrap<Integer> c) {
 		c.o(1);
@@ -49,15 +44,11 @@ public class MedicalPatient extends MedicalPatientGen<Cluster> {
 
 	protected void _enrollmentSearch(SearchList<MedicalEnrollment> l) { 
 		l.setQuery("*:*");
-		l.addFilterQuery("childKey_indexed_long:" + pk);
+		l.addFilterQuery("patientKey_indexed_long:" + pk);
 		l.setC(MedicalEnrollment.class);
 		l.setStore(true);
 		l.setFacet(true);
-		l.addFacetField("schoolKey_indexed_long");
-		l.addFacetField("yearKey_indexed_long");
-		l.addFacetField("seasonKey_indexed_long");
-		l.addFacetField("sessionKey_indexed_long");
-		l.addFacetField("ageKey_indexed_long");
+		l.addFacetField("clinicKey_indexed_long");
 		l.addFacetField("userKeys_indexed_longs");
 	}
 
@@ -71,22 +62,6 @@ public class MedicalPatient extends MedicalPatientGen<Cluster> {
 
 	protected void _clinicKeys(List<Long> l) {
 		l.addAll(enrollmentSearch.getQueryResponse().getFacetField("clinicKey_indexed_long").getValues().stream().map(o -> Long.parseLong(o.getName())).collect(Collectors.toList()));
-	}
-
-	protected void _yearKeys(List<Long> l) {
-		l.addAll(enrollmentSearch.getQueryResponse().getFacetField("yearKey_indexed_long").getValues().stream().map(o -> Long.parseLong(o.getName())).collect(Collectors.toList()));
-	}
-
-	protected void _seasonKeys(List<Long> l) {
-		l.addAll(enrollmentSearch.getQueryResponse().getFacetField("seasonKey_indexed_long").getValues().stream().map(o -> Long.parseLong(o.getName())).collect(Collectors.toList()));
-	}
-
-	protected void _sessionKeys(List<Long> l) {
-		l.addAll(enrollmentSearch.getQueryResponse().getFacetField("sessionKey_indexed_long").getValues().stream().map(o -> Long.parseLong(o.getName())).collect(Collectors.toList()));
-	}
-
-	protected void _ageKeys(List<Long> l) {
-		l.addAll(enrollmentSearch.getQueryResponse().getFacetField("ageKey_indexed_long").getValues().stream().map(o -> Long.parseLong(o.getName())).collect(Collectors.toList()));
 	}
 
 	protected void _personFirstName(Wrap<String> c) {
@@ -119,17 +94,32 @@ public class MedicalPatient extends MedicalPatientGen<Cluster> {
 	protected void _personBirthDate(Wrap<LocalDate> c) {
 	}
 
+	protected void _personBirthDateYear(Wrap<Integer> c) {
+		if(personBirthDate != null)
+			c.o(personBirthDate.getYear());
+	}
+
+	protected void _personBirthDateMonthOfYear(Wrap<String> c) {
+		if(personBirthDate != null)
+			c.o(personBirthDate.format(DateTimeFormatter.ofPattern("MMMM", Locale.US)));
+	}
+
+	protected void _personBirthDateDayOfWeek(Wrap<String> c) {
+		if(personBirthDate != null)
+			c.o(personBirthDate.format(DateTimeFormatter.ofPattern("EEEE", Locale.US)));
+	}
+
 	@Override()
 	public String strPersonBirthDate() {
 		return personBirthDate == null ? "" : personBirthDate.format(DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.US));
 	}
 
-	protected void _childCompleteName(Wrap<String> c) {
+	protected void _patientCompleteName(Wrap<String> c) {
 		c.o(personCompleteName);
 	}
 
 	@Override()
 	protected void  _objectTitle(Wrap<String> c) {
-		c.o(childCompleteName);
+		c.o(patientCompleteName);
 	}
 }

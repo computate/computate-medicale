@@ -367,6 +367,51 @@ public class InscriptionMedicale extends InscriptionMedicaleGen<Cluster> {
 	}
 
 	/**
+	 * {@inheritDoc}
+	 * Var.enUS: patientBirthDateYear
+	 * Indexe: true
+	 * Stocke: true
+	 * r: patientDateNaissance
+	 * r.enUS: patientBirthDate
+	 * r: Locale.FRANCE
+	 * r.enUS: Locale.US
+	 */                       
+	protected void _patientDateNaissanceDAnnee(Couverture<Integer> c) {
+		if(patientDateNaissance != null)
+			c.o(patientDateNaissance.getYear());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * Var.enUS: patientBirthDateMonthOfYear
+	 * Indexe: true
+	 * Stocke: true
+	 * r: patientDateNaissance
+	 * r.enUS: patientBirthDate
+	 * r: Locale.FRANCE
+	 * r.enUS: Locale.US
+	 */                       
+	protected void _patientDateNaissanceMoisDAnnee(Couverture<String> c) {
+		if(patientDateNaissance != null)
+			c.o(patientDateNaissance.format(DateTimeFormatter.ofPattern("MMMM", Locale.FRANCE)));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * Var.enUS: patientBirthDateDayOfWeek
+	 * Indexe: true
+	 * Stocke: true
+	 * r: patientDateNaissance
+	 * r.enUS: patientBirthDate
+	 * r: Locale.FRANCE
+	 * r.enUS: Locale.US
+	 */                       
+	protected void _patientDateNaissanceJourDeSemaine(Couverture<String> c) {
+		if(patientDateNaissance != null)
+			c.o(patientDateNaissance.format(DateTimeFormatter.ofPattern("EEEE", Locale.FRANCE)));
+	}
+
+	/**
 	 * Var.enUS: strPatientBirthDate
 	 * r: patientDateNaissance
 	 * r.enUS: patientBirthDate
@@ -592,6 +637,7 @@ public class InscriptionMedicale extends InscriptionMedicaleGen<Cluster> {
 	 * Var.enUS: patientMedicalConditions
 	 * Indexe: true
 	 * Stocke: true
+	 * Texte: true
 	 * NomAffichage.frFR: conditions médicales
 	 * NomAffichage.enUS: medical conditions
 	 * Multiligne: true

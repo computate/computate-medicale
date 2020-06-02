@@ -58,12 +58,12 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 	}
 
 	@Override protected void _pageH1(Wrap<String> c) {
-			c.o("children");
+			c.o("patients");
 	}
 
 	@Override protected void _pageH2(Wrap<String> c) {
-		if(medicalPatient != null && medicalPatient.getChildCompleteName() != null)
-			c.o(medicalPatient.getChildCompleteName());
+		if(medicalPatient != null && medicalPatient.getPatientCompleteName() != null)
+			c.o(medicalPatient.getPatientCompleteName());
 	}
 
 	@Override protected void _pageH3(Wrap<String> c) {
@@ -71,20 +71,20 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 	}
 
 	@Override protected void _pageTitle(Wrap<String> c) {
-		if(medicalPatient != null && medicalPatient.getChildCompleteName() != null)
-			c.o(medicalPatient.getChildCompleteName());
+		if(medicalPatient != null && medicalPatient.getPatientCompleteName() != null)
+			c.o(medicalPatient.getPatientCompleteName());
 		else if(medicalPatient != null)
 			c.o("");
 		else if(listMedicalPatient == null || listMedicalPatient.size() == 0)
-			c.o("no child found");
+			c.o("no patient found");
 	}
 
 	@Override protected void _pageUri(Wrap<String> c) {
-		c.o("/child");
+		c.o("/patient");
 	}
 
 	@Override protected void _pageImageUri(Wrap<String> c) {
-			c.o("/png/child-999.png");
+			c.o("/png/patient-999.png");
 	}
 
 	@Override protected void _contextIconGroup(Wrap<String> c) {
@@ -92,7 +92,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 	}
 
 	@Override protected void _contextIconName(Wrap<String> c) {
-			c.o("child");
+			c.o("patient");
 	}
 
 	@Override public void initDeepChildGenPage() {
@@ -102,6 +102,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 
 	@Override public void htmlScriptsChildGenPage() {
 		e("script").a("src", staticBaseUrl, "/js/enUS/ChildPage.js").f().g("script");
+		e("script").a("src", staticBaseUrl, "/js/enUS/EnrollmentPage.js").f().g("script");
 	}
 
 	@Override public void htmlScriptChildGenPage() {
@@ -121,6 +122,14 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 		tl(1, "window.eventBus = new EventBus('/eventbus');");
 		tl(1, "var pk = ", Optional.ofNullable(siteRequest_.getRequestPk()).map(l -> l.toString()).orElse("null"), ";");
 		tl(1, "if(pk != null) {");
+		if(
+				CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
+				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+				) {
+			tl(2, "suggestMedicalPatientEnrollmentKeys([{'name':'fq','value':'patientKey:' + pk}], $('#listMedicalPatientEnrollmentKeys_Page'), pk, true); ");
+		} else {
+			tl(2, "suggestMedicalPatientEnrollmentKeys([{'name':'fq','value':'patientKey:' + pk}], $('#listMedicalPatientEnrollmentKeys_Page'), pk, false); ");
+		}
 		tl(1, "}");
 		tl(1, "websocketMedicalPatient(websocketMedicalPatientInner);");
 		l("});");
@@ -216,6 +225,9 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 			o.htmPersonBirthDate("PUTCopy");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmEnrollmentKeys("PUTCopy");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInheritPk("PUTCopy");
 			o.htmSessionId("PUTCopy");
 			o.htmUserId("PUTCopy");
@@ -239,6 +251,9 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmPersonBirthDate("PATCH");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmEnrollmentKeys("PATCH");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInheritPk("PATCH");
@@ -286,10 +301,10 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 		if(listMedicalPatient == null || listMedicalPatient.size() == 0) {
 
 			{ e("h1").f();
-				{ e("a").a("href", "/child").a("class", "w3-bar-item w3-btn w3-center w3-block w3-orange w3-hover-orange ").f();
+				{ e("a").a("href", "/patient").a("class", "w3-bar-item w3-btn w3-center w3-block w3-orange w3-hover-orange ").f();
 					if(contextIconCssClasses != null)
 						e("i").a("class", contextIconCssClasses + " site-menu-icon ").f().g("i");
-					e("span").a("class", " ").f().sx("children").g("span");
+					e("span").a("class", " ").f().sx("patients").g("span");
 				} g("a");
 			} g("h1");
 			e("div").a("class", "w3-padding-16 w3-card-4 w3-light-grey ").f();
@@ -297,7 +312,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 				{ e("span").a("class", "w3-bar-item w3-padding w3-center w3-block w3-orange ").f();
 					if(contextIconCssClasses != null)
 						e("i").a("class", contextIconCssClasses + " site-menu-icon ").f().g("i");
-					e("span").a("class", " ").f().sx("no child found").g("span");
+					e("span").a("class", " ").f().sx("no patient found").g("span");
 				} g("span");
 			} g("h2");
 		} else if(listMedicalPatient != null && listMedicalPatient.size() == 1 && params.getJsonObject("query").getString("q").equals("*:*")) {
@@ -305,7 +320,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 			siteRequest_.setRequestPk(o.getPk());
 			if(StringUtils.isNotEmpty(pageH1)) {
 				{ e("h1").f();
-					{ e("a").a("href", "/child").a("class", "w3-bar-item w3-btn w3-center w3-block w3-orange w3-hover-orange ").f();
+					{ e("a").a("href", "/patient").a("class", "w3-bar-item w3-btn w3-center w3-block w3-orange w3-hover-orange ").f();
 						if(contextIconCssClasses != null)
 							e("i").a("class", contextIconCssClasses + " site-menu-icon ").f().g("i");
 						e("span").a("class", " ").f().sx(pageH1).g("span");
@@ -330,7 +345,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 		} else {
 
 			{ e("h1").f();
-				{ e("a").a("href", "/child").a("class", "w3-bar-item w3-btn w3-center w3-block w3-orange w3-hover-orange ").f();
+				{ e("a").a("href", "/patient").a("class", "w3-bar-item w3-btn w3-center w3-block w3-orange w3-hover-orange ").f();
 					if(contextIconCssClasses != null)
 						e("i").a("class", contextIconCssClasses + " site-menu-icon ").f().g("i");
 					e("span").a("class", " ").f().sx(pageH1).g("span");
@@ -391,7 +406,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 					if(start1 == 0) {
 						e("i").a("class", "fas fa-arrow-square-left w3-opacity ").f().g("i");
 					} else {
-						{ e("a").a("href", "/child?q=", query, fqs, sorts, "&start=", start2, "&rows=", rows1).f();
+						{ e("a").a("href", "/patient?q=", query, fqs, sorts, "&start=", start2, "&rows=", rows1).f();
 							e("i").a("class", "fas fa-arrow-square-left ").f().g("i");
 						} g("a");
 					}
@@ -399,19 +414,19 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 					if(rows1 <= 1) {
 						e("i").a("class", "fas fa-minus-square w3-opacity ").f().g("i");
 					} else {
-						{ e("a").a("href", "/child?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows2).f();
+						{ e("a").a("href", "/patient?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows2).f();
 							e("i").a("class", "fas fa-minus-square ").f().g("i");
 						} g("a");
 					}
 
-					{ e("a").a("href", "/child?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows3).f();
+					{ e("a").a("href", "/patient?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows3).f();
 						e("i").a("class", "fas fa-plus-square ").f().g("i");
 					} g("a");
 
 					if(start3 >= num) {
 						e("i").a("class", "fas fa-arrow-square-right w3-opacity ").f().g("i");
 					} else {
-						{ e("a").a("href", "/child?q=", query, fqs, sorts, "&start=", start3, "&rows=", rows1).f();
+						{ e("a").a("href", "/patient?q=", query, fqs, sorts, "&start=", start3, "&rows=", rows1).f();
 							e("i").a("class", "fas fa-arrow-square-right ").f().g("i");
 						} g("a");
 					}
@@ -489,7 +504,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 			MedicalPatient o = listMedicalPatient.getList().get(i);
 			Map<String, List<String>> highlights = highlighting == null ? null : highlighting.get(o.getId());
 			List<String> highlightList = highlights == null ? null : highlights.get(highlights.keySet().stream().findFirst().orElse(null));
-			String uri = "/child/" + o.getPk();
+			String uri = "/patient/" + o.getPk();
 			{ e("tr").f();
 				if(getColumnCreated()) {
 					{ e("td").f();
@@ -503,7 +518,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 				if(getColumnObjectTitle()) {
 					{ e("td").f();
 						{ e("a").a("href", uri).f();
-							e("i").a("class", "far fa-child ").f().g("i");
+							e("i").a("class", "far fa-patient ").f().g("i");
 							{ e("span").f();
 								sx(o.strObjectTitle());
 							} g("span");
@@ -555,7 +570,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 						.a("id", "refreshThisChildGenPage")
 						.a("onclick", "patchMedicalPatientVals( [ {name: 'fq', value: 'pk:' + " + siteRequest_.getRequestPk() + " } ], {}, function() { addGlow($('#refreshThisChildGenPage')); }, function() { addError($('#refreshThisChildGenPage')); }); return false; ").f();
 						e("i").a("class", "fas fa-sync-alt ").f().g("i");
-					sx("refresh this child");
+					sx("refresh this patient");
 				} g("button");
 			}
 
@@ -564,14 +579,14 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 				.a("onclick", "$('#postMedicalPatientModal').show(); ")
 				.f();
 				e("i").a("class", "fas fa-file-plus ").f().g("i");
-				sx("Create a child");
+				sx("Create a patient");
 			} g("button");
 			{ e("div").a("id", "postMedicalPatientModal").a("class", "w3-modal w3-padding-32 ").f();
 				{ e("div").a("class", "w3-modal-content ").f();
 					{ e("div").a("class", "w3-card-4 ").f();
 						{ e("header").a("class", "w3-container w3-orange ").f();
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#postMedicalPatientModal').hide(); ").f().sx("×").g("span");
-							e("h2").a("class", "w3-padding ").f().sx("Create a child").g("h2");
+							e("h2").a("class", "w3-padding ").f().sx("Create a patient").g("h2");
 						} g("header");
 						{ e("div").a("class", "w3-container ").f();
 							MedicalPatient o = new MedicalPatient();
@@ -584,7 +599,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-orange ")
 								.a("onclick", "postMedicalPatient($('#postMedicalPatientForm')); ")
-								.f().sx("Create a child")
+								.f().sx("Create a patient")
 							.g("button");
 
 						} g("div");
@@ -598,14 +613,14 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 				.a("onclick", "$('#putimportMedicalPatientModal').show(); ")
 				.f();
 				e("i").a("class", "fas fa-file-import ").f().g("i");
-				sx("Import children");
+				sx("Import patients");
 			} g("button");
 			{ e("div").a("id", "putimportMedicalPatientModal").a("class", "w3-modal w3-padding-32 ").f();
 				{ e("div").a("class", "w3-modal-content ").f();
 					{ e("div").a("class", "w3-card-4 ").f();
 						{ e("header").a("class", "w3-container w3-orange ").f();
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putimportMedicalPatientModal').hide(); ").f().sx("×").g("span");
-							e("h2").a("class", "w3-padding ").f().sx("Import children").g("h2");
+							e("h2").a("class", "w3-padding ").f().sx("Import patients").g("h2");
 						} g("header");
 						{ e("div").a("class", "w3-container ").f();
 							MedicalPatient o = new MedicalPatient();
@@ -618,7 +633,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-orange ")
 								.a("onclick", "putimportMedicalPatient($('#putimportMedicalPatientForm')); ")
-								.f().sx("Import children")
+								.f().sx("Import patients")
 							.g("button");
 
 						} g("div");
@@ -632,14 +647,14 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 				.a("onclick", "$('#putmergeMedicalPatientModal').show(); ")
 				.f();
 				e("i").a("class", "fas fa-code-merge ").f().g("i");
-				sx("Merge children");
+				sx("Merge patients");
 			} g("button");
 			{ e("div").a("id", "putmergeMedicalPatientModal").a("class", "w3-modal w3-padding-32 ").f();
 				{ e("div").a("class", "w3-modal-content ").f();
 					{ e("div").a("class", "w3-card-4 ").f();
 						{ e("header").a("class", "w3-container w3-orange ").f();
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putmergeMedicalPatientModal').hide(); ").f().sx("×").g("span");
-							e("h2").a("class", "w3-padding ").f().sx("Merge children").g("h2");
+							e("h2").a("class", "w3-padding ").f().sx("Merge patients").g("h2");
 						} g("header");
 						{ e("div").a("class", "w3-container ").f();
 							MedicalPatient o = new MedicalPatient();
@@ -652,7 +667,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-orange ")
 								.a("onclick", "putmergeMedicalPatient($('#putmergeMedicalPatientForm')); ")
-								.f().sx("Merge children")
+								.f().sx("Merge patients")
 							.g("button");
 
 						} g("div");
@@ -666,14 +681,14 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 				.a("onclick", "$('#putcopyMedicalPatientModal').show(); ")
 				.f();
 				e("i").a("class", "fas fa-copy ").f().g("i");
-				sx("Duplicate children");
+				sx("Duplicate patients");
 			} g("button");
 			{ e("div").a("id", "putcopyMedicalPatientModal").a("class", "w3-modal w3-padding-32 ").f();
 				{ e("div").a("class", "w3-modal-content ").f();
 					{ e("div").a("class", "w3-card-4 ").f();
 						{ e("header").a("class", "w3-container w3-orange ").f();
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putcopyMedicalPatientModal').hide(); ").f().sx("×").g("span");
-							e("h2").a("class", "w3-padding ").f().sx("Duplicate children").g("h2");
+							e("h2").a("class", "w3-padding ").f().sx("Duplicate patients").g("h2");
 						} g("header");
 						{ e("div").a("class", "w3-container ").f();
 							MedicalPatient o = new MedicalPatient();
@@ -686,7 +701,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-orange ")
 								.a("onclick", "putcopyMedicalPatient($('#putcopyMedicalPatientForm'), ", medicalPatient == null ? "null" : medicalPatient.getPk(), "); ")
-								.f().sx("Duplicate children")
+								.f().sx("Duplicate patients")
 							.g("button");
 
 						} g("div");
@@ -700,14 +715,14 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 				.a("onclick", "$('#patchMedicalPatientModal').show(); ")
 				.f();
 				e("i").a("class", "fas fa-edit ").f().g("i");
-				sx("Modify children");
+				sx("Modify patients");
 			} g("button");
 			{ e("div").a("id", "patchMedicalPatientModal").a("class", "w3-modal w3-padding-32 ").f();
 				{ e("div").a("class", "w3-modal-content ").f();
 					{ e("div").a("class", "w3-card-4 ").f();
 						{ e("header").a("class", "w3-container w3-orange ").f();
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#patchMedicalPatientModal').hide(); ").f().sx("×").g("span");
-							e("h2").a("class", "w3-padding ").f().sx("Modify children").g("h2");
+							e("h2").a("class", "w3-padding ").f().sx("Modify patients").g("h2");
 						} g("header");
 						{ e("div").a("class", "w3-container ").f();
 							MedicalPatient o = new MedicalPatient();
@@ -720,7 +735,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-orange ")
 								.a("onclick", "patchMedicalPatient(null, $('#patchMedicalPatientFormValues'), ", Optional.ofNullable(medicalPatient).map(MedicalPatient::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
-								.f().sx("Modify children")
+								.f().sx("Modify patients")
 							.g("button");
 
 						} g("div");
@@ -793,14 +808,14 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 					{ p.e("div").a("class", "").f();
 						{ p.e("button").a("id", "refreshAllChildGenPage", id).a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-orange ").a("onclick", "patchMedicalPatientVals([], {}, function() { addGlow($('#refreshAllChildGenPage", id, "')); }, function() { addError($('#refreshAllChildGenPage", id, "')); }); ").f();
 							p.e("i").a("class", "fas fa-sync-alt ").f().g("i");
-							p.sx("refresh all the children");
+							p.sx("refresh all the patients");
 						} p.g("button");
 					} p.g("div");
 			}
 			{ p.e("div").a("class", "w3-cell-row ").f();
 				{ p.e("div").a("class", "w3-cell ").f();
 					{ p.e("span").f();
-						p.sx("search children: ");
+						p.sx("search patients: ");
 					} p.g("span");
 				} p.g("div");
 			} p.g("div");
@@ -813,13 +828,13 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 					.a("id", "suggestMedicalPatient", id)
 					.a("autocomplete", "off")
 					.a("oninput", "suggestMedicalPatientObjectSuggest( [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() } ], $('#suggestListMedicalPatient", id, "'), ", p.getSiteRequest_().getRequestPk(), "); ")
-					.a("onkeyup", "if (event.keyCode === 13) { event.preventDefault(); window.location.href = '/child?q=", query1, ":' + encodeURIComponent(this.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; }"); 
+					.a("onkeyup", "if (event.keyCode === 13) { event.preventDefault(); window.location.href = '/patient?q=", query1, ":' + encodeURIComponent(this.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; }"); 
 				if(listMedicalPatient != null)
 					p.a("value", query2);
 				p.fg();
 				{ p.e("button")
 					.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-orange ")
-					.a("onclick", "window.location.href = '/child?q=", query1, ":' + encodeURIComponent(this.previousElementSibling.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; ") 
+					.a("onclick", "window.location.href = '/patient?q=", query1, ":' + encodeURIComponent(this.previousElementSibling.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; ") 
 					.f();
 					p.e("i").a("class", "fas fa-search ").f().g("i");
 				} p.g("button");
@@ -832,9 +847,9 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 				} p.g("div");
 			} p.g("div");
 			{ p.e("div").a("class", "").f();
-				{ p.e("a").a("href", "/child").a("class", "").f();
-					p.e("i").a("class", "far fa-child ").f().g("i");
-					p.sx("see all the children");
+				{ p.e("a").a("href", "/patient").a("class", "").f();
+					p.e("i").a("class", "far fa-patient ").f().g("i");
+					p.sx("see all the patients");
 				} p.g("a");
 			} p.g("div");
 		} catch(Exception e) {

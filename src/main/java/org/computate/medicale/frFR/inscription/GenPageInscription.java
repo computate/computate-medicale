@@ -537,7 +537,7 @@ public class GenPageInscription extends GenPageInscriptionGen<ClusterPage> {
 					JsonObject queryParams = Optional.ofNullable(operationRequete).map(OperationRequest::getParams).map(or -> or.getJsonObject("query")).orElse(new JsonObject());
 					Long num = listeInscriptionMedicale.getQueryResponse().getResults().getNumFound();
 					String q = "*:*";
-					String query1 = "objetTexte";
+					String query1 = "patientConditionsMedicales";
 					String query2 = "";
 					String query = "*:*";
 					for(String paramNom : queryParams.fieldNames()) {
@@ -937,7 +937,7 @@ public class GenPageInscription extends GenPageInscriptionGen<ClusterPage> {
 			OperationRequest operationRequete = requeteSite_.getOperationRequete();
 			JsonObject queryParams = Optional.ofNullable(operationRequete).map(OperationRequest::getParams).map(or -> or.getJsonObject("query")).orElse(new JsonObject());
 			String q = "*:*";
-			String query1 = "objetTexte";
+			String query1 = "patientConditionsMedicales";
 			String query2 = "";
 			for(String paramNom : queryParams.fieldNames()) {
 				String entiteVar = null;

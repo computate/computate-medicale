@@ -124,6 +124,21 @@ public class MedicalEnrollment extends MedicalEnrollmentGen<Cluster> {
 			c.o(patient_.getPersonBirthDate());
 	}
 
+	protected void _patientBirthDateYear(Wrap<Integer> c) {
+		if(patientBirthDate != null)
+			c.o(patientBirthDate.getYear());
+	}
+
+	protected void _patientBirthDateMonthOfYear(Wrap<String> c) {
+		if(patientBirthDate != null)
+			c.o(patientBirthDate.format(DateTimeFormatter.ofPattern("MMMM", Locale.US)));
+	}
+
+	protected void _patientBirthDateDayOfWeek(Wrap<String> c) {
+		if(patientBirthDate != null)
+			c.o(patientBirthDate.format(DateTimeFormatter.ofPattern("EEEE", Locale.US)));
+	}
+
 	@Override()
 	public String strPatientBirthDate() { 
 		return patientBirthDate == null ? "" : patientBirthDate.format(DateTimeFormatter.ofPattern("MMM d yyyy", Locale.US));

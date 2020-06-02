@@ -62,94 +62,94 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	public static final List<String> ROLES = Arrays.asList("SiteAdmin");
 	public static final List<String> ROLE_READS = Arrays.asList("");
 
-	public static final String MedicalPatient_AName = "a child";
+	public static final String MedicalPatient_AName = "a patient";
 	public static final String MedicalPatient_This = "this ";
-	public static final String MedicalPatient_ThisName = "this child";
+	public static final String MedicalPatient_ThisName = "this patient";
 	public static final String MedicalPatient_A = "a ";
-	public static final String MedicalPatient_TheName = "the child";
-	public static final String MedicalPatient_NameSingular = "child";
-	public static final String MedicalPatient_NamePlural = "children";
-	public static final String MedicalPatient_NameActual = "current child";
-	public static final String MedicalPatient_AllName = "all the children";
-	public static final String MedicalPatient_SearchAllNameBy = "search children by ";
-	public static final String MedicalPatient_ThePluralName = "the children";
-	public static final String MedicalPatient_NoNameFound = "no child found";
-	public static final String MedicalPatient_NameVar = "child";
-	public static final String MedicalPatient_OfName = "of child";
-	public static final String MedicalPatient_ANameAdjective = "a child";
-	public static final String MedicalPatient_NameAdjectiveSingular = "child";
-	public static final String MedicalPatient_NameAdjectivePlural = "children";
+	public static final String MedicalPatient_TheName = "the patient";
+	public static final String MedicalPatient_NameSingular = "patient";
+	public static final String MedicalPatient_NamePlural = "patients";
+	public static final String MedicalPatient_NameActual = "current patient";
+	public static final String MedicalPatient_AllName = "all the patients";
+	public static final String MedicalPatient_SearchAllNameBy = "search patients by ";
+	public static final String MedicalPatient_ThePluralName = "the patients";
+	public static final String MedicalPatient_NoNameFound = "no patient found";
+	public static final String MedicalPatient_NameVar = "patient";
+	public static final String MedicalPatient_OfName = "of patient";
+	public static final String MedicalPatient_ANameAdjective = "a patient";
+	public static final String MedicalPatient_NameAdjectiveSingular = "patient";
+	public static final String MedicalPatient_NameAdjectivePlural = "patients";
 	public static final String MedicalPatient_Color = "orange";
 	public static final String MedicalPatient_IconGroup = "regular";
-	public static final String MedicalPatient_IconName = "child";
+	public static final String MedicalPatient_IconName = "patient";
 
-	//////////////
-	// childKey //
-	//////////////
+	////////////////
+	// patientKey //
+	////////////////
 
-	/**	L'entité « childKey »
+	/**	L'entité « patientKey »
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected Long childKey;
+	protected Long patientKey;
 	@JsonIgnore
-	public Wrap<Long> childKeyWrap = new Wrap<Long>().p(this).c(Long.class).var("childKey").o(childKey);
+	public Wrap<Long> patientKeyWrap = new Wrap<Long>().p(this).c(Long.class).var("patientKey").o(patientKey);
 
-	/**	<br/>L'entité « childKey »
+	/**	<br/>L'entité « patientKey »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:childKey">Trouver l'entité childKey dans Solr</a>
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientKey">Trouver l'entité patientKey dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _childKey(Wrap<Long> c);
+	protected abstract void _patientKey(Wrap<Long> c);
 
-	public Long getChildKey() {
-		return childKey;
+	public Long getPatientKey() {
+		return patientKey;
 	}
 
-	public void setChildKey(Long childKey) {
-		this.childKey = childKey;
-		this.childKeyWrap.alreadyInitialized = true;
+	public void setPatientKey(Long patientKey) {
+		this.patientKey = patientKey;
+		this.patientKeyWrap.alreadyInitialized = true;
 	}
-	public MedicalPatient setChildKey(String o) {
+	public MedicalPatient setPatientKey(String o) {
 		if(NumberUtils.isParsable(o))
-			this.childKey = Long.parseLong(o);
-		this.childKeyWrap.alreadyInitialized = true;
+			this.patientKey = Long.parseLong(o);
+		this.patientKeyWrap.alreadyInitialized = true;
 		return (MedicalPatient)this;
 	}
-	protected MedicalPatient childKeyInit() {
-		if(!childKeyWrap.alreadyInitialized) {
-			_childKey(childKeyWrap);
-			if(childKey == null)
-				setChildKey(childKeyWrap.o);
+	protected MedicalPatient patientKeyInit() {
+		if(!patientKeyWrap.alreadyInitialized) {
+			_patientKey(patientKeyWrap);
+			if(patientKey == null)
+				setPatientKey(patientKeyWrap.o);
 		}
-		childKeyWrap.alreadyInitialized(true);
+		patientKeyWrap.alreadyInitialized(true);
 		return (MedicalPatient)this;
 	}
 
-	public Long solrChildKey() {
-		return childKey;
+	public Long solrPatientKey() {
+		return patientKey;
 	}
 
-	public String strChildKey() {
-		return childKey == null ? "" : childKey.toString();
+	public String strPatientKey() {
+		return patientKey == null ? "" : patientKey.toString();
 	}
 
-	public String jsonChildKey() {
-		return childKey == null ? "" : childKey.toString();
+	public String jsonPatientKey() {
+		return patientKey == null ? "" : patientKey.toString();
 	}
 
-	public String nomAffichageChildKey() {
+	public String nomAffichagePatientKey() {
 		return "key";
 	}
 
-	public String htmTooltipChildKey() {
+	public String htmTooltipPatientKey() {
 		return null;
 	}
 
-	public String htmChildKey() {
-		return childKey == null ? "" : StringEscapeUtils.escapeHtml4(strChildKey());
+	public String htmPatientKey() {
+		return patientKey == null ? "" : StringEscapeUtils.escapeHtml4(strPatientKey());
 	}
 
 	////////////////////
@@ -241,97 +241,78 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	public void inputEnrollmentKeys(String classApiMethodMethod) {
 		MedicalPatient s = (MedicalPatient)this;
+		if(
+				userKeys.contains(siteRequest_.getUserKey())
+				|| Objects.equals(sessionId, siteRequest_.getSessionId())
+				|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
+				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+		) {
+			e("i").a("class", "far fa-search w3-xxlarge w3-cell w3-cell-middle ").f().g("i");
+				e("input")
+					.a("type", "text")
+					.a("placeholder", "enrollments")
+					.a("class", "valueObjectSuggest suggestEnrollmentKeys w3-input w3-border w3-cell w3-cell-middle ")
+					.a("name", "setEnrollmentKeys")
+					.a("id", classApiMethodMethod, "_enrollmentKeys")
+					.a("autocomplete", "off")
+					.a("oninput", "suggestMedicalPatientEnrollmentKeys($(this).val() ? searchMedicalEnrollmentFilters($(this.parentElement)) : [", pk == null ? "" : "{'name':'fq','value':'patientKey:" + pk + "'}", "], $('#listMedicalPatientEnrollmentKeys_", classApiMethodMethod, "'), ", pk, "); ")
+				.fg();
+
+		} else {
+			sx(htmEnrollmentKeys());
+		}
 	}
 
 	public void htmEnrollmentKeys(String classApiMethodMethod) {
 		MedicalPatient s = (MedicalPatient)this;
 		{ e("div").a("class", "w3-cell w3-cell-top w3-center w3-mobile ").f();
-			if("Page".equals(classApiMethodMethod)) {
-				{ e("div").a("class", "w3-padding ").f();
+			{ e("div").a("class", "w3-padding ").f();
+				{ e("div").a("id", "suggest", classApiMethodMethod, "MedicalPatientEnrollmentKeys").f();
 					{ e("div").a("class", "w3-card ").f();
-						{ e("div").a("class", "w3-cell-row w3-orange ").f();
-							e("label").a("class", "").f().sx("enrollments").g("label");
+						{ e("div").a("class", "w3-cell-row ").f();
+							{ e("a").a("href", "/enrollment?fq=patientKey:", pk).a("class", "w3-cell w3-btn w3-center h4 w3-block h4 w3-blue-gray w3-hover-blue-gray ").f();
+								e("i").a("class", "fas fa-edit ").f().g("i");
+								sx("enrollments");
+							} g("a");
 						} g("div");
-						{ e("div").a("class", "w3-cell-row  ").f();
+						{ e("div").a("class", "w3-cell-row ").f();
+							{ e("h5").a("class", "w3-cell ").f();
+								sx("relate enrollments to this patient");
+							} g("h5");
+						} g("div");
+						{ e("div").a("class", "w3-cell-row w3-padding ").f();
 							{ e("div").a("class", "w3-cell ").f();
-								{ e("div").a("class", "w3-rest ").f();
-									e("span").f().sx(strEnrollmentKeys()).g("span");
+								{ e("div").a("class", "w3-cell-row ").f();
+
+								inputEnrollmentKeys(classApiMethodMethod);
 								} g("div");
+							} g("div");
+						} g("div");
+						{ e("div").a("class", "w3-cell-row w3-padding ").f();
+							{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
+								{ e("ul").a("class", "w3-ul w3-hoverable ").a("id", "listMedicalPatientEnrollmentKeys_", classApiMethodMethod).f();
+								} g("ul");
+								if(
+										userKeys.contains(siteRequest_.getUserKey())
+										|| Objects.equals(sessionId, siteRequest_.getSessionId())
+										|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
+										|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+								) {
+									{ e("div").a("class", "w3-cell-row ").f();
+										e("button")
+											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-blue-gray ")
+											.a("id", classApiMethodMethod, "_enrollmentKeys_add")
+											.a("onclick", "$(this).addClass('w3-disabled'); this.disabled = true; this.innerHTML = 'Sending…'; postMedicalEnrollmentVals({ patientKey: \"", pk, "\" }, function() {}, function() { addError($('#", classApiMethodMethod, "enrollmentKeys')); });")
+											.f().sx("add an enrollment")
+										.g("button");
+									} g("div");
+								}
 							} g("div");
 						} g("div");
 					} g("div");
 				} g("div");
-			}
+			} g("div");
 		} g("div");
-	}
-
-	////////////////
-	// familySort //
-	////////////////
-
-	/**	L'entité « familySort »
-	 *	 is defined as null before being initialized. 
-	 */
-	@JsonSerialize(using = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected Integer familySort;
-	@JsonIgnore
-	public Wrap<Integer> familySortWrap = new Wrap<Integer>().p(this).c(Integer.class).var("familySort").o(familySort);
-
-	/**	<br/>L'entité « familySort »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:familySort">Trouver l'entité familySort dans Solr</a>
-	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
-	 **/
-	protected abstract void _familySort(Wrap<Integer> c);
-
-	public Integer getFamilySort() {
-		return familySort;
-	}
-
-	public void setFamilySort(Integer familySort) {
-		this.familySort = familySort;
-		this.familySortWrap.alreadyInitialized = true;
-	}
-	public MedicalPatient setFamilySort(String o) {
-		if(NumberUtils.isParsable(o))
-			this.familySort = Integer.parseInt(o);
-		this.familySortWrap.alreadyInitialized = true;
-		return (MedicalPatient)this;
-	}
-	protected MedicalPatient familySortInit() {
-		if(!familySortWrap.alreadyInitialized) {
-			_familySort(familySortWrap);
-			if(familySort == null)
-				setFamilySort(familySortWrap.o);
-		}
-		familySortWrap.alreadyInitialized(true);
-		return (MedicalPatient)this;
-	}
-
-	public Integer solrFamilySort() {
-		return familySort;
-	}
-
-	public String strFamilySort() {
-		return familySort == null ? "" : familySort.toString();
-	}
-
-	public String jsonFamilySort() {
-		return familySort == null ? "" : familySort.toString();
-	}
-
-	public String nomAffichageFamilySort() {
-		return null;
-	}
-
-	public String htmTooltipFamilySort() {
-		return null;
-	}
-
-	public String htmFamilySort() {
-		return familySort == null ? "" : StringEscapeUtils.escapeHtml4(strFamilySort());
 	}
 
 	////////////////
@@ -661,354 +642,6 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	public String htmClinicKeys() {
 		return clinicKeys == null ? "" : StringEscapeUtils.escapeHtml4(strClinicKeys());
-	}
-
-	//////////////
-	// yearKeys //
-	//////////////
-
-	/**	L'entité « yearKeys »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> yearKeys = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Wrap<List<Long>> yearKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("yearKeys").o(yearKeys);
-
-	/**	<br/>L'entité « yearKeys »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:yearKeys">Trouver l'entité yearKeys dans Solr</a>
-	 * <br/>
-	 * @param yearKeys est l'entité déjà construit. 
-	 **/
-	protected abstract void _yearKeys(List<Long> l);
-
-	public List<Long> getYearKeys() {
-		return yearKeys;
-	}
-
-	public void setYearKeys(List<Long> yearKeys) {
-		this.yearKeys = yearKeys;
-		this.yearKeysWrap.alreadyInitialized = true;
-	}
-	public MedicalPatient addYearKeys(Long...objets) {
-		for(Long o : objets) {
-			addYearKeys(o);
-		}
-		return (MedicalPatient)this;
-	}
-	public MedicalPatient addYearKeys(Long o) {
-		if(o != null && !yearKeys.contains(o))
-			this.yearKeys.add(o);
-		return (MedicalPatient)this;
-	}
-	public MedicalPatient setYearKeys(JsonArray objets) {
-		yearKeys.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addYearKeys(o);
-		}
-		return (MedicalPatient)this;
-	}
-	public MedicalPatient addYearKeys(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addYearKeys(p);
-		}
-		return (MedicalPatient)this;
-	}
-	protected MedicalPatient yearKeysInit() {
-		if(!yearKeysWrap.alreadyInitialized) {
-			_yearKeys(yearKeys);
-		}
-		yearKeysWrap.alreadyInitialized(true);
-		return (MedicalPatient)this;
-	}
-
-	public List<Long> solrYearKeys() {
-		return yearKeys;
-	}
-
-	public String strYearKeys() {
-		return yearKeys == null ? "" : yearKeys.toString();
-	}
-
-	public String jsonYearKeys() {
-		return yearKeys == null ? "" : yearKeys.toString();
-	}
-
-	public String nomAffichageYearKeys() {
-		return "years";
-	}
-
-	public String htmTooltipYearKeys() {
-		return null;
-	}
-
-	public String htmYearKeys() {
-		return yearKeys == null ? "" : StringEscapeUtils.escapeHtml4(strYearKeys());
-	}
-
-	////////////////
-	// seasonKeys //
-	////////////////
-
-	/**	L'entité « seasonKeys »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> seasonKeys = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Wrap<List<Long>> seasonKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("seasonKeys").o(seasonKeys);
-
-	/**	<br/>L'entité « seasonKeys »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:seasonKeys">Trouver l'entité seasonKeys dans Solr</a>
-	 * <br/>
-	 * @param seasonKeys est l'entité déjà construit. 
-	 **/
-	protected abstract void _seasonKeys(List<Long> l);
-
-	public List<Long> getSeasonKeys() {
-		return seasonKeys;
-	}
-
-	public void setSeasonKeys(List<Long> seasonKeys) {
-		this.seasonKeys = seasonKeys;
-		this.seasonKeysWrap.alreadyInitialized = true;
-	}
-	public MedicalPatient addSeasonKeys(Long...objets) {
-		for(Long o : objets) {
-			addSeasonKeys(o);
-		}
-		return (MedicalPatient)this;
-	}
-	public MedicalPatient addSeasonKeys(Long o) {
-		if(o != null && !seasonKeys.contains(o))
-			this.seasonKeys.add(o);
-		return (MedicalPatient)this;
-	}
-	public MedicalPatient setSeasonKeys(JsonArray objets) {
-		seasonKeys.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addSeasonKeys(o);
-		}
-		return (MedicalPatient)this;
-	}
-	public MedicalPatient addSeasonKeys(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addSeasonKeys(p);
-		}
-		return (MedicalPatient)this;
-	}
-	protected MedicalPatient seasonKeysInit() {
-		if(!seasonKeysWrap.alreadyInitialized) {
-			_seasonKeys(seasonKeys);
-		}
-		seasonKeysWrap.alreadyInitialized(true);
-		return (MedicalPatient)this;
-	}
-
-	public List<Long> solrSeasonKeys() {
-		return seasonKeys;
-	}
-
-	public String strSeasonKeys() {
-		return seasonKeys == null ? "" : seasonKeys.toString();
-	}
-
-	public String jsonSeasonKeys() {
-		return seasonKeys == null ? "" : seasonKeys.toString();
-	}
-
-	public String nomAffichageSeasonKeys() {
-		return "seasons";
-	}
-
-	public String htmTooltipSeasonKeys() {
-		return null;
-	}
-
-	public String htmSeasonKeys() {
-		return seasonKeys == null ? "" : StringEscapeUtils.escapeHtml4(strSeasonKeys());
-	}
-
-	/////////////////
-	// sessionKeys //
-	/////////////////
-
-	/**	L'entité « sessionKeys »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> sessionKeys = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Wrap<List<Long>> sessionKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("sessionKeys").o(sessionKeys);
-
-	/**	<br/>L'entité « sessionKeys »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:sessionKeys">Trouver l'entité sessionKeys dans Solr</a>
-	 * <br/>
-	 * @param sessionKeys est l'entité déjà construit. 
-	 **/
-	protected abstract void _sessionKeys(List<Long> l);
-
-	public List<Long> getSessionKeys() {
-		return sessionKeys;
-	}
-
-	public void setSessionKeys(List<Long> sessionKeys) {
-		this.sessionKeys = sessionKeys;
-		this.sessionKeysWrap.alreadyInitialized = true;
-	}
-	public MedicalPatient addSessionKeys(Long...objets) {
-		for(Long o : objets) {
-			addSessionKeys(o);
-		}
-		return (MedicalPatient)this;
-	}
-	public MedicalPatient addSessionKeys(Long o) {
-		if(o != null && !sessionKeys.contains(o))
-			this.sessionKeys.add(o);
-		return (MedicalPatient)this;
-	}
-	public MedicalPatient setSessionKeys(JsonArray objets) {
-		sessionKeys.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addSessionKeys(o);
-		}
-		return (MedicalPatient)this;
-	}
-	public MedicalPatient addSessionKeys(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addSessionKeys(p);
-		}
-		return (MedicalPatient)this;
-	}
-	protected MedicalPatient sessionKeysInit() {
-		if(!sessionKeysWrap.alreadyInitialized) {
-			_sessionKeys(sessionKeys);
-		}
-		sessionKeysWrap.alreadyInitialized(true);
-		return (MedicalPatient)this;
-	}
-
-	public List<Long> solrSessionKeys() {
-		return sessionKeys;
-	}
-
-	public String strSessionKeys() {
-		return sessionKeys == null ? "" : sessionKeys.toString();
-	}
-
-	public String jsonSessionKeys() {
-		return sessionKeys == null ? "" : sessionKeys.toString();
-	}
-
-	public String nomAffichageSessionKeys() {
-		return "sessions";
-	}
-
-	public String htmTooltipSessionKeys() {
-		return null;
-	}
-
-	public String htmSessionKeys() {
-		return sessionKeys == null ? "" : StringEscapeUtils.escapeHtml4(strSessionKeys());
-	}
-
-	/////////////
-	// ageKeys //
-	/////////////
-
-	/**	L'entité « ageKeys »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> ageKeys = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Wrap<List<Long>> ageKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("ageKeys").o(ageKeys);
-
-	/**	<br/>L'entité « ageKeys »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:ageKeys">Trouver l'entité ageKeys dans Solr</a>
-	 * <br/>
-	 * @param ageKeys est l'entité déjà construit. 
-	 **/
-	protected abstract void _ageKeys(List<Long> l);
-
-	public List<Long> getAgeKeys() {
-		return ageKeys;
-	}
-
-	public void setAgeKeys(List<Long> ageKeys) {
-		this.ageKeys = ageKeys;
-		this.ageKeysWrap.alreadyInitialized = true;
-	}
-	public MedicalPatient addAgeKeys(Long...objets) {
-		for(Long o : objets) {
-			addAgeKeys(o);
-		}
-		return (MedicalPatient)this;
-	}
-	public MedicalPatient addAgeKeys(Long o) {
-		if(o != null && !ageKeys.contains(o))
-			this.ageKeys.add(o);
-		return (MedicalPatient)this;
-	}
-	public MedicalPatient setAgeKeys(JsonArray objets) {
-		ageKeys.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addAgeKeys(o);
-		}
-		return (MedicalPatient)this;
-	}
-	public MedicalPatient addAgeKeys(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addAgeKeys(p);
-		}
-		return (MedicalPatient)this;
-	}
-	protected MedicalPatient ageKeysInit() {
-		if(!ageKeysWrap.alreadyInitialized) {
-			_ageKeys(ageKeys);
-		}
-		ageKeysWrap.alreadyInitialized(true);
-		return (MedicalPatient)this;
-	}
-
-	public List<Long> solrAgeKeys() {
-		return ageKeys;
-	}
-
-	public String strAgeKeys() {
-		return ageKeys == null ? "" : ageKeys.toString();
-	}
-
-	public String jsonAgeKeys() {
-		return ageKeys == null ? "" : ageKeys.toString();
-	}
-
-	public String nomAffichageAgeKeys() {
-		return "ages";
-	}
-
-	public String htmTooltipAgeKeys() {
-		return null;
-	}
-
-	public String htmAgeKeys() {
-		return ageKeys == null ? "" : StringEscapeUtils.escapeHtml4(strAgeKeys());
 	}
 
 	/////////////////////
@@ -1735,66 +1368,259 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		} g("div");
 	}
 
-	///////////////////////
-	// childCompleteName //
-	///////////////////////
+	/////////////////////////
+	// personBirthDateYear //
+	/////////////////////////
 
-	/**	L'entité « childCompleteName »
+	/**	L'entité « personBirthDateYear »
 	 *	 is defined as null before being initialized. 
 	 */
+	@JsonSerialize(using = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected String childCompleteName;
+	protected Integer personBirthDateYear;
 	@JsonIgnore
-	public Wrap<String> childCompleteNameWrap = new Wrap<String>().p(this).c(String.class).var("childCompleteName").o(childCompleteName);
+	public Wrap<Integer> personBirthDateYearWrap = new Wrap<Integer>().p(this).c(Integer.class).var("personBirthDateYear").o(personBirthDateYear);
 
-	/**	<br/>L'entité « childCompleteName »
+	/**	<br/>L'entité « personBirthDateYear »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:childCompleteName">Trouver l'entité childCompleteName dans Solr</a>
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:personBirthDateYear">Trouver l'entité personBirthDateYear dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _childCompleteName(Wrap<String> c);
+	protected abstract void _personBirthDateYear(Wrap<Integer> c);
 
-	public String getChildCompleteName() {
-		return childCompleteName;
+	public Integer getPersonBirthDateYear() {
+		return personBirthDateYear;
 	}
 
-	public void setChildCompleteName(String childCompleteName) {
-		this.childCompleteName = childCompleteName;
-		this.childCompleteNameWrap.alreadyInitialized = true;
+	public void setPersonBirthDateYear(Integer personBirthDateYear) {
+		this.personBirthDateYear = personBirthDateYear;
+		this.personBirthDateYearWrap.alreadyInitialized = true;
 	}
-	protected MedicalPatient childCompleteNameInit() {
-		if(!childCompleteNameWrap.alreadyInitialized) {
-			_childCompleteName(childCompleteNameWrap);
-			if(childCompleteName == null)
-				setChildCompleteName(childCompleteNameWrap.o);
+	public MedicalPatient setPersonBirthDateYear(String o) {
+		if(NumberUtils.isParsable(o))
+			this.personBirthDateYear = Integer.parseInt(o);
+		this.personBirthDateYearWrap.alreadyInitialized = true;
+		return (MedicalPatient)this;
+	}
+	protected MedicalPatient personBirthDateYearInit() {
+		if(!personBirthDateYearWrap.alreadyInitialized) {
+			_personBirthDateYear(personBirthDateYearWrap);
+			if(personBirthDateYear == null)
+				setPersonBirthDateYear(personBirthDateYearWrap.o);
 		}
-		childCompleteNameWrap.alreadyInitialized(true);
+		personBirthDateYearWrap.alreadyInitialized(true);
 		return (MedicalPatient)this;
 	}
 
-	public String solrChildCompleteName() {
-		return childCompleteName;
+	public Integer solrPersonBirthDateYear() {
+		return personBirthDateYear;
 	}
 
-	public String strChildCompleteName() {
-		return childCompleteName == null ? "" : childCompleteName;
+	public String strPersonBirthDateYear() {
+		return personBirthDateYear == null ? "" : personBirthDateYear.toString();
 	}
 
-	public String jsonChildCompleteName() {
-		return childCompleteName == null ? "" : childCompleteName;
+	public String jsonPersonBirthDateYear() {
+		return personBirthDateYear == null ? "" : personBirthDateYear.toString();
 	}
 
-	public String nomAffichageChildCompleteName() {
-		return "name";
-	}
-
-	public String htmTooltipChildCompleteName() {
+	public String nomAffichagePersonBirthDateYear() {
 		return null;
 	}
 
-	public String htmChildCompleteName() {
-		return childCompleteName == null ? "" : StringEscapeUtils.escapeHtml4(strChildCompleteName());
+	public String htmTooltipPersonBirthDateYear() {
+		return null;
+	}
+
+	public String htmPersonBirthDateYear() {
+		return personBirthDateYear == null ? "" : StringEscapeUtils.escapeHtml4(strPersonBirthDateYear());
+	}
+
+	////////////////////////////////
+	// personBirthDateMonthOfYear //
+	////////////////////////////////
+
+	/**	L'entité « personBirthDateMonthOfYear »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String personBirthDateMonthOfYear;
+	@JsonIgnore
+	public Wrap<String> personBirthDateMonthOfYearWrap = new Wrap<String>().p(this).c(String.class).var("personBirthDateMonthOfYear").o(personBirthDateMonthOfYear);
+
+	/**	<br/>L'entité « personBirthDateMonthOfYear »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:personBirthDateMonthOfYear">Trouver l'entité personBirthDateMonthOfYear dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _personBirthDateMonthOfYear(Wrap<String> c);
+
+	public String getPersonBirthDateMonthOfYear() {
+		return personBirthDateMonthOfYear;
+	}
+
+	public void setPersonBirthDateMonthOfYear(String personBirthDateMonthOfYear) {
+		this.personBirthDateMonthOfYear = personBirthDateMonthOfYear;
+		this.personBirthDateMonthOfYearWrap.alreadyInitialized = true;
+	}
+	protected MedicalPatient personBirthDateMonthOfYearInit() {
+		if(!personBirthDateMonthOfYearWrap.alreadyInitialized) {
+			_personBirthDateMonthOfYear(personBirthDateMonthOfYearWrap);
+			if(personBirthDateMonthOfYear == null)
+				setPersonBirthDateMonthOfYear(personBirthDateMonthOfYearWrap.o);
+		}
+		personBirthDateMonthOfYearWrap.alreadyInitialized(true);
+		return (MedicalPatient)this;
+	}
+
+	public String solrPersonBirthDateMonthOfYear() {
+		return personBirthDateMonthOfYear;
+	}
+
+	public String strPersonBirthDateMonthOfYear() {
+		return personBirthDateMonthOfYear == null ? "" : personBirthDateMonthOfYear;
+	}
+
+	public String jsonPersonBirthDateMonthOfYear() {
+		return personBirthDateMonthOfYear == null ? "" : personBirthDateMonthOfYear;
+	}
+
+	public String nomAffichagePersonBirthDateMonthOfYear() {
+		return null;
+	}
+
+	public String htmTooltipPersonBirthDateMonthOfYear() {
+		return null;
+	}
+
+	public String htmPersonBirthDateMonthOfYear() {
+		return personBirthDateMonthOfYear == null ? "" : StringEscapeUtils.escapeHtml4(strPersonBirthDateMonthOfYear());
+	}
+
+	//////////////////////////////
+	// personBirthDateDayOfWeek //
+	//////////////////////////////
+
+	/**	L'entité « personBirthDateDayOfWeek »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String personBirthDateDayOfWeek;
+	@JsonIgnore
+	public Wrap<String> personBirthDateDayOfWeekWrap = new Wrap<String>().p(this).c(String.class).var("personBirthDateDayOfWeek").o(personBirthDateDayOfWeek);
+
+	/**	<br/>L'entité « personBirthDateDayOfWeek »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:personBirthDateDayOfWeek">Trouver l'entité personBirthDateDayOfWeek dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _personBirthDateDayOfWeek(Wrap<String> c);
+
+	public String getPersonBirthDateDayOfWeek() {
+		return personBirthDateDayOfWeek;
+	}
+
+	public void setPersonBirthDateDayOfWeek(String personBirthDateDayOfWeek) {
+		this.personBirthDateDayOfWeek = personBirthDateDayOfWeek;
+		this.personBirthDateDayOfWeekWrap.alreadyInitialized = true;
+	}
+	protected MedicalPatient personBirthDateDayOfWeekInit() {
+		if(!personBirthDateDayOfWeekWrap.alreadyInitialized) {
+			_personBirthDateDayOfWeek(personBirthDateDayOfWeekWrap);
+			if(personBirthDateDayOfWeek == null)
+				setPersonBirthDateDayOfWeek(personBirthDateDayOfWeekWrap.o);
+		}
+		personBirthDateDayOfWeekWrap.alreadyInitialized(true);
+		return (MedicalPatient)this;
+	}
+
+	public String solrPersonBirthDateDayOfWeek() {
+		return personBirthDateDayOfWeek;
+	}
+
+	public String strPersonBirthDateDayOfWeek() {
+		return personBirthDateDayOfWeek == null ? "" : personBirthDateDayOfWeek;
+	}
+
+	public String jsonPersonBirthDateDayOfWeek() {
+		return personBirthDateDayOfWeek == null ? "" : personBirthDateDayOfWeek;
+	}
+
+	public String nomAffichagePersonBirthDateDayOfWeek() {
+		return null;
+	}
+
+	public String htmTooltipPersonBirthDateDayOfWeek() {
+		return null;
+	}
+
+	public String htmPersonBirthDateDayOfWeek() {
+		return personBirthDateDayOfWeek == null ? "" : StringEscapeUtils.escapeHtml4(strPersonBirthDateDayOfWeek());
+	}
+
+	/////////////////////////
+	// patientCompleteName //
+	/////////////////////////
+
+	/**	L'entité « patientCompleteName »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String patientCompleteName;
+	@JsonIgnore
+	public Wrap<String> patientCompleteNameWrap = new Wrap<String>().p(this).c(String.class).var("patientCompleteName").o(patientCompleteName);
+
+	/**	<br/>L'entité « patientCompleteName »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientCompleteName">Trouver l'entité patientCompleteName dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientCompleteName(Wrap<String> c);
+
+	public String getPatientCompleteName() {
+		return patientCompleteName;
+	}
+
+	public void setPatientCompleteName(String patientCompleteName) {
+		this.patientCompleteName = patientCompleteName;
+		this.patientCompleteNameWrap.alreadyInitialized = true;
+	}
+	protected MedicalPatient patientCompleteNameInit() {
+		if(!patientCompleteNameWrap.alreadyInitialized) {
+			_patientCompleteName(patientCompleteNameWrap);
+			if(patientCompleteName == null)
+				setPatientCompleteName(patientCompleteNameWrap.o);
+		}
+		patientCompleteNameWrap.alreadyInitialized(true);
+		return (MedicalPatient)this;
+	}
+
+	public String solrPatientCompleteName() {
+		return patientCompleteName;
+	}
+
+	public String strPatientCompleteName() {
+		return patientCompleteName == null ? "" : patientCompleteName;
+	}
+
+	public String jsonPatientCompleteName() {
+		return patientCompleteName == null ? "" : patientCompleteName;
+	}
+
+	public String nomAffichagePatientCompleteName() {
+		return "name";
+	}
+
+	public String htmTooltipPatientCompleteName() {
+		return null;
+	}
+
+	public String htmPatientCompleteName() {
+		return patientCompleteName == null ? "" : StringEscapeUtils.escapeHtml4(strPatientCompleteName());
 	}
 
 	//////////////
@@ -1818,18 +1644,13 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	}
 
 	public void initMedicalPatient() {
-		childKeyInit();
+		patientKeyInit();
 		enrollmentKeysInit();
-		familySortInit();
 		schoolSortInit();
 		enrollmentSearchInit();
 		enrollmentsInit();
 		userKeysInit();
 		clinicKeysInit();
-		yearKeysInit();
-		seasonKeysInit();
-		sessionKeysInit();
-		ageKeysInit();
 		personFirstNameInit();
 		personFirstNamePreferredInit();
 		familyNameInit();
@@ -1837,7 +1658,10 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		personCompleteNamePreferredInit();
 		personFormalNameInit();
 		personBirthDateInit();
-		childCompleteNameInit();
+		personBirthDateYearInit();
+		personBirthDateMonthOfYearInit();
+		personBirthDateDayOfWeekInit();
+		patientCompleteNameInit();
 	}
 
 	@Override public void initDeepForClass(SiteRequestEnUS siteRequest_) {
@@ -1878,12 +1702,10 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	public Object obtainMedicalPatient(String var) {
 		MedicalPatient oMedicalPatient = (MedicalPatient)this;
 		switch(var) {
-			case "childKey":
-				return oMedicalPatient.childKey;
+			case "patientKey":
+				return oMedicalPatient.patientKey;
 			case "enrollmentKeys":
 				return oMedicalPatient.enrollmentKeys;
-			case "familySort":
-				return oMedicalPatient.familySort;
 			case "schoolSort":
 				return oMedicalPatient.schoolSort;
 			case "enrollmentSearch":
@@ -1894,14 +1716,6 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 				return oMedicalPatient.userKeys;
 			case "clinicKeys":
 				return oMedicalPatient.clinicKeys;
-			case "yearKeys":
-				return oMedicalPatient.yearKeys;
-			case "seasonKeys":
-				return oMedicalPatient.seasonKeys;
-			case "sessionKeys":
-				return oMedicalPatient.sessionKeys;
-			case "ageKeys":
-				return oMedicalPatient.ageKeys;
 			case "personFirstName":
 				return oMedicalPatient.personFirstName;
 			case "personFirstNamePreferred":
@@ -1916,8 +1730,14 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 				return oMedicalPatient.personFormalName;
 			case "personBirthDate":
 				return oMedicalPatient.personBirthDate;
-			case "childCompleteName":
-				return oMedicalPatient.childCompleteName;
+			case "personBirthDateYear":
+				return oMedicalPatient.personBirthDateYear;
+			case "personBirthDateMonthOfYear":
+				return oMedicalPatient.personBirthDateMonthOfYear;
+			case "personBirthDateDayOfWeek":
+				return oMedicalPatient.personBirthDateDayOfWeek;
+			case "patientCompleteName":
+				return oMedicalPatient.patientCompleteName;
 			default:
 				return super.obtainCluster(var);
 		}
@@ -1943,6 +1763,11 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	public Object attributeMedicalPatient(String var, Object val) {
 		MedicalPatient oMedicalPatient = (MedicalPatient)this;
 		switch(var) {
+			case "enrollmentKeys":
+				oMedicalPatient.addEnrollmentKeys((Long)val);
+				if(!savesMedicalPatient.contains(var))
+					savesMedicalPatient.add(var);
+				return val;
 			default:
 				return super.attributeCluster(var, val);
 		}
@@ -2012,23 +1837,15 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		savesMedicalPatient = (List<String>)solrDocument.get("savesMedicalPatient_stored_strings");
 		if(savesMedicalPatient != null) {
 
-			if(savesMedicalPatient.contains("childKey")) {
-				Long childKey = (Long)solrDocument.get("childKey_stored_long");
-				if(childKey != null)
-					oMedicalPatient.setChildKey(childKey);
+			if(savesMedicalPatient.contains("patientKey")) {
+				Long patientKey = (Long)solrDocument.get("patientKey_stored_long");
+				if(patientKey != null)
+					oMedicalPatient.setPatientKey(patientKey);
 			}
 
-			if(savesMedicalPatient.contains("enrollmentKeys")) {
-				List<Long> enrollmentKeys = (List<Long>)solrDocument.get("enrollmentKeys_stored_longs");
-				if(enrollmentKeys != null)
-					oMedicalPatient.enrollmentKeys.addAll(enrollmentKeys);
-			}
-
-			if(savesMedicalPatient.contains("familySort")) {
-				Integer familySort = (Integer)solrDocument.get("familySort_stored_int");
-				if(familySort != null)
-					oMedicalPatient.setFamilySort(familySort);
-			}
+			List<Long> enrollmentKeys = (List<Long>)solrDocument.get("enrollmentKeys_stored_longs");
+			if(enrollmentKeys != null)
+				oMedicalPatient.enrollmentKeys.addAll(enrollmentKeys);
 
 			if(savesMedicalPatient.contains("schoolSort")) {
 				Integer schoolSort = (Integer)solrDocument.get("schoolSort_stored_int");
@@ -2046,30 +1863,6 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 				List<Long> clinicKeys = (List<Long>)solrDocument.get("clinicKeys_stored_longs");
 				if(clinicKeys != null)
 					oMedicalPatient.clinicKeys.addAll(clinicKeys);
-			}
-
-			if(savesMedicalPatient.contains("yearKeys")) {
-				List<Long> yearKeys = (List<Long>)solrDocument.get("yearKeys_stored_longs");
-				if(yearKeys != null)
-					oMedicalPatient.yearKeys.addAll(yearKeys);
-			}
-
-			if(savesMedicalPatient.contains("seasonKeys")) {
-				List<Long> seasonKeys = (List<Long>)solrDocument.get("seasonKeys_stored_longs");
-				if(seasonKeys != null)
-					oMedicalPatient.seasonKeys.addAll(seasonKeys);
-			}
-
-			if(savesMedicalPatient.contains("sessionKeys")) {
-				List<Long> sessionKeys = (List<Long>)solrDocument.get("sessionKeys_stored_longs");
-				if(sessionKeys != null)
-					oMedicalPatient.sessionKeys.addAll(sessionKeys);
-			}
-
-			if(savesMedicalPatient.contains("ageKeys")) {
-				List<Long> ageKeys = (List<Long>)solrDocument.get("ageKeys_stored_longs");
-				if(ageKeys != null)
-					oMedicalPatient.ageKeys.addAll(ageKeys);
 			}
 
 			if(savesMedicalPatient.contains("personFirstName")) {
@@ -2114,10 +1907,28 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 					oMedicalPatient.setPersonBirthDate(personBirthDate);
 			}
 
-			if(savesMedicalPatient.contains("childCompleteName")) {
-				String childCompleteName = (String)solrDocument.get("childCompleteName_stored_string");
-				if(childCompleteName != null)
-					oMedicalPatient.setChildCompleteName(childCompleteName);
+			if(savesMedicalPatient.contains("personBirthDateYear")) {
+				Integer personBirthDateYear = (Integer)solrDocument.get("personBirthDateYear_stored_int");
+				if(personBirthDateYear != null)
+					oMedicalPatient.setPersonBirthDateYear(personBirthDateYear);
+			}
+
+			if(savesMedicalPatient.contains("personBirthDateMonthOfYear")) {
+				String personBirthDateMonthOfYear = (String)solrDocument.get("personBirthDateMonthOfYear_stored_string");
+				if(personBirthDateMonthOfYear != null)
+					oMedicalPatient.setPersonBirthDateMonthOfYear(personBirthDateMonthOfYear);
+			}
+
+			if(savesMedicalPatient.contains("personBirthDateDayOfWeek")) {
+				String personBirthDateDayOfWeek = (String)solrDocument.get("personBirthDateDayOfWeek_stored_string");
+				if(personBirthDateDayOfWeek != null)
+					oMedicalPatient.setPersonBirthDateDayOfWeek(personBirthDateDayOfWeek);
+			}
+
+			if(savesMedicalPatient.contains("patientCompleteName")) {
+				String patientCompleteName = (String)solrDocument.get("patientCompleteName_stored_string");
+				if(patientCompleteName != null)
+					oMedicalPatient.setPatientCompleteName(patientCompleteName);
 			}
 		}
 
@@ -2189,9 +2000,9 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		if(savesMedicalPatient != null)
 			document.addField("savesMedicalPatient_stored_strings", savesMedicalPatient);
 
-		if(childKey != null) {
-			document.addField("childKey_indexed_long", childKey);
-			document.addField("childKey_stored_long", childKey);
+		if(patientKey != null) {
+			document.addField("patientKey_indexed_long", patientKey);
+			document.addField("patientKey_stored_long", patientKey);
 		}
 		if(enrollmentKeys != null) {
 			for(java.lang.Long o : enrollmentKeys) {
@@ -2200,10 +2011,6 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 			for(java.lang.Long o : enrollmentKeys) {
 				document.addField("enrollmentKeys_stored_longs", o);
 			}
-		}
-		if(familySort != null) {
-			document.addField("familySort_indexed_int", familySort);
-			document.addField("familySort_stored_int", familySort);
 		}
 		if(schoolSort != null) {
 			document.addField("schoolSort_indexed_int", schoolSort);
@@ -2223,38 +2030,6 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 			}
 			for(java.lang.Long o : clinicKeys) {
 				document.addField("clinicKeys_stored_longs", o);
-			}
-		}
-		if(yearKeys != null) {
-			for(java.lang.Long o : yearKeys) {
-				document.addField("yearKeys_indexed_longs", o);
-			}
-			for(java.lang.Long o : yearKeys) {
-				document.addField("yearKeys_stored_longs", o);
-			}
-		}
-		if(seasonKeys != null) {
-			for(java.lang.Long o : seasonKeys) {
-				document.addField("seasonKeys_indexed_longs", o);
-			}
-			for(java.lang.Long o : seasonKeys) {
-				document.addField("seasonKeys_stored_longs", o);
-			}
-		}
-		if(sessionKeys != null) {
-			for(java.lang.Long o : sessionKeys) {
-				document.addField("sessionKeys_indexed_longs", o);
-			}
-			for(java.lang.Long o : sessionKeys) {
-				document.addField("sessionKeys_stored_longs", o);
-			}
-		}
-		if(ageKeys != null) {
-			for(java.lang.Long o : ageKeys) {
-				document.addField("ageKeys_indexed_longs", o);
-			}
-			for(java.lang.Long o : ageKeys) {
-				document.addField("ageKeys_stored_longs", o);
 			}
 		}
 		if(personFirstName != null) {
@@ -2285,9 +2060,21 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 			document.addField("personBirthDate_indexed_date", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(personBirthDate.atStartOfDay(ZoneId.of(siteRequest_.getSiteConfig_().getSiteZone())).toInstant().atZone(ZoneId.of("Z"))));
 			document.addField("personBirthDate_stored_date", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(personBirthDate.atStartOfDay(ZoneId.of(siteRequest_.getSiteConfig_().getSiteZone())).toInstant().atZone(ZoneId.of("Z"))));
 		}
-		if(childCompleteName != null) {
-			document.addField("childCompleteName_indexed_string", childCompleteName);
-			document.addField("childCompleteName_stored_string", childCompleteName);
+		if(personBirthDateYear != null) {
+			document.addField("personBirthDateYear_indexed_int", personBirthDateYear);
+			document.addField("personBirthDateYear_stored_int", personBirthDateYear);
+		}
+		if(personBirthDateMonthOfYear != null) {
+			document.addField("personBirthDateMonthOfYear_indexed_string", personBirthDateMonthOfYear);
+			document.addField("personBirthDateMonthOfYear_stored_string", personBirthDateMonthOfYear);
+		}
+		if(personBirthDateDayOfWeek != null) {
+			document.addField("personBirthDateDayOfWeek_indexed_string", personBirthDateDayOfWeek);
+			document.addField("personBirthDateDayOfWeek_stored_string", personBirthDateDayOfWeek);
+		}
+		if(patientCompleteName != null) {
+			document.addField("patientCompleteName_indexed_string", patientCompleteName);
+			document.addField("patientCompleteName_stored_string", patientCompleteName);
 		}
 		super.indexCluster(document);
 
@@ -2312,26 +2099,16 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	public static String varIndexedMedicalPatient(String entityVar) {
 		switch(entityVar) {
-			case "childKey":
-				return "childKey_indexed_long";
+			case "patientKey":
+				return "patientKey_indexed_long";
 			case "enrollmentKeys":
 				return "enrollmentKeys_indexed_longs";
-			case "familySort":
-				return "familySort_indexed_int";
 			case "schoolSort":
 				return "schoolSort_indexed_int";
 			case "userKeys":
 				return "userKeys_indexed_longs";
 			case "clinicKeys":
 				return "clinicKeys_indexed_longs";
-			case "yearKeys":
-				return "yearKeys_indexed_longs";
-			case "seasonKeys":
-				return "seasonKeys_indexed_longs";
-			case "sessionKeys":
-				return "sessionKeys_indexed_longs";
-			case "ageKeys":
-				return "ageKeys_indexed_longs";
 			case "personFirstName":
 				return "personFirstName_indexed_string";
 			case "personFirstNamePreferred":
@@ -2346,8 +2123,14 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 				return "personFormalName_indexed_string";
 			case "personBirthDate":
 				return "personBirthDate_indexed_date";
-			case "childCompleteName":
-				return "childCompleteName_indexed_string";
+			case "personBirthDateYear":
+				return "personBirthDateYear_indexed_int";
+			case "personBirthDateMonthOfYear":
+				return "personBirthDateMonthOfYear_indexed_string";
+			case "personBirthDateDayOfWeek":
+				return "personBirthDateDayOfWeek_indexed_string";
+			case "patientCompleteName":
+				return "patientCompleteName_indexed_string";
 			default:
 				return Cluster.varIndexedCluster(entityVar);
 		}
@@ -2377,17 +2160,13 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	public void storeMedicalPatient(SolrDocument solrDocument) {
 		MedicalPatient oMedicalPatient = (MedicalPatient)this;
 
-		Long childKey = (Long)solrDocument.get("childKey_stored_long");
-		if(childKey != null)
-			oMedicalPatient.setChildKey(childKey);
+		Long patientKey = (Long)solrDocument.get("patientKey_stored_long");
+		if(patientKey != null)
+			oMedicalPatient.setPatientKey(patientKey);
 
 		List<Long> enrollmentKeys = (List<Long>)solrDocument.get("enrollmentKeys_stored_longs");
 		if(enrollmentKeys != null)
 			oMedicalPatient.enrollmentKeys.addAll(enrollmentKeys);
-
-		Integer familySort = (Integer)solrDocument.get("familySort_stored_int");
-		if(familySort != null)
-			oMedicalPatient.setFamilySort(familySort);
 
 		Integer schoolSort = (Integer)solrDocument.get("schoolSort_stored_int");
 		if(schoolSort != null)
@@ -2400,22 +2179,6 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		List<Long> clinicKeys = (List<Long>)solrDocument.get("clinicKeys_stored_longs");
 		if(clinicKeys != null)
 			oMedicalPatient.clinicKeys.addAll(clinicKeys);
-
-		List<Long> yearKeys = (List<Long>)solrDocument.get("yearKeys_stored_longs");
-		if(yearKeys != null)
-			oMedicalPatient.yearKeys.addAll(yearKeys);
-
-		List<Long> seasonKeys = (List<Long>)solrDocument.get("seasonKeys_stored_longs");
-		if(seasonKeys != null)
-			oMedicalPatient.seasonKeys.addAll(seasonKeys);
-
-		List<Long> sessionKeys = (List<Long>)solrDocument.get("sessionKeys_stored_longs");
-		if(sessionKeys != null)
-			oMedicalPatient.sessionKeys.addAll(sessionKeys);
-
-		List<Long> ageKeys = (List<Long>)solrDocument.get("ageKeys_stored_longs");
-		if(ageKeys != null)
-			oMedicalPatient.ageKeys.addAll(ageKeys);
 
 		String personFirstName = (String)solrDocument.get("personFirstName_stored_string");
 		if(personFirstName != null)
@@ -2445,9 +2208,21 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		if(personBirthDate != null)
 			oMedicalPatient.setPersonBirthDate(personBirthDate);
 
-		String childCompleteName = (String)solrDocument.get("childCompleteName_stored_string");
-		if(childCompleteName != null)
-			oMedicalPatient.setChildCompleteName(childCompleteName);
+		Integer personBirthDateYear = (Integer)solrDocument.get("personBirthDateYear_stored_int");
+		if(personBirthDateYear != null)
+			oMedicalPatient.setPersonBirthDateYear(personBirthDateYear);
+
+		String personBirthDateMonthOfYear = (String)solrDocument.get("personBirthDateMonthOfYear_stored_string");
+		if(personBirthDateMonthOfYear != null)
+			oMedicalPatient.setPersonBirthDateMonthOfYear(personBirthDateMonthOfYear);
+
+		String personBirthDateDayOfWeek = (String)solrDocument.get("personBirthDateDayOfWeek_stored_string");
+		if(personBirthDateDayOfWeek != null)
+			oMedicalPatient.setPersonBirthDateDayOfWeek(personBirthDateDayOfWeek);
+
+		String patientCompleteName = (String)solrDocument.get("patientCompleteName_stored_string");
+		if(patientCompleteName != null)
+			oMedicalPatient.setPatientCompleteName(patientCompleteName);
 
 		super.storeCluster(solrDocument);
 	}
@@ -2461,6 +2236,8 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		Object o = Optional.ofNullable(apiRequest).map(ApiRequest::getOriginal).orElse(null);
 		if(o != null && o instanceof MedicalPatient) {
 			MedicalPatient original = (MedicalPatient)o;
+			if(!Objects.equals(enrollmentKeys, original.getEnrollmentKeys()))
+				apiRequest.addVars("enrollmentKeys");
 			if(!Objects.equals(personFirstName, original.getPersonFirstName()))
 				apiRequest.addVars("personFirstName");
 			if(!Objects.equals(personFirstNamePreferred, original.getPersonFirstNamePreferred()))
@@ -2478,7 +2255,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	//////////////
 
 	@Override public int hashCode() {
-		return Objects.hash(super.hashCode(), personFirstName, personFirstNamePreferred, familyName, personBirthDate);
+		return Objects.hash(super.hashCode(), enrollmentKeys, personFirstName, personFirstNamePreferred, familyName, personBirthDate);
 	}
 
 	////////////
@@ -2492,6 +2269,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 			return false;
 		MedicalPatient that = (MedicalPatient)o;
 		return super.equals(o)
+				&& Objects.equals( enrollmentKeys, that.enrollmentKeys )
 				&& Objects.equals( personFirstName, that.personFirstName )
 				&& Objects.equals( personFirstNamePreferred, that.personFirstNamePreferred )
 				&& Objects.equals( familyName, that.familyName )
@@ -2506,7 +2284,8 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString() + "\n");
 		sb.append("MedicalPatient { ");
-		sb.append( "personFirstName: \"" ).append(personFirstName).append( "\"" );
+		sb.append( "enrollmentKeys: " ).append(enrollmentKeys);
+		sb.append( ", personFirstName: \"" ).append(personFirstName).append( "\"" );
 		sb.append( ", personFirstNamePreferred: \"" ).append(personFirstNamePreferred).append( "\"" );
 		sb.append( ", familyName: \"" ).append(familyName).append( "\"" );
 		sb.append( ", personBirthDate: " ).append(personBirthDate);

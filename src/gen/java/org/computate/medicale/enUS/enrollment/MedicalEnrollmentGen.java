@@ -401,14 +401,14 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				{ e("div").a("id", "suggest", classApiMethodMethod, "MedicalEnrollmentPatientKey").f();
 					{ e("div").a("class", "w3-card ").f();
 						{ e("div").a("class", "w3-cell-row ").f();
-							{ e("a").a("href", "/child?fq=enrollmentKeys:", pk).a("class", "w3-cell w3-btn w3-center h4 w3-block h4 w3-orange w3-hover-orange ").f();
-								e("i").a("class", "far fa-child ").f().g("i");
+							{ e("a").a("href", "/patient?fq=enrollmentKeys:", pk).a("class", "w3-cell w3-btn w3-center h4 w3-block h4 w3-orange w3-hover-orange ").f();
+								e("i").a("class", "far fa-patient ").f().g("i");
 								sx("patientren");
 							} g("a");
 						} g("div");
 						{ e("div").a("class", "w3-cell-row ").f();
 							{ e("h5").a("class", "w3-cell ").f();
-								sx("relate a child to this enrollment");
+								sx("relate a patient to this enrollment");
 							} g("h5");
 						} g("div");
 						{ e("div").a("class", "w3-cell-row w3-padding ").f();
@@ -434,7 +434,7 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-orange ")
 											.a("id", classApiMethodMethod, "_patientKey_add")
 											.a("onclick", "$(this).addClass('w3-disabled'); this.disabled = true; this.innerHTML = 'Sending…'; postMedicalPatientVals({ enrollmentKeys: [ \"", pk, "\" ] }, function() {}, function() { addError($('#", classApiMethodMethod, "patientKey')); });")
-											.f().sx("add a child")
+											.f().sx("add a patient")
 										.g("button");
 									} g("div");
 								}
@@ -1483,6 +1483,199 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				} g("div");
 			} g("div");
 		} g("div");
+	}
+
+	//////////////////////////
+	// patientBirthDateYear //
+	//////////////////////////
+
+	/**	L'entité « patientBirthDateYear »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonSerialize(using = ToStringSerializer.class)
+	@JsonInclude(Include.NON_NULL)
+	protected Integer patientBirthDateYear;
+	@JsonIgnore
+	public Wrap<Integer> patientBirthDateYearWrap = new Wrap<Integer>().p(this).c(Integer.class).var("patientBirthDateYear").o(patientBirthDateYear);
+
+	/**	<br/>L'entité « patientBirthDateYear »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.enrollment.MedicalEnrollment&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDateYear">Trouver l'entité patientBirthDateYear dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientBirthDateYear(Wrap<Integer> c);
+
+	public Integer getPatientBirthDateYear() {
+		return patientBirthDateYear;
+	}
+
+	public void setPatientBirthDateYear(Integer patientBirthDateYear) {
+		this.patientBirthDateYear = patientBirthDateYear;
+		this.patientBirthDateYearWrap.alreadyInitialized = true;
+	}
+	public MedicalEnrollment setPatientBirthDateYear(String o) {
+		if(NumberUtils.isParsable(o))
+			this.patientBirthDateYear = Integer.parseInt(o);
+		this.patientBirthDateYearWrap.alreadyInitialized = true;
+		return (MedicalEnrollment)this;
+	}
+	protected MedicalEnrollment patientBirthDateYearInit() {
+		if(!patientBirthDateYearWrap.alreadyInitialized) {
+			_patientBirthDateYear(patientBirthDateYearWrap);
+			if(patientBirthDateYear == null)
+				setPatientBirthDateYear(patientBirthDateYearWrap.o);
+		}
+		patientBirthDateYearWrap.alreadyInitialized(true);
+		return (MedicalEnrollment)this;
+	}
+
+	public Integer solrPatientBirthDateYear() {
+		return patientBirthDateYear;
+	}
+
+	public String strPatientBirthDateYear() {
+		return patientBirthDateYear == null ? "" : patientBirthDateYear.toString();
+	}
+
+	public String jsonPatientBirthDateYear() {
+		return patientBirthDateYear == null ? "" : patientBirthDateYear.toString();
+	}
+
+	public String nomAffichagePatientBirthDateYear() {
+		return null;
+	}
+
+	public String htmTooltipPatientBirthDateYear() {
+		return null;
+	}
+
+	public String htmPatientBirthDateYear() {
+		return patientBirthDateYear == null ? "" : StringEscapeUtils.escapeHtml4(strPatientBirthDateYear());
+	}
+
+	/////////////////////////////////
+	// patientBirthDateMonthOfYear //
+	/////////////////////////////////
+
+	/**	L'entité « patientBirthDateMonthOfYear »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String patientBirthDateMonthOfYear;
+	@JsonIgnore
+	public Wrap<String> patientBirthDateMonthOfYearWrap = new Wrap<String>().p(this).c(String.class).var("patientBirthDateMonthOfYear").o(patientBirthDateMonthOfYear);
+
+	/**	<br/>L'entité « patientBirthDateMonthOfYear »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.enrollment.MedicalEnrollment&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDateMonthOfYear">Trouver l'entité patientBirthDateMonthOfYear dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientBirthDateMonthOfYear(Wrap<String> c);
+
+	public String getPatientBirthDateMonthOfYear() {
+		return patientBirthDateMonthOfYear;
+	}
+
+	public void setPatientBirthDateMonthOfYear(String patientBirthDateMonthOfYear) {
+		this.patientBirthDateMonthOfYear = patientBirthDateMonthOfYear;
+		this.patientBirthDateMonthOfYearWrap.alreadyInitialized = true;
+	}
+	protected MedicalEnrollment patientBirthDateMonthOfYearInit() {
+		if(!patientBirthDateMonthOfYearWrap.alreadyInitialized) {
+			_patientBirthDateMonthOfYear(patientBirthDateMonthOfYearWrap);
+			if(patientBirthDateMonthOfYear == null)
+				setPatientBirthDateMonthOfYear(patientBirthDateMonthOfYearWrap.o);
+		}
+		patientBirthDateMonthOfYearWrap.alreadyInitialized(true);
+		return (MedicalEnrollment)this;
+	}
+
+	public String solrPatientBirthDateMonthOfYear() {
+		return patientBirthDateMonthOfYear;
+	}
+
+	public String strPatientBirthDateMonthOfYear() {
+		return patientBirthDateMonthOfYear == null ? "" : patientBirthDateMonthOfYear;
+	}
+
+	public String jsonPatientBirthDateMonthOfYear() {
+		return patientBirthDateMonthOfYear == null ? "" : patientBirthDateMonthOfYear;
+	}
+
+	public String nomAffichagePatientBirthDateMonthOfYear() {
+		return null;
+	}
+
+	public String htmTooltipPatientBirthDateMonthOfYear() {
+		return null;
+	}
+
+	public String htmPatientBirthDateMonthOfYear() {
+		return patientBirthDateMonthOfYear == null ? "" : StringEscapeUtils.escapeHtml4(strPatientBirthDateMonthOfYear());
+	}
+
+	///////////////////////////////
+	// patientBirthDateDayOfWeek //
+	///////////////////////////////
+
+	/**	L'entité « patientBirthDateDayOfWeek »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String patientBirthDateDayOfWeek;
+	@JsonIgnore
+	public Wrap<String> patientBirthDateDayOfWeekWrap = new Wrap<String>().p(this).c(String.class).var("patientBirthDateDayOfWeek").o(patientBirthDateDayOfWeek);
+
+	/**	<br/>L'entité « patientBirthDateDayOfWeek »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.enrollment.MedicalEnrollment&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDateDayOfWeek">Trouver l'entité patientBirthDateDayOfWeek dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientBirthDateDayOfWeek(Wrap<String> c);
+
+	public String getPatientBirthDateDayOfWeek() {
+		return patientBirthDateDayOfWeek;
+	}
+
+	public void setPatientBirthDateDayOfWeek(String patientBirthDateDayOfWeek) {
+		this.patientBirthDateDayOfWeek = patientBirthDateDayOfWeek;
+		this.patientBirthDateDayOfWeekWrap.alreadyInitialized = true;
+	}
+	protected MedicalEnrollment patientBirthDateDayOfWeekInit() {
+		if(!patientBirthDateDayOfWeekWrap.alreadyInitialized) {
+			_patientBirthDateDayOfWeek(patientBirthDateDayOfWeekWrap);
+			if(patientBirthDateDayOfWeek == null)
+				setPatientBirthDateDayOfWeek(patientBirthDateDayOfWeekWrap.o);
+		}
+		patientBirthDateDayOfWeekWrap.alreadyInitialized(true);
+		return (MedicalEnrollment)this;
+	}
+
+	public String solrPatientBirthDateDayOfWeek() {
+		return patientBirthDateDayOfWeek;
+	}
+
+	public String strPatientBirthDateDayOfWeek() {
+		return patientBirthDateDayOfWeek == null ? "" : patientBirthDateDayOfWeek;
+	}
+
+	public String jsonPatientBirthDateDayOfWeek() {
+		return patientBirthDateDayOfWeek == null ? "" : patientBirthDateDayOfWeek;
+	}
+
+	public String nomAffichagePatientBirthDateDayOfWeek() {
+		return null;
+	}
+
+	public String htmTooltipPatientBirthDateDayOfWeek() {
+		return null;
+	}
+
+	public String htmPatientBirthDateDayOfWeek() {
+		return patientBirthDateDayOfWeek == null ? "" : StringEscapeUtils.escapeHtml4(strPatientBirthDateDayOfWeek());
 	}
 
 	///////////////////////
@@ -6602,6 +6795,9 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 		patientCompleteNameInit();
 		patientCompleteNamePreferredInit();
 		patientBirthDateInit();
+		patientBirthDateYearInit();
+		patientBirthDateMonthOfYearInit();
+		patientBirthDateDayOfWeekInit();
 		patientBirthMonthInit();
 		patientBirthDayInit();
 		clinicNameInit();
@@ -6723,6 +6919,12 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				return oMedicalEnrollment.patientCompleteNamePreferred;
 			case "patientBirthDate":
 				return oMedicalEnrollment.patientBirthDate;
+			case "patientBirthDateYear":
+				return oMedicalEnrollment.patientBirthDateYear;
+			case "patientBirthDateMonthOfYear":
+				return oMedicalEnrollment.patientBirthDateMonthOfYear;
+			case "patientBirthDateDayOfWeek":
+				return oMedicalEnrollment.patientBirthDateDayOfWeek;
 			case "patientBirthMonth":
 				return oMedicalEnrollment.patientBirthMonth;
 			case "patientBirthDay":
@@ -7141,6 +7343,24 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 					oMedicalEnrollment.setPatientBirthDate(patientBirthDate);
 			}
 
+			if(savesMedicalEnrollment.contains("patientBirthDateYear")) {
+				Integer patientBirthDateYear = (Integer)solrDocument.get("patientBirthDateYear_stored_int");
+				if(patientBirthDateYear != null)
+					oMedicalEnrollment.setPatientBirthDateYear(patientBirthDateYear);
+			}
+
+			if(savesMedicalEnrollment.contains("patientBirthDateMonthOfYear")) {
+				String patientBirthDateMonthOfYear = (String)solrDocument.get("patientBirthDateMonthOfYear_stored_string");
+				if(patientBirthDateMonthOfYear != null)
+					oMedicalEnrollment.setPatientBirthDateMonthOfYear(patientBirthDateMonthOfYear);
+			}
+
+			if(savesMedicalEnrollment.contains("patientBirthDateDayOfWeek")) {
+				String patientBirthDateDayOfWeek = (String)solrDocument.get("patientBirthDateDayOfWeek_stored_string");
+				if(patientBirthDateDayOfWeek != null)
+					oMedicalEnrollment.setPatientBirthDateDayOfWeek(patientBirthDateDayOfWeek);
+			}
+
 			if(savesMedicalEnrollment.contains("patientBirthMonth")) {
 				Integer patientBirthMonth = (Integer)solrDocument.get("patientBirthMonth_stored_int");
 				if(patientBirthMonth != null)
@@ -7524,6 +7744,18 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 			document.addField("patientBirthDate_indexed_date", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(patientBirthDate.atStartOfDay(ZoneId.of(siteRequest_.getSiteConfig_().getSiteZone())).toInstant().atZone(ZoneId.of("Z"))));
 			document.addField("patientBirthDate_stored_date", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(patientBirthDate.atStartOfDay(ZoneId.of(siteRequest_.getSiteConfig_().getSiteZone())).toInstant().atZone(ZoneId.of("Z"))));
 		}
+		if(patientBirthDateYear != null) {
+			document.addField("patientBirthDateYear_indexed_int", patientBirthDateYear);
+			document.addField("patientBirthDateYear_stored_int", patientBirthDateYear);
+		}
+		if(patientBirthDateMonthOfYear != null) {
+			document.addField("patientBirthDateMonthOfYear_indexed_string", patientBirthDateMonthOfYear);
+			document.addField("patientBirthDateMonthOfYear_stored_string", patientBirthDateMonthOfYear);
+		}
+		if(patientBirthDateDayOfWeek != null) {
+			document.addField("patientBirthDateDayOfWeek_indexed_string", patientBirthDateDayOfWeek);
+			document.addField("patientBirthDateDayOfWeek_stored_string", patientBirthDateDayOfWeek);
+		}
 		if(patientBirthMonth != null) {
 			document.addField("patientBirthMonth_indexed_int", patientBirthMonth);
 			document.addField("patientBirthMonth_stored_int", patientBirthMonth);
@@ -7577,6 +7809,7 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 			document.addField("enrollmentSpecialConsiderations_stored_string", enrollmentSpecialConsiderations);
 		}
 		if(patientMedicalConditions != null) {
+			document.addField("patientMedicalConditions_text_enUS", patientMedicalConditions.toString());
 			document.addField("patientMedicalConditions_indexed_string", patientMedicalConditions);
 			document.addField("patientMedicalConditions_stored_string", patientMedicalConditions);
 		}
@@ -7735,6 +7968,12 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				return "patientCompleteNamePreferred_indexed_string";
 			case "patientBirthDate":
 				return "patientBirthDate_indexed_date";
+			case "patientBirthDateYear":
+				return "patientBirthDateYear_indexed_int";
+			case "patientBirthDateMonthOfYear":
+				return "patientBirthDateMonthOfYear_indexed_string";
+			case "patientBirthDateDayOfWeek":
+				return "patientBirthDateDayOfWeek_indexed_string";
 			case "patientBirthMonth":
 				return "patientBirthMonth_indexed_int";
 			case "patientBirthDay":
@@ -7808,6 +8047,8 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 
 	public static String varSearchMedicalEnrollment(String entityVar) {
 		switch(entityVar) {
+			case "patientMedicalConditions":
+				return "patientMedicalConditions_text_enUS";
 			default:
 				return Cluster.varSearchCluster(entityVar);
 		}
@@ -7881,6 +8122,18 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 		Date patientBirthDate = (Date)solrDocument.get("patientBirthDate_stored_date");
 		if(patientBirthDate != null)
 			oMedicalEnrollment.setPatientBirthDate(patientBirthDate);
+
+		Integer patientBirthDateYear = (Integer)solrDocument.get("patientBirthDateYear_stored_int");
+		if(patientBirthDateYear != null)
+			oMedicalEnrollment.setPatientBirthDateYear(patientBirthDateYear);
+
+		String patientBirthDateMonthOfYear = (String)solrDocument.get("patientBirthDateMonthOfYear_stored_string");
+		if(patientBirthDateMonthOfYear != null)
+			oMedicalEnrollment.setPatientBirthDateMonthOfYear(patientBirthDateMonthOfYear);
+
+		String patientBirthDateDayOfWeek = (String)solrDocument.get("patientBirthDateDayOfWeek_stored_string");
+		if(patientBirthDateDayOfWeek != null)
+			oMedicalEnrollment.setPatientBirthDateDayOfWeek(patientBirthDateDayOfWeek);
 
 		Integer patientBirthMonth = (Integer)solrDocument.get("patientBirthMonth_stored_int");
 		if(patientBirthMonth != null)

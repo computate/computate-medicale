@@ -404,13 +404,13 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 					{ e("div").a("class", "w3-card ").f();
 						{ e("div").a("class", "w3-cell-row ").f();
 							{ e("a").a("href", "?fq=inscriptionCles:", pk).a("class", "w3-cell w3-btn w3-center h4 w3-block h4 w3-orange w3-hover-orange ").f();
-								e("i").a("class", "far fa-child ").f().g("i");
+								e("i").a("class", "far fa-patient ").f().g("i");
 								sx("patients");
 							} g("a");
 						} g("div");
 						{ e("div").a("class", "w3-cell-row ").f();
 							{ e("h5").a("class", "w3-cell ").f();
-								sx("relier un enfant a cette inscription");
+								sx("relier un patient a cette inscription");
 							} g("h5");
 						} g("div");
 						{ e("div").a("class", "w3-cell-row w3-padding ").f();
@@ -436,7 +436,7 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-orange ")
 											.a("id", classeApiMethodeMethode, "_patientCle_ajouter")
 											.a("onclick", "$(this).addClass('w3-disabled'); this.disabled = true; this.innerHTML = 'Envoi…'; postPatientMedicaleVals({ inscriptionCles: [ \"", pk, "\" ] }, function() {}, function() { ajouterErreur($('#", classeApiMethodeMethode, "patientCle')); });")
-											.f().sx("ajouter un enfant")
+											.f().sx("ajouter un patient")
 										.g("button");
 									} g("div");
 								}
@@ -1489,6 +1489,199 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 				} g("div");
 			} g("div");
 		} g("div");
+	}
+
+	////////////////////////////////
+	// patientDateNaissanceDAnnee //
+	////////////////////////////////
+
+	/**	L'entité « patientDateNaissanceDAnnee »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonSerialize(using = ToStringSerializer.class)
+	@JsonInclude(Include.NON_NULL)
+	protected Integer patientDateNaissanceDAnnee;
+	@JsonIgnore
+	public Couverture<Integer> patientDateNaissanceDAnneeCouverture = new Couverture<Integer>().p(this).c(Integer.class).var("patientDateNaissanceDAnnee").o(patientDateNaissanceDAnnee);
+
+	/**	<br/>L'entité « patientDateNaissanceDAnnee »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.inscription.InscriptionMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:patientDateNaissanceDAnnee">Trouver l'entité patientDateNaissanceDAnnee dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientDateNaissanceDAnnee(Couverture<Integer> c);
+
+	public Integer getPatientDateNaissanceDAnnee() {
+		return patientDateNaissanceDAnnee;
+	}
+
+	public void setPatientDateNaissanceDAnnee(Integer patientDateNaissanceDAnnee) {
+		this.patientDateNaissanceDAnnee = patientDateNaissanceDAnnee;
+		this.patientDateNaissanceDAnneeCouverture.dejaInitialise = true;
+	}
+	public InscriptionMedicale setPatientDateNaissanceDAnnee(String o) {
+		if(NumberUtils.isParsable(o))
+			this.patientDateNaissanceDAnnee = Integer.parseInt(o);
+		this.patientDateNaissanceDAnneeCouverture.dejaInitialise = true;
+		return (InscriptionMedicale)this;
+	}
+	protected InscriptionMedicale patientDateNaissanceDAnneeInit() {
+		if(!patientDateNaissanceDAnneeCouverture.dejaInitialise) {
+			_patientDateNaissanceDAnnee(patientDateNaissanceDAnneeCouverture);
+			if(patientDateNaissanceDAnnee == null)
+				setPatientDateNaissanceDAnnee(patientDateNaissanceDAnneeCouverture.o);
+		}
+		patientDateNaissanceDAnneeCouverture.dejaInitialise(true);
+		return (InscriptionMedicale)this;
+	}
+
+	public Integer solrPatientDateNaissanceDAnnee() {
+		return patientDateNaissanceDAnnee;
+	}
+
+	public String strPatientDateNaissanceDAnnee() {
+		return patientDateNaissanceDAnnee == null ? "" : patientDateNaissanceDAnnee.toString();
+	}
+
+	public String jsonPatientDateNaissanceDAnnee() {
+		return patientDateNaissanceDAnnee == null ? "" : patientDateNaissanceDAnnee.toString();
+	}
+
+	public String nomAffichagePatientDateNaissanceDAnnee() {
+		return null;
+	}
+
+	public String htmTooltipPatientDateNaissanceDAnnee() {
+		return null;
+	}
+
+	public String htmPatientDateNaissanceDAnnee() {
+		return patientDateNaissanceDAnnee == null ? "" : StringEscapeUtils.escapeHtml4(strPatientDateNaissanceDAnnee());
+	}
+
+	////////////////////////////////////
+	// patientDateNaissanceMoisDAnnee //
+	////////////////////////////////////
+
+	/**	L'entité « patientDateNaissanceMoisDAnnee »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String patientDateNaissanceMoisDAnnee;
+	@JsonIgnore
+	public Couverture<String> patientDateNaissanceMoisDAnneeCouverture = new Couverture<String>().p(this).c(String.class).var("patientDateNaissanceMoisDAnnee").o(patientDateNaissanceMoisDAnnee);
+
+	/**	<br/>L'entité « patientDateNaissanceMoisDAnnee »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.inscription.InscriptionMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:patientDateNaissanceMoisDAnnee">Trouver l'entité patientDateNaissanceMoisDAnnee dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientDateNaissanceMoisDAnnee(Couverture<String> c);
+
+	public String getPatientDateNaissanceMoisDAnnee() {
+		return patientDateNaissanceMoisDAnnee;
+	}
+
+	public void setPatientDateNaissanceMoisDAnnee(String patientDateNaissanceMoisDAnnee) {
+		this.patientDateNaissanceMoisDAnnee = patientDateNaissanceMoisDAnnee;
+		this.patientDateNaissanceMoisDAnneeCouverture.dejaInitialise = true;
+	}
+	protected InscriptionMedicale patientDateNaissanceMoisDAnneeInit() {
+		if(!patientDateNaissanceMoisDAnneeCouverture.dejaInitialise) {
+			_patientDateNaissanceMoisDAnnee(patientDateNaissanceMoisDAnneeCouverture);
+			if(patientDateNaissanceMoisDAnnee == null)
+				setPatientDateNaissanceMoisDAnnee(patientDateNaissanceMoisDAnneeCouverture.o);
+		}
+		patientDateNaissanceMoisDAnneeCouverture.dejaInitialise(true);
+		return (InscriptionMedicale)this;
+	}
+
+	public String solrPatientDateNaissanceMoisDAnnee() {
+		return patientDateNaissanceMoisDAnnee;
+	}
+
+	public String strPatientDateNaissanceMoisDAnnee() {
+		return patientDateNaissanceMoisDAnnee == null ? "" : patientDateNaissanceMoisDAnnee;
+	}
+
+	public String jsonPatientDateNaissanceMoisDAnnee() {
+		return patientDateNaissanceMoisDAnnee == null ? "" : patientDateNaissanceMoisDAnnee;
+	}
+
+	public String nomAffichagePatientDateNaissanceMoisDAnnee() {
+		return null;
+	}
+
+	public String htmTooltipPatientDateNaissanceMoisDAnnee() {
+		return null;
+	}
+
+	public String htmPatientDateNaissanceMoisDAnnee() {
+		return patientDateNaissanceMoisDAnnee == null ? "" : StringEscapeUtils.escapeHtml4(strPatientDateNaissanceMoisDAnnee());
+	}
+
+	///////////////////////////////////////
+	// patientDateNaissanceJourDeSemaine //
+	///////////////////////////////////////
+
+	/**	L'entité « patientDateNaissanceJourDeSemaine »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String patientDateNaissanceJourDeSemaine;
+	@JsonIgnore
+	public Couverture<String> patientDateNaissanceJourDeSemaineCouverture = new Couverture<String>().p(this).c(String.class).var("patientDateNaissanceJourDeSemaine").o(patientDateNaissanceJourDeSemaine);
+
+	/**	<br/>L'entité « patientDateNaissanceJourDeSemaine »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.inscription.InscriptionMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:patientDateNaissanceJourDeSemaine">Trouver l'entité patientDateNaissanceJourDeSemaine dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientDateNaissanceJourDeSemaine(Couverture<String> c);
+
+	public String getPatientDateNaissanceJourDeSemaine() {
+		return patientDateNaissanceJourDeSemaine;
+	}
+
+	public void setPatientDateNaissanceJourDeSemaine(String patientDateNaissanceJourDeSemaine) {
+		this.patientDateNaissanceJourDeSemaine = patientDateNaissanceJourDeSemaine;
+		this.patientDateNaissanceJourDeSemaineCouverture.dejaInitialise = true;
+	}
+	protected InscriptionMedicale patientDateNaissanceJourDeSemaineInit() {
+		if(!patientDateNaissanceJourDeSemaineCouverture.dejaInitialise) {
+			_patientDateNaissanceJourDeSemaine(patientDateNaissanceJourDeSemaineCouverture);
+			if(patientDateNaissanceJourDeSemaine == null)
+				setPatientDateNaissanceJourDeSemaine(patientDateNaissanceJourDeSemaineCouverture.o);
+		}
+		patientDateNaissanceJourDeSemaineCouverture.dejaInitialise(true);
+		return (InscriptionMedicale)this;
+	}
+
+	public String solrPatientDateNaissanceJourDeSemaine() {
+		return patientDateNaissanceJourDeSemaine;
+	}
+
+	public String strPatientDateNaissanceJourDeSemaine() {
+		return patientDateNaissanceJourDeSemaine == null ? "" : patientDateNaissanceJourDeSemaine;
+	}
+
+	public String jsonPatientDateNaissanceJourDeSemaine() {
+		return patientDateNaissanceJourDeSemaine == null ? "" : patientDateNaissanceJourDeSemaine;
+	}
+
+	public String nomAffichagePatientDateNaissanceJourDeSemaine() {
+		return null;
+	}
+
+	public String htmTooltipPatientDateNaissanceJourDeSemaine() {
+		return null;
+	}
+
+	public String htmPatientDateNaissanceJourDeSemaine() {
+		return patientDateNaissanceJourDeSemaine == null ? "" : StringEscapeUtils.escapeHtml4(strPatientDateNaissanceJourDeSemaine());
 	}
 
 	//////////////////////////
@@ -6627,6 +6820,9 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 		patientNomCompletInit();
 		patientNomCompletPrefereInit();
 		patientDateNaissanceInit();
+		patientDateNaissanceDAnneeInit();
+		patientDateNaissanceMoisDAnneeInit();
+		patientDateNaissanceJourDeSemaineInit();
 		patientMoisNaissanceInit();
 		patientJourNaissanceInit();
 		cliniqueNomInit();
@@ -6748,6 +6944,12 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 				return oInscriptionMedicale.patientNomCompletPrefere;
 			case "patientDateNaissance":
 				return oInscriptionMedicale.patientDateNaissance;
+			case "patientDateNaissanceDAnnee":
+				return oInscriptionMedicale.patientDateNaissanceDAnnee;
+			case "patientDateNaissanceMoisDAnnee":
+				return oInscriptionMedicale.patientDateNaissanceMoisDAnnee;
+			case "patientDateNaissanceJourDeSemaine":
+				return oInscriptionMedicale.patientDateNaissanceJourDeSemaine;
 			case "patientMoisNaissance":
 				return oInscriptionMedicale.patientMoisNaissance;
 			case "patientJourNaissance":
@@ -7166,6 +7368,24 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 					oInscriptionMedicale.setPatientDateNaissance(patientDateNaissance);
 			}
 
+			if(sauvegardesInscriptionMedicale.contains("patientDateNaissanceDAnnee")) {
+				Integer patientDateNaissanceDAnnee = (Integer)solrDocument.get("patientDateNaissanceDAnnee_stored_int");
+				if(patientDateNaissanceDAnnee != null)
+					oInscriptionMedicale.setPatientDateNaissanceDAnnee(patientDateNaissanceDAnnee);
+			}
+
+			if(sauvegardesInscriptionMedicale.contains("patientDateNaissanceMoisDAnnee")) {
+				String patientDateNaissanceMoisDAnnee = (String)solrDocument.get("patientDateNaissanceMoisDAnnee_stored_string");
+				if(patientDateNaissanceMoisDAnnee != null)
+					oInscriptionMedicale.setPatientDateNaissanceMoisDAnnee(patientDateNaissanceMoisDAnnee);
+			}
+
+			if(sauvegardesInscriptionMedicale.contains("patientDateNaissanceJourDeSemaine")) {
+				String patientDateNaissanceJourDeSemaine = (String)solrDocument.get("patientDateNaissanceJourDeSemaine_stored_string");
+				if(patientDateNaissanceJourDeSemaine != null)
+					oInscriptionMedicale.setPatientDateNaissanceJourDeSemaine(patientDateNaissanceJourDeSemaine);
+			}
+
 			if(sauvegardesInscriptionMedicale.contains("patientMoisNaissance")) {
 				Integer patientMoisNaissance = (Integer)solrDocument.get("patientMoisNaissance_stored_int");
 				if(patientMoisNaissance != null)
@@ -7549,6 +7769,18 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 			document.addField("patientDateNaissance_indexed_date", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(patientDateNaissance.atStartOfDay(ZoneId.of(requeteSite_.getConfigSite_().getSiteZone())).toInstant().atZone(ZoneId.of("Z"))));
 			document.addField("patientDateNaissance_stored_date", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(patientDateNaissance.atStartOfDay(ZoneId.of(requeteSite_.getConfigSite_().getSiteZone())).toInstant().atZone(ZoneId.of("Z"))));
 		}
+		if(patientDateNaissanceDAnnee != null) {
+			document.addField("patientDateNaissanceDAnnee_indexed_int", patientDateNaissanceDAnnee);
+			document.addField("patientDateNaissanceDAnnee_stored_int", patientDateNaissanceDAnnee);
+		}
+		if(patientDateNaissanceMoisDAnnee != null) {
+			document.addField("patientDateNaissanceMoisDAnnee_indexed_string", patientDateNaissanceMoisDAnnee);
+			document.addField("patientDateNaissanceMoisDAnnee_stored_string", patientDateNaissanceMoisDAnnee);
+		}
+		if(patientDateNaissanceJourDeSemaine != null) {
+			document.addField("patientDateNaissanceJourDeSemaine_indexed_string", patientDateNaissanceJourDeSemaine);
+			document.addField("patientDateNaissanceJourDeSemaine_stored_string", patientDateNaissanceJourDeSemaine);
+		}
 		if(patientMoisNaissance != null) {
 			document.addField("patientMoisNaissance_indexed_int", patientMoisNaissance);
 			document.addField("patientMoisNaissance_stored_int", patientMoisNaissance);
@@ -7602,6 +7834,7 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 			document.addField("inscriptionConsiderationsSpeciales_stored_string", inscriptionConsiderationsSpeciales);
 		}
 		if(patientConditionsMedicales != null) {
+			document.addField("patientConditionsMedicales_text_frFR", patientConditionsMedicales.toString());
 			document.addField("patientConditionsMedicales_indexed_string", patientConditionsMedicales);
 			document.addField("patientConditionsMedicales_stored_string", patientConditionsMedicales);
 		}
@@ -7760,6 +7993,12 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 				return "patientNomCompletPrefere_indexed_string";
 			case "patientDateNaissance":
 				return "patientDateNaissance_indexed_date";
+			case "patientDateNaissanceDAnnee":
+				return "patientDateNaissanceDAnnee_indexed_int";
+			case "patientDateNaissanceMoisDAnnee":
+				return "patientDateNaissanceMoisDAnnee_indexed_string";
+			case "patientDateNaissanceJourDeSemaine":
+				return "patientDateNaissanceJourDeSemaine_indexed_string";
 			case "patientMoisNaissance":
 				return "patientMoisNaissance_indexed_int";
 			case "patientJourNaissance":
@@ -7833,6 +8072,8 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 
 	public static String varRechercheInscriptionMedicale(String entiteVar) {
 		switch(entiteVar) {
+			case "patientConditionsMedicales":
+				return "patientConditionsMedicales_text_frFR";
 			default:
 				return Cluster.varRechercheCluster(entiteVar);
 		}
@@ -7906,6 +8147,18 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 		Date patientDateNaissance = (Date)solrDocument.get("patientDateNaissance_stored_date");
 		if(patientDateNaissance != null)
 			oInscriptionMedicale.setPatientDateNaissance(patientDateNaissance);
+
+		Integer patientDateNaissanceDAnnee = (Integer)solrDocument.get("patientDateNaissanceDAnnee_stored_int");
+		if(patientDateNaissanceDAnnee != null)
+			oInscriptionMedicale.setPatientDateNaissanceDAnnee(patientDateNaissanceDAnnee);
+
+		String patientDateNaissanceMoisDAnnee = (String)solrDocument.get("patientDateNaissanceMoisDAnnee_stored_string");
+		if(patientDateNaissanceMoisDAnnee != null)
+			oInscriptionMedicale.setPatientDateNaissanceMoisDAnnee(patientDateNaissanceMoisDAnnee);
+
+		String patientDateNaissanceJourDeSemaine = (String)solrDocument.get("patientDateNaissanceJourDeSemaine_stored_string");
+		if(patientDateNaissanceJourDeSemaine != null)
+			oInscriptionMedicale.setPatientDateNaissanceJourDeSemaine(patientDateNaissanceJourDeSemaine);
 
 		Integer patientMoisNaissance = (Integer)solrDocument.get("patientMoisNaissance_stored_int");
 		if(patientMoisNaissance != null)

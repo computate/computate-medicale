@@ -53,7 +53,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true">Trouver la classe childCompleteName dans Solr</a>
+ * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true">Trouver la classe patientCompleteName dans Solr</a>
  * <br/>
  **/
 public abstract class PatientMedicaleGen<DEV> extends Cluster {
@@ -62,95 +62,95 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 	public static final List<String> ROLES = Arrays.asList("SiteAdmin");
 	public static final List<String> ROLE_READS = Arrays.asList("");
 
-	public static final String PatientMedicale_UnNom = "un enfant";
+	public static final String PatientMedicale_UnNom = "un patient";
 	public static final String PatientMedicale_Ce = "ce ";
-	public static final String PatientMedicale_CeNom = "cet enfant";
+	public static final String PatientMedicale_CeNom = "ce patient";
 	public static final String PatientMedicale_Un = "un ";
-	public static final String PatientMedicale_LeNom = "l'enfant";
-	public static final String PatientMedicale_NomSingulier = "enfant";
-	public static final String PatientMedicale_NomPluriel = "enfants";
-	public static final String PatientMedicale_NomActuel = "enfant actuel";
+	public static final String PatientMedicale_LeNom = "le patient";
+	public static final String PatientMedicale_NomSingulier = "patient";
+	public static final String PatientMedicale_NomPluriel = "patients";
+	public static final String PatientMedicale_NomActuel = "patient actuel";
 	public static final String PatientMedicale_Tous = "all ";
-	public static final String PatientMedicale_TousNom = "tous les enfants";
-	public static final String PatientMedicale_RechercherTousNomPar = "rechercher enfants par ";
-	public static final String PatientMedicale_RechercherTousNom = "rechercher enfants";
-	public static final String PatientMedicale_LesNom = "les enfants";
-	public static final String PatientMedicale_AucunNomTrouve = "aucun enfant trouvé";
-	public static final String PatientMedicale_NomVar = "enfant";
-	public static final String PatientMedicale_DeNom = "d'enfant";
-	public static final String PatientMedicale_NomAdjectifSingulier = "enfant";
-	public static final String PatientMedicale_NomAdjectifPluriel = "enfants";
+	public static final String PatientMedicale_TousNom = "tous les patients";
+	public static final String PatientMedicale_RechercherTousNomPar = "rechercher patients par ";
+	public static final String PatientMedicale_RechercherTousNom = "rechercher patients";
+	public static final String PatientMedicale_LesNom = "les patients";
+	public static final String PatientMedicale_AucunNomTrouve = "aucun patient trouvé";
+	public static final String PatientMedicale_NomVar = "patient";
+	public static final String PatientMedicale_DeNom = "de patient";
+	public static final String PatientMedicale_NomAdjectifSingulier = "patient";
+	public static final String PatientMedicale_NomAdjectifPluriel = "patients";
 	public static final String PatientMedicale_Couleur = "orange";
 	public static final String PatientMedicale_IconeGroupe = "regular";
-	public static final String PatientMedicale_IconeNom = "child";
+	public static final String PatientMedicale_IconeNom = "patient";
 
-	///////////////
-	// enfantCle //
-	///////////////
+	////////////////
+	// patientCle //
+	////////////////
 
-	/**	L'entité « enfantCle »
+	/**	L'entité « patientCle »
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected Long enfantCle;
+	protected Long patientCle;
 	@JsonIgnore
-	public Couverture<Long> enfantCleCouverture = new Couverture<Long>().p(this).c(Long.class).var("enfantCle").o(enfantCle);
+	public Couverture<Long> patientCleCouverture = new Couverture<Long>().p(this).c(Long.class).var("patientCle").o(patientCle);
 
-	/**	<br/>L'entité « enfantCle »
+	/**	<br/>L'entité « patientCle »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:enfantCle">Trouver l'entité enfantCle dans Solr</a>
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:patientCle">Trouver l'entité patientCle dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _enfantCle(Couverture<Long> c);
+	protected abstract void _patientCle(Couverture<Long> c);
 
-	public Long getEnfantCle() {
-		return enfantCle;
+	public Long getPatientCle() {
+		return patientCle;
 	}
 
-	public void setEnfantCle(Long enfantCle) {
-		this.enfantCle = enfantCle;
-		this.enfantCleCouverture.dejaInitialise = true;
+	public void setPatientCle(Long patientCle) {
+		this.patientCle = patientCle;
+		this.patientCleCouverture.dejaInitialise = true;
 	}
-	public PatientMedicale setEnfantCle(String o) {
+	public PatientMedicale setPatientCle(String o) {
 		if(NumberUtils.isParsable(o))
-			this.enfantCle = Long.parseLong(o);
-		this.enfantCleCouverture.dejaInitialise = true;
+			this.patientCle = Long.parseLong(o);
+		this.patientCleCouverture.dejaInitialise = true;
 		return (PatientMedicale)this;
 	}
-	protected PatientMedicale enfantCleInit() {
-		if(!enfantCleCouverture.dejaInitialise) {
-			_enfantCle(enfantCleCouverture);
-			if(enfantCle == null)
-				setEnfantCle(enfantCleCouverture.o);
+	protected PatientMedicale patientCleInit() {
+		if(!patientCleCouverture.dejaInitialise) {
+			_patientCle(patientCleCouverture);
+			if(patientCle == null)
+				setPatientCle(patientCleCouverture.o);
 		}
-		enfantCleCouverture.dejaInitialise(true);
+		patientCleCouverture.dejaInitialise(true);
 		return (PatientMedicale)this;
 	}
 
-	public Long solrEnfantCle() {
-		return enfantCle;
+	public Long solrPatientCle() {
+		return patientCle;
 	}
 
-	public String strEnfantCle() {
-		return enfantCle == null ? "" : enfantCle.toString();
+	public String strPatientCle() {
+		return patientCle == null ? "" : patientCle.toString();
 	}
 
-	public String jsonEnfantCle() {
-		return enfantCle == null ? "" : enfantCle.toString();
+	public String jsonPatientCle() {
+		return patientCle == null ? "" : patientCle.toString();
 	}
 
-	public String nomAffichageEnfantCle() {
+	public String nomAffichagePatientCle() {
 		return "clé";
 	}
 
-	public String htmTooltipEnfantCle() {
+	public String htmTooltipPatientCle() {
 		return null;
 	}
 
-	public String htmEnfantCle() {
-		return enfantCle == null ? "" : StringEscapeUtils.escapeHtml4(strEnfantCle());
+	public String htmPatientCle() {
+		return patientCle == null ? "" : StringEscapeUtils.escapeHtml4(strPatientCle());
 	}
 
 	/////////////////////
@@ -242,166 +242,147 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 
 	public void inputInscriptionCles(String classeApiMethodeMethode) {
 		PatientMedicale s = (PatientMedicale)this;
+		if(
+				utilisateurCles.contains(requeteSite_.getUtilisateurCle())
+				|| Objects.equals(sessionId, requeteSite_.getSessionId())
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+		) {
+			e("i").a("class", "far fa-search w3-xxlarge w3-cell w3-cell-middle ").f().g("i");
+				e("input")
+					.a("type", "text")
+					.a("placeholder", "inscriptions")
+					.a("class", "valeur suggereInscriptionCles w3-input w3-border w3-cell w3-cell-middle ")
+					.a("name", "setInscriptionCles")
+					.a("id", classeApiMethodeMethode, "_inscriptionCles")
+					.a("autocomplete", "off")
+					.a("oninput", "suggerePatientMedicaleInscriptionCles($(this).val() ? rechercherInscriptionMedicaleFiltres($(this.parentElement)) : [", pk == null ? "" : "{'name':'fq','value':'patientCle:" + pk + "'}", "], $('#listPatientMedicaleInscriptionCles_", classeApiMethodeMethode, "'), ", pk, "); ")
+				.fg();
+
+		} else {
+			sx(htmInscriptionCles());
+		}
 	}
 
 	public void htmInscriptionCles(String classeApiMethodeMethode) {
 		PatientMedicale s = (PatientMedicale)this;
 		{ e("div").a("class", "w3-cell w3-cell-top w3-center w3-mobile ").f();
-			if("Page".equals(classeApiMethodeMethode)) {
-				{ e("div").a("class", "w3-padding ").f();
+			{ e("div").a("class", "w3-padding ").f();
+				{ e("div").a("id", "suggere", classeApiMethodeMethode, "PatientMedicaleInscriptionCles").f();
 					{ e("div").a("class", "w3-card ").f();
-						{ e("div").a("class", "w3-cell-row w3-orange ").f();
-							e("label").a("class", "").f().sx("inscriptions").g("label");
+						{ e("div").a("class", "w3-cell-row ").f();
+							{ e("a").a("href", "?fq=patientCle:", pk).a("class", "w3-cell w3-btn w3-center h4 w3-block h4 w3-blue-gray w3-hover-blue-gray ").f();
+								e("i").a("class", "fas fa-edit ").f().g("i");
+								sx("inscriptions");
+							} g("a");
 						} g("div");
-						{ e("div").a("class", "w3-cell-row  ").f();
+						{ e("div").a("class", "w3-cell-row ").f();
+							{ e("h5").a("class", "w3-cell ").f();
+								sx("relier  a ce patient");
+							} g("h5");
+						} g("div");
+						{ e("div").a("class", "w3-cell-row w3-padding ").f();
 							{ e("div").a("class", "w3-cell ").f();
-								{ e("div").a("class", "w3-rest ").f();
-									e("span").f().sx(strInscriptionCles()).g("span");
+								{ e("div").a("class", "w3-cell-row ").f();
+
+								inputInscriptionCles(classeApiMethodeMethode);
 								} g("div");
+							} g("div");
+						} g("div");
+						{ e("div").a("class", "w3-cell-row w3-padding ").f();
+							{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
+								{ e("ul").a("class", "w3-ul w3-hoverable ").a("id", "listPatientMedicaleInscriptionCles_", classeApiMethodeMethode).f();
+								} g("ul");
+								if(
+										utilisateurCles.contains(requeteSite_.getUtilisateurCle())
+										|| Objects.equals(sessionId, requeteSite_.getSessionId())
+										|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+										|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+								) {
+									{ e("div").a("class", "w3-cell-row ").f();
+										e("button")
+											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-blue-gray ")
+											.a("id", classeApiMethodeMethode, "_inscriptionCles_ajouter")
+											.a("onclick", "$(this).addClass('w3-disabled'); this.disabled = true; this.innerHTML = 'Envoi…'; postInscriptionMedicaleVals({ patientCle: \"", pk, "\" }, function() {}, function() { ajouterErreur($('#", classeApiMethodeMethode, "inscriptionCles')); });")
+											.f().sx("ajouter une inscription")
+										.g("button");
+									} g("div");
+								}
 							} g("div");
 						} g("div");
 					} g("div");
 				} g("div");
-			}
+			} g("div");
 		} g("div");
 	}
 
 	////////////////
-	// familleTri //
+	// patientTri //
 	////////////////
 
-	/**	L'entité « familleTri »
+	/**	L'entité « patientTri »
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected Integer familleTri;
+	protected Integer patientTri;
 	@JsonIgnore
-	public Couverture<Integer> familleTriCouverture = new Couverture<Integer>().p(this).c(Integer.class).var("familleTri").o(familleTri);
+	public Couverture<Integer> patientTriCouverture = new Couverture<Integer>().p(this).c(Integer.class).var("patientTri").o(patientTri);
 
-	/**	<br/>L'entité « familleTri »
+	/**	<br/>L'entité « patientTri »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:familleTri">Trouver l'entité familleTri dans Solr</a>
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:patientTri">Trouver l'entité patientTri dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _familleTri(Couverture<Integer> c);
+	protected abstract void _patientTri(Couverture<Integer> c);
 
-	public Integer getFamilleTri() {
-		return familleTri;
+	public Integer getPatientTri() {
+		return patientTri;
 	}
 
-	public void setFamilleTri(Integer familleTri) {
-		this.familleTri = familleTri;
-		this.familleTriCouverture.dejaInitialise = true;
+	public void setPatientTri(Integer patientTri) {
+		this.patientTri = patientTri;
+		this.patientTriCouverture.dejaInitialise = true;
 	}
-	public PatientMedicale setFamilleTri(String o) {
+	public PatientMedicale setPatientTri(String o) {
 		if(NumberUtils.isParsable(o))
-			this.familleTri = Integer.parseInt(o);
-		this.familleTriCouverture.dejaInitialise = true;
+			this.patientTri = Integer.parseInt(o);
+		this.patientTriCouverture.dejaInitialise = true;
 		return (PatientMedicale)this;
 	}
-	protected PatientMedicale familleTriInit() {
-		if(!familleTriCouverture.dejaInitialise) {
-			_familleTri(familleTriCouverture);
-			if(familleTri == null)
-				setFamilleTri(familleTriCouverture.o);
+	protected PatientMedicale patientTriInit() {
+		if(!patientTriCouverture.dejaInitialise) {
+			_patientTri(patientTriCouverture);
+			if(patientTri == null)
+				setPatientTri(patientTriCouverture.o);
 		}
-		familleTriCouverture.dejaInitialise(true);
+		patientTriCouverture.dejaInitialise(true);
 		return (PatientMedicale)this;
 	}
 
-	public Integer solrFamilleTri() {
-		return familleTri;
+	public Integer solrPatientTri() {
+		return patientTri;
 	}
 
-	public String strFamilleTri() {
-		return familleTri == null ? "" : familleTri.toString();
+	public String strPatientTri() {
+		return patientTri == null ? "" : patientTri.toString();
 	}
 
-	public String jsonFamilleTri() {
-		return familleTri == null ? "" : familleTri.toString();
+	public String jsonPatientTri() {
+		return patientTri == null ? "" : patientTri.toString();
 	}
 
-	public String nomAffichageFamilleTri() {
+	public String nomAffichagePatientTri() {
 		return null;
 	}
 
-	public String htmTooltipFamilleTri() {
+	public String htmTooltipPatientTri() {
 		return null;
 	}
 
-	public String htmFamilleTri() {
-		return familleTri == null ? "" : StringEscapeUtils.escapeHtml4(strFamilleTri());
-	}
-
-	///////////////
-	// enfantTri //
-	///////////////
-
-	/**	L'entité « enfantTri »
-	 *	 is defined as null before being initialized. 
-	 */
-	@JsonSerialize(using = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected Integer enfantTri;
-	@JsonIgnore
-	public Couverture<Integer> enfantTriCouverture = new Couverture<Integer>().p(this).c(Integer.class).var("enfantTri").o(enfantTri);
-
-	/**	<br/>L'entité « enfantTri »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:enfantTri">Trouver l'entité enfantTri dans Solr</a>
-	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
-	 **/
-	protected abstract void _enfantTri(Couverture<Integer> c);
-
-	public Integer getEnfantTri() {
-		return enfantTri;
-	}
-
-	public void setEnfantTri(Integer enfantTri) {
-		this.enfantTri = enfantTri;
-		this.enfantTriCouverture.dejaInitialise = true;
-	}
-	public PatientMedicale setEnfantTri(String o) {
-		if(NumberUtils.isParsable(o))
-			this.enfantTri = Integer.parseInt(o);
-		this.enfantTriCouverture.dejaInitialise = true;
-		return (PatientMedicale)this;
-	}
-	protected PatientMedicale enfantTriInit() {
-		if(!enfantTriCouverture.dejaInitialise) {
-			_enfantTri(enfantTriCouverture);
-			if(enfantTri == null)
-				setEnfantTri(enfantTriCouverture.o);
-		}
-		enfantTriCouverture.dejaInitialise(true);
-		return (PatientMedicale)this;
-	}
-
-	public Integer solrEnfantTri() {
-		return enfantTri;
-	}
-
-	public String strEnfantTri() {
-		return enfantTri == null ? "" : enfantTri.toString();
-	}
-
-	public String jsonEnfantTri() {
-		return enfantTri == null ? "" : enfantTri.toString();
-	}
-
-	public String nomAffichageEnfantTri() {
-		return null;
-	}
-
-	public String htmTooltipEnfantTri() {
-		return null;
-	}
-
-	public String htmEnfantTri() {
-		return enfantTri == null ? "" : StringEscapeUtils.escapeHtml4(strEnfantTri());
+	public String htmPatientTri() {
+		return patientTri == null ? "" : StringEscapeUtils.escapeHtml4(strPatientTri());
 	}
 
 	//////////////////////////
@@ -662,354 +643,6 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 
 	public String htmCliniqueCles() {
 		return cliniqueCles == null ? "" : StringEscapeUtils.escapeHtml4(strCliniqueCles());
-	}
-
-	///////////////
-	// anneeCles //
-	///////////////
-
-	/**	L'entité « anneeCles »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> anneeCles = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Couverture<List<Long>> anneeClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("anneeCles").o(anneeCles);
-
-	/**	<br/>L'entité « anneeCles »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:anneeCles">Trouver l'entité anneeCles dans Solr</a>
-	 * <br/>
-	 * @param anneeCles est l'entité déjà construit. 
-	 **/
-	protected abstract void _anneeCles(List<Long> l);
-
-	public List<Long> getAnneeCles() {
-		return anneeCles;
-	}
-
-	public void setAnneeCles(List<Long> anneeCles) {
-		this.anneeCles = anneeCles;
-		this.anneeClesCouverture.dejaInitialise = true;
-	}
-	public PatientMedicale addAnneeCles(Long...objets) {
-		for(Long o : objets) {
-			addAnneeCles(o);
-		}
-		return (PatientMedicale)this;
-	}
-	public PatientMedicale addAnneeCles(Long o) {
-		if(o != null && !anneeCles.contains(o))
-			this.anneeCles.add(o);
-		return (PatientMedicale)this;
-	}
-	public PatientMedicale setAnneeCles(JsonArray objets) {
-		anneeCles.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addAnneeCles(o);
-		}
-		return (PatientMedicale)this;
-	}
-	public PatientMedicale addAnneeCles(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addAnneeCles(p);
-		}
-		return (PatientMedicale)this;
-	}
-	protected PatientMedicale anneeClesInit() {
-		if(!anneeClesCouverture.dejaInitialise) {
-			_anneeCles(anneeCles);
-		}
-		anneeClesCouverture.dejaInitialise(true);
-		return (PatientMedicale)this;
-	}
-
-	public List<Long> solrAnneeCles() {
-		return anneeCles;
-	}
-
-	public String strAnneeCles() {
-		return anneeCles == null ? "" : anneeCles.toString();
-	}
-
-	public String jsonAnneeCles() {
-		return anneeCles == null ? "" : anneeCles.toString();
-	}
-
-	public String nomAffichageAnneeCles() {
-		return "années";
-	}
-
-	public String htmTooltipAnneeCles() {
-		return null;
-	}
-
-	public String htmAnneeCles() {
-		return anneeCles == null ? "" : StringEscapeUtils.escapeHtml4(strAnneeCles());
-	}
-
-	////////////////
-	// saisonCles //
-	////////////////
-
-	/**	L'entité « saisonCles »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> saisonCles = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Couverture<List<Long>> saisonClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("saisonCles").o(saisonCles);
-
-	/**	<br/>L'entité « saisonCles »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:saisonCles">Trouver l'entité saisonCles dans Solr</a>
-	 * <br/>
-	 * @param saisonCles est l'entité déjà construit. 
-	 **/
-	protected abstract void _saisonCles(List<Long> l);
-
-	public List<Long> getSaisonCles() {
-		return saisonCles;
-	}
-
-	public void setSaisonCles(List<Long> saisonCles) {
-		this.saisonCles = saisonCles;
-		this.saisonClesCouverture.dejaInitialise = true;
-	}
-	public PatientMedicale addSaisonCles(Long...objets) {
-		for(Long o : objets) {
-			addSaisonCles(o);
-		}
-		return (PatientMedicale)this;
-	}
-	public PatientMedicale addSaisonCles(Long o) {
-		if(o != null && !saisonCles.contains(o))
-			this.saisonCles.add(o);
-		return (PatientMedicale)this;
-	}
-	public PatientMedicale setSaisonCles(JsonArray objets) {
-		saisonCles.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addSaisonCles(o);
-		}
-		return (PatientMedicale)this;
-	}
-	public PatientMedicale addSaisonCles(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addSaisonCles(p);
-		}
-		return (PatientMedicale)this;
-	}
-	protected PatientMedicale saisonClesInit() {
-		if(!saisonClesCouverture.dejaInitialise) {
-			_saisonCles(saisonCles);
-		}
-		saisonClesCouverture.dejaInitialise(true);
-		return (PatientMedicale)this;
-	}
-
-	public List<Long> solrSaisonCles() {
-		return saisonCles;
-	}
-
-	public String strSaisonCles() {
-		return saisonCles == null ? "" : saisonCles.toString();
-	}
-
-	public String jsonSaisonCles() {
-		return saisonCles == null ? "" : saisonCles.toString();
-	}
-
-	public String nomAffichageSaisonCles() {
-		return "saisons";
-	}
-
-	public String htmTooltipSaisonCles() {
-		return null;
-	}
-
-	public String htmSaisonCles() {
-		return saisonCles == null ? "" : StringEscapeUtils.escapeHtml4(strSaisonCles());
-	}
-
-	/////////////////
-	// sessionCles //
-	/////////////////
-
-	/**	L'entité « sessionCles »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> sessionCles = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Couverture<List<Long>> sessionClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("sessionCles").o(sessionCles);
-
-	/**	<br/>L'entité « sessionCles »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:sessionCles">Trouver l'entité sessionCles dans Solr</a>
-	 * <br/>
-	 * @param sessionCles est l'entité déjà construit. 
-	 **/
-	protected abstract void _sessionCles(List<Long> l);
-
-	public List<Long> getSessionCles() {
-		return sessionCles;
-	}
-
-	public void setSessionCles(List<Long> sessionCles) {
-		this.sessionCles = sessionCles;
-		this.sessionClesCouverture.dejaInitialise = true;
-	}
-	public PatientMedicale addSessionCles(Long...objets) {
-		for(Long o : objets) {
-			addSessionCles(o);
-		}
-		return (PatientMedicale)this;
-	}
-	public PatientMedicale addSessionCles(Long o) {
-		if(o != null && !sessionCles.contains(o))
-			this.sessionCles.add(o);
-		return (PatientMedicale)this;
-	}
-	public PatientMedicale setSessionCles(JsonArray objets) {
-		sessionCles.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addSessionCles(o);
-		}
-		return (PatientMedicale)this;
-	}
-	public PatientMedicale addSessionCles(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addSessionCles(p);
-		}
-		return (PatientMedicale)this;
-	}
-	protected PatientMedicale sessionClesInit() {
-		if(!sessionClesCouverture.dejaInitialise) {
-			_sessionCles(sessionCles);
-		}
-		sessionClesCouverture.dejaInitialise(true);
-		return (PatientMedicale)this;
-	}
-
-	public List<Long> solrSessionCles() {
-		return sessionCles;
-	}
-
-	public String strSessionCles() {
-		return sessionCles == null ? "" : sessionCles.toString();
-	}
-
-	public String jsonSessionCles() {
-		return sessionCles == null ? "" : sessionCles.toString();
-	}
-
-	public String nomAffichageSessionCles() {
-		return "sessions";
-	}
-
-	public String htmTooltipSessionCles() {
-		return null;
-	}
-
-	public String htmSessionCles() {
-		return sessionCles == null ? "" : StringEscapeUtils.escapeHtml4(strSessionCles());
-	}
-
-	/////////////
-	// ageCles //
-	/////////////
-
-	/**	L'entité « ageCles »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> ageCles = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Couverture<List<Long>> ageClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("ageCles").o(ageCles);
-
-	/**	<br/>L'entité « ageCles »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:ageCles">Trouver l'entité ageCles dans Solr</a>
-	 * <br/>
-	 * @param ageCles est l'entité déjà construit. 
-	 **/
-	protected abstract void _ageCles(List<Long> l);
-
-	public List<Long> getAgeCles() {
-		return ageCles;
-	}
-
-	public void setAgeCles(List<Long> ageCles) {
-		this.ageCles = ageCles;
-		this.ageClesCouverture.dejaInitialise = true;
-	}
-	public PatientMedicale addAgeCles(Long...objets) {
-		for(Long o : objets) {
-			addAgeCles(o);
-		}
-		return (PatientMedicale)this;
-	}
-	public PatientMedicale addAgeCles(Long o) {
-		if(o != null && !ageCles.contains(o))
-			this.ageCles.add(o);
-		return (PatientMedicale)this;
-	}
-	public PatientMedicale setAgeCles(JsonArray objets) {
-		ageCles.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addAgeCles(o);
-		}
-		return (PatientMedicale)this;
-	}
-	public PatientMedicale addAgeCles(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addAgeCles(p);
-		}
-		return (PatientMedicale)this;
-	}
-	protected PatientMedicale ageClesInit() {
-		if(!ageClesCouverture.dejaInitialise) {
-			_ageCles(ageCles);
-		}
-		ageClesCouverture.dejaInitialise(true);
-		return (PatientMedicale)this;
-	}
-
-	public List<Long> solrAgeCles() {
-		return ageCles;
-	}
-
-	public String strAgeCles() {
-		return ageCles == null ? "" : ageCles.toString();
-	}
-
-	public String jsonAgeCles() {
-		return ageCles == null ? "" : ageCles.toString();
-	}
-
-	public String nomAffichageAgeCles() {
-		return "âges";
-	}
-
-	public String htmTooltipAgeCles() {
-		return null;
-	}
-
-	public String htmAgeCles() {
-		return ageCles == null ? "" : StringEscapeUtils.escapeHtml4(strAgeCles());
 	}
 
 	////////////////////
@@ -1736,66 +1369,259 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 		} g("div");
 	}
 
-	//////////////////////
-	// enfantNomComplet //
-	//////////////////////
+	/////////////////////////////////
+	// personneDateNaissanceDAnnee //
+	/////////////////////////////////
 
-	/**	L'entité « enfantNomComplet »
+	/**	L'entité « personneDateNaissanceDAnnee »
 	 *	 is defined as null before being initialized. 
 	 */
+	@JsonSerialize(using = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected String enfantNomComplet;
+	protected Integer personneDateNaissanceDAnnee;
 	@JsonIgnore
-	public Couverture<String> enfantNomCompletCouverture = new Couverture<String>().p(this).c(String.class).var("enfantNomComplet").o(enfantNomComplet);
+	public Couverture<Integer> personneDateNaissanceDAnneeCouverture = new Couverture<Integer>().p(this).c(Integer.class).var("personneDateNaissanceDAnnee").o(personneDateNaissanceDAnnee);
 
-	/**	<br/>L'entité « enfantNomComplet »
+	/**	<br/>L'entité « personneDateNaissanceDAnnee »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:enfantNomComplet">Trouver l'entité enfantNomComplet dans Solr</a>
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:personneDateNaissanceDAnnee">Trouver l'entité personneDateNaissanceDAnnee dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _enfantNomComplet(Couverture<String> c);
+	protected abstract void _personneDateNaissanceDAnnee(Couverture<Integer> c);
 
-	public String getEnfantNomComplet() {
-		return enfantNomComplet;
+	public Integer getPersonneDateNaissanceDAnnee() {
+		return personneDateNaissanceDAnnee;
 	}
 
-	public void setEnfantNomComplet(String enfantNomComplet) {
-		this.enfantNomComplet = enfantNomComplet;
-		this.enfantNomCompletCouverture.dejaInitialise = true;
+	public void setPersonneDateNaissanceDAnnee(Integer personneDateNaissanceDAnnee) {
+		this.personneDateNaissanceDAnnee = personneDateNaissanceDAnnee;
+		this.personneDateNaissanceDAnneeCouverture.dejaInitialise = true;
 	}
-	protected PatientMedicale enfantNomCompletInit() {
-		if(!enfantNomCompletCouverture.dejaInitialise) {
-			_enfantNomComplet(enfantNomCompletCouverture);
-			if(enfantNomComplet == null)
-				setEnfantNomComplet(enfantNomCompletCouverture.o);
+	public PatientMedicale setPersonneDateNaissanceDAnnee(String o) {
+		if(NumberUtils.isParsable(o))
+			this.personneDateNaissanceDAnnee = Integer.parseInt(o);
+		this.personneDateNaissanceDAnneeCouverture.dejaInitialise = true;
+		return (PatientMedicale)this;
+	}
+	protected PatientMedicale personneDateNaissanceDAnneeInit() {
+		if(!personneDateNaissanceDAnneeCouverture.dejaInitialise) {
+			_personneDateNaissanceDAnnee(personneDateNaissanceDAnneeCouverture);
+			if(personneDateNaissanceDAnnee == null)
+				setPersonneDateNaissanceDAnnee(personneDateNaissanceDAnneeCouverture.o);
 		}
-		enfantNomCompletCouverture.dejaInitialise(true);
+		personneDateNaissanceDAnneeCouverture.dejaInitialise(true);
 		return (PatientMedicale)this;
 	}
 
-	public String solrEnfantNomComplet() {
-		return enfantNomComplet;
+	public Integer solrPersonneDateNaissanceDAnnee() {
+		return personneDateNaissanceDAnnee;
 	}
 
-	public String strEnfantNomComplet() {
-		return enfantNomComplet == null ? "" : enfantNomComplet;
+	public String strPersonneDateNaissanceDAnnee() {
+		return personneDateNaissanceDAnnee == null ? "" : personneDateNaissanceDAnnee.toString();
 	}
 
-	public String jsonEnfantNomComplet() {
-		return enfantNomComplet == null ? "" : enfantNomComplet;
+	public String jsonPersonneDateNaissanceDAnnee() {
+		return personneDateNaissanceDAnnee == null ? "" : personneDateNaissanceDAnnee.toString();
 	}
 
-	public String nomAffichageEnfantNomComplet() {
-		return "nom";
-	}
-
-	public String htmTooltipEnfantNomComplet() {
+	public String nomAffichagePersonneDateNaissanceDAnnee() {
 		return null;
 	}
 
-	public String htmEnfantNomComplet() {
-		return enfantNomComplet == null ? "" : StringEscapeUtils.escapeHtml4(strEnfantNomComplet());
+	public String htmTooltipPersonneDateNaissanceDAnnee() {
+		return null;
+	}
+
+	public String htmPersonneDateNaissanceDAnnee() {
+		return personneDateNaissanceDAnnee == null ? "" : StringEscapeUtils.escapeHtml4(strPersonneDateNaissanceDAnnee());
+	}
+
+	/////////////////////////////////////
+	// personneDateNaissanceMoisDAnnee //
+	/////////////////////////////////////
+
+	/**	L'entité « personneDateNaissanceMoisDAnnee »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String personneDateNaissanceMoisDAnnee;
+	@JsonIgnore
+	public Couverture<String> personneDateNaissanceMoisDAnneeCouverture = new Couverture<String>().p(this).c(String.class).var("personneDateNaissanceMoisDAnnee").o(personneDateNaissanceMoisDAnnee);
+
+	/**	<br/>L'entité « personneDateNaissanceMoisDAnnee »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:personneDateNaissanceMoisDAnnee">Trouver l'entité personneDateNaissanceMoisDAnnee dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _personneDateNaissanceMoisDAnnee(Couverture<String> c);
+
+	public String getPersonneDateNaissanceMoisDAnnee() {
+		return personneDateNaissanceMoisDAnnee;
+	}
+
+	public void setPersonneDateNaissanceMoisDAnnee(String personneDateNaissanceMoisDAnnee) {
+		this.personneDateNaissanceMoisDAnnee = personneDateNaissanceMoisDAnnee;
+		this.personneDateNaissanceMoisDAnneeCouverture.dejaInitialise = true;
+	}
+	protected PatientMedicale personneDateNaissanceMoisDAnneeInit() {
+		if(!personneDateNaissanceMoisDAnneeCouverture.dejaInitialise) {
+			_personneDateNaissanceMoisDAnnee(personneDateNaissanceMoisDAnneeCouverture);
+			if(personneDateNaissanceMoisDAnnee == null)
+				setPersonneDateNaissanceMoisDAnnee(personneDateNaissanceMoisDAnneeCouverture.o);
+		}
+		personneDateNaissanceMoisDAnneeCouverture.dejaInitialise(true);
+		return (PatientMedicale)this;
+	}
+
+	public String solrPersonneDateNaissanceMoisDAnnee() {
+		return personneDateNaissanceMoisDAnnee;
+	}
+
+	public String strPersonneDateNaissanceMoisDAnnee() {
+		return personneDateNaissanceMoisDAnnee == null ? "" : personneDateNaissanceMoisDAnnee;
+	}
+
+	public String jsonPersonneDateNaissanceMoisDAnnee() {
+		return personneDateNaissanceMoisDAnnee == null ? "" : personneDateNaissanceMoisDAnnee;
+	}
+
+	public String nomAffichagePersonneDateNaissanceMoisDAnnee() {
+		return null;
+	}
+
+	public String htmTooltipPersonneDateNaissanceMoisDAnnee() {
+		return null;
+	}
+
+	public String htmPersonneDateNaissanceMoisDAnnee() {
+		return personneDateNaissanceMoisDAnnee == null ? "" : StringEscapeUtils.escapeHtml4(strPersonneDateNaissanceMoisDAnnee());
+	}
+
+	////////////////////////////////////////
+	// personneDateNaissanceJourDeSemaine //
+	////////////////////////////////////////
+
+	/**	L'entité « personneDateNaissanceJourDeSemaine »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String personneDateNaissanceJourDeSemaine;
+	@JsonIgnore
+	public Couverture<String> personneDateNaissanceJourDeSemaineCouverture = new Couverture<String>().p(this).c(String.class).var("personneDateNaissanceJourDeSemaine").o(personneDateNaissanceJourDeSemaine);
+
+	/**	<br/>L'entité « personneDateNaissanceJourDeSemaine »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:personneDateNaissanceJourDeSemaine">Trouver l'entité personneDateNaissanceJourDeSemaine dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _personneDateNaissanceJourDeSemaine(Couverture<String> c);
+
+	public String getPersonneDateNaissanceJourDeSemaine() {
+		return personneDateNaissanceJourDeSemaine;
+	}
+
+	public void setPersonneDateNaissanceJourDeSemaine(String personneDateNaissanceJourDeSemaine) {
+		this.personneDateNaissanceJourDeSemaine = personneDateNaissanceJourDeSemaine;
+		this.personneDateNaissanceJourDeSemaineCouverture.dejaInitialise = true;
+	}
+	protected PatientMedicale personneDateNaissanceJourDeSemaineInit() {
+		if(!personneDateNaissanceJourDeSemaineCouverture.dejaInitialise) {
+			_personneDateNaissanceJourDeSemaine(personneDateNaissanceJourDeSemaineCouverture);
+			if(personneDateNaissanceJourDeSemaine == null)
+				setPersonneDateNaissanceJourDeSemaine(personneDateNaissanceJourDeSemaineCouverture.o);
+		}
+		personneDateNaissanceJourDeSemaineCouverture.dejaInitialise(true);
+		return (PatientMedicale)this;
+	}
+
+	public String solrPersonneDateNaissanceJourDeSemaine() {
+		return personneDateNaissanceJourDeSemaine;
+	}
+
+	public String strPersonneDateNaissanceJourDeSemaine() {
+		return personneDateNaissanceJourDeSemaine == null ? "" : personneDateNaissanceJourDeSemaine;
+	}
+
+	public String jsonPersonneDateNaissanceJourDeSemaine() {
+		return personneDateNaissanceJourDeSemaine == null ? "" : personneDateNaissanceJourDeSemaine;
+	}
+
+	public String nomAffichagePersonneDateNaissanceJourDeSemaine() {
+		return null;
+	}
+
+	public String htmTooltipPersonneDateNaissanceJourDeSemaine() {
+		return null;
+	}
+
+	public String htmPersonneDateNaissanceJourDeSemaine() {
+		return personneDateNaissanceJourDeSemaine == null ? "" : StringEscapeUtils.escapeHtml4(strPersonneDateNaissanceJourDeSemaine());
+	}
+
+	///////////////////////
+	// patientNomComplet //
+	///////////////////////
+
+	/**	L'entité « patientNomComplet »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String patientNomComplet;
+	@JsonIgnore
+	public Couverture<String> patientNomCompletCouverture = new Couverture<String>().p(this).c(String.class).var("patientNomComplet").o(patientNomComplet);
+
+	/**	<br/>L'entité « patientNomComplet »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:patientNomComplet">Trouver l'entité patientNomComplet dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientNomComplet(Couverture<String> c);
+
+	public String getPatientNomComplet() {
+		return patientNomComplet;
+	}
+
+	public void setPatientNomComplet(String patientNomComplet) {
+		this.patientNomComplet = patientNomComplet;
+		this.patientNomCompletCouverture.dejaInitialise = true;
+	}
+	protected PatientMedicale patientNomCompletInit() {
+		if(!patientNomCompletCouverture.dejaInitialise) {
+			_patientNomComplet(patientNomCompletCouverture);
+			if(patientNomComplet == null)
+				setPatientNomComplet(patientNomCompletCouverture.o);
+		}
+		patientNomCompletCouverture.dejaInitialise(true);
+		return (PatientMedicale)this;
+	}
+
+	public String solrPatientNomComplet() {
+		return patientNomComplet;
+	}
+
+	public String strPatientNomComplet() {
+		return patientNomComplet == null ? "" : patientNomComplet;
+	}
+
+	public String jsonPatientNomComplet() {
+		return patientNomComplet == null ? "" : patientNomComplet;
+	}
+
+	public String nomAffichagePatientNomComplet() {
+		return "nom";
+	}
+
+	public String htmTooltipPatientNomComplet() {
+		return null;
+	}
+
+	public String htmPatientNomComplet() {
+		return patientNomComplet == null ? "" : StringEscapeUtils.escapeHtml4(strPatientNomComplet());
 	}
 
 	//////////////
@@ -1819,18 +1645,13 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 	}
 
 	public void initPatientMedicale() {
-		enfantCleInit();
+		patientCleInit();
 		inscriptionClesInit();
-		familleTriInit();
-		enfantTriInit();
+		patientTriInit();
 		inscriptionRechercheInit();
 		inscriptionsInit();
 		utilisateurClesInit();
 		cliniqueClesInit();
-		anneeClesInit();
-		saisonClesInit();
-		sessionClesInit();
-		ageClesInit();
 		personnePrenomInit();
 		personnePrenomPrefereInit();
 		familleNomInit();
@@ -1838,7 +1659,10 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 		personneNomCompletPrefereInit();
 		personneNomFormelInit();
 		personneDateNaissanceInit();
-		enfantNomCompletInit();
+		personneDateNaissanceDAnneeInit();
+		personneDateNaissanceMoisDAnneeInit();
+		personneDateNaissanceJourDeSemaineInit();
+		patientNomCompletInit();
 	}
 
 	@Override public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) {
@@ -1879,14 +1703,12 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 	public Object obtenirPatientMedicale(String var) {
 		PatientMedicale oPatientMedicale = (PatientMedicale)this;
 		switch(var) {
-			case "enfantCle":
-				return oPatientMedicale.enfantCle;
+			case "patientCle":
+				return oPatientMedicale.patientCle;
 			case "inscriptionCles":
 				return oPatientMedicale.inscriptionCles;
-			case "familleTri":
-				return oPatientMedicale.familleTri;
-			case "enfantTri":
-				return oPatientMedicale.enfantTri;
+			case "patientTri":
+				return oPatientMedicale.patientTri;
 			case "inscriptionRecherche":
 				return oPatientMedicale.inscriptionRecherche;
 			case "inscriptions":
@@ -1895,14 +1717,6 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 				return oPatientMedicale.utilisateurCles;
 			case "cliniqueCles":
 				return oPatientMedicale.cliniqueCles;
-			case "anneeCles":
-				return oPatientMedicale.anneeCles;
-			case "saisonCles":
-				return oPatientMedicale.saisonCles;
-			case "sessionCles":
-				return oPatientMedicale.sessionCles;
-			case "ageCles":
-				return oPatientMedicale.ageCles;
 			case "personnePrenom":
 				return oPatientMedicale.personnePrenom;
 			case "personnePrenomPrefere":
@@ -1917,8 +1731,14 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 				return oPatientMedicale.personneNomFormel;
 			case "personneDateNaissance":
 				return oPatientMedicale.personneDateNaissance;
-			case "enfantNomComplet":
-				return oPatientMedicale.enfantNomComplet;
+			case "personneDateNaissanceDAnnee":
+				return oPatientMedicale.personneDateNaissanceDAnnee;
+			case "personneDateNaissanceMoisDAnnee":
+				return oPatientMedicale.personneDateNaissanceMoisDAnnee;
+			case "personneDateNaissanceJourDeSemaine":
+				return oPatientMedicale.personneDateNaissanceJourDeSemaine;
+			case "patientNomComplet":
+				return oPatientMedicale.patientNomComplet;
 			default:
 				return super.obtenirCluster(var);
 		}
@@ -1944,6 +1764,11 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 	public Object attribuerPatientMedicale(String var, Object val) {
 		PatientMedicale oPatientMedicale = (PatientMedicale)this;
 		switch(var) {
+			case "inscriptionCles":
+				oPatientMedicale.addInscriptionCles((Long)val);
+				if(!sauvegardesPatientMedicale.contains(var))
+					sauvegardesPatientMedicale.add(var);
+				return val;
 			default:
 				return super.attribuerCluster(var, val);
 		}
@@ -2013,28 +1838,20 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 		sauvegardesPatientMedicale = (List<String>)solrDocument.get("sauvegardesPatientMedicale_stored_strings");
 		if(sauvegardesPatientMedicale != null) {
 
-			if(sauvegardesPatientMedicale.contains("enfantCle")) {
-				Long enfantCle = (Long)solrDocument.get("enfantCle_stored_long");
-				if(enfantCle != null)
-					oPatientMedicale.setEnfantCle(enfantCle);
+			if(sauvegardesPatientMedicale.contains("patientCle")) {
+				Long patientCle = (Long)solrDocument.get("patientCle_stored_long");
+				if(patientCle != null)
+					oPatientMedicale.setPatientCle(patientCle);
 			}
 
-			if(sauvegardesPatientMedicale.contains("inscriptionCles")) {
-				List<Long> inscriptionCles = (List<Long>)solrDocument.get("inscriptionCles_stored_longs");
-				if(inscriptionCles != null)
-					oPatientMedicale.inscriptionCles.addAll(inscriptionCles);
-			}
+			List<Long> inscriptionCles = (List<Long>)solrDocument.get("inscriptionCles_stored_longs");
+			if(inscriptionCles != null)
+				oPatientMedicale.inscriptionCles.addAll(inscriptionCles);
 
-			if(sauvegardesPatientMedicale.contains("familleTri")) {
-				Integer familleTri = (Integer)solrDocument.get("familleTri_stored_int");
-				if(familleTri != null)
-					oPatientMedicale.setFamilleTri(familleTri);
-			}
-
-			if(sauvegardesPatientMedicale.contains("enfantTri")) {
-				Integer enfantTri = (Integer)solrDocument.get("enfantTri_stored_int");
-				if(enfantTri != null)
-					oPatientMedicale.setEnfantTri(enfantTri);
+			if(sauvegardesPatientMedicale.contains("patientTri")) {
+				Integer patientTri = (Integer)solrDocument.get("patientTri_stored_int");
+				if(patientTri != null)
+					oPatientMedicale.setPatientTri(patientTri);
 			}
 
 			if(sauvegardesPatientMedicale.contains("utilisateurCles")) {
@@ -2047,30 +1864,6 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 				List<Long> cliniqueCles = (List<Long>)solrDocument.get("cliniqueCles_stored_longs");
 				if(cliniqueCles != null)
 					oPatientMedicale.cliniqueCles.addAll(cliniqueCles);
-			}
-
-			if(sauvegardesPatientMedicale.contains("anneeCles")) {
-				List<Long> anneeCles = (List<Long>)solrDocument.get("anneeCles_stored_longs");
-				if(anneeCles != null)
-					oPatientMedicale.anneeCles.addAll(anneeCles);
-			}
-
-			if(sauvegardesPatientMedicale.contains("saisonCles")) {
-				List<Long> saisonCles = (List<Long>)solrDocument.get("saisonCles_stored_longs");
-				if(saisonCles != null)
-					oPatientMedicale.saisonCles.addAll(saisonCles);
-			}
-
-			if(sauvegardesPatientMedicale.contains("sessionCles")) {
-				List<Long> sessionCles = (List<Long>)solrDocument.get("sessionCles_stored_longs");
-				if(sessionCles != null)
-					oPatientMedicale.sessionCles.addAll(sessionCles);
-			}
-
-			if(sauvegardesPatientMedicale.contains("ageCles")) {
-				List<Long> ageCles = (List<Long>)solrDocument.get("ageCles_stored_longs");
-				if(ageCles != null)
-					oPatientMedicale.ageCles.addAll(ageCles);
 			}
 
 			if(sauvegardesPatientMedicale.contains("personnePrenom")) {
@@ -2115,10 +1908,28 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 					oPatientMedicale.setPersonneDateNaissance(personneDateNaissance);
 			}
 
-			if(sauvegardesPatientMedicale.contains("enfantNomComplet")) {
-				String enfantNomComplet = (String)solrDocument.get("enfantNomComplet_stored_string");
-				if(enfantNomComplet != null)
-					oPatientMedicale.setEnfantNomComplet(enfantNomComplet);
+			if(sauvegardesPatientMedicale.contains("personneDateNaissanceDAnnee")) {
+				Integer personneDateNaissanceDAnnee = (Integer)solrDocument.get("personneDateNaissanceDAnnee_stored_int");
+				if(personneDateNaissanceDAnnee != null)
+					oPatientMedicale.setPersonneDateNaissanceDAnnee(personneDateNaissanceDAnnee);
+			}
+
+			if(sauvegardesPatientMedicale.contains("personneDateNaissanceMoisDAnnee")) {
+				String personneDateNaissanceMoisDAnnee = (String)solrDocument.get("personneDateNaissanceMoisDAnnee_stored_string");
+				if(personneDateNaissanceMoisDAnnee != null)
+					oPatientMedicale.setPersonneDateNaissanceMoisDAnnee(personneDateNaissanceMoisDAnnee);
+			}
+
+			if(sauvegardesPatientMedicale.contains("personneDateNaissanceJourDeSemaine")) {
+				String personneDateNaissanceJourDeSemaine = (String)solrDocument.get("personneDateNaissanceJourDeSemaine_stored_string");
+				if(personneDateNaissanceJourDeSemaine != null)
+					oPatientMedicale.setPersonneDateNaissanceJourDeSemaine(personneDateNaissanceJourDeSemaine);
+			}
+
+			if(sauvegardesPatientMedicale.contains("patientNomComplet")) {
+				String patientNomComplet = (String)solrDocument.get("patientNomComplet_stored_string");
+				if(patientNomComplet != null)
+					oPatientMedicale.setPatientNomComplet(patientNomComplet);
 			}
 		}
 
@@ -2190,9 +2001,9 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 		if(sauvegardesPatientMedicale != null)
 			document.addField("sauvegardesPatientMedicale_stored_strings", sauvegardesPatientMedicale);
 
-		if(enfantCle != null) {
-			document.addField("enfantCle_indexed_long", enfantCle);
-			document.addField("enfantCle_stored_long", enfantCle);
+		if(patientCle != null) {
+			document.addField("patientCle_indexed_long", patientCle);
+			document.addField("patientCle_stored_long", patientCle);
 		}
 		if(inscriptionCles != null) {
 			for(java.lang.Long o : inscriptionCles) {
@@ -2202,13 +2013,9 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 				document.addField("inscriptionCles_stored_longs", o);
 			}
 		}
-		if(familleTri != null) {
-			document.addField("familleTri_indexed_int", familleTri);
-			document.addField("familleTri_stored_int", familleTri);
-		}
-		if(enfantTri != null) {
-			document.addField("enfantTri_indexed_int", enfantTri);
-			document.addField("enfantTri_stored_int", enfantTri);
+		if(patientTri != null) {
+			document.addField("patientTri_indexed_int", patientTri);
+			document.addField("patientTri_stored_int", patientTri);
 		}
 		if(utilisateurCles != null) {
 			for(java.lang.Long o : utilisateurCles) {
@@ -2224,38 +2031,6 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 			}
 			for(java.lang.Long o : cliniqueCles) {
 				document.addField("cliniqueCles_stored_longs", o);
-			}
-		}
-		if(anneeCles != null) {
-			for(java.lang.Long o : anneeCles) {
-				document.addField("anneeCles_indexed_longs", o);
-			}
-			for(java.lang.Long o : anneeCles) {
-				document.addField("anneeCles_stored_longs", o);
-			}
-		}
-		if(saisonCles != null) {
-			for(java.lang.Long o : saisonCles) {
-				document.addField("saisonCles_indexed_longs", o);
-			}
-			for(java.lang.Long o : saisonCles) {
-				document.addField("saisonCles_stored_longs", o);
-			}
-		}
-		if(sessionCles != null) {
-			for(java.lang.Long o : sessionCles) {
-				document.addField("sessionCles_indexed_longs", o);
-			}
-			for(java.lang.Long o : sessionCles) {
-				document.addField("sessionCles_stored_longs", o);
-			}
-		}
-		if(ageCles != null) {
-			for(java.lang.Long o : ageCles) {
-				document.addField("ageCles_indexed_longs", o);
-			}
-			for(java.lang.Long o : ageCles) {
-				document.addField("ageCles_stored_longs", o);
 			}
 		}
 		if(personnePrenom != null) {
@@ -2286,9 +2061,21 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 			document.addField("personneDateNaissance_indexed_date", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(personneDateNaissance.atStartOfDay(ZoneId.of(requeteSite_.getConfigSite_().getSiteZone())).toInstant().atZone(ZoneId.of("Z"))));
 			document.addField("personneDateNaissance_stored_date", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(personneDateNaissance.atStartOfDay(ZoneId.of(requeteSite_.getConfigSite_().getSiteZone())).toInstant().atZone(ZoneId.of("Z"))));
 		}
-		if(enfantNomComplet != null) {
-			document.addField("enfantNomComplet_indexed_string", enfantNomComplet);
-			document.addField("enfantNomComplet_stored_string", enfantNomComplet);
+		if(personneDateNaissanceDAnnee != null) {
+			document.addField("personneDateNaissanceDAnnee_indexed_int", personneDateNaissanceDAnnee);
+			document.addField("personneDateNaissanceDAnnee_stored_int", personneDateNaissanceDAnnee);
+		}
+		if(personneDateNaissanceMoisDAnnee != null) {
+			document.addField("personneDateNaissanceMoisDAnnee_indexed_string", personneDateNaissanceMoisDAnnee);
+			document.addField("personneDateNaissanceMoisDAnnee_stored_string", personneDateNaissanceMoisDAnnee);
+		}
+		if(personneDateNaissanceJourDeSemaine != null) {
+			document.addField("personneDateNaissanceJourDeSemaine_indexed_string", personneDateNaissanceJourDeSemaine);
+			document.addField("personneDateNaissanceJourDeSemaine_stored_string", personneDateNaissanceJourDeSemaine);
+		}
+		if(patientNomComplet != null) {
+			document.addField("patientNomComplet_indexed_string", patientNomComplet);
+			document.addField("patientNomComplet_stored_string", patientNomComplet);
 		}
 		super.indexerCluster(document);
 
@@ -2313,26 +2100,16 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 
 	public static String varIndexePatientMedicale(String entiteVar) {
 		switch(entiteVar) {
-			case "enfantCle":
-				return "enfantCle_indexed_long";
+			case "patientCle":
+				return "patientCle_indexed_long";
 			case "inscriptionCles":
 				return "inscriptionCles_indexed_longs";
-			case "familleTri":
-				return "familleTri_indexed_int";
-			case "enfantTri":
-				return "enfantTri_indexed_int";
+			case "patientTri":
+				return "patientTri_indexed_int";
 			case "utilisateurCles":
 				return "utilisateurCles_indexed_longs";
 			case "cliniqueCles":
 				return "cliniqueCles_indexed_longs";
-			case "anneeCles":
-				return "anneeCles_indexed_longs";
-			case "saisonCles":
-				return "saisonCles_indexed_longs";
-			case "sessionCles":
-				return "sessionCles_indexed_longs";
-			case "ageCles":
-				return "ageCles_indexed_longs";
 			case "personnePrenom":
 				return "personnePrenom_indexed_string";
 			case "personnePrenomPrefere":
@@ -2347,8 +2124,14 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 				return "personneNomFormel_indexed_string";
 			case "personneDateNaissance":
 				return "personneDateNaissance_indexed_date";
-			case "enfantNomComplet":
-				return "enfantNomComplet_indexed_string";
+			case "personneDateNaissanceDAnnee":
+				return "personneDateNaissanceDAnnee_indexed_int";
+			case "personneDateNaissanceMoisDAnnee":
+				return "personneDateNaissanceMoisDAnnee_indexed_string";
+			case "personneDateNaissanceJourDeSemaine":
+				return "personneDateNaissanceJourDeSemaine_indexed_string";
+			case "patientNomComplet":
+				return "patientNomComplet_indexed_string";
 			default:
 				return Cluster.varIndexeCluster(entiteVar);
 		}
@@ -2378,21 +2161,17 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 	public void stockerPatientMedicale(SolrDocument solrDocument) {
 		PatientMedicale oPatientMedicale = (PatientMedicale)this;
 
-		Long enfantCle = (Long)solrDocument.get("enfantCle_stored_long");
-		if(enfantCle != null)
-			oPatientMedicale.setEnfantCle(enfantCle);
+		Long patientCle = (Long)solrDocument.get("patientCle_stored_long");
+		if(patientCle != null)
+			oPatientMedicale.setPatientCle(patientCle);
 
 		List<Long> inscriptionCles = (List<Long>)solrDocument.get("inscriptionCles_stored_longs");
 		if(inscriptionCles != null)
 			oPatientMedicale.inscriptionCles.addAll(inscriptionCles);
 
-		Integer familleTri = (Integer)solrDocument.get("familleTri_stored_int");
-		if(familleTri != null)
-			oPatientMedicale.setFamilleTri(familleTri);
-
-		Integer enfantTri = (Integer)solrDocument.get("enfantTri_stored_int");
-		if(enfantTri != null)
-			oPatientMedicale.setEnfantTri(enfantTri);
+		Integer patientTri = (Integer)solrDocument.get("patientTri_stored_int");
+		if(patientTri != null)
+			oPatientMedicale.setPatientTri(patientTri);
 
 		List<Long> utilisateurCles = (List<Long>)solrDocument.get("utilisateurCles_stored_longs");
 		if(utilisateurCles != null)
@@ -2401,22 +2180,6 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 		List<Long> cliniqueCles = (List<Long>)solrDocument.get("cliniqueCles_stored_longs");
 		if(cliniqueCles != null)
 			oPatientMedicale.cliniqueCles.addAll(cliniqueCles);
-
-		List<Long> anneeCles = (List<Long>)solrDocument.get("anneeCles_stored_longs");
-		if(anneeCles != null)
-			oPatientMedicale.anneeCles.addAll(anneeCles);
-
-		List<Long> saisonCles = (List<Long>)solrDocument.get("saisonCles_stored_longs");
-		if(saisonCles != null)
-			oPatientMedicale.saisonCles.addAll(saisonCles);
-
-		List<Long> sessionCles = (List<Long>)solrDocument.get("sessionCles_stored_longs");
-		if(sessionCles != null)
-			oPatientMedicale.sessionCles.addAll(sessionCles);
-
-		List<Long> ageCles = (List<Long>)solrDocument.get("ageCles_stored_longs");
-		if(ageCles != null)
-			oPatientMedicale.ageCles.addAll(ageCles);
 
 		String personnePrenom = (String)solrDocument.get("personnePrenom_stored_string");
 		if(personnePrenom != null)
@@ -2446,9 +2209,21 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 		if(personneDateNaissance != null)
 			oPatientMedicale.setPersonneDateNaissance(personneDateNaissance);
 
-		String enfantNomComplet = (String)solrDocument.get("enfantNomComplet_stored_string");
-		if(enfantNomComplet != null)
-			oPatientMedicale.setEnfantNomComplet(enfantNomComplet);
+		Integer personneDateNaissanceDAnnee = (Integer)solrDocument.get("personneDateNaissanceDAnnee_stored_int");
+		if(personneDateNaissanceDAnnee != null)
+			oPatientMedicale.setPersonneDateNaissanceDAnnee(personneDateNaissanceDAnnee);
+
+		String personneDateNaissanceMoisDAnnee = (String)solrDocument.get("personneDateNaissanceMoisDAnnee_stored_string");
+		if(personneDateNaissanceMoisDAnnee != null)
+			oPatientMedicale.setPersonneDateNaissanceMoisDAnnee(personneDateNaissanceMoisDAnnee);
+
+		String personneDateNaissanceJourDeSemaine = (String)solrDocument.get("personneDateNaissanceJourDeSemaine_stored_string");
+		if(personneDateNaissanceJourDeSemaine != null)
+			oPatientMedicale.setPersonneDateNaissanceJourDeSemaine(personneDateNaissanceJourDeSemaine);
+
+		String patientNomComplet = (String)solrDocument.get("patientNomComplet_stored_string");
+		if(patientNomComplet != null)
+			oPatientMedicale.setPatientNomComplet(patientNomComplet);
 
 		super.stockerCluster(solrDocument);
 	}
@@ -2462,6 +2237,8 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 		Object o = Optional.ofNullable(requeteApi).map(RequeteApi::getOriginal).orElse(null);
 		if(o != null && o instanceof PatientMedicale) {
 			PatientMedicale original = (PatientMedicale)o;
+			if(!Objects.equals(inscriptionCles, original.getInscriptionCles()))
+				requeteApi.addVars("inscriptionCles");
 			if(!Objects.equals(personnePrenom, original.getPersonnePrenom()))
 				requeteApi.addVars("personnePrenom");
 			if(!Objects.equals(personnePrenomPrefere, original.getPersonnePrenomPrefere()))
@@ -2479,7 +2256,7 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 	//////////////
 
 	@Override public int hashCode() {
-		return Objects.hash(super.hashCode(), personnePrenom, personnePrenomPrefere, familleNom, personneDateNaissance);
+		return Objects.hash(super.hashCode(), inscriptionCles, personnePrenom, personnePrenomPrefere, familleNom, personneDateNaissance);
 	}
 
 	////////////
@@ -2493,6 +2270,7 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 			return false;
 		PatientMedicale that = (PatientMedicale)o;
 		return super.equals(o)
+				&& Objects.equals( inscriptionCles, that.inscriptionCles )
 				&& Objects.equals( personnePrenom, that.personnePrenom )
 				&& Objects.equals( personnePrenomPrefere, that.personnePrenomPrefere )
 				&& Objects.equals( familleNom, that.familleNom )
@@ -2507,7 +2285,8 @@ public abstract class PatientMedicaleGen<DEV> extends Cluster {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString() + "\n");
 		sb.append("PatientMedicale { ");
-		sb.append( "personnePrenom: \"" ).append(personnePrenom).append( "\"" );
+		sb.append( "inscriptionCles: " ).append(inscriptionCles);
+		sb.append( ", personnePrenom: \"" ).append(personnePrenom).append( "\"" );
 		sb.append( ", personnePrenomPrefere: \"" ).append(personnePrenomPrefere).append( "\"" );
 		sb.append( ", familleNom: \"" ).append(familleNom).append( "\"" );
 		sb.append( ", personneDateNaissance: " ).append(personneDateNaissance);

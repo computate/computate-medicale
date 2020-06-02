@@ -19,10 +19,10 @@ import org.computate.medicale.frFR.recherche.ListeRecherche;
  * Sauvegarde: true
  * 
  * ApiTag.frFR: Enfant
- * ApiUri.frFR: /api/enfant
+ * ApiUri.frFR: /api/patient
  * 
  * ApiTag.enUS: Child
- * ApiUri.enUS: /api/child
+ * ApiUri.enUS: /api/patient
  * 
  * ApiMethode: POST
  * 
@@ -41,29 +41,28 @@ import org.computate.medicale.frFR.recherche.ListeRecherche;
  * ApiMethode.enUS: Search
  * 
  * ApiMethode.frFR: RechercheAdmin
- * ApiUriRechercheAdmin.frFR: /api/admin/enfant
+ * ApiUriRechercheAdmin.frFR: /api/admin/patient
  * RoleUtilisateurRechercheAdmin.frFR: true
  * 
  * ApiMethode.enUS: AdminSearch
- * ApiUriAdminSearch.enUS: /api/admin/child
+ * ApiUriAdminSearch.enUS: /api/admin/patient
  * RoleUtilisateurAdminSearch.enUS: true
  * 
  * ApiMethode.frFR: PageRecherche
  * PagePageRecherche.frFR: EnfantPage
  * PageSuperPageRecherche.frFR: ClusterPage
- * ApiUriPageRecherche.frFR: /enfant
+ * ApiUriPageRecherche.frFR: /patient
  * 
  * ApiMethode.enUS: SearchPage
  * PageSearchPage.enUS: ChildPage
  * PageSuperSearchPage.enUS: ClusterPage
- * ApiUriSearchPage.enUS: /child
+ * ApiUriSearchPage.enUS: /patient
  * 
- * UnNom.frFR: un enfant
- * UnNom.enUS: a child
- * NomPluriel.enUS: children
+ * UnNom.frFR: un patient
+ * UnNom.enUS: a patient
  * Couleur: orange
  * IconeGroupe: regular
- * IconeNom: child
+ * IconeNom: patient
  * 
  * Role.frFR: SiteAdmin
  * Role.enUS: SiteAdmin
@@ -74,7 +73,7 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 
 	/**
 	 * {@inheritDoc}
-	 * Var.enUS: childKey
+	 * Var.enUS: patientKey
 	 * Indexe: true
 	 * Stocke: true
 	 * Description.frFR: La clé primaire du inscription dans la base de données. 
@@ -82,7 +81,7 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 	 * NomAffichage.frFR: clé
 	 * NomAffichage.enUS: key
 	 */               
-	protected void _enfantCle(Couverture<Long> c) {
+	protected void _patientCle(Couverture<Long> c) {
 		c.o(pk);
 	}
 
@@ -91,7 +90,7 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 	 * Var.enUS: enrollmentKeys
 	 * Indexe: true
 	 * Stocke: true
-	 * Attribuer: InscriptionMedicale.enfantCle
+	 * Attribuer: InscriptionMedicale.patientCle
 	 * HtmlLigne: 8
 	 * HtmlCellule: 1
 	 * NomAffichage.frFR: inscriptions
@@ -101,57 +100,35 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 
 	/**
 	 * {@inheritDoc}
-	 * Var.enUS: familySort
-	 * Indexe: true
-	 * Stocke: true
-	 */
-	protected void _familleTri(Couverture<Integer> c) {
-		c.o(1);
-	}
-
-	/**
-	 * {@inheritDoc}
 	 * Var.enUS: schoolSort
 	 * Indexe: true
 	 * Stocke: true
 	 */
-	protected void _enfantTri(Couverture<Integer> c) {
+	protected void _patientTri(Couverture<Integer> c) {
 		c.o(1);
 	}
 
 	/**
 	 * Var.enUS: enrollmentSearch
-	 * r: enfantCle
-	 * r.enUS: childKey
+	 * r: patientCle
+	 * r.enUS: patientKey
 	 * r: InscriptionMedicale
 	 * r.enUS: MedicalEnrollment
 	 * r: setStocker
 	 * r.enUS: setStore
 	 * Ignorer: true
-	 * r: ecoleCle
-	 * r.enUS: schoolKey
-	 * r: anneeCle
-	 * r.enUS: yearKey
-	 * r: saisonCle
-	 * r.enUS: seasonKey
-	 * r: sessionCle
-	 * r.enUS: sessionKey
-	 * r: ageCle
-	 * r.enUS: ageKey
+	 * r: cliniqueCle
+	 * r.enUS: clinicKey
 	 * r: utilisateurCles
 	 * r.enUS: userKeys
 	 */
 	protected void _inscriptionRecherche(ListeRecherche<InscriptionMedicale> l) { 
 		l.setQuery("*:*");
-		l.addFilterQuery("enfantCle_indexed_long:" + pk);
+		l.addFilterQuery("patientCle_indexed_long:" + pk);
 		l.setC(InscriptionMedicale.class);
 		l.setStocker(true);
 		l.setFacet(true);
-		l.addFacetField("ecoleCle_indexed_long");
-		l.addFacetField("anneeCle_indexed_long");
-		l.addFacetField("saisonCle_indexed_long");
-		l.addFacetField("sessionCle_indexed_long");
-		l.addFacetField("ageCle_indexed_long");
+		l.addFacetField("cliniqueCle_indexed_long");
 		l.addFacetField("utilisateurCles_indexed_longs");
 	}
 
@@ -200,78 +177,6 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 	 */                  
 	protected void _cliniqueCles(List<Long> l) {
 		l.addAll(inscriptionRecherche.getQueryResponse().getFacetField("cliniqueCle_indexed_long").getValues().stream().map(o -> Long.parseLong(o.getName())).collect(Collectors.toList()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * Var.enUS: yearKeys
-	 * Indexe: true
-	 * Stocke: true
-	 * Description.frFR: L'année medicale du inscription medicale. 
-	 * Description.enUS: The school year of the school enrollment. 
-	 * NomAffichage.frFR: années
-	 * NomAffichage.enUS: years
-	 * r: anneeCle
-	 * r.enUS: yearKey
-	 * r: inscriptionRecherche
-	 * r.enUS: enrollmentSearch
-	 */
-	protected void _anneeCles(List<Long> l) {
-		l.addAll(inscriptionRecherche.getQueryResponse().getFacetField("anneeCle_indexed_long").getValues().stream().map(o -> Long.parseLong(o.getName())).collect(Collectors.toList()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * Var.enUS: seasonKeys
-	 * Indexe: true
-	 * Stocke: true
-	 * Description.frFR: La saison medicale du inscription medicale. 
-	 * Description.enUS: The school season of the school enrollment. 
-	 * NomAffichage.frFR: saisons
-	 * NomAffichage.enUS: seasons
-	 * r: saisonCle
-	 * r.enUS: seasonKey
-	 * r: inscriptionRecherche
-	 * r.enUS: enrollmentSearch
-	 */          
-	protected void _saisonCles(List<Long> l) {
-		l.addAll(inscriptionRecherche.getQueryResponse().getFacetField("saisonCle_indexed_long").getValues().stream().map(o -> Long.parseLong(o.getName())).collect(Collectors.toList()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * Var.enUS: sessionKeys
-	 * Indexe: true
-	 * Stocke: true
-	 * Description.frFR: La clé primaire de la session dans la base de données. 
-	 * Description.enUS: The primary key of the school enrollment in the database. 
-	 * NomAffichage.frFR: sessions
-	 * NomAffichage.enUS: sessions
-	 * r: sessionCle
-	 * r.enUS: sessionKey
-	 * r: inscriptionRecherche
-	 * r.enUS: enrollmentSearch
-	 */          
-	protected void _sessionCles(List<Long> l) {
-		l.addAll(inscriptionRecherche.getQueryResponse().getFacetField("sessionCle_indexed_long").getValues().stream().map(o -> Long.parseLong(o.getName())).collect(Collectors.toList()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * Var.enUS: ageKeys
-	 * Indexe: true
-	 * Stocke: true
-	 * Description.frFR: La clé primaire de l'âge dans la base de données. 
-	 * Description.enUS: The primary key of the age in the database. 
-	 * NomAffichage.frFR: âges
-	 * NomAffichage.enUS: ages
-	 * r: ageCle
-	 * r.enUS: ageKey
-	 * r: inscriptionRecherche
-	 * r.enUS: enrollmentSearch
-	 */                  
-	protected void _ageCles(List<Long> l) {
-		l.addAll(inscriptionRecherche.getQueryResponse().getFacetField("ageCle_indexed_long").getValues().stream().map(o -> Long.parseLong(o.getName())).collect(Collectors.toList()));
 	}
 
 	/**
@@ -385,6 +290,51 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 	}
 
 	/**
+	 * {@inheritDoc}
+	 * Var.enUS: personBirthDateYear
+	 * Indexe: true
+	 * Stocke: true
+	 * r: personneDateNaissance
+	 * r.enUS: personBirthDate
+	 * r: Locale.FRANCE
+	 * r.enUS: Locale.US
+	 */                       
+	protected void _personneDateNaissanceDAnnee(Couverture<Integer> c) {
+		if(personneDateNaissance != null)
+			c.o(personneDateNaissance.getYear());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * Var.enUS: personBirthDateMonthOfYear
+	 * Indexe: true
+	 * Stocke: true
+	 * r: personneDateNaissance
+	 * r.enUS: personBirthDate
+	 * r: Locale.FRANCE
+	 * r.enUS: Locale.US
+	 */                       
+	protected void _personneDateNaissanceMoisDAnnee(Couverture<String> c) {
+		if(personneDateNaissance != null)
+			c.o(personneDateNaissance.format(DateTimeFormatter.ofPattern("MMMM", Locale.FRANCE)));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * Var.enUS: personBirthDateDayOfWeek
+	 * Indexe: true
+	 * Stocke: true
+	 * r: personneDateNaissance
+	 * r.enUS: personBirthDate
+	 * r: Locale.FRANCE
+	 * r.enUS: Locale.US
+	 */                       
+	protected void _personneDateNaissanceJourDeSemaine(Couverture<String> c) {
+		if(personneDateNaissance != null)
+			c.o(personneDateNaissance.format(DateTimeFormatter.ofPattern("EEEE", Locale.FRANCE)));
+	}
+
+	/**
 	 * Var.enUS: strPersonBirthDate
 	 * r: "d MMMM yyyy"
 	 * r.enUS: "MMMM d, yyyy"
@@ -399,7 +349,7 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 
 	/**    
 	 * {@inheritDoc}
-	 * Var.enUS: childCompleteName
+	 * Var.enUS: patientCompleteName
 	 * Indexe: true
 	 * Stocke: true
 	 * VarH2: true
@@ -409,18 +359,18 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 	 * r: personneNomComplet
 	 * r.enUS: personCompleteName
 	 */  
-	protected void _enfantNomComplet(Couverture<String> c) {
+	protected void _patientNomComplet(Couverture<String> c) {
 		c.o(personneNomComplet);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * Var.enUS: _objectTitle
-	 * r: enfantNomComplet
-	 * r.enUS: childCompleteName
+	 * r: patientNomComplet
+	 * r.enUS: patientCompleteName
 	 */ 
 	@Override
 	protected void _objetTitre(Couverture<String> c) {
-		c.o(enfantNomComplet);
+		c.o(patientNomComplet);
 	}
 }

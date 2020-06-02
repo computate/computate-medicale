@@ -1,5 +1,7 @@
 package org.computate.medicale.enUS.patient;
 
+import org.computate.medicale.enUS.enrollment.MedicalEnrollmentEnUSGenApiServiceImpl;
+import org.computate.medicale.enUS.enrollment.MedicalEnrollment;
 import org.computate.medicale.enUS.config.SiteConfig;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 import org.computate.medicale.enUS.context.SiteContextEnUS;
@@ -298,6 +300,36 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 									a.handle(Future.failedFuture(new Exception("value MedicalPatient.deleted failed", b.cause())));
 							});
 						}));
+						break;
+					case "enrollmentKeys":
+						for(Long l : jsonObject.getJsonArray(entityVar).stream().map(a -> Long.parseLong((String)a)).collect(Collectors.toList())) {
+							if(l != null) {
+								SearchList<MedicalEnrollment> searchList = new SearchList<MedicalEnrollment>();
+								searchList.setQuery("*:*");
+								searchList.setStore(true);
+								searchList.setC(MedicalEnrollment.class);
+								searchList.addFilterQuery((inheritPk ? "inheritPk" : "pk") + "_indexed_long:" + l);
+								searchList.initDeepSearchList(siteRequest);
+								Long l2 = Optional.ofNullable(searchList.getList().stream().findFirst().orElse(null)).map(a -> a.getPk()).orElse(null);
+								if(l2 != null) {
+									futures.add(Future.future(a -> {
+										tx.preparedQuery(SiteContextEnUS.SQL_addA
+												, Tuple.of(pk, "enrollmentKeys", l2, "patientKey")
+												, b
+										-> {
+											if(b.succeeded())
+												a.handle(Future.succeededFuture());
+											else
+												a.handle(Future.failedFuture(new Exception("value MedicalPatient.enrollmentKeys failed", b.cause())));
+										});
+									}));
+									if(!pks.contains(l2)) {
+										pks.add(l2);
+										classes.add("MedicalEnrollment");
+									}
+								}
+							}
+						}
 						break;
 					case "personFirstName":
 						futures.add(Future.future(a -> {
@@ -743,7 +775,7 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 							workerExecutor.executeBlocking(
 								blockingCodeHandler -> {
 									try {
-										aSearchMedicalPatient(siteRequest, false, true, "/api/child/copy", "PUTCopy", d -> {
+										aSearchMedicalPatient(siteRequest, false, true, "/api/patient/copy", "PUTCopy", d -> {
 											if(d.succeeded()) {
 												SearchList<MedicalPatient> listMedicalPatient = d.result();
 												ApiRequest apiRequest = new ApiRequest();
@@ -953,6 +985,25 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 							});
 						}));
 						break;
+					case "enrollmentKeys":
+						for(Long l : jsonObject.getJsonArray(entityVar).stream().map(a -> Long.parseLong((String)a)).collect(Collectors.toList())) {
+							futures.add(Future.future(a -> {
+								tx.preparedQuery(SiteContextEnUS.SQL_addA
+										, Tuple.of(pk, "enrollmentKeys", l, "patientKey")
+										, b
+								-> {
+									if(b.succeeded())
+										a.handle(Future.succeededFuture());
+									else
+										a.handle(Future.failedFuture(new Exception("value MedicalPatient.enrollmentKeys failed", b.cause())));
+								});
+							}));
+							if(!pks.contains(l)) {
+								pks.add(l);
+								classes.add("MedicalEnrollment");
+							}
+						}
+						break;
 					case "personFirstName":
 						futures.add(Future.future(a -> {
 							tx.preparedQuery(SiteContextEnUS.SQL_setD
@@ -1063,7 +1114,7 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 							workerExecutor.executeBlocking(
 								blockingCodeHandler -> {
 									try {
-										aSearchMedicalPatient(siteRequest, false, true, "/api/child", "PATCH", d -> {
+										aSearchMedicalPatient(siteRequest, false, true, "/api/patient", "PATCH", d -> {
 											if(d.succeeded()) {
 												SearchList<MedicalPatient> listMedicalPatient = d.result();
 												ApiRequest apiRequest = new ApiRequest();
@@ -1350,6 +1401,153 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 							}));
 						}
 						break;
+					case "addEnrollmentKeys":
+						{
+							Long l = Long.parseLong(jsonObject.getString(methodName));
+							if(l != null) {
+								SearchList<MedicalEnrollment> searchList = new SearchList<MedicalEnrollment>();
+								searchList.setQuery("*:*");
+								searchList.setStore(true);
+								searchList.setC(MedicalEnrollment.class);
+								searchList.addFilterQuery((inheritPk ? "inheritPk" : "pk") + "_indexed_long:" + l);
+								searchList.initDeepSearchList(siteRequest);
+								Long l2 = Optional.ofNullable(searchList.getList().stream().findFirst().orElse(null)).map(a -> a.getPk()).orElse(null);
+								if(l2 != null && !o.getEnrollmentKeys().contains(l2)) {
+									futures.add(Future.future(a -> {
+										tx.preparedQuery(SiteContextEnUS.SQL_addA
+												, Tuple.of(pk, "enrollmentKeys", l2, "patientKey")
+												, b
+										-> {
+											if(b.succeeded())
+												a.handle(Future.succeededFuture());
+											else
+												a.handle(Future.failedFuture(new Exception("value MedicalPatient.enrollmentKeys failed", b.cause())));
+										});
+									}));
+									if(!pks.contains(l2)) {
+										pks.add(l2);
+										classes.add("MedicalEnrollment");
+									}
+								}
+							}
+						}
+						break;
+					case "addAllEnrollmentKeys":
+						JsonArray addAllEnrollmentKeysValues = jsonObject.getJsonArray(methodName);
+						if(addAllEnrollmentKeysValues != null) {
+							for(Integer i = 0; i <  addAllEnrollmentKeysValues.size(); i++) {
+								Long l = Long.parseLong(addAllEnrollmentKeysValues.getString(i));
+								if(l != null) {
+									SearchList<MedicalEnrollment> searchList = new SearchList<MedicalEnrollment>();
+									searchList.setQuery("*:*");
+									searchList.setStore(true);
+									searchList.setC(MedicalEnrollment.class);
+									searchList.addFilterQuery((inheritPk ? "inheritPk" : "pk") + "_indexed_long:" + l);
+									searchList.initDeepSearchList(siteRequest);
+									Long l2 = Optional.ofNullable(searchList.getList().stream().findFirst().orElse(null)).map(a -> a.getPk()).orElse(null);
+									if(l2 != null && !o.getEnrollmentKeys().contains(l2)) {
+									futures.add(Future.future(a -> {
+										tx.preparedQuery(SiteContextEnUS.SQL_addA
+												, Tuple.of(pk, "enrollmentKeys", l2, "patientKey")
+												, b
+										-> {
+											if(b.succeeded())
+												a.handle(Future.succeededFuture());
+											else
+												a.handle(Future.failedFuture(new Exception("value MedicalPatient.enrollmentKeys failed", b.cause())));
+										});
+									}));
+										if(!pks.contains(l2)) {
+											pks.add(l2);
+											classes.add("MedicalEnrollment");
+										}
+									}
+								}
+							}
+						}
+						break;
+					case "setEnrollmentKeys":
+						JsonArray setEnrollmentKeysValues = jsonObject.getJsonArray(methodName);
+						if(setEnrollmentKeysValues != null) {
+							for(Integer i = 0; i <  setEnrollmentKeysValues.size(); i++) {
+								Long l = Long.parseLong(setEnrollmentKeysValues.getString(i));
+								if(l != null) {
+									SearchList<MedicalEnrollment> searchList = new SearchList<MedicalEnrollment>();
+									searchList.setQuery("*:*");
+									searchList.setStore(true);
+									searchList.setC(MedicalEnrollment.class);
+									searchList.addFilterQuery((inheritPk ? "inheritPk" : "pk") + "_indexed_long:" + l);
+									searchList.initDeepSearchList(siteRequest);
+									Long l2 = Optional.ofNullable(searchList.getList().stream().findFirst().orElse(null)).map(a -> a.getPk()).orElse(null);
+									if(l2 != null && !o.getEnrollmentKeys().contains(l2)) {
+									futures.add(Future.future(a -> {
+										tx.preparedQuery(SiteContextEnUS.SQL_addA
+												, Tuple.of(pk, "enrollmentKeys", l2, "patientKey")
+												, b
+										-> {
+											if(b.succeeded())
+												a.handle(Future.succeededFuture());
+											else
+												a.handle(Future.failedFuture(new Exception("value MedicalPatient.enrollmentKeys failed", b.cause())));
+										});
+									}));
+										if(!pks.contains(l2)) {
+											pks.add(l2);
+											classes.add("MedicalEnrollment");
+										}
+									}
+								}
+							}
+						}
+						if(o.getEnrollmentKeys() != null) {
+							for(Long l :  o.getEnrollmentKeys()) {
+								if(l != null && (setEnrollmentKeysValues == null || !setEnrollmentKeysValues.contains(l))) {
+									futures.add(Future.future(a -> {
+										tx.preparedQuery(SiteContextEnUS.SQL_removeA
+												, Tuple.of(pk, "enrollmentKeys", l, "patientKey")
+												, b
+										-> {
+											if(b.succeeded())
+												a.handle(Future.succeededFuture());
+											else
+												a.handle(Future.failedFuture(new Exception("value MedicalPatient.enrollmentKeys failed", b.cause())));
+										});
+									}));
+								}
+							}
+						}
+						break;
+					case "removeEnrollmentKeys":
+						{
+							Long l = Long.parseLong(jsonObject.getString(methodName));
+							if(l != null) {
+								SearchList<MedicalEnrollment> searchList = new SearchList<MedicalEnrollment>();
+								searchList.setQuery("*:*");
+								searchList.setStore(true);
+								searchList.setC(MedicalEnrollment.class);
+								searchList.addFilterQuery((inheritPk ? "inheritPk" : "pk") + "_indexed_long:" + l);
+								searchList.initDeepSearchList(siteRequest);
+								Long l2 = Optional.ofNullable(searchList.getList().stream().findFirst().orElse(null)).map(a -> a.getPk()).orElse(null);
+								if(l2 != null && o.getEnrollmentKeys().contains(l2)) {
+									futures.add(Future.future(a -> {
+										tx.preparedQuery(SiteContextEnUS.SQL_removeA
+												, Tuple.of(pk, "enrollmentKeys", l2, "patientKey")
+												, b
+										-> {
+											if(b.succeeded())
+												a.handle(Future.succeededFuture());
+											else
+												a.handle(Future.failedFuture(new Exception("value MedicalPatient.enrollmentKeys failed", b.cause())));
+										});
+									}));
+									if(!pks.contains(l2)) {
+										pks.add(l2);
+										classes.add("MedicalEnrollment");
+									}
+								}
+							}
+						}
+						break;
 					case "setPersonFirstName":
 						if(jsonObject.getString(methodName) == null) {
 							futures.add(Future.future(a -> {
@@ -1514,7 +1712,7 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 		try {
 			userMedicalPatient(siteRequest, b -> {
 				if(b.succeeded()) {
-					aSearchMedicalPatient(siteRequest, false, true, "/api/child/{id}", "GET", c -> {
+					aSearchMedicalPatient(siteRequest, false, true, "/api/patient/{id}", "GET", c -> {
 						if(c.succeeded()) {
 							SearchList<MedicalPatient> listMedicalPatient = c.result();
 							getMedicalPatientResponse(listMedicalPatient, d -> {
@@ -1580,7 +1778,7 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 		try {
 			userMedicalPatient(siteRequest, b -> {
 				if(b.succeeded()) {
-					aSearchMedicalPatient(siteRequest, false, true, "/api/child", "Search", c -> {
+					aSearchMedicalPatient(siteRequest, false, true, "/api/patient", "Search", c -> {
 						if(c.succeeded()) {
 							SearchList<MedicalPatient> listMedicalPatient = c.result();
 							searchMedicalPatientResponse(listMedicalPatient, d -> {
@@ -1686,7 +1884,7 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 		try {
 			userMedicalPatient(siteRequest, b -> {
 				if(b.succeeded()) {
-					aSearchMedicalPatient(siteRequest, false, true, "/api/admin/child", "AdminSearch", c -> {
+					aSearchMedicalPatient(siteRequest, false, true, "/api/admin/patient", "AdminSearch", c -> {
 						if(c.succeeded()) {
 							SearchList<MedicalPatient> listMedicalPatient = c.result();
 							adminsearchMedicalPatientResponse(listMedicalPatient, d -> {
@@ -1797,7 +1995,7 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 		try {
 			userMedicalPatient(siteRequest, b -> {
 				if(b.succeeded()) {
-					aSearchMedicalPatient(siteRequest, false, true, "/child", "SearchPage", c -> {
+					aSearchMedicalPatient(siteRequest, false, true, "/patient", "SearchPage", c -> {
 						if(c.succeeded()) {
 							SearchList<MedicalPatient> listMedicalPatient = c.result();
 							searchpageMedicalPatientResponse(listMedicalPatient, d -> {
@@ -1855,7 +2053,7 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 			CaseInsensitiveHeaders requestHeaders = new CaseInsensitiveHeaders();
 			siteRequest.setRequestHeaders(requestHeaders);
 
-			pageSolrDocument.setField("pageUri_frFR_stored_string", "/child");
+			pageSolrDocument.setField("pageUri_frFR_stored_string", "/patient");
 			page.setPageSolrDocument(pageSolrDocument);
 			page.setW(w);
 			if(listMedicalPatient.size() == 1)
@@ -2599,6 +2797,7 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 				searchList.setQuery("*:*");
 				searchList.setC(MedicalPatient.class);
 				searchList.addFilterQuery("modified_indexed_date:[" + DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(ZonedDateTime.ofInstant(siteRequest.getApiRequest_().getCreated().toInstant(), ZoneId.of("UTC"))) + " TO *]");
+				searchList.add("json.facet", "{enrollmentKeys:{terms:{field:enrollmentKeys_indexed_longs, limit:1000}}}");
 				searchList.setRows(1000);
 				searchList.initDeepSearchList(siteRequest);
 				List<Future> futures = new ArrayList<>();
@@ -2606,6 +2805,41 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 				for(int i=0; i < pks.size(); i++) {
 					Long pk2 = pks.get(i);
 					String classSimpleName2 = classes.get(i);
+
+					if("MedicalEnrollment".equals(classSimpleName2) && pk2 != null) {
+						SearchList<MedicalEnrollment> searchList2 = new SearchList<MedicalEnrollment>();
+						searchList2.setStore(true);
+						searchList2.setQuery("*:*");
+						searchList2.setC(MedicalEnrollment.class);
+						searchList2.addFilterQuery("pk_indexed_long:" + pk2);
+						searchList2.setRows(1);
+						searchList2.initDeepSearchList(siteRequest);
+						MedicalEnrollment o2 = searchList2.getList().stream().findFirst().orElse(null);
+
+						if(o2 != null) {
+							MedicalEnrollmentEnUSGenApiServiceImpl service = new MedicalEnrollmentEnUSGenApiServiceImpl(siteRequest.getSiteContext_());
+							SiteRequestEnUS siteRequest2 = generateSiteRequestEnUSForMedicalPatient(siteContext, siteRequest.getOperationRequest(), new JsonObject());
+							ApiRequest apiRequest2 = new ApiRequest();
+							apiRequest2.setRows(1);
+							apiRequest2.setNumFound(1l);
+							apiRequest2.setNumPATCH(0L);
+							apiRequest2.initDeepApiRequest(siteRequest2);
+							siteRequest2.setApiRequest_(apiRequest2);
+							siteRequest2.getVertx().eventBus().publish("websocketMedicalEnrollment", JsonObject.mapFrom(apiRequest2).toString());
+
+							o2.setPk(pk2);
+							o2.setSiteRequest_(siteRequest2);
+							futures.add(
+								service.patchMedicalEnrollmentFuture(o2, false, a -> {
+									if(a.succeeded()) {
+									} else {
+										LOGGER.info(String.format("MedicalEnrollment %s failed. ", pk2));
+										eventHandler.handle(Future.failedFuture(a.cause()));
+									}
+								})
+							);
+						}
+					}
 				}
 
 				CompositeFuture.all(futures).setHandler(a -> {
