@@ -1,4 +1,4 @@
-package org.computate.medicale.frFR.utilisateur;          
+package org.computate.medicale.frFR.utilisateur;         
 
 import java.util.List;
 

@@ -81,7 +81,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	public static final String MedicalPatient_NameAdjectivePlural = "patients";
 	public static final String MedicalPatient_Color = "orange";
 	public static final String MedicalPatient_IconGroup = "regular";
-	public static final String MedicalPatient_IconName = "patient";
+	public static final String MedicalPatient_IconName = "hospital-user";
 
 	////////////////
 	// patientKey //
@@ -271,7 +271,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 					{ e("div").a("class", "w3-card ").f();
 						{ e("div").a("class", "w3-cell-row ").f();
 							{ e("a").a("href", "/enrollment?fq=patientKey:", pk).a("class", "w3-cell w3-btn w3-center h4 w3-block h4 w3-blue-gray w3-hover-blue-gray ").f();
-								e("i").a("class", "fas fa-edit ").f().g("i");
+								e("i").a("class", "fas fa-notes-medical ").f().g("i");
 								sx("enrollments");
 							} g("a");
 						} g("div");
@@ -644,69 +644,69 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		return clinicKeys == null ? "" : StringEscapeUtils.escapeHtml4(strClinicKeys());
 	}
 
-	/////////////////////
-	// personFirstName //
-	/////////////////////
+	//////////////////////
+	// patientFirstName //
+	//////////////////////
 
-	/**	L'entité « personFirstName »
+	/**	L'entité « patientFirstName »
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected String personFirstName;
+	protected String patientFirstName;
 	@JsonIgnore
-	public Wrap<String> personFirstNameWrap = new Wrap<String>().p(this).c(String.class).var("personFirstName").o(personFirstName);
+	public Wrap<String> patientFirstNameWrap = new Wrap<String>().p(this).c(String.class).var("patientFirstName").o(patientFirstName);
 
-	/**	<br/>L'entité « personFirstName »
+	/**	<br/>L'entité « patientFirstName »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:personFirstName">Trouver l'entité personFirstName dans Solr</a>
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientFirstName">Trouver l'entité patientFirstName dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _personFirstName(Wrap<String> c);
+	protected abstract void _patientFirstName(Wrap<String> c);
 
-	public String getPersonFirstName() {
-		return personFirstName;
+	public String getPatientFirstName() {
+		return patientFirstName;
 	}
 
-	public void setPersonFirstName(String personFirstName) {
-		this.personFirstName = personFirstName;
-		this.personFirstNameWrap.alreadyInitialized = true;
+	public void setPatientFirstName(String patientFirstName) {
+		this.patientFirstName = patientFirstName;
+		this.patientFirstNameWrap.alreadyInitialized = true;
 	}
-	protected MedicalPatient personFirstNameInit() {
-		if(!personFirstNameWrap.alreadyInitialized) {
-			_personFirstName(personFirstNameWrap);
-			if(personFirstName == null)
-				setPersonFirstName(personFirstNameWrap.o);
+	protected MedicalPatient patientFirstNameInit() {
+		if(!patientFirstNameWrap.alreadyInitialized) {
+			_patientFirstName(patientFirstNameWrap);
+			if(patientFirstName == null)
+				setPatientFirstName(patientFirstNameWrap.o);
 		}
-		personFirstNameWrap.alreadyInitialized(true);
+		patientFirstNameWrap.alreadyInitialized(true);
 		return (MedicalPatient)this;
 	}
 
-	public String solrPersonFirstName() {
-		return personFirstName;
+	public String solrPatientFirstName() {
+		return patientFirstName;
 	}
 
-	public String strPersonFirstName() {
-		return personFirstName == null ? "" : personFirstName;
+	public String strPatientFirstName() {
+		return patientFirstName == null ? "" : patientFirstName;
 	}
 
-	public String jsonPersonFirstName() {
-		return personFirstName == null ? "" : personFirstName;
+	public String jsonPatientFirstName() {
+		return patientFirstName == null ? "" : patientFirstName;
 	}
 
-	public String nomAffichagePersonFirstName() {
+	public String nomAffichagePatientFirstName() {
 		return "first name";
 	}
 
-	public String htmTooltipPersonFirstName() {
+	public String htmTooltipPatientFirstName() {
 		return null;
 	}
 
-	public String htmPersonFirstName() {
-		return personFirstName == null ? "" : StringEscapeUtils.escapeHtml4(strPersonFirstName());
+	public String htmPatientFirstName() {
+		return patientFirstName == null ? "" : StringEscapeUtils.escapeHtml4(strPatientFirstName());
 	}
 
-	public void inputPersonFirstName(String classApiMethodMethod) {
+	public void inputPatientFirstName(String classApiMethodMethod) {
 		MedicalPatient s = (MedicalPatient)this;
 		if(
 				userKeys.contains(siteRequest_.getUserKey())
@@ -717,39 +717,39 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "first name")
-				.a("id", classApiMethodMethod, "_personFirstName");
+				.a("id", classApiMethodMethod, "_patientFirstName");
 				if("Page".equals(classApiMethodMethod) || "PATCH".equals(classApiMethodMethod)) {
-					a("class", "setPersonFirstName classMedicalPatient inputMedicalPatient", pk, "PersonFirstName w3-input w3-border ");
-					a("name", "setPersonFirstName");
+					a("class", "setPatientFirstName classMedicalPatient inputMedicalPatient", pk, "PatientFirstName w3-input w3-border ");
+					a("name", "setPatientFirstName");
 				} else {
-					a("class", "valuePersonFirstName w3-input w3-border classMedicalPatient inputMedicalPatient", pk, "PersonFirstName w3-input w3-border ");
-					a("name", "personFirstName");
+					a("class", "valuePatientFirstName w3-input w3-border classMedicalPatient inputMedicalPatient", pk, "PatientFirstName w3-input w3-border ");
+					a("name", "patientFirstName");
 				}
 				if("Page".equals(classApiMethodMethod)) {
 					a("onclick", "removeGlow($(this)); ");
-					a("onchange", "patchMedicalPatientVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPersonFirstName', $(this).val(), function() { addGlow($('#", classApiMethodMethod, "_personFirstName')); }, function() { addError($('#", classApiMethodMethod, "_personFirstName')); }); ");
+					a("onchange", "patchMedicalPatientVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPatientFirstName', $(this).val(), function() { addGlow($('#", classApiMethodMethod, "_patientFirstName')); }, function() { addError($('#", classApiMethodMethod, "_patientFirstName')); }); ");
 				}
-				a("value", strPersonFirstName())
+				a("value", strPatientFirstName())
 			.fg();
 
 		} else {
-			sx(htmPersonFirstName());
+			sx(htmPatientFirstName());
 		}
 	}
 
-	public void htmPersonFirstName(String classApiMethodMethod) {
+	public void htmPatientFirstName(String classApiMethodMethod) {
 		MedicalPatient s = (MedicalPatient)this;
 		{ e("div").a("class", "w3-cell w3-cell-top w3-center w3-mobile ").f();
 			{ e("div").a("class", "w3-padding ").f();
-				{ e("div").a("id", "suggest", classApiMethodMethod, "MedicalPatientPersonFirstName").f();
+				{ e("div").a("id", "suggest", classApiMethodMethod, "MedicalPatientPatientFirstName").f();
 					{ e("div").a("class", "w3-card ").f();
 						{ e("div").a("class", "w3-cell-row w3-orange ").f();
-							e("label").a("for", classApiMethodMethod, "_personFirstName").a("class", "").f().sx("first name").g("label");
+							e("label").a("for", classApiMethodMethod, "_patientFirstName").a("class", "").f().sx("first name").g("label");
 						} g("div");
 						{ e("div").a("class", "w3-cell-row w3-padding ").f();
 							{ e("div").a("class", "w3-cell ").f();
 
-								inputPersonFirstName(classApiMethodMethod);
+								inputPatientFirstName(classApiMethodMethod);
 							} g("div");
 							if(
 									userKeys.contains(siteRequest_.getUserKey())
@@ -762,7 +762,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 										{ e("button")
 											.a("tabindex", "-1")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-orange ")
-										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_personFirstName')); $('#", classApiMethodMethod, "_personFirstName').val(null); patchMedicalPatientVal([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setPersonFirstName', null, function() { addGlow($('#", classApiMethodMethod, "_personFirstName')); }, function() { addError($('#", classApiMethodMethod, "_personFirstName')); }); ")
+										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_patientFirstName')); $('#", classApiMethodMethod, "_patientFirstName').val(null); patchMedicalPatientVal([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setPatientFirstName', null, function() { addGlow($('#", classApiMethodMethod, "_patientFirstName')); }, function() { addError($('#", classApiMethodMethod, "_patientFirstName')); }); ")
 											.f();
 											e("i").a("class", "far fa-eraser ").f().g("i");
 										} g("button");
@@ -776,69 +776,69 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		} g("div");
 	}
 
-	//////////////////////////////
-	// personFirstNamePreferred //
-	//////////////////////////////
+	///////////////////////////////
+	// patientFirstNamePreferred //
+	///////////////////////////////
 
-	/**	L'entité « personFirstNamePreferred »
+	/**	L'entité « patientFirstNamePreferred »
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected String personFirstNamePreferred;
+	protected String patientFirstNamePreferred;
 	@JsonIgnore
-	public Wrap<String> personFirstNamePreferredWrap = new Wrap<String>().p(this).c(String.class).var("personFirstNamePreferred").o(personFirstNamePreferred);
+	public Wrap<String> patientFirstNamePreferredWrap = new Wrap<String>().p(this).c(String.class).var("patientFirstNamePreferred").o(patientFirstNamePreferred);
 
-	/**	<br/>L'entité « personFirstNamePreferred »
+	/**	<br/>L'entité « patientFirstNamePreferred »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:personFirstNamePreferred">Trouver l'entité personFirstNamePreferred dans Solr</a>
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientFirstNamePreferred">Trouver l'entité patientFirstNamePreferred dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _personFirstNamePreferred(Wrap<String> c);
+	protected abstract void _patientFirstNamePreferred(Wrap<String> c);
 
-	public String getPersonFirstNamePreferred() {
-		return personFirstNamePreferred;
+	public String getPatientFirstNamePreferred() {
+		return patientFirstNamePreferred;
 	}
 
-	public void setPersonFirstNamePreferred(String personFirstNamePreferred) {
-		this.personFirstNamePreferred = personFirstNamePreferred;
-		this.personFirstNamePreferredWrap.alreadyInitialized = true;
+	public void setPatientFirstNamePreferred(String patientFirstNamePreferred) {
+		this.patientFirstNamePreferred = patientFirstNamePreferred;
+		this.patientFirstNamePreferredWrap.alreadyInitialized = true;
 	}
-	protected MedicalPatient personFirstNamePreferredInit() {
-		if(!personFirstNamePreferredWrap.alreadyInitialized) {
-			_personFirstNamePreferred(personFirstNamePreferredWrap);
-			if(personFirstNamePreferred == null)
-				setPersonFirstNamePreferred(personFirstNamePreferredWrap.o);
+	protected MedicalPatient patientFirstNamePreferredInit() {
+		if(!patientFirstNamePreferredWrap.alreadyInitialized) {
+			_patientFirstNamePreferred(patientFirstNamePreferredWrap);
+			if(patientFirstNamePreferred == null)
+				setPatientFirstNamePreferred(patientFirstNamePreferredWrap.o);
 		}
-		personFirstNamePreferredWrap.alreadyInitialized(true);
+		patientFirstNamePreferredWrap.alreadyInitialized(true);
 		return (MedicalPatient)this;
 	}
 
-	public String solrPersonFirstNamePreferred() {
-		return personFirstNamePreferred;
+	public String solrPatientFirstNamePreferred() {
+		return patientFirstNamePreferred;
 	}
 
-	public String strPersonFirstNamePreferred() {
-		return personFirstNamePreferred == null ? "" : personFirstNamePreferred;
+	public String strPatientFirstNamePreferred() {
+		return patientFirstNamePreferred == null ? "" : patientFirstNamePreferred;
 	}
 
-	public String jsonPersonFirstNamePreferred() {
-		return personFirstNamePreferred == null ? "" : personFirstNamePreferred;
+	public String jsonPatientFirstNamePreferred() {
+		return patientFirstNamePreferred == null ? "" : patientFirstNamePreferred;
 	}
 
-	public String nomAffichagePersonFirstNamePreferred() {
+	public String nomAffichagePatientFirstNamePreferred() {
 		return "preferred first name";
 	}
 
-	public String htmTooltipPersonFirstNamePreferred() {
+	public String htmTooltipPatientFirstNamePreferred() {
 		return null;
 	}
 
-	public String htmPersonFirstNamePreferred() {
-		return personFirstNamePreferred == null ? "" : StringEscapeUtils.escapeHtml4(strPersonFirstNamePreferred());
+	public String htmPatientFirstNamePreferred() {
+		return patientFirstNamePreferred == null ? "" : StringEscapeUtils.escapeHtml4(strPatientFirstNamePreferred());
 	}
 
-	public void inputPersonFirstNamePreferred(String classApiMethodMethod) {
+	public void inputPatientFirstNamePreferred(String classApiMethodMethod) {
 		MedicalPatient s = (MedicalPatient)this;
 		if(
 				userKeys.contains(siteRequest_.getUserKey())
@@ -849,39 +849,39 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "preferred first name")
-				.a("id", classApiMethodMethod, "_personFirstNamePreferred");
+				.a("id", classApiMethodMethod, "_patientFirstNamePreferred");
 				if("Page".equals(classApiMethodMethod) || "PATCH".equals(classApiMethodMethod)) {
-					a("class", "setPersonFirstNamePreferred classMedicalPatient inputMedicalPatient", pk, "PersonFirstNamePreferred w3-input w3-border ");
-					a("name", "setPersonFirstNamePreferred");
+					a("class", "setPatientFirstNamePreferred classMedicalPatient inputMedicalPatient", pk, "PatientFirstNamePreferred w3-input w3-border ");
+					a("name", "setPatientFirstNamePreferred");
 				} else {
-					a("class", "valuePersonFirstNamePreferred w3-input w3-border classMedicalPatient inputMedicalPatient", pk, "PersonFirstNamePreferred w3-input w3-border ");
-					a("name", "personFirstNamePreferred");
+					a("class", "valuePatientFirstNamePreferred w3-input w3-border classMedicalPatient inputMedicalPatient", pk, "PatientFirstNamePreferred w3-input w3-border ");
+					a("name", "patientFirstNamePreferred");
 				}
 				if("Page".equals(classApiMethodMethod)) {
 					a("onclick", "removeGlow($(this)); ");
-					a("onchange", "patchMedicalPatientVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPersonFirstNamePreferred', $(this).val(), function() { addGlow($('#", classApiMethodMethod, "_personFirstNamePreferred')); }, function() { addError($('#", classApiMethodMethod, "_personFirstNamePreferred')); }); ");
+					a("onchange", "patchMedicalPatientVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPatientFirstNamePreferred', $(this).val(), function() { addGlow($('#", classApiMethodMethod, "_patientFirstNamePreferred')); }, function() { addError($('#", classApiMethodMethod, "_patientFirstNamePreferred')); }); ");
 				}
-				a("value", strPersonFirstNamePreferred())
+				a("value", strPatientFirstNamePreferred())
 			.fg();
 
 		} else {
-			sx(htmPersonFirstNamePreferred());
+			sx(htmPatientFirstNamePreferred());
 		}
 	}
 
-	public void htmPersonFirstNamePreferred(String classApiMethodMethod) {
+	public void htmPatientFirstNamePreferred(String classApiMethodMethod) {
 		MedicalPatient s = (MedicalPatient)this;
 		{ e("div").a("class", "w3-cell w3-cell-top w3-center w3-mobile ").f();
 			{ e("div").a("class", "w3-padding ").f();
-				{ e("div").a("id", "suggest", classApiMethodMethod, "MedicalPatientPersonFirstNamePreferred").f();
+				{ e("div").a("id", "suggest", classApiMethodMethod, "MedicalPatientPatientFirstNamePreferred").f();
 					{ e("div").a("class", "w3-card ").f();
 						{ e("div").a("class", "w3-cell-row w3-orange ").f();
-							e("label").a("for", classApiMethodMethod, "_personFirstNamePreferred").a("class", "").f().sx("preferred first name").g("label");
+							e("label").a("for", classApiMethodMethod, "_patientFirstNamePreferred").a("class", "").f().sx("preferred first name").g("label");
 						} g("div");
 						{ e("div").a("class", "w3-cell-row w3-padding ").f();
 							{ e("div").a("class", "w3-cell ").f();
 
-								inputPersonFirstNamePreferred(classApiMethodMethod);
+								inputPatientFirstNamePreferred(classApiMethodMethod);
 							} g("div");
 							if(
 									userKeys.contains(siteRequest_.getUserKey())
@@ -894,7 +894,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 										{ e("button")
 											.a("tabindex", "-1")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-orange ")
-										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_personFirstNamePreferred')); $('#", classApiMethodMethod, "_personFirstNamePreferred').val(null); patchMedicalPatientVal([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setPersonFirstNamePreferred', null, function() { addGlow($('#", classApiMethodMethod, "_personFirstNamePreferred')); }, function() { addError($('#", classApiMethodMethod, "_personFirstNamePreferred')); }); ")
+										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_patientFirstNamePreferred')); $('#", classApiMethodMethod, "_patientFirstNamePreferred').val(null); patchMedicalPatientVal([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setPatientFirstNamePreferred', null, function() { addGlow($('#", classApiMethodMethod, "_patientFirstNamePreferred')); }, function() { addError($('#", classApiMethodMethod, "_patientFirstNamePreferred')); }); ")
 											.f();
 											e("i").a("class", "far fa-eraser ").f().g("i");
 										} g("button");
@@ -1040,527 +1040,6 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		} g("div");
 	}
 
-	////////////////////////
-	// personCompleteName //
-	////////////////////////
-
-	/**	L'entité « personCompleteName »
-	 *	 is defined as null before being initialized. 
-	 */
-	@JsonInclude(Include.NON_NULL)
-	protected String personCompleteName;
-	@JsonIgnore
-	public Wrap<String> personCompleteNameWrap = new Wrap<String>().p(this).c(String.class).var("personCompleteName").o(personCompleteName);
-
-	/**	<br/>L'entité « personCompleteName »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:personCompleteName">Trouver l'entité personCompleteName dans Solr</a>
-	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
-	 **/
-	protected abstract void _personCompleteName(Wrap<String> c);
-
-	public String getPersonCompleteName() {
-		return personCompleteName;
-	}
-
-	public void setPersonCompleteName(String personCompleteName) {
-		this.personCompleteName = personCompleteName;
-		this.personCompleteNameWrap.alreadyInitialized = true;
-	}
-	protected MedicalPatient personCompleteNameInit() {
-		if(!personCompleteNameWrap.alreadyInitialized) {
-			_personCompleteName(personCompleteNameWrap);
-			if(personCompleteName == null)
-				setPersonCompleteName(personCompleteNameWrap.o);
-		}
-		personCompleteNameWrap.alreadyInitialized(true);
-		return (MedicalPatient)this;
-	}
-
-	public String solrPersonCompleteName() {
-		return personCompleteName;
-	}
-
-	public String strPersonCompleteName() {
-		return personCompleteName == null ? "" : personCompleteName;
-	}
-
-	public String jsonPersonCompleteName() {
-		return personCompleteName == null ? "" : personCompleteName;
-	}
-
-	public String nomAffichagePersonCompleteName() {
-		return "complete name";
-	}
-
-	public String htmTooltipPersonCompleteName() {
-		return null;
-	}
-
-	public String htmPersonCompleteName() {
-		return personCompleteName == null ? "" : StringEscapeUtils.escapeHtml4(strPersonCompleteName());
-	}
-
-	/////////////////////////////////
-	// personCompleteNamePreferred //
-	/////////////////////////////////
-
-	/**	L'entité « personCompleteNamePreferred »
-	 *	 is defined as null before being initialized. 
-	 */
-	@JsonInclude(Include.NON_NULL)
-	protected String personCompleteNamePreferred;
-	@JsonIgnore
-	public Wrap<String> personCompleteNamePreferredWrap = new Wrap<String>().p(this).c(String.class).var("personCompleteNamePreferred").o(personCompleteNamePreferred);
-
-	/**	<br/>L'entité « personCompleteNamePreferred »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:personCompleteNamePreferred">Trouver l'entité personCompleteNamePreferred dans Solr</a>
-	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
-	 **/
-	protected abstract void _personCompleteNamePreferred(Wrap<String> c);
-
-	public String getPersonCompleteNamePreferred() {
-		return personCompleteNamePreferred;
-	}
-
-	public void setPersonCompleteNamePreferred(String personCompleteNamePreferred) {
-		this.personCompleteNamePreferred = personCompleteNamePreferred;
-		this.personCompleteNamePreferredWrap.alreadyInitialized = true;
-	}
-	protected MedicalPatient personCompleteNamePreferredInit() {
-		if(!personCompleteNamePreferredWrap.alreadyInitialized) {
-			_personCompleteNamePreferred(personCompleteNamePreferredWrap);
-			if(personCompleteNamePreferred == null)
-				setPersonCompleteNamePreferred(personCompleteNamePreferredWrap.o);
-		}
-		personCompleteNamePreferredWrap.alreadyInitialized(true);
-		return (MedicalPatient)this;
-	}
-
-	public String solrPersonCompleteNamePreferred() {
-		return personCompleteNamePreferred;
-	}
-
-	public String strPersonCompleteNamePreferred() {
-		return personCompleteNamePreferred == null ? "" : personCompleteNamePreferred;
-	}
-
-	public String jsonPersonCompleteNamePreferred() {
-		return personCompleteNamePreferred == null ? "" : personCompleteNamePreferred;
-	}
-
-	public String nomAffichagePersonCompleteNamePreferred() {
-		return "complete name preferred";
-	}
-
-	public String htmTooltipPersonCompleteNamePreferred() {
-		return null;
-	}
-
-	public String htmPersonCompleteNamePreferred() {
-		return personCompleteNamePreferred == null ? "" : StringEscapeUtils.escapeHtml4(strPersonCompleteNamePreferred());
-	}
-
-	//////////////////////
-	// personFormalName //
-	//////////////////////
-
-	/**	L'entité « personFormalName »
-	 *	 is defined as null before being initialized. 
-	 */
-	@JsonInclude(Include.NON_NULL)
-	protected String personFormalName;
-	@JsonIgnore
-	public Wrap<String> personFormalNameWrap = new Wrap<String>().p(this).c(String.class).var("personFormalName").o(personFormalName);
-
-	/**	<br/>L'entité « personFormalName »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:personFormalName">Trouver l'entité personFormalName dans Solr</a>
-	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
-	 **/
-	protected abstract void _personFormalName(Wrap<String> c);
-
-	public String getPersonFormalName() {
-		return personFormalName;
-	}
-
-	public void setPersonFormalName(String personFormalName) {
-		this.personFormalName = personFormalName;
-		this.personFormalNameWrap.alreadyInitialized = true;
-	}
-	protected MedicalPatient personFormalNameInit() {
-		if(!personFormalNameWrap.alreadyInitialized) {
-			_personFormalName(personFormalNameWrap);
-			if(personFormalName == null)
-				setPersonFormalName(personFormalNameWrap.o);
-		}
-		personFormalNameWrap.alreadyInitialized(true);
-		return (MedicalPatient)this;
-	}
-
-	public String solrPersonFormalName() {
-		return personFormalName;
-	}
-
-	public String strPersonFormalName() {
-		return personFormalName == null ? "" : personFormalName;
-	}
-
-	public String jsonPersonFormalName() {
-		return personFormalName == null ? "" : personFormalName;
-	}
-
-	public String nomAffichagePersonFormalName() {
-		return "formal name";
-	}
-
-	public String htmTooltipPersonFormalName() {
-		return null;
-	}
-
-	public String htmPersonFormalName() {
-		return personFormalName == null ? "" : StringEscapeUtils.escapeHtml4(strPersonFormalName());
-	}
-
-	/////////////////////
-	// personBirthDate //
-	/////////////////////
-
-	/**	L'entité « personBirthDate »
-	 *	 is defined as null before being initialized. 
-	 */
-	@JsonDeserialize(using = LocalDateDeserializer.class)
-	@JsonSerialize(using = LocalDateSerializer.class)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	@JsonInclude(Include.NON_NULL)
-	protected LocalDate personBirthDate;
-	@JsonIgnore
-	public Wrap<LocalDate> personBirthDateWrap = new Wrap<LocalDate>().p(this).c(LocalDate.class).var("personBirthDate").o(personBirthDate);
-
-	/**	<br/>L'entité « personBirthDate »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:personBirthDate">Trouver l'entité personBirthDate dans Solr</a>
-	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
-	 **/
-	protected abstract void _personBirthDate(Wrap<LocalDate> c);
-
-	public LocalDate getPersonBirthDate() {
-		return personBirthDate;
-	}
-
-	public void setPersonBirthDate(LocalDate personBirthDate) {
-		this.personBirthDate = personBirthDate;
-		this.personBirthDateWrap.alreadyInitialized = true;
-	}
-	public MedicalPatient setPersonBirthDate(Instant o) {
-		this.personBirthDate = o == null ? null : LocalDate.from(o);
-		this.personBirthDateWrap.alreadyInitialized = true;
-		return (MedicalPatient)this;
-	}
-	/** Example: 2011-12-03+01:00 **/
-	public MedicalPatient setPersonBirthDate(String o) {
-		this.personBirthDate = o == null ? null : LocalDate.parse(o, DateTimeFormatter.ISO_DATE);
-		this.personBirthDateWrap.alreadyInitialized = true;
-		return (MedicalPatient)this;
-	}
-	public MedicalPatient setPersonBirthDate(Date o) {
-		this.personBirthDate = o == null ? null : o.toInstant().atZone(ZoneId.of(siteRequest_.getSiteConfig_().getSiteZone())).toLocalDate();
-		this.personBirthDateWrap.alreadyInitialized = true;
-		return (MedicalPatient)this;
-	}
-	protected MedicalPatient personBirthDateInit() {
-		if(!personBirthDateWrap.alreadyInitialized) {
-			_personBirthDate(personBirthDateWrap);
-			if(personBirthDate == null)
-				setPersonBirthDate(personBirthDateWrap.o);
-		}
-		personBirthDateWrap.alreadyInitialized(true);
-		return (MedicalPatient)this;
-	}
-
-	public Date solrPersonBirthDate() {
-		return personBirthDate == null ? null : Date.from(personBirthDate.atStartOfDay(ZoneId.of(siteRequest_.getSiteConfig_().getSiteZone())).toInstant().atZone(ZoneId.of("Z")).toInstant());
-	}
-
-	public String strPersonBirthDate() {
-		return personBirthDate == null ? "" : personBirthDate.format(DateTimeFormatter.ofPattern("EEE MMM d, yyyy", Locale.forLanguageTag("en-US")));
-	}
-
-	public String jsonPersonBirthDate() {
-		return personBirthDate == null ? "" : personBirthDate.format(DateTimeFormatter.ISO_DATE);
-	}
-
-	public String nomAffichagePersonBirthDate() {
-		return "birth date";
-	}
-
-	public String htmTooltipPersonBirthDate() {
-		return null;
-	}
-
-	public String htmPersonBirthDate() {
-		return personBirthDate == null ? "" : StringEscapeUtils.escapeHtml4(strPersonBirthDate());
-	}
-
-	public void inputPersonBirthDate(String classApiMethodMethod) {
-		MedicalPatient s = (MedicalPatient)this;
-		if(
-				userKeys.contains(siteRequest_.getUserKey())
-				|| Objects.equals(sessionId, siteRequest_.getSessionId())
-				|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
-				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
-		) {
-			e("input")
-				.a("type", "text")
-				.a("class", "w3-input w3-border datepicker setPersonBirthDate classMedicalPatient inputMedicalPatient", pk, "PersonBirthDate w3-input w3-border ")
-				.a("placeholder", "MM/DD/YYYY")
-				.a("data-timeformat", "MM/dd/yyyy")
-				.a("id", classApiMethodMethod, "_personBirthDate")
-				.a("onclick", "removeGlow($(this)); ")
-				.a("value", personBirthDate == null ? "" : DateTimeFormatter.ofPattern("MM/dd/yyyy").format(personBirthDate))
-				.a("onchange", "var t = moment(this.value, 'MM/DD/YYYY'); if(t) { var s = t.format('YYYY-MM-DD'); patchMedicalPatientVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPersonBirthDate', s, function() { addGlow($('#", classApiMethodMethod, "_personBirthDate')); }, function() { addError($('#", classApiMethodMethod, "_personBirthDate')); }); } ")
-				.fg();
-		} else {
-			sx(htmPersonBirthDate());
-		}
-	}
-
-	public void htmPersonBirthDate(String classApiMethodMethod) {
-		MedicalPatient s = (MedicalPatient)this;
-		{ e("div").a("class", "w3-cell w3-cell-top w3-center w3-mobile ").f();
-			{ e("div").a("class", "w3-padding ").f();
-				{ e("div").a("id", "suggest", classApiMethodMethod, "MedicalPatientPersonBirthDate").f();
-					{ e("div").a("class", "w3-card ").f();
-						{ e("div").a("class", "w3-cell-row w3-orange ").f();
-							e("label").a("for", classApiMethodMethod, "_personBirthDate").a("class", "").f().sx("birth date").g("label");
-						} g("div");
-						{ e("div").a("class", "w3-cell-row  ").f();
-							{ e("div").a("class", "w3-cell ").f();
-								inputPersonBirthDate(classApiMethodMethod);
-							} g("div");
-							if(
-									userKeys.contains(siteRequest_.getUserKey())
-									|| Objects.equals(sessionId, siteRequest_.getSessionId())
-									|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
-									|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
-							) {
-								if("Page".equals(classApiMethodMethod)) {
-									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
-										{ e("button")
-											.a("tabindex", "-1")
-											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-orange ")
-										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_personBirthDate')); $('#", classApiMethodMethod, "_personBirthDate').val(null); patchMedicalPatientVal([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setPersonBirthDate', null, function() { addGlow($('#", classApiMethodMethod, "_personBirthDate')); }, function() { addError($('#", classApiMethodMethod, "_personBirthDate')); }); ")
-											.f();
-											e("i").a("class", "far fa-eraser ").f().g("i");
-										} g("button");
-									} g("div");
-								}
-							}
-						} g("div");
-					} g("div");
-				} g("div");
-			} g("div");
-		} g("div");
-	}
-
-	/////////////////////////
-	// personBirthDateYear //
-	/////////////////////////
-
-	/**	L'entité « personBirthDateYear »
-	 *	 is defined as null before being initialized. 
-	 */
-	@JsonSerialize(using = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected Integer personBirthDateYear;
-	@JsonIgnore
-	public Wrap<Integer> personBirthDateYearWrap = new Wrap<Integer>().p(this).c(Integer.class).var("personBirthDateYear").o(personBirthDateYear);
-
-	/**	<br/>L'entité « personBirthDateYear »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:personBirthDateYear">Trouver l'entité personBirthDateYear dans Solr</a>
-	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
-	 **/
-	protected abstract void _personBirthDateYear(Wrap<Integer> c);
-
-	public Integer getPersonBirthDateYear() {
-		return personBirthDateYear;
-	}
-
-	public void setPersonBirthDateYear(Integer personBirthDateYear) {
-		this.personBirthDateYear = personBirthDateYear;
-		this.personBirthDateYearWrap.alreadyInitialized = true;
-	}
-	public MedicalPatient setPersonBirthDateYear(String o) {
-		if(NumberUtils.isParsable(o))
-			this.personBirthDateYear = Integer.parseInt(o);
-		this.personBirthDateYearWrap.alreadyInitialized = true;
-		return (MedicalPatient)this;
-	}
-	protected MedicalPatient personBirthDateYearInit() {
-		if(!personBirthDateYearWrap.alreadyInitialized) {
-			_personBirthDateYear(personBirthDateYearWrap);
-			if(personBirthDateYear == null)
-				setPersonBirthDateYear(personBirthDateYearWrap.o);
-		}
-		personBirthDateYearWrap.alreadyInitialized(true);
-		return (MedicalPatient)this;
-	}
-
-	public Integer solrPersonBirthDateYear() {
-		return personBirthDateYear;
-	}
-
-	public String strPersonBirthDateYear() {
-		return personBirthDateYear == null ? "" : personBirthDateYear.toString();
-	}
-
-	public String jsonPersonBirthDateYear() {
-		return personBirthDateYear == null ? "" : personBirthDateYear.toString();
-	}
-
-	public String nomAffichagePersonBirthDateYear() {
-		return null;
-	}
-
-	public String htmTooltipPersonBirthDateYear() {
-		return null;
-	}
-
-	public String htmPersonBirthDateYear() {
-		return personBirthDateYear == null ? "" : StringEscapeUtils.escapeHtml4(strPersonBirthDateYear());
-	}
-
-	////////////////////////////////
-	// personBirthDateMonthOfYear //
-	////////////////////////////////
-
-	/**	L'entité « personBirthDateMonthOfYear »
-	 *	 is defined as null before being initialized. 
-	 */
-	@JsonInclude(Include.NON_NULL)
-	protected String personBirthDateMonthOfYear;
-	@JsonIgnore
-	public Wrap<String> personBirthDateMonthOfYearWrap = new Wrap<String>().p(this).c(String.class).var("personBirthDateMonthOfYear").o(personBirthDateMonthOfYear);
-
-	/**	<br/>L'entité « personBirthDateMonthOfYear »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:personBirthDateMonthOfYear">Trouver l'entité personBirthDateMonthOfYear dans Solr</a>
-	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
-	 **/
-	protected abstract void _personBirthDateMonthOfYear(Wrap<String> c);
-
-	public String getPersonBirthDateMonthOfYear() {
-		return personBirthDateMonthOfYear;
-	}
-
-	public void setPersonBirthDateMonthOfYear(String personBirthDateMonthOfYear) {
-		this.personBirthDateMonthOfYear = personBirthDateMonthOfYear;
-		this.personBirthDateMonthOfYearWrap.alreadyInitialized = true;
-	}
-	protected MedicalPatient personBirthDateMonthOfYearInit() {
-		if(!personBirthDateMonthOfYearWrap.alreadyInitialized) {
-			_personBirthDateMonthOfYear(personBirthDateMonthOfYearWrap);
-			if(personBirthDateMonthOfYear == null)
-				setPersonBirthDateMonthOfYear(personBirthDateMonthOfYearWrap.o);
-		}
-		personBirthDateMonthOfYearWrap.alreadyInitialized(true);
-		return (MedicalPatient)this;
-	}
-
-	public String solrPersonBirthDateMonthOfYear() {
-		return personBirthDateMonthOfYear;
-	}
-
-	public String strPersonBirthDateMonthOfYear() {
-		return personBirthDateMonthOfYear == null ? "" : personBirthDateMonthOfYear;
-	}
-
-	public String jsonPersonBirthDateMonthOfYear() {
-		return personBirthDateMonthOfYear == null ? "" : personBirthDateMonthOfYear;
-	}
-
-	public String nomAffichagePersonBirthDateMonthOfYear() {
-		return null;
-	}
-
-	public String htmTooltipPersonBirthDateMonthOfYear() {
-		return null;
-	}
-
-	public String htmPersonBirthDateMonthOfYear() {
-		return personBirthDateMonthOfYear == null ? "" : StringEscapeUtils.escapeHtml4(strPersonBirthDateMonthOfYear());
-	}
-
-	//////////////////////////////
-	// personBirthDateDayOfWeek //
-	//////////////////////////////
-
-	/**	L'entité « personBirthDateDayOfWeek »
-	 *	 is defined as null before being initialized. 
-	 */
-	@JsonInclude(Include.NON_NULL)
-	protected String personBirthDateDayOfWeek;
-	@JsonIgnore
-	public Wrap<String> personBirthDateDayOfWeekWrap = new Wrap<String>().p(this).c(String.class).var("personBirthDateDayOfWeek").o(personBirthDateDayOfWeek);
-
-	/**	<br/>L'entité « personBirthDateDayOfWeek »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:personBirthDateDayOfWeek">Trouver l'entité personBirthDateDayOfWeek dans Solr</a>
-	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
-	 **/
-	protected abstract void _personBirthDateDayOfWeek(Wrap<String> c);
-
-	public String getPersonBirthDateDayOfWeek() {
-		return personBirthDateDayOfWeek;
-	}
-
-	public void setPersonBirthDateDayOfWeek(String personBirthDateDayOfWeek) {
-		this.personBirthDateDayOfWeek = personBirthDateDayOfWeek;
-		this.personBirthDateDayOfWeekWrap.alreadyInitialized = true;
-	}
-	protected MedicalPatient personBirthDateDayOfWeekInit() {
-		if(!personBirthDateDayOfWeekWrap.alreadyInitialized) {
-			_personBirthDateDayOfWeek(personBirthDateDayOfWeekWrap);
-			if(personBirthDateDayOfWeek == null)
-				setPersonBirthDateDayOfWeek(personBirthDateDayOfWeekWrap.o);
-		}
-		personBirthDateDayOfWeekWrap.alreadyInitialized(true);
-		return (MedicalPatient)this;
-	}
-
-	public String solrPersonBirthDateDayOfWeek() {
-		return personBirthDateDayOfWeek;
-	}
-
-	public String strPersonBirthDateDayOfWeek() {
-		return personBirthDateDayOfWeek == null ? "" : personBirthDateDayOfWeek;
-	}
-
-	public String jsonPersonBirthDateDayOfWeek() {
-		return personBirthDateDayOfWeek == null ? "" : personBirthDateDayOfWeek;
-	}
-
-	public String nomAffichagePersonBirthDateDayOfWeek() {
-		return null;
-	}
-
-	public String htmTooltipPersonBirthDateDayOfWeek() {
-		return null;
-	}
-
-	public String htmPersonBirthDateDayOfWeek() {
-		return personBirthDateDayOfWeek == null ? "" : StringEscapeUtils.escapeHtml4(strPersonBirthDateDayOfWeek());
-	}
-
 	/////////////////////////
 	// patientCompleteName //
 	/////////////////////////
@@ -1612,7 +1091,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	}
 
 	public String nomAffichagePatientCompleteName() {
-		return "name";
+		return "complete name";
 	}
 
 	public String htmTooltipPatientCompleteName() {
@@ -1621,6 +1100,465 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	public String htmPatientCompleteName() {
 		return patientCompleteName == null ? "" : StringEscapeUtils.escapeHtml4(strPatientCompleteName());
+	}
+
+	//////////////////////////////////
+	// patientCompleteNamePreferred //
+	//////////////////////////////////
+
+	/**	L'entité « patientCompleteNamePreferred »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String patientCompleteNamePreferred;
+	@JsonIgnore
+	public Wrap<String> patientCompleteNamePreferredWrap = new Wrap<String>().p(this).c(String.class).var("patientCompleteNamePreferred").o(patientCompleteNamePreferred);
+
+	/**	<br/>L'entité « patientCompleteNamePreferred »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientCompleteNamePreferred">Trouver l'entité patientCompleteNamePreferred dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientCompleteNamePreferred(Wrap<String> c);
+
+	public String getPatientCompleteNamePreferred() {
+		return patientCompleteNamePreferred;
+	}
+
+	public void setPatientCompleteNamePreferred(String patientCompleteNamePreferred) {
+		this.patientCompleteNamePreferred = patientCompleteNamePreferred;
+		this.patientCompleteNamePreferredWrap.alreadyInitialized = true;
+	}
+	protected MedicalPatient patientCompleteNamePreferredInit() {
+		if(!patientCompleteNamePreferredWrap.alreadyInitialized) {
+			_patientCompleteNamePreferred(patientCompleteNamePreferredWrap);
+			if(patientCompleteNamePreferred == null)
+				setPatientCompleteNamePreferred(patientCompleteNamePreferredWrap.o);
+		}
+		patientCompleteNamePreferredWrap.alreadyInitialized(true);
+		return (MedicalPatient)this;
+	}
+
+	public String solrPatientCompleteNamePreferred() {
+		return patientCompleteNamePreferred;
+	}
+
+	public String strPatientCompleteNamePreferred() {
+		return patientCompleteNamePreferred == null ? "" : patientCompleteNamePreferred;
+	}
+
+	public String jsonPatientCompleteNamePreferred() {
+		return patientCompleteNamePreferred == null ? "" : patientCompleteNamePreferred;
+	}
+
+	public String nomAffichagePatientCompleteNamePreferred() {
+		return "complete name preferred";
+	}
+
+	public String htmTooltipPatientCompleteNamePreferred() {
+		return null;
+	}
+
+	public String htmPatientCompleteNamePreferred() {
+		return patientCompleteNamePreferred == null ? "" : StringEscapeUtils.escapeHtml4(strPatientCompleteNamePreferred());
+	}
+
+	///////////////////////
+	// patientFormalName //
+	///////////////////////
+
+	/**	L'entité « patientFormalName »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String patientFormalName;
+	@JsonIgnore
+	public Wrap<String> patientFormalNameWrap = new Wrap<String>().p(this).c(String.class).var("patientFormalName").o(patientFormalName);
+
+	/**	<br/>L'entité « patientFormalName »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientFormalName">Trouver l'entité patientFormalName dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientFormalName(Wrap<String> c);
+
+	public String getPatientFormalName() {
+		return patientFormalName;
+	}
+
+	public void setPatientFormalName(String patientFormalName) {
+		this.patientFormalName = patientFormalName;
+		this.patientFormalNameWrap.alreadyInitialized = true;
+	}
+	protected MedicalPatient patientFormalNameInit() {
+		if(!patientFormalNameWrap.alreadyInitialized) {
+			_patientFormalName(patientFormalNameWrap);
+			if(patientFormalName == null)
+				setPatientFormalName(patientFormalNameWrap.o);
+		}
+		patientFormalNameWrap.alreadyInitialized(true);
+		return (MedicalPatient)this;
+	}
+
+	public String solrPatientFormalName() {
+		return patientFormalName;
+	}
+
+	public String strPatientFormalName() {
+		return patientFormalName == null ? "" : patientFormalName;
+	}
+
+	public String jsonPatientFormalName() {
+		return patientFormalName == null ? "" : patientFormalName;
+	}
+
+	public String nomAffichagePatientFormalName() {
+		return "formal name";
+	}
+
+	public String htmTooltipPatientFormalName() {
+		return null;
+	}
+
+	public String htmPatientFormalName() {
+		return patientFormalName == null ? "" : StringEscapeUtils.escapeHtml4(strPatientFormalName());
+	}
+
+	//////////////////////
+	// patientBirthDate //
+	//////////////////////
+
+	/**	L'entité « patientBirthDate »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonInclude(Include.NON_NULL)
+	protected LocalDate patientBirthDate;
+	@JsonIgnore
+	public Wrap<LocalDate> patientBirthDateWrap = new Wrap<LocalDate>().p(this).c(LocalDate.class).var("patientBirthDate").o(patientBirthDate);
+
+	/**	<br/>L'entité « patientBirthDate »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDate">Trouver l'entité patientBirthDate dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientBirthDate(Wrap<LocalDate> c);
+
+	public LocalDate getPatientBirthDate() {
+		return patientBirthDate;
+	}
+
+	public void setPatientBirthDate(LocalDate patientBirthDate) {
+		this.patientBirthDate = patientBirthDate;
+		this.patientBirthDateWrap.alreadyInitialized = true;
+	}
+	public MedicalPatient setPatientBirthDate(Instant o) {
+		this.patientBirthDate = o == null ? null : LocalDate.from(o);
+		this.patientBirthDateWrap.alreadyInitialized = true;
+		return (MedicalPatient)this;
+	}
+	/** Example: 2011-12-03+01:00 **/
+	public MedicalPatient setPatientBirthDate(String o) {
+		this.patientBirthDate = o == null ? null : LocalDate.parse(o, DateTimeFormatter.ISO_DATE);
+		this.patientBirthDateWrap.alreadyInitialized = true;
+		return (MedicalPatient)this;
+	}
+	public MedicalPatient setPatientBirthDate(Date o) {
+		this.patientBirthDate = o == null ? null : o.toInstant().atZone(ZoneId.of(siteRequest_.getSiteConfig_().getSiteZone())).toLocalDate();
+		this.patientBirthDateWrap.alreadyInitialized = true;
+		return (MedicalPatient)this;
+	}
+	protected MedicalPatient patientBirthDateInit() {
+		if(!patientBirthDateWrap.alreadyInitialized) {
+			_patientBirthDate(patientBirthDateWrap);
+			if(patientBirthDate == null)
+				setPatientBirthDate(patientBirthDateWrap.o);
+		}
+		patientBirthDateWrap.alreadyInitialized(true);
+		return (MedicalPatient)this;
+	}
+
+	public Date solrPatientBirthDate() {
+		return patientBirthDate == null ? null : Date.from(patientBirthDate.atStartOfDay(ZoneId.of(siteRequest_.getSiteConfig_().getSiteZone())).toInstant().atZone(ZoneId.of("Z")).toInstant());
+	}
+
+	public String strPatientBirthDate() {
+		return patientBirthDate == null ? "" : patientBirthDate.format(DateTimeFormatter.ofPattern("EEE MMM d, yyyy", Locale.forLanguageTag("en-US")));
+	}
+
+	public String jsonPatientBirthDate() {
+		return patientBirthDate == null ? "" : patientBirthDate.format(DateTimeFormatter.ISO_DATE);
+	}
+
+	public String nomAffichagePatientBirthDate() {
+		return "birth date";
+	}
+
+	public String htmTooltipPatientBirthDate() {
+		return null;
+	}
+
+	public String htmPatientBirthDate() {
+		return patientBirthDate == null ? "" : StringEscapeUtils.escapeHtml4(strPatientBirthDate());
+	}
+
+	public void inputPatientBirthDate(String classApiMethodMethod) {
+		MedicalPatient s = (MedicalPatient)this;
+		if(
+				userKeys.contains(siteRequest_.getUserKey())
+				|| Objects.equals(sessionId, siteRequest_.getSessionId())
+				|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
+				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+		) {
+			e("input")
+				.a("type", "text")
+				.a("class", "w3-input w3-border datepicker setPatientBirthDate classMedicalPatient inputMedicalPatient", pk, "PatientBirthDate w3-input w3-border ")
+				.a("placeholder", "MM/DD/YYYY")
+				.a("data-timeformat", "MM/dd/yyyy")
+				.a("id", classApiMethodMethod, "_patientBirthDate")
+				.a("onclick", "removeGlow($(this)); ")
+				.a("value", patientBirthDate == null ? "" : DateTimeFormatter.ofPattern("MM/dd/yyyy").format(patientBirthDate))
+				.a("onchange", "var t = moment(this.value, 'MM/DD/YYYY'); if(t) { var s = t.format('YYYY-MM-DD'); patchMedicalPatientVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPatientBirthDate', s, function() { addGlow($('#", classApiMethodMethod, "_patientBirthDate')); }, function() { addError($('#", classApiMethodMethod, "_patientBirthDate')); }); } ")
+				.fg();
+		} else {
+			sx(htmPatientBirthDate());
+		}
+	}
+
+	public void htmPatientBirthDate(String classApiMethodMethod) {
+		MedicalPatient s = (MedicalPatient)this;
+		{ e("div").a("class", "w3-cell w3-cell-top w3-center w3-mobile ").f();
+			{ e("div").a("class", "w3-padding ").f();
+				{ e("div").a("id", "suggest", classApiMethodMethod, "MedicalPatientPatientBirthDate").f();
+					{ e("div").a("class", "w3-card ").f();
+						{ e("div").a("class", "w3-cell-row w3-orange ").f();
+							e("label").a("for", classApiMethodMethod, "_patientBirthDate").a("class", "").f().sx("birth date").g("label");
+						} g("div");
+						{ e("div").a("class", "w3-cell-row  ").f();
+							{ e("div").a("class", "w3-cell ").f();
+								inputPatientBirthDate(classApiMethodMethod);
+							} g("div");
+							if(
+									userKeys.contains(siteRequest_.getUserKey())
+									|| Objects.equals(sessionId, siteRequest_.getSessionId())
+									|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
+									|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+							) {
+								if("Page".equals(classApiMethodMethod)) {
+									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
+										{ e("button")
+											.a("tabindex", "-1")
+											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-orange ")
+										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_patientBirthDate')); $('#", classApiMethodMethod, "_patientBirthDate').val(null); patchMedicalPatientVal([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setPatientBirthDate', null, function() { addGlow($('#", classApiMethodMethod, "_patientBirthDate')); }, function() { addError($('#", classApiMethodMethod, "_patientBirthDate')); }); ")
+											.f();
+											e("i").a("class", "far fa-eraser ").f().g("i");
+										} g("button");
+									} g("div");
+								}
+							}
+						} g("div");
+					} g("div");
+				} g("div");
+			} g("div");
+		} g("div");
+	}
+
+	//////////////////////////
+	// patientBirthDateYear //
+	//////////////////////////
+
+	/**	L'entité « patientBirthDateYear »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonSerialize(using = ToStringSerializer.class)
+	@JsonInclude(Include.NON_NULL)
+	protected Integer patientBirthDateYear;
+	@JsonIgnore
+	public Wrap<Integer> patientBirthDateYearWrap = new Wrap<Integer>().p(this).c(Integer.class).var("patientBirthDateYear").o(patientBirthDateYear);
+
+	/**	<br/>L'entité « patientBirthDateYear »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDateYear">Trouver l'entité patientBirthDateYear dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientBirthDateYear(Wrap<Integer> c);
+
+	public Integer getPatientBirthDateYear() {
+		return patientBirthDateYear;
+	}
+
+	public void setPatientBirthDateYear(Integer patientBirthDateYear) {
+		this.patientBirthDateYear = patientBirthDateYear;
+		this.patientBirthDateYearWrap.alreadyInitialized = true;
+	}
+	public MedicalPatient setPatientBirthDateYear(String o) {
+		if(NumberUtils.isParsable(o))
+			this.patientBirthDateYear = Integer.parseInt(o);
+		this.patientBirthDateYearWrap.alreadyInitialized = true;
+		return (MedicalPatient)this;
+	}
+	protected MedicalPatient patientBirthDateYearInit() {
+		if(!patientBirthDateYearWrap.alreadyInitialized) {
+			_patientBirthDateYear(patientBirthDateYearWrap);
+			if(patientBirthDateYear == null)
+				setPatientBirthDateYear(patientBirthDateYearWrap.o);
+		}
+		patientBirthDateYearWrap.alreadyInitialized(true);
+		return (MedicalPatient)this;
+	}
+
+	public Integer solrPatientBirthDateYear() {
+		return patientBirthDateYear;
+	}
+
+	public String strPatientBirthDateYear() {
+		return patientBirthDateYear == null ? "" : patientBirthDateYear.toString();
+	}
+
+	public String jsonPatientBirthDateYear() {
+		return patientBirthDateYear == null ? "" : patientBirthDateYear.toString();
+	}
+
+	public String nomAffichagePatientBirthDateYear() {
+		return null;
+	}
+
+	public String htmTooltipPatientBirthDateYear() {
+		return null;
+	}
+
+	public String htmPatientBirthDateYear() {
+		return patientBirthDateYear == null ? "" : StringEscapeUtils.escapeHtml4(strPatientBirthDateYear());
+	}
+
+	/////////////////////////////////
+	// patientBirthDateMonthOfYear //
+	/////////////////////////////////
+
+	/**	L'entité « patientBirthDateMonthOfYear »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String patientBirthDateMonthOfYear;
+	@JsonIgnore
+	public Wrap<String> patientBirthDateMonthOfYearWrap = new Wrap<String>().p(this).c(String.class).var("patientBirthDateMonthOfYear").o(patientBirthDateMonthOfYear);
+
+	/**	<br/>L'entité « patientBirthDateMonthOfYear »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDateMonthOfYear">Trouver l'entité patientBirthDateMonthOfYear dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientBirthDateMonthOfYear(Wrap<String> c);
+
+	public String getPatientBirthDateMonthOfYear() {
+		return patientBirthDateMonthOfYear;
+	}
+
+	public void setPatientBirthDateMonthOfYear(String patientBirthDateMonthOfYear) {
+		this.patientBirthDateMonthOfYear = patientBirthDateMonthOfYear;
+		this.patientBirthDateMonthOfYearWrap.alreadyInitialized = true;
+	}
+	protected MedicalPatient patientBirthDateMonthOfYearInit() {
+		if(!patientBirthDateMonthOfYearWrap.alreadyInitialized) {
+			_patientBirthDateMonthOfYear(patientBirthDateMonthOfYearWrap);
+			if(patientBirthDateMonthOfYear == null)
+				setPatientBirthDateMonthOfYear(patientBirthDateMonthOfYearWrap.o);
+		}
+		patientBirthDateMonthOfYearWrap.alreadyInitialized(true);
+		return (MedicalPatient)this;
+	}
+
+	public String solrPatientBirthDateMonthOfYear() {
+		return patientBirthDateMonthOfYear;
+	}
+
+	public String strPatientBirthDateMonthOfYear() {
+		return patientBirthDateMonthOfYear == null ? "" : patientBirthDateMonthOfYear;
+	}
+
+	public String jsonPatientBirthDateMonthOfYear() {
+		return patientBirthDateMonthOfYear == null ? "" : patientBirthDateMonthOfYear;
+	}
+
+	public String nomAffichagePatientBirthDateMonthOfYear() {
+		return null;
+	}
+
+	public String htmTooltipPatientBirthDateMonthOfYear() {
+		return null;
+	}
+
+	public String htmPatientBirthDateMonthOfYear() {
+		return patientBirthDateMonthOfYear == null ? "" : StringEscapeUtils.escapeHtml4(strPatientBirthDateMonthOfYear());
+	}
+
+	///////////////////////////////
+	// patientBirthDateDayOfWeek //
+	///////////////////////////////
+
+	/**	L'entité « patientBirthDateDayOfWeek »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String patientBirthDateDayOfWeek;
+	@JsonIgnore
+	public Wrap<String> patientBirthDateDayOfWeekWrap = new Wrap<String>().p(this).c(String.class).var("patientBirthDateDayOfWeek").o(patientBirthDateDayOfWeek);
+
+	/**	<br/>L'entité « patientBirthDateDayOfWeek »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDateDayOfWeek">Trouver l'entité patientBirthDateDayOfWeek dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _patientBirthDateDayOfWeek(Wrap<String> c);
+
+	public String getPatientBirthDateDayOfWeek() {
+		return patientBirthDateDayOfWeek;
+	}
+
+	public void setPatientBirthDateDayOfWeek(String patientBirthDateDayOfWeek) {
+		this.patientBirthDateDayOfWeek = patientBirthDateDayOfWeek;
+		this.patientBirthDateDayOfWeekWrap.alreadyInitialized = true;
+	}
+	protected MedicalPatient patientBirthDateDayOfWeekInit() {
+		if(!patientBirthDateDayOfWeekWrap.alreadyInitialized) {
+			_patientBirthDateDayOfWeek(patientBirthDateDayOfWeekWrap);
+			if(patientBirthDateDayOfWeek == null)
+				setPatientBirthDateDayOfWeek(patientBirthDateDayOfWeekWrap.o);
+		}
+		patientBirthDateDayOfWeekWrap.alreadyInitialized(true);
+		return (MedicalPatient)this;
+	}
+
+	public String solrPatientBirthDateDayOfWeek() {
+		return patientBirthDateDayOfWeek;
+	}
+
+	public String strPatientBirthDateDayOfWeek() {
+		return patientBirthDateDayOfWeek == null ? "" : patientBirthDateDayOfWeek;
+	}
+
+	public String jsonPatientBirthDateDayOfWeek() {
+		return patientBirthDateDayOfWeek == null ? "" : patientBirthDateDayOfWeek;
+	}
+
+	public String nomAffichagePatientBirthDateDayOfWeek() {
+		return null;
+	}
+
+	public String htmTooltipPatientBirthDateDayOfWeek() {
+		return null;
+	}
+
+	public String htmPatientBirthDateDayOfWeek() {
+		return patientBirthDateDayOfWeek == null ? "" : StringEscapeUtils.escapeHtml4(strPatientBirthDateDayOfWeek());
 	}
 
 	//////////////
@@ -1651,17 +1589,16 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		enrollmentsInit();
 		userKeysInit();
 		clinicKeysInit();
-		personFirstNameInit();
-		personFirstNamePreferredInit();
+		patientFirstNameInit();
+		patientFirstNamePreferredInit();
 		familyNameInit();
-		personCompleteNameInit();
-		personCompleteNamePreferredInit();
-		personFormalNameInit();
-		personBirthDateInit();
-		personBirthDateYearInit();
-		personBirthDateMonthOfYearInit();
-		personBirthDateDayOfWeekInit();
 		patientCompleteNameInit();
+		patientCompleteNamePreferredInit();
+		patientFormalNameInit();
+		patientBirthDateInit();
+		patientBirthDateYearInit();
+		patientBirthDateMonthOfYearInit();
+		patientBirthDateDayOfWeekInit();
 	}
 
 	@Override public void initDeepForClass(SiteRequestEnUS siteRequest_) {
@@ -1716,28 +1653,26 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 				return oMedicalPatient.userKeys;
 			case "clinicKeys":
 				return oMedicalPatient.clinicKeys;
-			case "personFirstName":
-				return oMedicalPatient.personFirstName;
-			case "personFirstNamePreferred":
-				return oMedicalPatient.personFirstNamePreferred;
+			case "patientFirstName":
+				return oMedicalPatient.patientFirstName;
+			case "patientFirstNamePreferred":
+				return oMedicalPatient.patientFirstNamePreferred;
 			case "familyName":
 				return oMedicalPatient.familyName;
-			case "personCompleteName":
-				return oMedicalPatient.personCompleteName;
-			case "personCompleteNamePreferred":
-				return oMedicalPatient.personCompleteNamePreferred;
-			case "personFormalName":
-				return oMedicalPatient.personFormalName;
-			case "personBirthDate":
-				return oMedicalPatient.personBirthDate;
-			case "personBirthDateYear":
-				return oMedicalPatient.personBirthDateYear;
-			case "personBirthDateMonthOfYear":
-				return oMedicalPatient.personBirthDateMonthOfYear;
-			case "personBirthDateDayOfWeek":
-				return oMedicalPatient.personBirthDateDayOfWeek;
 			case "patientCompleteName":
 				return oMedicalPatient.patientCompleteName;
+			case "patientCompleteNamePreferred":
+				return oMedicalPatient.patientCompleteNamePreferred;
+			case "patientFormalName":
+				return oMedicalPatient.patientFormalName;
+			case "patientBirthDate":
+				return oMedicalPatient.patientBirthDate;
+			case "patientBirthDateYear":
+				return oMedicalPatient.patientBirthDateYear;
+			case "patientBirthDateMonthOfYear":
+				return oMedicalPatient.patientBirthDateMonthOfYear;
+			case "patientBirthDateDayOfWeek":
+				return oMedicalPatient.patientBirthDateDayOfWeek;
 			default:
 				return super.obtainCluster(var);
 		}
@@ -1794,14 +1729,14 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	}
 	public Object defineMedicalPatient(String var, String val) {
 		switch(var) {
-			case "personFirstName":
+			case "patientFirstName":
 				if(val != null)
-					setPersonFirstName(val);
+					setPatientFirstName(val);
 				savesMedicalPatient.add(var);
 				return val;
-			case "personFirstNamePreferred":
+			case "patientFirstNamePreferred":
 				if(val != null)
-					setPersonFirstNamePreferred(val);
+					setPatientFirstNamePreferred(val);
 				savesMedicalPatient.add(var);
 				return val;
 			case "familyName":
@@ -1809,9 +1744,9 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 					setFamilyName(val);
 				savesMedicalPatient.add(var);
 				return val;
-			case "personBirthDate":
+			case "patientBirthDate":
 				if(val != null)
-					setPersonBirthDate(val);
+					setPatientBirthDate(val);
 				savesMedicalPatient.add(var);
 				return val;
 			default:
@@ -1865,16 +1800,16 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 					oMedicalPatient.clinicKeys.addAll(clinicKeys);
 			}
 
-			if(savesMedicalPatient.contains("personFirstName")) {
-				String personFirstName = (String)solrDocument.get("personFirstName_stored_string");
-				if(personFirstName != null)
-					oMedicalPatient.setPersonFirstName(personFirstName);
+			if(savesMedicalPatient.contains("patientFirstName")) {
+				String patientFirstName = (String)solrDocument.get("patientFirstName_stored_string");
+				if(patientFirstName != null)
+					oMedicalPatient.setPatientFirstName(patientFirstName);
 			}
 
-			if(savesMedicalPatient.contains("personFirstNamePreferred")) {
-				String personFirstNamePreferred = (String)solrDocument.get("personFirstNamePreferred_stored_string");
-				if(personFirstNamePreferred != null)
-					oMedicalPatient.setPersonFirstNamePreferred(personFirstNamePreferred);
+			if(savesMedicalPatient.contains("patientFirstNamePreferred")) {
+				String patientFirstNamePreferred = (String)solrDocument.get("patientFirstNamePreferred_stored_string");
+				if(patientFirstNamePreferred != null)
+					oMedicalPatient.setPatientFirstNamePreferred(patientFirstNamePreferred);
 			}
 
 			if(savesMedicalPatient.contains("familyName")) {
@@ -1883,52 +1818,46 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 					oMedicalPatient.setFamilyName(familyName);
 			}
 
-			if(savesMedicalPatient.contains("personCompleteName")) {
-				String personCompleteName = (String)solrDocument.get("personCompleteName_stored_string");
-				if(personCompleteName != null)
-					oMedicalPatient.setPersonCompleteName(personCompleteName);
-			}
-
-			if(savesMedicalPatient.contains("personCompleteNamePreferred")) {
-				String personCompleteNamePreferred = (String)solrDocument.get("personCompleteNamePreferred_stored_string");
-				if(personCompleteNamePreferred != null)
-					oMedicalPatient.setPersonCompleteNamePreferred(personCompleteNamePreferred);
-			}
-
-			if(savesMedicalPatient.contains("personFormalName")) {
-				String personFormalName = (String)solrDocument.get("personFormalName_stored_string");
-				if(personFormalName != null)
-					oMedicalPatient.setPersonFormalName(personFormalName);
-			}
-
-			if(savesMedicalPatient.contains("personBirthDate")) {
-				Date personBirthDate = (Date)solrDocument.get("personBirthDate_stored_date");
-				if(personBirthDate != null)
-					oMedicalPatient.setPersonBirthDate(personBirthDate);
-			}
-
-			if(savesMedicalPatient.contains("personBirthDateYear")) {
-				Integer personBirthDateYear = (Integer)solrDocument.get("personBirthDateYear_stored_int");
-				if(personBirthDateYear != null)
-					oMedicalPatient.setPersonBirthDateYear(personBirthDateYear);
-			}
-
-			if(savesMedicalPatient.contains("personBirthDateMonthOfYear")) {
-				String personBirthDateMonthOfYear = (String)solrDocument.get("personBirthDateMonthOfYear_stored_string");
-				if(personBirthDateMonthOfYear != null)
-					oMedicalPatient.setPersonBirthDateMonthOfYear(personBirthDateMonthOfYear);
-			}
-
-			if(savesMedicalPatient.contains("personBirthDateDayOfWeek")) {
-				String personBirthDateDayOfWeek = (String)solrDocument.get("personBirthDateDayOfWeek_stored_string");
-				if(personBirthDateDayOfWeek != null)
-					oMedicalPatient.setPersonBirthDateDayOfWeek(personBirthDateDayOfWeek);
-			}
-
 			if(savesMedicalPatient.contains("patientCompleteName")) {
 				String patientCompleteName = (String)solrDocument.get("patientCompleteName_stored_string");
 				if(patientCompleteName != null)
 					oMedicalPatient.setPatientCompleteName(patientCompleteName);
+			}
+
+			if(savesMedicalPatient.contains("patientCompleteNamePreferred")) {
+				String patientCompleteNamePreferred = (String)solrDocument.get("patientCompleteNamePreferred_stored_string");
+				if(patientCompleteNamePreferred != null)
+					oMedicalPatient.setPatientCompleteNamePreferred(patientCompleteNamePreferred);
+			}
+
+			if(savesMedicalPatient.contains("patientFormalName")) {
+				String patientFormalName = (String)solrDocument.get("patientFormalName_stored_string");
+				if(patientFormalName != null)
+					oMedicalPatient.setPatientFormalName(patientFormalName);
+			}
+
+			if(savesMedicalPatient.contains("patientBirthDate")) {
+				Date patientBirthDate = (Date)solrDocument.get("patientBirthDate_stored_date");
+				if(patientBirthDate != null)
+					oMedicalPatient.setPatientBirthDate(patientBirthDate);
+			}
+
+			if(savesMedicalPatient.contains("patientBirthDateYear")) {
+				Integer patientBirthDateYear = (Integer)solrDocument.get("patientBirthDateYear_stored_int");
+				if(patientBirthDateYear != null)
+					oMedicalPatient.setPatientBirthDateYear(patientBirthDateYear);
+			}
+
+			if(savesMedicalPatient.contains("patientBirthDateMonthOfYear")) {
+				String patientBirthDateMonthOfYear = (String)solrDocument.get("patientBirthDateMonthOfYear_stored_string");
+				if(patientBirthDateMonthOfYear != null)
+					oMedicalPatient.setPatientBirthDateMonthOfYear(patientBirthDateMonthOfYear);
+			}
+
+			if(savesMedicalPatient.contains("patientBirthDateDayOfWeek")) {
+				String patientBirthDateDayOfWeek = (String)solrDocument.get("patientBirthDateDayOfWeek_stored_string");
+				if(patientBirthDateDayOfWeek != null)
+					oMedicalPatient.setPatientBirthDateDayOfWeek(patientBirthDateDayOfWeek);
 			}
 		}
 
@@ -2032,49 +1961,45 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 				document.addField("clinicKeys_stored_longs", o);
 			}
 		}
-		if(personFirstName != null) {
-			document.addField("personFirstName_indexed_string", personFirstName);
-			document.addField("personFirstName_stored_string", personFirstName);
+		if(patientFirstName != null) {
+			document.addField("patientFirstName_indexed_string", patientFirstName);
+			document.addField("patientFirstName_stored_string", patientFirstName);
 		}
-		if(personFirstNamePreferred != null) {
-			document.addField("personFirstNamePreferred_indexed_string", personFirstNamePreferred);
-			document.addField("personFirstNamePreferred_stored_string", personFirstNamePreferred);
+		if(patientFirstNamePreferred != null) {
+			document.addField("patientFirstNamePreferred_indexed_string", patientFirstNamePreferred);
+			document.addField("patientFirstNamePreferred_stored_string", patientFirstNamePreferred);
 		}
 		if(familyName != null) {
 			document.addField("familyName_indexed_string", familyName);
 			document.addField("familyName_stored_string", familyName);
 		}
-		if(personCompleteName != null) {
-			document.addField("personCompleteName_indexed_string", personCompleteName);
-			document.addField("personCompleteName_stored_string", personCompleteName);
-		}
-		if(personCompleteNamePreferred != null) {
-			document.addField("personCompleteNamePreferred_indexed_string", personCompleteNamePreferred);
-			document.addField("personCompleteNamePreferred_stored_string", personCompleteNamePreferred);
-		}
-		if(personFormalName != null) {
-			document.addField("personFormalName_indexed_string", personFormalName);
-			document.addField("personFormalName_stored_string", personFormalName);
-		}
-		if(personBirthDate != null) {
-			document.addField("personBirthDate_indexed_date", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(personBirthDate.atStartOfDay(ZoneId.of(siteRequest_.getSiteConfig_().getSiteZone())).toInstant().atZone(ZoneId.of("Z"))));
-			document.addField("personBirthDate_stored_date", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(personBirthDate.atStartOfDay(ZoneId.of(siteRequest_.getSiteConfig_().getSiteZone())).toInstant().atZone(ZoneId.of("Z"))));
-		}
-		if(personBirthDateYear != null) {
-			document.addField("personBirthDateYear_indexed_int", personBirthDateYear);
-			document.addField("personBirthDateYear_stored_int", personBirthDateYear);
-		}
-		if(personBirthDateMonthOfYear != null) {
-			document.addField("personBirthDateMonthOfYear_indexed_string", personBirthDateMonthOfYear);
-			document.addField("personBirthDateMonthOfYear_stored_string", personBirthDateMonthOfYear);
-		}
-		if(personBirthDateDayOfWeek != null) {
-			document.addField("personBirthDateDayOfWeek_indexed_string", personBirthDateDayOfWeek);
-			document.addField("personBirthDateDayOfWeek_stored_string", personBirthDateDayOfWeek);
-		}
 		if(patientCompleteName != null) {
 			document.addField("patientCompleteName_indexed_string", patientCompleteName);
 			document.addField("patientCompleteName_stored_string", patientCompleteName);
+		}
+		if(patientCompleteNamePreferred != null) {
+			document.addField("patientCompleteNamePreferred_indexed_string", patientCompleteNamePreferred);
+			document.addField("patientCompleteNamePreferred_stored_string", patientCompleteNamePreferred);
+		}
+		if(patientFormalName != null) {
+			document.addField("patientFormalName_indexed_string", patientFormalName);
+			document.addField("patientFormalName_stored_string", patientFormalName);
+		}
+		if(patientBirthDate != null) {
+			document.addField("patientBirthDate_indexed_date", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(patientBirthDate.atStartOfDay(ZoneId.of(siteRequest_.getSiteConfig_().getSiteZone())).toInstant().atZone(ZoneId.of("Z"))));
+			document.addField("patientBirthDate_stored_date", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(patientBirthDate.atStartOfDay(ZoneId.of(siteRequest_.getSiteConfig_().getSiteZone())).toInstant().atZone(ZoneId.of("Z"))));
+		}
+		if(patientBirthDateYear != null) {
+			document.addField("patientBirthDateYear_indexed_int", patientBirthDateYear);
+			document.addField("patientBirthDateYear_stored_int", patientBirthDateYear);
+		}
+		if(patientBirthDateMonthOfYear != null) {
+			document.addField("patientBirthDateMonthOfYear_indexed_string", patientBirthDateMonthOfYear);
+			document.addField("patientBirthDateMonthOfYear_stored_string", patientBirthDateMonthOfYear);
+		}
+		if(patientBirthDateDayOfWeek != null) {
+			document.addField("patientBirthDateDayOfWeek_indexed_string", patientBirthDateDayOfWeek);
+			document.addField("patientBirthDateDayOfWeek_stored_string", patientBirthDateDayOfWeek);
 		}
 		super.indexCluster(document);
 
@@ -2109,28 +2034,26 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 				return "userKeys_indexed_longs";
 			case "clinicKeys":
 				return "clinicKeys_indexed_longs";
-			case "personFirstName":
-				return "personFirstName_indexed_string";
-			case "personFirstNamePreferred":
-				return "personFirstNamePreferred_indexed_string";
+			case "patientFirstName":
+				return "patientFirstName_indexed_string";
+			case "patientFirstNamePreferred":
+				return "patientFirstNamePreferred_indexed_string";
 			case "familyName":
 				return "familyName_indexed_string";
-			case "personCompleteName":
-				return "personCompleteName_indexed_string";
-			case "personCompleteNamePreferred":
-				return "personCompleteNamePreferred_indexed_string";
-			case "personFormalName":
-				return "personFormalName_indexed_string";
-			case "personBirthDate":
-				return "personBirthDate_indexed_date";
-			case "personBirthDateYear":
-				return "personBirthDateYear_indexed_int";
-			case "personBirthDateMonthOfYear":
-				return "personBirthDateMonthOfYear_indexed_string";
-			case "personBirthDateDayOfWeek":
-				return "personBirthDateDayOfWeek_indexed_string";
 			case "patientCompleteName":
 				return "patientCompleteName_indexed_string";
+			case "patientCompleteNamePreferred":
+				return "patientCompleteNamePreferred_indexed_string";
+			case "patientFormalName":
+				return "patientFormalName_indexed_string";
+			case "patientBirthDate":
+				return "patientBirthDate_indexed_date";
+			case "patientBirthDateYear":
+				return "patientBirthDateYear_indexed_int";
+			case "patientBirthDateMonthOfYear":
+				return "patientBirthDateMonthOfYear_indexed_string";
+			case "patientBirthDateDayOfWeek":
+				return "patientBirthDateDayOfWeek_indexed_string";
 			default:
 				return Cluster.varIndexedCluster(entityVar);
 		}
@@ -2180,49 +2103,45 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		if(clinicKeys != null)
 			oMedicalPatient.clinicKeys.addAll(clinicKeys);
 
-		String personFirstName = (String)solrDocument.get("personFirstName_stored_string");
-		if(personFirstName != null)
-			oMedicalPatient.setPersonFirstName(personFirstName);
+		String patientFirstName = (String)solrDocument.get("patientFirstName_stored_string");
+		if(patientFirstName != null)
+			oMedicalPatient.setPatientFirstName(patientFirstName);
 
-		String personFirstNamePreferred = (String)solrDocument.get("personFirstNamePreferred_stored_string");
-		if(personFirstNamePreferred != null)
-			oMedicalPatient.setPersonFirstNamePreferred(personFirstNamePreferred);
+		String patientFirstNamePreferred = (String)solrDocument.get("patientFirstNamePreferred_stored_string");
+		if(patientFirstNamePreferred != null)
+			oMedicalPatient.setPatientFirstNamePreferred(patientFirstNamePreferred);
 
 		String familyName = (String)solrDocument.get("familyName_stored_string");
 		if(familyName != null)
 			oMedicalPatient.setFamilyName(familyName);
 
-		String personCompleteName = (String)solrDocument.get("personCompleteName_stored_string");
-		if(personCompleteName != null)
-			oMedicalPatient.setPersonCompleteName(personCompleteName);
-
-		String personCompleteNamePreferred = (String)solrDocument.get("personCompleteNamePreferred_stored_string");
-		if(personCompleteNamePreferred != null)
-			oMedicalPatient.setPersonCompleteNamePreferred(personCompleteNamePreferred);
-
-		String personFormalName = (String)solrDocument.get("personFormalName_stored_string");
-		if(personFormalName != null)
-			oMedicalPatient.setPersonFormalName(personFormalName);
-
-		Date personBirthDate = (Date)solrDocument.get("personBirthDate_stored_date");
-		if(personBirthDate != null)
-			oMedicalPatient.setPersonBirthDate(personBirthDate);
-
-		Integer personBirthDateYear = (Integer)solrDocument.get("personBirthDateYear_stored_int");
-		if(personBirthDateYear != null)
-			oMedicalPatient.setPersonBirthDateYear(personBirthDateYear);
-
-		String personBirthDateMonthOfYear = (String)solrDocument.get("personBirthDateMonthOfYear_stored_string");
-		if(personBirthDateMonthOfYear != null)
-			oMedicalPatient.setPersonBirthDateMonthOfYear(personBirthDateMonthOfYear);
-
-		String personBirthDateDayOfWeek = (String)solrDocument.get("personBirthDateDayOfWeek_stored_string");
-		if(personBirthDateDayOfWeek != null)
-			oMedicalPatient.setPersonBirthDateDayOfWeek(personBirthDateDayOfWeek);
-
 		String patientCompleteName = (String)solrDocument.get("patientCompleteName_stored_string");
 		if(patientCompleteName != null)
 			oMedicalPatient.setPatientCompleteName(patientCompleteName);
+
+		String patientCompleteNamePreferred = (String)solrDocument.get("patientCompleteNamePreferred_stored_string");
+		if(patientCompleteNamePreferred != null)
+			oMedicalPatient.setPatientCompleteNamePreferred(patientCompleteNamePreferred);
+
+		String patientFormalName = (String)solrDocument.get("patientFormalName_stored_string");
+		if(patientFormalName != null)
+			oMedicalPatient.setPatientFormalName(patientFormalName);
+
+		Date patientBirthDate = (Date)solrDocument.get("patientBirthDate_stored_date");
+		if(patientBirthDate != null)
+			oMedicalPatient.setPatientBirthDate(patientBirthDate);
+
+		Integer patientBirthDateYear = (Integer)solrDocument.get("patientBirthDateYear_stored_int");
+		if(patientBirthDateYear != null)
+			oMedicalPatient.setPatientBirthDateYear(patientBirthDateYear);
+
+		String patientBirthDateMonthOfYear = (String)solrDocument.get("patientBirthDateMonthOfYear_stored_string");
+		if(patientBirthDateMonthOfYear != null)
+			oMedicalPatient.setPatientBirthDateMonthOfYear(patientBirthDateMonthOfYear);
+
+		String patientBirthDateDayOfWeek = (String)solrDocument.get("patientBirthDateDayOfWeek_stored_string");
+		if(patientBirthDateDayOfWeek != null)
+			oMedicalPatient.setPatientBirthDateDayOfWeek(patientBirthDateDayOfWeek);
 
 		super.storeCluster(solrDocument);
 	}
@@ -2238,14 +2157,14 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 			MedicalPatient original = (MedicalPatient)o;
 			if(!Objects.equals(enrollmentKeys, original.getEnrollmentKeys()))
 				apiRequest.addVars("enrollmentKeys");
-			if(!Objects.equals(personFirstName, original.getPersonFirstName()))
-				apiRequest.addVars("personFirstName");
-			if(!Objects.equals(personFirstNamePreferred, original.getPersonFirstNamePreferred()))
-				apiRequest.addVars("personFirstNamePreferred");
+			if(!Objects.equals(patientFirstName, original.getPatientFirstName()))
+				apiRequest.addVars("patientFirstName");
+			if(!Objects.equals(patientFirstNamePreferred, original.getPatientFirstNamePreferred()))
+				apiRequest.addVars("patientFirstNamePreferred");
 			if(!Objects.equals(familyName, original.getFamilyName()))
 				apiRequest.addVars("familyName");
-			if(!Objects.equals(personBirthDate, original.getPersonBirthDate()))
-				apiRequest.addVars("personBirthDate");
+			if(!Objects.equals(patientBirthDate, original.getPatientBirthDate()))
+				apiRequest.addVars("patientBirthDate");
 			super.apiRequestCluster();
 		}
 	}
@@ -2255,7 +2174,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	//////////////
 
 	@Override public int hashCode() {
-		return Objects.hash(super.hashCode(), enrollmentKeys, personFirstName, personFirstNamePreferred, familyName, personBirthDate);
+		return Objects.hash(super.hashCode(), enrollmentKeys, patientFirstName, patientFirstNamePreferred, familyName, patientBirthDate);
 	}
 
 	////////////
@@ -2270,10 +2189,10 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		MedicalPatient that = (MedicalPatient)o;
 		return super.equals(o)
 				&& Objects.equals( enrollmentKeys, that.enrollmentKeys )
-				&& Objects.equals( personFirstName, that.personFirstName )
-				&& Objects.equals( personFirstNamePreferred, that.personFirstNamePreferred )
+				&& Objects.equals( patientFirstName, that.patientFirstName )
+				&& Objects.equals( patientFirstNamePreferred, that.patientFirstNamePreferred )
 				&& Objects.equals( familyName, that.familyName )
-				&& Objects.equals( personBirthDate, that.personBirthDate );
+				&& Objects.equals( patientBirthDate, that.patientBirthDate );
 	}
 
 	//////////////
@@ -2285,10 +2204,10 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		sb.append(super.toString() + "\n");
 		sb.append("MedicalPatient { ");
 		sb.append( "enrollmentKeys: " ).append(enrollmentKeys);
-		sb.append( ", personFirstName: \"" ).append(personFirstName).append( "\"" );
-		sb.append( ", personFirstNamePreferred: \"" ).append(personFirstNamePreferred).append( "\"" );
+		sb.append( ", patientFirstName: \"" ).append(patientFirstName).append( "\"" );
+		sb.append( ", patientFirstNamePreferred: \"" ).append(patientFirstNamePreferred).append( "\"" );
 		sb.append( ", familyName: \"" ).append(familyName).append( "\"" );
-		sb.append( ", personBirthDate: " ).append(personBirthDate);
+		sb.append( ", patientBirthDate: " ).append(patientBirthDate);
 		sb.append(" }");
 		return sb.toString();
 	}

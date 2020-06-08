@@ -127,7 +127,7 @@ public class EnrollmentGenPage extends EnrollmentGenPageGen<ClusterPage> {
 	}
 
 	@Override protected void _contextIconName(Wrap<String> c) {
-			c.o("edit");
+			c.o("notes-medical");
 	}
 
 	@Override public void initDeepEnrollmentGenPage() {
@@ -203,7 +203,6 @@ public class EnrollmentGenPage extends EnrollmentGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmEnrollmentApproved("Page");
 			o.htmEnrollmentImmunizations("Page");
-			o.htmCustomerProfileId("Page");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmFamilyAddress("Page");
@@ -240,7 +239,6 @@ public class EnrollmentGenPage extends EnrollmentGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmEnrollmentApproved("POST");
 			o.htmEnrollmentImmunizations("POST");
-			o.htmCustomerProfileId("POST");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmFamilyAddress("POST");
@@ -299,7 +297,6 @@ public class EnrollmentGenPage extends EnrollmentGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmEnrollmentApproved("PUTCopy");
 			o.htmEnrollmentImmunizations("PUTCopy");
-			o.htmCustomerProfileId("PUTCopy");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmFamilyAddress("PUTCopy");
@@ -329,6 +326,7 @@ public class EnrollmentGenPage extends EnrollmentGenPageGen<ClusterPage> {
 			o.htmPatientCompleteNamePreferred("PUTCopy");
 			o.htmPatientBirthDate("PUTCopy");
 			o.htmClinicAddress("PUTCopy");
+			o.htmCustomerProfileId("PUTCopy");
 			o.htmEnrollmentSignature1("PUTCopy");
 			o.htmEnrollmentSignature2("PUTCopy");
 			o.htmEnrollmentSignature3("PUTCopy");
@@ -364,7 +362,6 @@ public class EnrollmentGenPage extends EnrollmentGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmEnrollmentApproved("PATCH");
 			o.htmEnrollmentImmunizations("PATCH");
-			o.htmCustomerProfileId("PATCH");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmFamilyAddress("PATCH");
@@ -394,6 +391,7 @@ public class EnrollmentGenPage extends EnrollmentGenPageGen<ClusterPage> {
 			o.htmPatientCompleteNamePreferred("PATCH");
 			o.htmPatientBirthDate("PATCH");
 			o.htmClinicAddress("PATCH");
+			o.htmCustomerProfileId("PATCH");
 			o.htmEnrollmentSignature1("PATCH");
 			o.htmEnrollmentSignature2("PATCH");
 			o.htmEnrollmentSignature3("PATCH");
@@ -431,7 +429,6 @@ public class EnrollmentGenPage extends EnrollmentGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmEnrollmentApproved("Search");
 			o.htmEnrollmentImmunizations("Search");
-			o.htmCustomerProfileId("Search");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmFamilyAddress("Search");
@@ -462,6 +459,7 @@ public class EnrollmentGenPage extends EnrollmentGenPageGen<ClusterPage> {
 			o.htmPatientCompleteNamePreferred("Search");
 			o.htmPatientBirthDate("Search");
 			o.htmClinicAddress("Search");
+			o.htmCustomerProfileId("Search");
 			o.htmEnrollmentDate1("Search");
 			o.htmEnrollmentDate2("Search");
 			o.htmEnrollmentDate3("Search");
@@ -699,7 +697,7 @@ public class EnrollmentGenPage extends EnrollmentGenPageGen<ClusterPage> {
 				if(getColumnObjectTitle()) {
 					{ e("td").f();
 						{ e("a").a("href", uri).f();
-							e("i").a("class", "fas fa-edit ").f().g("i");
+							e("i").a("class", "fas fa-notes-medical ").f().g("i");
 							{ e("span").f();
 								sx(o.strObjectTitle());
 							} g("span");
@@ -1029,7 +1027,7 @@ public class EnrollmentGenPage extends EnrollmentGenPageGen<ClusterPage> {
 			} p.g("div");
 			{ p.e("div").a("class", "").f();
 				{ p.e("a").a("href", "/enrollment").a("class", "").f();
-					p.e("i").a("class", "fas fa-edit ").f().g("i");
+					p.e("i").a("class", "fas fa-notes-medical ").f().g("i");
 					p.sx("see all the enrollments");
 				} p.g("a");
 			} p.g("div");

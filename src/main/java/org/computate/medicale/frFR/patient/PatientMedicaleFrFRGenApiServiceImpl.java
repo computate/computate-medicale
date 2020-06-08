@@ -331,29 +331,29 @@ public class PatientMedicaleFrFRGenApiServiceImpl implements PatientMedicaleFrFR
 							}
 						}
 						break;
-					case "personnePrenom":
+					case "patientPrenom":
 						futures.add(Future.future(a -> {
 							tx.preparedQuery(SiteContexteFrFR.SQL_setD
-									, Tuple.of(pk, "personnePrenom", Optional.ofNullable(jsonObject.getValue(entiteVar)).map(s -> s.toString()).orElse(null))
+									, Tuple.of(pk, "patientPrenom", Optional.ofNullable(jsonObject.getValue(entiteVar)).map(s -> s.toString()).orElse(null))
 									, b
 							-> {
 								if(b.succeeded())
 									a.handle(Future.succeededFuture());
 								else
-									a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.personnePrenom a échoué", b.cause())));
+									a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.patientPrenom a échoué", b.cause())));
 							});
 						}));
 						break;
-					case "personnePrenomPrefere":
+					case "patientPrenomPrefere":
 						futures.add(Future.future(a -> {
 							tx.preparedQuery(SiteContexteFrFR.SQL_setD
-									, Tuple.of(pk, "personnePrenomPrefere", Optional.ofNullable(jsonObject.getValue(entiteVar)).map(s -> s.toString()).orElse(null))
+									, Tuple.of(pk, "patientPrenomPrefere", Optional.ofNullable(jsonObject.getValue(entiteVar)).map(s -> s.toString()).orElse(null))
 									, b
 							-> {
 								if(b.succeeded())
 									a.handle(Future.succeededFuture());
 								else
-									a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.personnePrenomPrefere a échoué", b.cause())));
+									a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.patientPrenomPrefere a échoué", b.cause())));
 							});
 						}));
 						break;
@@ -370,16 +370,16 @@ public class PatientMedicaleFrFRGenApiServiceImpl implements PatientMedicaleFrFR
 							});
 						}));
 						break;
-					case "personneDateNaissance":
+					case "patientDateNaissance":
 						futures.add(Future.future(a -> {
 							tx.preparedQuery(SiteContexteFrFR.SQL_setD
-									, Tuple.of(pk, "personneDateNaissance", Optional.ofNullable(jsonObject.getValue(entiteVar)).map(s -> s.toString()).orElse(null))
+									, Tuple.of(pk, "patientDateNaissance", Optional.ofNullable(jsonObject.getValue(entiteVar)).map(s -> s.toString()).orElse(null))
 									, b
 							-> {
 								if(b.succeeded())
 									a.handle(Future.succeededFuture());
 								else
-									a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.personneDateNaissance a échoué", b.cause())));
+									a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.patientDateNaissance a échoué", b.cause())));
 							});
 						}));
 						break;
@@ -1004,29 +1004,29 @@ public class PatientMedicaleFrFRGenApiServiceImpl implements PatientMedicaleFrFR
 							}
 						}
 						break;
-					case "personnePrenom":
+					case "patientPrenom":
 						futures.add(Future.future(a -> {
 							tx.preparedQuery(SiteContexteFrFR.SQL_setD
-									, Tuple.of(pk, "personnePrenom", Optional.ofNullable(jsonObject.getValue(entiteVar)).map(s -> s.toString()).orElse(null))
+									, Tuple.of(pk, "patientPrenom", Optional.ofNullable(jsonObject.getValue(entiteVar)).map(s -> s.toString()).orElse(null))
 									, b
 							-> {
 								if(b.succeeded())
 									a.handle(Future.succeededFuture());
 								else
-									a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.personnePrenom a échoué", b.cause())));
+									a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.patientPrenom a échoué", b.cause())));
 							});
 						}));
 						break;
-					case "personnePrenomPrefere":
+					case "patientPrenomPrefere":
 						futures.add(Future.future(a -> {
 							tx.preparedQuery(SiteContexteFrFR.SQL_setD
-									, Tuple.of(pk, "personnePrenomPrefere", Optional.ofNullable(jsonObject.getValue(entiteVar)).map(s -> s.toString()).orElse(null))
+									, Tuple.of(pk, "patientPrenomPrefere", Optional.ofNullable(jsonObject.getValue(entiteVar)).map(s -> s.toString()).orElse(null))
 									, b
 							-> {
 								if(b.succeeded())
 									a.handle(Future.succeededFuture());
 								else
-									a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.personnePrenomPrefere a échoué", b.cause())));
+									a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.patientPrenomPrefere a échoué", b.cause())));
 							});
 						}));
 						break;
@@ -1043,16 +1043,16 @@ public class PatientMedicaleFrFRGenApiServiceImpl implements PatientMedicaleFrFR
 							});
 						}));
 						break;
-					case "personneDateNaissance":
+					case "patientDateNaissance":
 						futures.add(Future.future(a -> {
 							tx.preparedQuery(SiteContexteFrFR.SQL_setD
-									, Tuple.of(pk, "personneDateNaissance", Optional.ofNullable(jsonObject.getValue(entiteVar)).map(s -> s.toString()).orElse(null))
+									, Tuple.of(pk, "patientDateNaissance", Optional.ofNullable(jsonObject.getValue(entiteVar)).map(s -> s.toString()).orElse(null))
 									, b
 							-> {
 								if(b.succeeded())
 									a.handle(Future.succeededFuture());
 								else
-									a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.personneDateNaissance a échoué", b.cause())));
+									a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.patientDateNaissance a échoué", b.cause())));
 							});
 						}));
 						break;
@@ -1548,58 +1548,58 @@ public class PatientMedicaleFrFRGenApiServiceImpl implements PatientMedicaleFrFR
 							}
 						}
 						break;
-					case "setPersonnePrenom":
+					case "setPatientPrenom":
 						if(jsonObject.getString(methodeNom) == null) {
 							futures.add(Future.future(a -> {
 								tx.preparedQuery(SiteContexteFrFR.SQL_removeD
-										, Tuple.of(pk, "personnePrenom")
+										, Tuple.of(pk, "patientPrenom")
 										, b
 								-> {
 									if(b.succeeded())
 										a.handle(Future.succeededFuture());
 									else
-										a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.personnePrenom a échoué", b.cause())));
+										a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.patientPrenom a échoué", b.cause())));
 								});
 							}));
 						} else {
-							o2.setPersonnePrenom(jsonObject.getString(methodeNom));
+							o2.setPatientPrenom(jsonObject.getString(methodeNom));
 							futures.add(Future.future(a -> {
 								tx.preparedQuery(SiteContexteFrFR.SQL_setD
-										, Tuple.of(pk, "personnePrenom", o2.jsonPersonnePrenom())
+										, Tuple.of(pk, "patientPrenom", o2.jsonPatientPrenom())
 										, b
 								-> {
 									if(b.succeeded())
 										a.handle(Future.succeededFuture());
 									else
-										a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.personnePrenom a échoué", b.cause())));
+										a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.patientPrenom a échoué", b.cause())));
 								});
 							}));
 						}
 						break;
-					case "setPersonnePrenomPrefere":
+					case "setPatientPrenomPrefere":
 						if(jsonObject.getString(methodeNom) == null) {
 							futures.add(Future.future(a -> {
 								tx.preparedQuery(SiteContexteFrFR.SQL_removeD
-										, Tuple.of(pk, "personnePrenomPrefere")
+										, Tuple.of(pk, "patientPrenomPrefere")
 										, b
 								-> {
 									if(b.succeeded())
 										a.handle(Future.succeededFuture());
 									else
-										a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.personnePrenomPrefere a échoué", b.cause())));
+										a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.patientPrenomPrefere a échoué", b.cause())));
 								});
 							}));
 						} else {
-							o2.setPersonnePrenomPrefere(jsonObject.getString(methodeNom));
+							o2.setPatientPrenomPrefere(jsonObject.getString(methodeNom));
 							futures.add(Future.future(a -> {
 								tx.preparedQuery(SiteContexteFrFR.SQL_setD
-										, Tuple.of(pk, "personnePrenomPrefere", o2.jsonPersonnePrenomPrefere())
+										, Tuple.of(pk, "patientPrenomPrefere", o2.jsonPatientPrenomPrefere())
 										, b
 								-> {
 									if(b.succeeded())
 										a.handle(Future.succeededFuture());
 									else
-										a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.personnePrenomPrefere a échoué", b.cause())));
+										a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.patientPrenomPrefere a échoué", b.cause())));
 								});
 							}));
 						}
@@ -1632,30 +1632,30 @@ public class PatientMedicaleFrFRGenApiServiceImpl implements PatientMedicaleFrFR
 							}));
 						}
 						break;
-					case "setPersonneDateNaissance":
+					case "setPatientDateNaissance":
 						if(jsonObject.getString(methodeNom) == null) {
 							futures.add(Future.future(a -> {
 								tx.preparedQuery(SiteContexteFrFR.SQL_removeD
-										, Tuple.of(pk, "personneDateNaissance")
+										, Tuple.of(pk, "patientDateNaissance")
 										, b
 								-> {
 									if(b.succeeded())
 										a.handle(Future.succeededFuture());
 									else
-										a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.personneDateNaissance a échoué", b.cause())));
+										a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.patientDateNaissance a échoué", b.cause())));
 								});
 							}));
 						} else {
-							o2.setPersonneDateNaissance(jsonObject.getString(methodeNom));
+							o2.setPatientDateNaissance(jsonObject.getString(methodeNom));
 							futures.add(Future.future(a -> {
 								tx.preparedQuery(SiteContexteFrFR.SQL_setD
-										, Tuple.of(pk, "personneDateNaissance", o2.jsonPersonneDateNaissance())
+										, Tuple.of(pk, "patientDateNaissance", o2.jsonPatientDateNaissance())
 										, b
 								-> {
 									if(b.succeeded())
 										a.handle(Future.succeededFuture());
 									else
-										a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.personneDateNaissance a échoué", b.cause())));
+										a.handle(Future.failedFuture(new Exception("valeur PatientMedicale.patientDateNaissance a échoué", b.cause())));
 								});
 							}));
 						}
@@ -2130,7 +2130,7 @@ public class PatientMedicaleFrFRGenApiServiceImpl implements PatientMedicaleFrFR
 
 			tx.preparedQuery(
 					SiteContexteFrFR.SQL_creer
-					, Tuple.of(PatientMedicale.class.getCanonicalName(), utilisateurId, cree.toOffsetDateTime())
+					, Tuple.of(PatientMedicale.class.getCanonicalName(), utilisateurId)
 					, Collectors.toList()
 					, creerAsync
 			-> {

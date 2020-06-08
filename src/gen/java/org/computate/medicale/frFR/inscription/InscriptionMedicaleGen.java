@@ -85,7 +85,7 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 	public static final String InscriptionMedicale_NomAdjectifPluriel = "inscriptions";
 	public static final String InscriptionMedicale_Couleur = "blue-gray";
 	public static final String InscriptionMedicale_IconeGroupe = "solid";
-	public static final String InscriptionMedicale_IconeNom = "edit";
+	public static final String InscriptionMedicale_IconeNom = "notes-medical";
 
 	////////////////////
 	// inscriptionCle //
@@ -404,7 +404,7 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 					{ e("div").a("class", "w3-card ").f();
 						{ e("div").a("class", "w3-cell-row ").f();
 							{ e("a").a("href", "?fq=inscriptionCles:", pk).a("class", "w3-cell w3-btn w3-center h4 w3-block h4 w3-orange w3-hover-orange ").f();
-								e("i").a("class", "far fa-patient ").f().g("i");
+								e("i").a("class", "far fa-hostpital-user ").f().g("i");
 								sx("patients");
 							} g("a");
 						} g("div");

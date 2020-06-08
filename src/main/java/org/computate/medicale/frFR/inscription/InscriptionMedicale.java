@@ -83,7 +83,7 @@ import org.computate.medicale.frFR.recherche.ListeRecherche;
  * UnNom.enUS: an enrollment
  * Couleur: blue-gray
  * IconeGroupe: solid
- * IconeNom: edit
+ * IconeNom: notes-medical
  * 
  * Role.frFR: SiteAdmin
  * Role.enUS: SiteAdmin
@@ -164,9 +164,9 @@ public class InscriptionMedicale extends InscriptionMedicaleGen<Cluster> {
 	 * HtmlLigne: 9
 	 * HtmlCellule: 2
 	 * Description.frFR: La clé primaire des patients dans la base de données. 
-	 * Description.enUS: The primary key of the clinic patientren in the database. 
+	 * Description.enUS: The primary key of the clinic patient in the database. 
 	 * NomAffichage.frFR: patients
-	 * NomAffichage.enUS: patientren
+	 * NomAffichage.enUS: patients
 	 */               
 	protected void _patientCle(Couverture<Long> c) {}
 
@@ -266,12 +266,12 @@ public class InscriptionMedicale extends InscriptionMedicaleGen<Cluster> {
 	 * Stocke: true
 	 * r: patient_
 	 * r.enUS: patient_
-	 * r: PersonnePrenom
-	 * r.enUS: PersonFirstName
+	 * r: PatientPrenom
+	 * r.enUS: PatientFirstName
 	 */   
 	protected void _patientPrenom(Couverture<String> c) {
 		if(patient_ != null)
-			c.o(patient_.getPersonnePrenom());
+			c.o(patient_.getPatientPrenom());
 	}
 
 	/**
@@ -281,12 +281,12 @@ public class InscriptionMedicale extends InscriptionMedicaleGen<Cluster> {
 	 * Stocke: true
 	 * r: patient_
 	 * r.enUS: patient_
-	 * r: PersonnePrenomPrefere
-	 * r.enUS: PersonFirstNamePreferred
+	 * r: PatientPrenomPrefere
+	 * r.enUS: PatientFirstNamePreferred
 	 */   
 	protected void _patientPrenomPrefere(Couverture<String> c) {
 		if(patient_ != null)
-			c.o(patient_.getPersonnePrenomPrefere());
+			c.o(patient_.getPatientPrenomPrefere());
 	}
 
 	/**
@@ -318,12 +318,12 @@ public class InscriptionMedicale extends InscriptionMedicaleGen<Cluster> {
 	 * r.enUS: PatientCompleteName
 	 * r: patient_
 	 * r.enUS: patient_
-	 * r: PersonneNomComplet
-	 * r.enUS: PersonCompleteName
+	 * r: PatientNomComplet
+	 * r.enUS: PatientCompleteName
 	 */   
 	protected void _patientNomComplet(Couverture<String> c) {
 		if(patient_ != null)
-			c.o(patient_.getPersonneNomComplet());
+			c.o(patient_.getPatientNomComplet());
 	}
 
 	/**
@@ -338,12 +338,12 @@ public class InscriptionMedicale extends InscriptionMedicaleGen<Cluster> {
 	 * NomAffichage.enUS: 
 	 * r: patient_
 	 * r.enUS: patient_
-	 * r: PersonneNomCompletPrefere
-	 * r.enUS: PersonCompleteNamePreferred
+	 * r: PatientNomCompletPrefere
+	 * r.enUS: PatientCompleteNamePreferred
 	 */  
 	protected void _patientNomCompletPrefere(Couverture<String> c) {
 		if(patient_ != null)
-			c.o(patient_.getPersonneNomCompletPrefere());
+			c.o(patient_.getPatientNomCompletPrefere());
 	}
 
 	/**
@@ -358,12 +358,12 @@ public class InscriptionMedicale extends InscriptionMedicaleGen<Cluster> {
 	 * NomAffichage.enUS: 
 	 * r: patient_
 	 * r.enUS: patient_
-	 * r: PersonneDateNaissance
-	 * r.enUS: PersonBirthDate
+	 * r: PatientDateNaissance
+	 * r.enUS: PatientBirthDate
 	 */     
 	protected void _patientDateNaissance(Couverture<LocalDate> c) {
 		if(patient_ != null)
-			c.o(patient_.getPersonneDateNaissance());
+			c.o(patient_.getPatientDateNaissance());
 	}
 
 	/**
@@ -699,8 +699,6 @@ public class InscriptionMedicale extends InscriptionMedicaleGen<Cluster> {
 	 * Indexe: true
 	 * Stocke: true
 	 * Definir: true
-	 * HtmlLigne: 3
-	 * HtmlCellule: 4
 	 * NomAffichage.frFR: customer profile ID
 	 * NomAffichage.enUS: customer profile ID
 	 */               
@@ -1000,19 +998,19 @@ public class InscriptionMedicale extends InscriptionMedicaleGen<Cluster> {
 	 * VarTitre: true
 	 * NomAffichage.frFR: nom
 	 * NomAffichage.enUS: name
-	 * r: "inscription pour l'patient %s"
+	 * r: "inscription pour le patient %s"
 	 * r.enUS: "enrollment for the patient %s"
 	 * r: "inscription %s"
 	 * r.enUS: "enrollment %s"
-	 * r: getPersonneNomCompletPrefere
-	 * r.enUS: getPersonCompleteNamePreferred
+	 * r: getPatientNomCompletPrefere
+	 * r.enUS: getPatientCompleteNamePreferred
 	 * r: patient_
 	 * r.enUS: patient_
 	 */  
 	protected void _inscriptionNomComplet(Couverture<String> c) {
 		String o;
 		if(patient_ != null)
-			o = String.format("inscription pour le patient %s", patient_.getPersonneNomCompletPrefere());
+			o = String.format("inscription pour le patient %s", patient_.getPatientNomCompletPrefere());
 		else
 			o = String.format("inscription %s", pk);
 		c.o(o);

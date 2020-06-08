@@ -5461,7 +5461,7 @@ public class MedicalEnrollmentEnUSGenApiServiceImpl implements MedicalEnrollment
 
 			tx.preparedQuery(
 					SiteContextEnUS.SQL_create
-					, Tuple.of(MedicalEnrollment.class.getCanonicalName(), userId, created.toOffsetDateTime())
+					, Tuple.of(MedicalEnrollment.class.getCanonicalName(), userId)
 					, Collectors.toList()
 					, createAsync
 			-> {

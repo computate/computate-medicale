@@ -17,9 +17,11 @@ import org.computate.medicale.enUS.config.SiteConfig;
 import org.computate.medicale.enUS.context.SiteContextEnUS;
 import org.computate.medicale.enUS.design.PageDesignEnUSGenApiService;
 import org.computate.medicale.enUS.html.part.HtmlPartEnUSGenApiService;
+import org.computate.medicale.enUS.enrollment.MedicalEnrollmentEnUSGenApiService;
 import org.computate.medicale.frFR.java.LocalDateSerializer;
 import org.computate.medicale.frFR.java.LocalTimeSerializer;
 import org.computate.medicale.frFR.java.ZonedDateTimeSerializer;
+import org.computate.medicale.enUS.patient.MedicalPatientEnUSGenApiService;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 import org.computate.medicale.enUS.user.SiteUserEnUSGenApiService;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -526,6 +528,8 @@ public class AppVertx extends AppVertxGen<AbstractVerticle> {
 
 		ClusterEnUSGenApiService.registerService(siteContextEnUS, vertx);
 		MedicalClinicEnUSGenApiService.registerService(siteContextEnUS, vertx);
+		MedicalPatientEnUSGenApiService.registerService(siteContextEnUS, vertx);
+		MedicalEnrollmentEnUSGenApiService.registerService(siteContextEnUS, vertx);
 		SiteUserEnUSGenApiService.registerService(siteContextEnUS, vertx);
 		PageDesignEnUSGenApiService.registerService(siteContextEnUS, vertx);
 		HtmlPartEnUSGenApiService.registerService(siteContextEnUS, vertx);

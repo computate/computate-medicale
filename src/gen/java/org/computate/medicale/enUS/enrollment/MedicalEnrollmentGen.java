@@ -84,7 +84,7 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 	public static final String MedicalEnrollment_NameAdjectivePlural = "enrollments";
 	public static final String MedicalEnrollment_Color = "blue-gray";
 	public static final String MedicalEnrollment_IconGroup = "solid";
-	public static final String MedicalEnrollment_IconName = "edit";
+	public static final String MedicalEnrollment_IconName = "notes-medical";
 
 	///////////////////
 	// enrollmentKey //
@@ -359,7 +359,7 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 	}
 
 	public String nomAffichagePatientKey() {
-		return "patientren";
+		return "patients";
 	}
 
 	public String htmTooltipPatientKey() {
@@ -381,7 +381,7 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 			e("i").a("class", "far fa-search w3-xxlarge w3-cell w3-cell-middle ").f().g("i");
 				e("input")
 					.a("type", "text")
-					.a("placeholder", "patientren")
+					.a("placeholder", "patients")
 					.a("class", "valueObjectSuggest suggestPatientKey w3-input w3-border w3-cell w3-cell-middle ")
 					.a("name", "setPatientKey")
 					.a("id", classApiMethodMethod, "_patientKey")
@@ -402,8 +402,8 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 					{ e("div").a("class", "w3-card ").f();
 						{ e("div").a("class", "w3-cell-row ").f();
 							{ e("a").a("href", "/patient?fq=enrollmentKeys:", pk).a("class", "w3-cell w3-btn w3-center h4 w3-block h4 w3-orange w3-hover-orange ").f();
-								e("i").a("class", "far fa-patient ").f().g("i");
-								sx("patientren");
+								e("i").a("class", "far fa-hostpital-user ").f().g("i");
+								sx("patients");
 							} g("a");
 						} g("div");
 						{ e("div").a("class", "w3-cell-row ").f();

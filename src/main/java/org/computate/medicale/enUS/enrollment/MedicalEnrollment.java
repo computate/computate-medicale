@@ -22,7 +22,7 @@ import org.computate.medicale.enUS.search.SearchList;
  * RoleUser: true
  * Color: blue-gray
  * IconGroup: solid
- * IconName: edit
+ * IconName: notes-medical
  * Role.enUS: SiteAdmin
  * ApiUri.enUS: /api/enrollment
  * ApiTag.enUS: Enrollment
@@ -96,12 +96,12 @@ public class MedicalEnrollment extends MedicalEnrollmentGen<Cluster> {
 
 	protected void _patientFirstName(Wrap<String> c) {
 		if(patient_ != null)
-			c.o(patient_.getPersonFirstName());
+			c.o(patient_.getPatientFirstName());
 	}
 
 	protected void _patientFirstNamePreferred(Wrap<String> c) {
 		if(patient_ != null)
-			c.o(patient_.getPersonFirstNamePreferred());
+			c.o(patient_.getPatientFirstNamePreferred());
 	}
 
 	protected void _patientFamilyName(Wrap<String> c) {
@@ -111,17 +111,17 @@ public class MedicalEnrollment extends MedicalEnrollmentGen<Cluster> {
 
 	protected void _patientCompleteName(Wrap<String> c) {
 		if(patient_ != null)
-			c.o(patient_.getPersonCompleteName());
+			c.o(patient_.getPatientCompleteName());
 	}
 
 	protected void _patientCompleteNamePreferred(Wrap<String> c) {
 		if(patient_ != null)
-			c.o(patient_.getPersonCompleteNamePreferred());
+			c.o(patient_.getPatientCompleteNamePreferred());
 	}
 
 	protected void _patientBirthDate(Wrap<LocalDate> c) {
 		if(patient_ != null)
-			c.o(patient_.getPersonBirthDate());
+			c.o(patient_.getPatientBirthDate());
 	}
 
 	protected void _patientBirthDateYear(Wrap<Integer> c) {
@@ -306,7 +306,7 @@ public class MedicalEnrollment extends MedicalEnrollmentGen<Cluster> {
 	protected void _enrollmentCompleteName(Wrap<String> c) {
 		String o;
 		if(patient_ != null)
-			o = String.format("inscription pour le patient %s", patient_.getPersonCompleteNamePreferred());
+			o = String.format("enrollment for the patient %s", patient_.getPatientCompleteNamePreferred());
 		else
 			o = String.format("enrollment %s", pk);
 		c.o(o);

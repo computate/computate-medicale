@@ -18,9 +18,11 @@ import org.computate.medicale.frFR.config.ConfigSite;
 import org.computate.medicale.frFR.contexte.SiteContexteFrFR;
 import org.computate.medicale.frFR.design.DesignPageFrFRGenApiService;
 import org.computate.medicale.frFR.html.part.PartHtmlFrFRGenApiService;
+import org.computate.medicale.frFR.inscription.InscriptionMedicaleFrFRGenApiService;
 import org.computate.medicale.frFR.java.LocalDateSerializer;
 import org.computate.medicale.frFR.java.LocalTimeSerializer;
 import org.computate.medicale.frFR.java.ZonedDateTimeSerializer;
+import org.computate.medicale.frFR.patient.PatientMedicaleFrFRGenApiService;
 import org.computate.medicale.frFR.requete.RequeteSiteFrFR;
 import org.computate.medicale.frFR.utilisateur.UtilisateurSiteFrFRGenApiService;
 
@@ -892,28 +894,10 @@ public class AppliVertx extends AppliVertxGen<AbstractVerticle> {
 	 * r.enUS: SiteUserEnUSGenApiService
 	 * r: CliniqueMedicaleFrFRGenApiService
 	 * r.enUS: MedicalClinicEnUSGenApiService
-	 * r: SaisonmedicaleFrFRGenApiService
-	 * r.enUS: SchoolSeasonEnUSGenApiService
-	 * r: SessionmedicaleFrFRGenApiService
-	 * r.enUS: SchoolSessionEnUSGenApiService
-	 * r: AgemedicaleFrFRGenApiService
-	 * r.enUS: SchoolAgeEnUSGenApiService
-	 * r: BlocmedicaleFrFRGenApiService
-	 * r.enUS: SchoolBlockEnUSGenApiService
-	 * r: InscriptionmedicaleFrFRGenApiService
-	 * r.enUS: SchoolEnrollmentEnUSGenApiService
-	 * r: EnfantmedicaleFrFRGenApiService
-	 * r.enUS: SchoolChildEnUSGenApiService
-	 * r: MeremedicaleFrFRGenApiService
-	 * r.enUS: SchoolMomEnUSGenApiService
-	 * r: PeremedicaleFrFRGenApiService
-	 * r.enUS: SchoolDadEnUSGenApiService
-	 * r: ContactmedicaleFrFRGenApiService
-	 * r.enUS: SchoolContactEnUSGenApiService
-	 * r: GardienmedicaleFrFRGenApiService
-	 * r.enUS: SchoolGuardianEnUSGenApiService
-	 * r: PaiementmedicaleFrFRGenApiService
-	 * r.enUS: SchoolPaymentEnUSGenApiService
+	 * r: InscriptionMedicaleFrFRGenApiService
+	 * r.enUS: MedicalEnrollmentEnUSGenApiService
+	 * r: PatientMedicaleFrFRGenApiService
+	 * r.enUS: MedicalPatientEnUSGenApiService
 	 * r: DesignInscriptionFrFRGenApiService
 	 * r.enUS: EnrollmentDesignEnUSGenApiService
 	 * r: DesignPageFrFRGenApiService
@@ -931,6 +915,8 @@ public class AppliVertx extends AppliVertxGen<AbstractVerticle> {
 
 		ClusterFrFRGenApiService.enregistrerService(siteContexteFrFR, vertx);
 		CliniqueMedicaleFrFRGenApiService.enregistrerService(siteContexteFrFR, vertx);
+		PatientMedicaleFrFRGenApiService.enregistrerService(siteContexteFrFR, vertx);
+		InscriptionMedicaleFrFRGenApiService.enregistrerService(siteContexteFrFR, vertx);
 		UtilisateurSiteFrFRGenApiService.enregistrerService(siteContexteFrFR, vertx);
 		DesignPageFrFRGenApiService.enregistrerService(siteContexteFrFR, vertx);
 		PartHtmlFrFRGenApiService.enregistrerService(siteContexteFrFR, vertx);

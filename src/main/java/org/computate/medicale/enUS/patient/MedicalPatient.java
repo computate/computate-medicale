@@ -19,7 +19,7 @@ import org.computate.medicale.enUS.search.SearchList;
  * RoleUser: true
  * Color: orange
  * IconGroup: regular
- * IconName: patient
+ * IconName: hospital-user
  * Role.enUS: SiteAdmin
  * ApiUri.enUS: /api/patient
  * ApiTag.enUS: Child
@@ -64,58 +64,54 @@ public class MedicalPatient extends MedicalPatientGen<Cluster> {
 		l.addAll(enrollmentSearch.getQueryResponse().getFacetField("clinicKey_indexed_long").getValues().stream().map(o -> Long.parseLong(o.getName())).collect(Collectors.toList()));
 	}
 
-	protected void _personFirstName(Wrap<String> c) {
+	protected void _patientFirstName(Wrap<String> c) {
 	}
 
-	protected void _personFirstNamePreferred(Wrap<String> c) {
-		c.o(personFirstName);
+	protected void _patientFirstNamePreferred(Wrap<String> c) {
+		c.o(patientFirstName);
 	}
 
 	protected void _familyName(Wrap<String> c) {
 	}
 
-	protected void _personCompleteName(Wrap<String> c) {
-		if(personFirstNamePreferred != null && familyName != null)
-			c.o(String.format("%s %s", personFirstNamePreferred, familyName));
-		else if(personFirstNamePreferred != null)
-			c.o(personFirstNamePreferred);
+	protected void _patientCompleteName(Wrap<String> c) {
+		if(patientFirstNamePreferred != null && familyName != null)
+			c.o(String.format("%s %s", patientFirstNamePreferred, familyName));
+		else if(patientFirstNamePreferred != null)
+			c.o(patientFirstNamePreferred);
 		else if(familyName != null)
 			c.o(familyName);
 	}
 
-	protected void _personCompleteNamePreferred(Wrap<String> c) {
-		c.o(personCompleteName);
+	protected void _patientCompleteNamePreferred(Wrap<String> c) {
+		c.o(patientCompleteName);
 	}
 
-	protected void _personFormalName(Wrap<String> c) {
-		c.o(String.format("%s %s", personFirstName, familyName));
+	protected void _patientFormalName(Wrap<String> c) {
+		c.o(String.format("%s %s", patientFirstName, familyName));
 	}
 
-	protected void _personBirthDate(Wrap<LocalDate> c) {
+	protected void _patientBirthDate(Wrap<LocalDate> c) {
 	}
 
-	protected void _personBirthDateYear(Wrap<Integer> c) {
-		if(personBirthDate != null)
-			c.o(personBirthDate.getYear());
+	protected void _patientBirthDateYear(Wrap<Integer> c) {
+		if(patientBirthDate != null)
+			c.o(patientBirthDate.getYear());
 	}
 
-	protected void _personBirthDateMonthOfYear(Wrap<String> c) {
-		if(personBirthDate != null)
-			c.o(personBirthDate.format(DateTimeFormatter.ofPattern("MMMM", Locale.US)));
+	protected void _patientBirthDateMonthOfYear(Wrap<String> c) {
+		if(patientBirthDate != null)
+			c.o(patientBirthDate.format(DateTimeFormatter.ofPattern("MMMM", Locale.US)));
 	}
 
-	protected void _personBirthDateDayOfWeek(Wrap<String> c) {
-		if(personBirthDate != null)
-			c.o(personBirthDate.format(DateTimeFormatter.ofPattern("EEEE", Locale.US)));
+	protected void _patientBirthDateDayOfWeek(Wrap<String> c) {
+		if(patientBirthDate != null)
+			c.o(patientBirthDate.format(DateTimeFormatter.ofPattern("EEEE", Locale.US)));
 	}
 
 	@Override()
-	public String strPersonBirthDate() {
-		return personBirthDate == null ? "" : personBirthDate.format(DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.US));
-	}
-
-	protected void _patientCompleteName(Wrap<String> c) {
-		c.o(personCompleteName);
+	public String strPatientBirthDate() {
+		return patientBirthDate == null ? "" : patientBirthDate.format(DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.US));
 	}
 
 	@Override()

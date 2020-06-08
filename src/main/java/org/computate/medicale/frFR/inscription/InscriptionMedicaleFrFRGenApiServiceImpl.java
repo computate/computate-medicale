@@ -5463,7 +5463,7 @@ public class InscriptionMedicaleFrFRGenApiServiceImpl implements InscriptionMedi
 
 			tx.preparedQuery(
 					SiteContexteFrFR.SQL_creer
-					, Tuple.of(InscriptionMedicale.class.getCanonicalName(), utilisateurId, cree.toOffsetDateTime())
+					, Tuple.of(InscriptionMedicale.class.getCanonicalName(), utilisateurId)
 					, Collectors.toList()
 					, creerAsync
 			-> {

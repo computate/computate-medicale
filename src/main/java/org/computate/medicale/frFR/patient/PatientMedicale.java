@@ -62,7 +62,7 @@ import org.computate.medicale.frFR.recherche.ListeRecherche;
  * UnNom.enUS: a patient
  * Couleur: orange
  * IconeGroupe: regular
- * IconeNom: patient
+ * IconeNom: hospital-user
  * 
  * Role.frFR: SiteAdmin
  * Role.enUS: SiteAdmin
@@ -181,7 +181,7 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 
 	/**
 	 * {@inheritDoc}
-	 * Var.enUS: personFirstName
+	 * Var.enUS: patientFirstName
 	 * Indexe: true
 	 * Stocke: true
 	 * NomAffichage.frFR: prénom
@@ -190,12 +190,12 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 	 * HtmlLigne: 3
 	 * HtmlCellule: 1
 	 */                   
-	protected void _personnePrenom(Couverture<String> c) {
+	protected void _patientPrenom(Couverture<String> c) {
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * Var.enUS: personFirstNamePreferred
+	 * Var.enUS: patientFirstNamePreferred
 	 * Indexe: true
 	 * Stocke: true
 	 * NomAffichage.frFR: prénom préferé
@@ -203,11 +203,11 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 	 * Definir: true
 	 * HtmlLigne: 3
 	 * HtmlCellule: 3
-	 * r: personnePrenom
-	 * r.enUS: personFirstName
+	 * r: patientPrenom
+	 * r.enUS: patientFirstName
 	 */                   
-	protected void _personnePrenomPrefere(Couverture<String> c) {
-		c.o(personnePrenom);
+	protected void _patientPrenomPrefere(Couverture<String> c) {
+		c.o(patientPrenom);
 	}
 
 	/**
@@ -226,58 +226,60 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 
 	/**
 	 * {@inheritDoc}
-	 * Var.enUS: personCompleteName
+	 * Var.enUS: patientCompleteName
 	 * Indexe: true
 	 * Stocke: true
+	 * VarH2: true
+	 * VarTitre: true
 	 * NomAffichage.frFR: nom complèt
 	 * NomAffichage.enUS: complete name
-	 * r: personnePrenomPrefere
-	 * r.enUS: personFirstNamePreferred
+	 * r: patientPrenomPrefere
+	 * r.enUS: patientFirstNamePreferred
 	 * r: familleNom
 	 * r.enUS: familyName
 	 */                   
-	protected void _personneNomComplet(Couverture<String> c) {
-		if(personnePrenomPrefere != null && familleNom != null)
-			c.o(String.format("%s %s", personnePrenomPrefere, familleNom));
-		else if(personnePrenomPrefere != null)
-			c.o(personnePrenomPrefere);
+	protected void _patientNomComplet(Couverture<String> c) {
+		if(patientPrenomPrefere != null && familleNom != null)
+			c.o(String.format("%s %s", patientPrenomPrefere, familleNom));
+		else if(patientPrenomPrefere != null)
+			c.o(patientPrenomPrefere);
 		else if(familleNom != null)
 			c.o(familleNom);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * Var.enUS: personCompleteNamePreferred
+	 * Var.enUS: patientCompleteNamePreferred
 	 * Indexe: true
 	 * Stocke: true
 	 * NomAffichage.frFR: nom complèt préferé
 	 * NomAffichage.enUS: complete name preferred
-	 * r: personneNomComplet
-	 * r.enUS: personCompleteName
+	 * r: patientNomComplet
+	 * r.enUS: patientCompleteName
 	 */                   
-	protected void _personneNomCompletPrefere(Couverture<String> c) {
-		c.o(personneNomComplet);
+	protected void _patientNomCompletPrefere(Couverture<String> c) {
+		c.o(patientNomComplet);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * Var.enUS: personFormalName
+	 * Var.enUS: patientFormalName
 	 * Indexe: true
 	 * Stocke: true
 	 * NomAffichage.frFR: nom formel
 	 * NomAffichage.enUS: formal name
-	 * r: personnePrenom
-	 * r.enUS: personFirstName
+	 * r: patientPrenom
+	 * r.enUS: patientFirstName
 	 * r: familleNom
 	 * r.enUS: familyName
 	 */                   
-	protected void _personneNomFormel(Couverture<String> c) {
-		c.o(String.format("%s %s", personnePrenom, familleNom));
+	protected void _patientNomFormel(Couverture<String> c) {
+		c.o(String.format("%s %s", patientPrenom, familleNom));
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * Var.enUS: personBirthDate
+	 * Var.enUS: patientBirthDate
 	 * Indexe: true
 	 * Stocke: true
 	 * Definir: true
@@ -286,81 +288,65 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 	 * NomAffichage.frFR: date de naissance
 	 * NomAffichage.enUS: birth date
 	 */                   
-	protected void _personneDateNaissance(Couverture<LocalDate> c) {
+	protected void _patientDateNaissance(Couverture<LocalDate> c) {
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * Var.enUS: personBirthDateYear
+	 * Var.enUS: patientBirthDateYear
 	 * Indexe: true
 	 * Stocke: true
-	 * r: personneDateNaissance
-	 * r.enUS: personBirthDate
+	 * r: patientDateNaissance
+	 * r.enUS: patientBirthDate
 	 * r: Locale.FRANCE
 	 * r.enUS: Locale.US
 	 */                       
-	protected void _personneDateNaissanceDAnnee(Couverture<Integer> c) {
-		if(personneDateNaissance != null)
-			c.o(personneDateNaissance.getYear());
+	protected void _patientDateNaissanceDAnnee(Couverture<Integer> c) {
+		if(patientDateNaissance != null)
+			c.o(patientDateNaissance.getYear());
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * Var.enUS: personBirthDateMonthOfYear
+	 * Var.enUS: patientBirthDateMonthOfYear
 	 * Indexe: true
 	 * Stocke: true
-	 * r: personneDateNaissance
-	 * r.enUS: personBirthDate
+	 * r: patientDateNaissance
+	 * r.enUS: patientBirthDate
 	 * r: Locale.FRANCE
 	 * r.enUS: Locale.US
 	 */                       
-	protected void _personneDateNaissanceMoisDAnnee(Couverture<String> c) {
-		if(personneDateNaissance != null)
-			c.o(personneDateNaissance.format(DateTimeFormatter.ofPattern("MMMM", Locale.FRANCE)));
+	protected void _patientDateNaissanceMoisDAnnee(Couverture<String> c) {
+		if(patientDateNaissance != null)
+			c.o(patientDateNaissance.format(DateTimeFormatter.ofPattern("MMMM", Locale.FRANCE)));
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * Var.enUS: personBirthDateDayOfWeek
+	 * Var.enUS: patientBirthDateDayOfWeek
 	 * Indexe: true
 	 * Stocke: true
-	 * r: personneDateNaissance
-	 * r.enUS: personBirthDate
+	 * r: patientDateNaissance
+	 * r.enUS: patientBirthDate
 	 * r: Locale.FRANCE
 	 * r.enUS: Locale.US
 	 */                       
-	protected void _personneDateNaissanceJourDeSemaine(Couverture<String> c) {
-		if(personneDateNaissance != null)
-			c.o(personneDateNaissance.format(DateTimeFormatter.ofPattern("EEEE", Locale.FRANCE)));
+	protected void _patientDateNaissanceJourDeSemaine(Couverture<String> c) {
+		if(patientDateNaissance != null)
+			c.o(patientDateNaissance.format(DateTimeFormatter.ofPattern("EEEE", Locale.FRANCE)));
 	}
 
 	/**
-	 * Var.enUS: strPersonBirthDate
+	 * Var.enUS: strPatientBirthDate
 	 * r: "d MMMM yyyy"
 	 * r.enUS: "MMMM d, yyyy"
 	 * r: FRANCE
 	 * r.enUS: US
-	 * r: personneDateNaissance
-	 * r.enUS: personBirthDate
+	 * r: patientDateNaissance
+	 * r.enUS: patientBirthDate
 	 */
-	@Override public String strPersonneDateNaissance() {
-		return personneDateNaissance == null ? "" : personneDateNaissance.format(DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.FRANCE));
-	}
-
-	/**    
-	 * {@inheritDoc}
-	 * Var.enUS: patientCompleteName
-	 * Indexe: true
-	 * Stocke: true
-	 * VarH2: true
-	 * VarTitre: true
-	 * NomAffichage.frFR: nom
-	 * NomAffichage.enUS: name
-	 * r: personneNomComplet
-	 * r.enUS: personCompleteName
-	 */  
-	protected void _patientNomComplet(Couverture<String> c) {
-		c.o(personneNomComplet);
+	@Override public String strPatientDateNaissance() {
+		return patientDateNaissance == null ? "" : patientDateNaissance.format(DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.FRANCE));
 	}
 
 	/**

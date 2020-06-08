@@ -93,7 +93,7 @@ public class EnfantGenPage extends EnfantGenPageGen<ClusterPage> {
 	}
 
 	@Override protected void _contexteIconeNom(Couverture<String> c) {
-			c.o("patient");
+			c.o("hospital-user");
 	}
 
 	@Override public void initLoinEnfantGenPage() {
@@ -148,12 +148,12 @@ public class EnfantGenPage extends EnfantGenPageGen<ClusterPage> {
 			o.htmSupprime("Page");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmPersonnePrenom("Page");
+			o.htmPatientPrenom("Page");
 			o.htmFamilleNom("Page");
-			o.htmPersonnePrenomPrefere("Page");
+			o.htmPatientPrenomPrefere("Page");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmPersonneDateNaissance("Page");
+			o.htmPatientDateNaissance("Page");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInscriptionCles("Page");
@@ -172,12 +172,12 @@ public class EnfantGenPage extends EnfantGenPageGen<ClusterPage> {
 			o.htmSupprime("POST");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmPersonnePrenom("POST");
+			o.htmPatientPrenom("POST");
 			o.htmFamilleNom("POST");
-			o.htmPersonnePrenomPrefere("POST");
+			o.htmPatientPrenomPrefere("POST");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmPersonneDateNaissance("POST");
+			o.htmPatientDateNaissance("POST");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInscriptionCles("POST");
@@ -218,12 +218,12 @@ public class EnfantGenPage extends EnfantGenPageGen<ClusterPage> {
 			o.htmSupprime("PUTCopie");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmPersonnePrenom("PUTCopie");
+			o.htmPatientPrenom("PUTCopie");
 			o.htmFamilleNom("PUTCopie");
-			o.htmPersonnePrenomPrefere("PUTCopie");
+			o.htmPatientPrenomPrefere("PUTCopie");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmPersonneDateNaissance("PUTCopie");
+			o.htmPatientDateNaissance("PUTCopie");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInscriptionCles("PUTCopie");
@@ -246,12 +246,12 @@ public class EnfantGenPage extends EnfantGenPageGen<ClusterPage> {
 			o.htmSupprime("PATCH");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmPersonnePrenom("PATCH");
+			o.htmPatientPrenom("PATCH");
 			o.htmFamilleNom("PATCH");
-			o.htmPersonnePrenomPrefere("PATCH");
+			o.htmPatientPrenomPrefere("PATCH");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmPersonneDateNaissance("PATCH");
+			o.htmPatientDateNaissance("PATCH");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInscriptionCles("PATCH");
@@ -276,12 +276,12 @@ public class EnfantGenPage extends EnfantGenPageGen<ClusterPage> {
 			o.htmSupprime("Recherche");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmPersonnePrenom("Recherche");
+			o.htmPatientPrenom("Recherche");
 			o.htmFamilleNom("Recherche");
-			o.htmPersonnePrenomPrefere("Recherche");
+			o.htmPatientPrenomPrefere("Recherche");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmPersonneDateNaissance("Recherche");
+			o.htmPatientDateNaissance("Recherche");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInscriptionCles("Recherche");
@@ -519,7 +519,7 @@ public class EnfantGenPage extends EnfantGenPageGen<ClusterPage> {
 				if(getColonneObjetTitre()) {
 					{ e("td").f();
 						{ e("a").a("href", uri).f();
-							e("i").a("class", "far fa-patient ").f().g("i");
+							e("i").a("class", "far fa-hospital-user ").f().g("i");
 							{ e("span").f();
 								sx(o.strObjetTitre());
 							} g("span");
@@ -889,7 +889,7 @@ public class EnfantGenPage extends EnfantGenPageGen<ClusterPage> {
 			} p.g("div");
 			{ p.e("div").a("class", "").f();
 				{ p.e("a").a("href", "/patient").a("class", "").f();
-					p.e("i").a("class", "far fa-patient ").f().g("i");
+					p.e("i").a("class", "far fa-hospital-user ").f().g("i");
 					p.sx("voir tous les patients");
 				} p.g("a");
 			} p.g("div");

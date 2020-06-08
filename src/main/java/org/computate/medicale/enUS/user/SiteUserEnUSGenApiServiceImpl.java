@@ -1190,7 +1190,7 @@ public class SiteUserEnUSGenApiServiceImpl implements SiteUserEnUSGenApiService 
 
 			tx.preparedQuery(
 					SiteContextEnUS.SQL_create
-					, Tuple.of(SiteUser.class.getCanonicalName(), userId, created.toOffsetDateTime())
+					, Tuple.of(SiteUser.class.getCanonicalName(), userId)
 					, Collectors.toList()
 					, createAsync
 			-> {
