@@ -4,7 +4,7 @@ touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frF
 touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frFR/config/ConfigSite.java
 touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frFR/contexte/SiteContexteFrFR.java
 touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frFR/requete/api/RequeteApi.java
-touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frFR/recherche/RechercheListe.java
+touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frFR/recherche/ListeRecherche.java
 touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frFR/recherche/ResultatRecherche.java
 touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frFR/ecrivain/ToutEcrivain.java
 touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frFR/ecrivain/TousEcrivains.java
@@ -18,6 +18,5 @@ touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frF
 touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frFR/utilisateur/UtilisateurSite.java
 
 touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frFR/cluster/Cluster.java
-touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frFR/paiement/Paiementmedicale.java
 touch /usr/local/src/computate-medicale/src/main/java/org/computate/medicale/frFR/design/DesignPage.java
 

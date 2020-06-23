@@ -8,6 +8,7 @@ import org.computate.medicale.frFR.page.MiseEnPage;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
+import java.util.ArrayList;
 import org.apache.commons.collections.CollectionUtils;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
@@ -151,6 +152,8 @@ public abstract class ClusterGenPageGen<DEV> extends MiseEnPage {
 
 	public void requeteSiteClusterGenPage(RequeteSiteFrFR requeteSite_) {
 			super.requeteSiteMiseEnPage(requeteSite_);
+		if(listeCluster != null)
+			listeCluster.setRequeteSite_(requeteSite_);
 		if(cluster != null)
 			cluster.setRequeteSite_(requeteSite_);
 	}

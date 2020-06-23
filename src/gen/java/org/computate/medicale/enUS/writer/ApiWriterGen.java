@@ -10,6 +10,7 @@ import java.lang.Integer;
 import org.computate.medicale.enUS.writer.AllWriters;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
+import java.util.ArrayList;
 import org.apache.commons.collections.CollectionUtils;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
@@ -2926,6 +2927,8 @@ public abstract class ApiWriterGen<DEV> extends Object {
 	/////////////////
 
 	public void siteRequestApiWriter(SiteRequestEnUS siteRequest_) {
+		if(appSwagger2 != null)
+			appSwagger2.setSiteRequest_(siteRequest_);
 		if(wPaths != null)
 			wPaths.setSiteRequest_(siteRequest_);
 		if(wRequestBodies != null)

@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.lang.Integer;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
+import java.util.ArrayList;
 import org.apache.commons.collections.CollectionUtils;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
@@ -60,7 +61,7 @@ public abstract class PageLayoutGen<DEV> extends Object {
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<PagePart>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<PagePart> pageParts = new java.util.ArrayList<org.computate.medicale.enUS.page.part.PagePart>();
+	protected List<PagePart> pageParts = new ArrayList<PagePart>();
 	@JsonIgnore
 	public Wrap<List<PagePart>> pagePartsWrap = new Wrap<List<PagePart>>().p(this).c(List.class).var("pageParts").o(pageParts);
 
@@ -1097,7 +1098,7 @@ public abstract class PageLayoutGen<DEV> extends Object {
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<String> pageUris = new java.util.ArrayList<java.lang.String>();
+	protected List<String> pageUris = new ArrayList<String>();
 	@JsonIgnore
 	public Wrap<List<String>> pageUrisWrap = new Wrap<List<String>>().p(this).c(List.class).var("pageUris").o(pageUris);
 

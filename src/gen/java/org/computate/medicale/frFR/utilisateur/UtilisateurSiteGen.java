@@ -84,7 +84,7 @@ public abstract class UtilisateurSiteGen<DEV> extends Cluster {
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected List<Long> utilisateurCles = new java.util.ArrayList<java.lang.Long>();
+	protected List<Long> utilisateurCles = new ArrayList<Long>();
 	@JsonIgnore
 	public Couverture<List<Long>> utilisateurClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("utilisateurCles").o(utilisateurCles);
 
@@ -171,7 +171,7 @@ public abstract class UtilisateurSiteGen<DEV> extends Cluster {
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected List<Long> inscriptionCles = new java.util.ArrayList<java.lang.Long>();
+	protected List<Long> inscriptionCles = new ArrayList<Long>();
 	@JsonIgnore
 	public Couverture<List<Long>> inscriptionClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("inscriptionCles").o(inscriptionCles);
 
@@ -1468,43 +1468,37 @@ public abstract class UtilisateurSiteGen<DEV> extends Cluster {
 			case "utilisateurNom":
 				if(val != null)
 					setUtilisateurNom(val);
-				sauvegardesUtilisateurSite.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "utilisateurMail":
 				if(val != null)
 					setUtilisateurMail(val);
-				sauvegardesUtilisateurSite.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "customerProfileId":
 				if(val != null)
 					setCustomerProfileId(val);
-				sauvegardesUtilisateurSite.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "utilisateurRecevoirCourriels":
 				if(val != null)
 					setUtilisateurRecevoirCourriels(val);
-				sauvegardesUtilisateurSite.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "voirArchive":
 				if(val != null)
 					setVoirArchive(val);
-				sauvegardesUtilisateurSite.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "voirSupprime":
 				if(val != null)
 					setVoirSupprime(val);
-				sauvegardesUtilisateurSite.add(var);
+				sauvegardes.add(var);
 				return val;
 			default:
 				return super.definirCluster(var, val);
 		}
 	}
-
-	/////////////////
-	// sauvegardes //
-	/////////////////
-
-	protected List<String> sauvegardesUtilisateurSite = new ArrayList<String>();
 
 	/////////////
 	// peupler //
@@ -1515,76 +1509,76 @@ public abstract class UtilisateurSiteGen<DEV> extends Cluster {
 	}
 	public void peuplerUtilisateurSite(SolrDocument solrDocument) {
 		UtilisateurSite oUtilisateurSite = (UtilisateurSite)this;
-		sauvegardesUtilisateurSite = (List<String>)solrDocument.get("sauvegardesUtilisateurSite_stored_strings");
-		if(sauvegardesUtilisateurSite != null) {
+		sauvegardes = (List<String>)solrDocument.get("sauvegardes_stored_strings");
+		if(sauvegardes != null) {
 
-			if(sauvegardesUtilisateurSite.contains("utilisateurCles")) {
+			if(sauvegardes.contains("utilisateurCles")) {
 				List<Long> utilisateurCles = (List<Long>)solrDocument.get("utilisateurCles_stored_longs");
 				if(utilisateurCles != null)
 					oUtilisateurSite.utilisateurCles.addAll(utilisateurCles);
 			}
 
-			if(sauvegardesUtilisateurSite.contains("inscriptionCles")) {
+			if(sauvegardes.contains("inscriptionCles")) {
 				List<Long> inscriptionCles = (List<Long>)solrDocument.get("inscriptionCles_stored_longs");
 				if(inscriptionCles != null)
 					oUtilisateurSite.inscriptionCles.addAll(inscriptionCles);
 			}
 
-			if(sauvegardesUtilisateurSite.contains("utilisateurNom")) {
+			if(sauvegardes.contains("utilisateurNom")) {
 				String utilisateurNom = (String)solrDocument.get("utilisateurNom_stored_string");
 				if(utilisateurNom != null)
 					oUtilisateurSite.setUtilisateurNom(utilisateurNom);
 			}
 
-			if(sauvegardesUtilisateurSite.contains("utilisateurMail")) {
+			if(sauvegardes.contains("utilisateurMail")) {
 				String utilisateurMail = (String)solrDocument.get("utilisateurMail_stored_string");
 				if(utilisateurMail != null)
 					oUtilisateurSite.setUtilisateurMail(utilisateurMail);
 			}
 
-			if(sauvegardesUtilisateurSite.contains("utilisateurPrenom")) {
+			if(sauvegardes.contains("utilisateurPrenom")) {
 				String utilisateurPrenom = (String)solrDocument.get("utilisateurPrenom_stored_string");
 				if(utilisateurPrenom != null)
 					oUtilisateurSite.setUtilisateurPrenom(utilisateurPrenom);
 			}
 
-			if(sauvegardesUtilisateurSite.contains("utilisateurNomFamille")) {
+			if(sauvegardes.contains("utilisateurNomFamille")) {
 				String utilisateurNomFamille = (String)solrDocument.get("utilisateurNomFamille_stored_string");
 				if(utilisateurNomFamille != null)
 					oUtilisateurSite.setUtilisateurNomFamille(utilisateurNomFamille);
 			}
 
-			if(sauvegardesUtilisateurSite.contains("utilisateurNomComplet")) {
+			if(sauvegardes.contains("utilisateurNomComplet")) {
 				String utilisateurNomComplet = (String)solrDocument.get("utilisateurNomComplet_stored_string");
 				if(utilisateurNomComplet != null)
 					oUtilisateurSite.setUtilisateurNomComplet(utilisateurNomComplet);
 			}
 
-			if(sauvegardesUtilisateurSite.contains("utilisateurSite")) {
+			if(sauvegardes.contains("utilisateurSite")) {
 				String utilisateurSite = (String)solrDocument.get("utilisateurSite_stored_string");
 				if(utilisateurSite != null)
 					oUtilisateurSite.setUtilisateurSite(utilisateurSite);
 			}
 
-			if(sauvegardesUtilisateurSite.contains("customerProfileId")) {
+			if(sauvegardes.contains("customerProfileId")) {
 				String customerProfileId = (String)solrDocument.get("customerProfileId_stored_string");
 				if(customerProfileId != null)
 					oUtilisateurSite.setCustomerProfileId(customerProfileId);
 			}
 
-			if(sauvegardesUtilisateurSite.contains("utilisateurRecevoirCourriels")) {
+			if(sauvegardes.contains("utilisateurRecevoirCourriels")) {
 				Boolean utilisateurRecevoirCourriels = (Boolean)solrDocument.get("utilisateurRecevoirCourriels_stored_boolean");
 				if(utilisateurRecevoirCourriels != null)
 					oUtilisateurSite.setUtilisateurRecevoirCourriels(utilisateurRecevoirCourriels);
 			}
 
-			if(sauvegardesUtilisateurSite.contains("voirArchive")) {
+			if(sauvegardes.contains("voirArchive")) {
 				Boolean voirArchive = (Boolean)solrDocument.get("voirArchive_stored_boolean");
 				if(voirArchive != null)
 					oUtilisateurSite.setVoirArchive(voirArchive);
 			}
 
-			if(sauvegardesUtilisateurSite.contains("voirSupprime")) {
+			if(sauvegardes.contains("voirSupprime")) {
 				Boolean voirSupprime = (Boolean)solrDocument.get("voirSupprime_stored_boolean");
 				if(voirSupprime != null)
 					oUtilisateurSite.setVoirSupprime(voirSupprime);
@@ -1656,9 +1650,6 @@ public abstract class UtilisateurSiteGen<DEV> extends Cluster {
 	}
 
 	public void indexerUtilisateurSite(SolrInputDocument document) {
-		if(sauvegardesUtilisateurSite != null)
-			document.addField("sauvegardesUtilisateurSite_stored_strings", sauvegardesUtilisateurSite);
-
 		if(utilisateurCles != null) {
 			for(java.lang.Long o : utilisateurCles) {
 				document.addField("utilisateurCles_indexed_longs", o);

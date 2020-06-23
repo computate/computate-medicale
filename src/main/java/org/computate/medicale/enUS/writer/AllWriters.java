@@ -5,6 +5,9 @@ import java.util.List;
 import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 
+/**
+ * CanonicalName: org.computate.medicale.frFR.ecrivain.TousEcrivains
+ **/
 public class AllWriters extends AllWritersGen<Object> {
 
 	protected void _siteRequest_(Wrap<SiteRequestEnUS> c) {

@@ -7,6 +7,7 @@ import org.computate.medicale.frFR.requete.api.RequeteApi;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
+import java.util.ArrayList;
 import org.apache.commons.collections.CollectionUtils;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
@@ -152,6 +153,8 @@ public abstract class DesignPageGenPageGen<DEV> extends ClusterPage {
 
 	public void requeteSiteDesignPageGenPage(RequeteSiteFrFR requeteSite_) {
 			super.requeteSiteClusterPage(requeteSite_);
+		if(listeDesignPage != null)
+			listeDesignPage.setRequeteSite_(requeteSite_);
 		if(designPage != null)
 			designPage.setRequeteSite_(requeteSite_);
 	}

@@ -7,6 +7,7 @@ import org.computate.medicale.enUS.request.api.ApiRequest;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
+import java.util.ArrayList;
 import org.apache.commons.collections.CollectionUtils;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
@@ -82,7 +83,7 @@ public abstract class AllWritersGen<DEV> extends Object {
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<AllWriter>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<AllWriter> writers = new java.util.ArrayList<org.computate.medicale.enUS.writer.AllWriter>();
+	protected List<AllWriter> writers = new ArrayList<AllWriter>();
 	@JsonIgnore
 	public Wrap<List<AllWriter>> writersWrap = new Wrap<List<AllWriter>>().p(this).c(List.class).var("writers").o(writers);
 

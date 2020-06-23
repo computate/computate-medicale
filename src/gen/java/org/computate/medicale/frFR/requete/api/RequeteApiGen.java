@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.lang.Integer;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
+import java.util.ArrayList;
 import org.apache.commons.collections.CollectionUtils;
 import java.lang.Long;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -682,7 +683,7 @@ public abstract class RequeteApiGen<DEV> extends Object {
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected List<Long> pks = new java.util.ArrayList<java.lang.Long>();
+	protected List<Long> pks = new ArrayList<Long>();
 	@JsonIgnore
 	public Couverture<List<Long>> pksCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("pks").o(pks);
 
@@ -768,7 +769,7 @@ public abstract class RequeteApiGen<DEV> extends Object {
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<String> classes = new java.util.ArrayList<java.lang.String>();
+	protected List<String> classes = new ArrayList<String>();
 	@JsonIgnore
 	public Couverture<List<String>> classesCouverture = new Couverture<List<String>>().p(this).c(List.class).var("classes").o(classes);
 
@@ -847,7 +848,7 @@ public abstract class RequeteApiGen<DEV> extends Object {
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<String> vars = new java.util.ArrayList<java.lang.String>();
+	protected List<String> vars = new ArrayList<String>();
 	@JsonIgnore
 	public Couverture<List<String>> varsCouverture = new Couverture<List<String>>().p(this).c(List.class).var("vars").o(vars);
 

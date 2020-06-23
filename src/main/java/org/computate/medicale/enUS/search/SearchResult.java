@@ -4,6 +4,9 @@ import org.apache.solr.common.SolrDocument;
 import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 
+/**
+ * CanonicalName: org.computate.medicale.frFR.recherche.ResultatRecherche
+ **/
 public class SearchResult extends SearchResultGen<Object> {
 
 	protected void _siteRequest_(Wrap<SiteRequestEnUS> c) {
@@ -14,4 +17,4 @@ public class SearchResult extends SearchResultGen<Object> {
 
 	protected void _resultIndex(Wrap<Long> c) {
 	}
-} 
+}

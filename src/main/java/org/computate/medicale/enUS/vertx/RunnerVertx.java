@@ -12,8 +12,9 @@ import io.vertx.core.logging.LoggerFactory;
 import io.vertx.core.spi.cluster.ClusterManager;
 import io.vertx.spi.cluster.zookeeper.ZookeeperClusterManager;
 
-/**	
- *	A Java class to run the main Vert.x application as a main method. 
+/**
+ * A Java class to run the main Vert.x application as a main method. 
+ * CanonicalName: org.computate.medicale.frFR.vertx.CoureurVertx
  **/
 public class RunnerVertx {
 

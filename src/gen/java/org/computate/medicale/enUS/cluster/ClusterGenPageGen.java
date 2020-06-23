@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
+import java.util.ArrayList;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 import org.apache.commons.collections.CollectionUtils;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -151,6 +152,8 @@ public abstract class ClusterGenPageGen<DEV> extends PageLayout {
 
 	public void siteRequestClusterGenPage(SiteRequestEnUS siteRequest_) {
 			super.siteRequestPageLayout(siteRequest_);
+		if(listCluster != null)
+			listCluster.setSiteRequest_(siteRequest_);
 		if(cluster != null)
 			cluster.setSiteRequest_(siteRequest_);
 	}

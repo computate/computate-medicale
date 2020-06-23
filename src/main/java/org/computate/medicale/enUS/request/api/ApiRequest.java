@@ -7,6 +7,9 @@ import java.util.UUID;
 import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 
+/**
+ * CanonicalName: org.computate.medicale.frFR.requete.api.RequeteApi
+ **/
 public class ApiRequest extends ApiRequestGen<Object> {
 
 	protected void _siteRequest_(Wrap<SiteRequestEnUS> c) {}

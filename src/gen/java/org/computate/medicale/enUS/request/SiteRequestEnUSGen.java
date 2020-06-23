@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
 import java.util.Stack;
+import java.util.ArrayList;
 import org.computate.medicale.enUS.user.SiteUser;
 import io.vertx.sqlclient.SqlConnection;
 import org.apache.commons.collections.CollectionUtils;
@@ -1065,7 +1066,7 @@ The site configuration.
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<String> userRealmRoles = new java.util.ArrayList<java.lang.String>();
+	protected List<String> userRealmRoles = new ArrayList<String>();
 	@JsonIgnore
 	public Wrap<List<String>> userRealmRolesWrap = new Wrap<List<String>>().p(this).c(List.class).var("userRealmRoles").o(userRealmRoles);
 
@@ -1182,7 +1183,7 @@ The site configuration.
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<String> userResourceRoles = new java.util.ArrayList<java.lang.String>();
+	protected List<String> userResourceRoles = new ArrayList<String>();
 	@JsonIgnore
 	public Wrap<List<String>> userResourceRolesWrap = new Wrap<List<String>>().p(this).c(List.class).var("userResourceRoles").o(userResourceRoles);
 
@@ -1625,7 +1626,7 @@ The site configuration.
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut Map<String, String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected Map<String, String> requestVars = new java.util.HashMap<java.lang.String, java.lang.String>();
+	protected Map<String, String> requestVars = new HashMap<String, String>();
 	@JsonIgnore
 	public Wrap<Map<String, String>> requestVarsWrap = new Wrap<Map<String, String>>().p(this).c(Map.class).var("requestVars").o(requestVars);
 

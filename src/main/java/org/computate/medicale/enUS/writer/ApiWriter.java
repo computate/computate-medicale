@@ -17,6 +17,9 @@ import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 import org.computate.medicale.enUS.vertx.AppSwagger2;
 
+/**
+ * CanonicalName: org.computate.medicale.frFR.ecrivain.ApiEcrivain
+ **/
 public class ApiWriter extends ApiWriterGen<Object> implements Comparable<ApiWriter> {
 
 	protected void _siteRequest_(Wrap<SiteRequestEnUS> c) {

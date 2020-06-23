@@ -33,6 +33,8 @@ import io.vertx.core.json.JsonArray;
 import org.apache.solr.common.SolrDocument;
 import java.util.List;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
+import org.computate.medicale.enUS.html.part.HtmlPart;
+import org.computate.medicale.enUS.design.PageDesign;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.commons.lang3.math.NumberUtils;
 import java.util.Optional;
@@ -153,7 +155,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected List<Long> childDesignKeys = new java.util.ArrayList<java.lang.Long>();
+	protected List<Long> childDesignKeys = new ArrayList<Long>();
 	@JsonIgnore
 	public Wrap<List<Long>> childDesignKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("childDesignKeys").o(childDesignKeys);
 
@@ -240,7 +242,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected List<Long> parentDesignKeys = new java.util.ArrayList<java.lang.Long>();
+	protected List<Long> parentDesignKeys = new ArrayList<Long>();
 	@JsonIgnore
 	public Wrap<List<Long>> parentDesignKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("parentDesignKeys").o(parentDesignKeys);
 
@@ -370,8 +372,8 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 								{ e("ul").a("class", "w3-ul w3-hoverable ").a("id", "listPageDesignParentDesignKeys_", classApiMethodMethod).f();
 								} g("ul");
 								if(
-										CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
-										|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+										CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), PageDesign.ROLES)
+										|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), PageDesign.ROLES)
 										) {
 									{ e("div").a("class", "w3-cell-row ").f();
 										e("button")
@@ -399,7 +401,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected List<Long> htmlPartKeys = new java.util.ArrayList<java.lang.Long>();
+	protected List<Long> htmlPartKeys = new ArrayList<Long>();
 	@JsonIgnore
 	public Wrap<List<Long>> htmlPartKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("htmlPartKeys").o(htmlPartKeys);
 
@@ -529,8 +531,8 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 								{ e("ul").a("class", "w3-ul w3-hoverable ").a("id", "listPageDesignHtmlPartKeys_", classApiMethodMethod).f();
 								} g("ul");
 								if(
-										CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
-										|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+										CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), HtmlPart.ROLES)
+										|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), HtmlPart.ROLES)
 										) {
 									{ e("div").a("class", "w3-cell-row ").f();
 										e("button")
@@ -911,18 +913,18 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 		switch(var) {
 			case "childDesignKeys":
 				oPageDesign.addChildDesignKeys((Long)val);
-				if(!savesPageDesign.contains(var))
-					savesPageDesign.add(var);
+				if(!saves.contains(var))
+					saves.add(var);
 				return val;
 			case "parentDesignKeys":
 				oPageDesign.addParentDesignKeys((Long)val);
-				if(!savesPageDesign.contains(var))
-					savesPageDesign.add(var);
+				if(!saves.contains(var))
+					saves.add(var);
 				return val;
 			case "htmlPartKeys":
 				oPageDesign.addHtmlPartKeys((Long)val);
-				if(!savesPageDesign.contains(var))
-					savesPageDesign.add(var);
+				if(!saves.contains(var))
+					saves.add(var);
 				return val;
 			default:
 				return super.attributeCluster(var, val);
@@ -953,23 +955,17 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 			case "pageDesignCompleteName":
 				if(val != null)
 					setPageDesignCompleteName(val);
-				savesPageDesign.add(var);
+				saves.add(var);
 				return val;
 			case "designHidden":
 				if(val != null)
 					setDesignHidden(val);
-				savesPageDesign.add(var);
+				saves.add(var);
 				return val;
 			default:
 				return super.defineCluster(var, val);
 		}
 	}
-
-	/////////////////
-	// saves //
-	/////////////////
-
-	protected List<String> savesPageDesign = new ArrayList<String>();
 
 	/////////////
 	// populate //
@@ -980,10 +976,10 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	}
 	public void populatePageDesign(SolrDocument solrDocument) {
 		PageDesign oPageDesign = (PageDesign)this;
-		savesPageDesign = (List<String>)solrDocument.get("savesPageDesign_stored_strings");
-		if(savesPageDesign != null) {
+		saves = (List<String>)solrDocument.get("saves_stored_strings");
+		if(saves != null) {
 
-			if(savesPageDesign.contains("pageDesignKey")) {
+			if(saves.contains("pageDesignKey")) {
 				Long pageDesignKey = (Long)solrDocument.get("pageDesignKey_stored_long");
 				if(pageDesignKey != null)
 					oPageDesign.setPageDesignKey(pageDesignKey);
@@ -1001,13 +997,13 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 			if(htmlPartKeys != null)
 				oPageDesign.htmlPartKeys.addAll(htmlPartKeys);
 
-			if(savesPageDesign.contains("pageDesignCompleteName")) {
+			if(saves.contains("pageDesignCompleteName")) {
 				String pageDesignCompleteName = (String)solrDocument.get("pageDesignCompleteName_stored_string");
 				if(pageDesignCompleteName != null)
 					oPageDesign.setPageDesignCompleteName(pageDesignCompleteName);
 			}
 
-			if(savesPageDesign.contains("designHidden")) {
+			if(saves.contains("designHidden")) {
 				Boolean designHidden = (Boolean)solrDocument.get("designHidden_stored_boolean");
 				if(designHidden != null)
 					oPageDesign.setDesignHidden(designHidden);
@@ -1079,9 +1075,6 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	}
 
 	public void indexPageDesign(SolrInputDocument document) {
-		if(savesPageDesign != null)
-			document.addField("savesPageDesign_stored_strings", savesPageDesign);
-
 		if(pageDesignKey != null) {
 			document.addField("pageDesignKey_indexed_long", pageDesignKey);
 			document.addField("pageDesignKey_stored_long", pageDesignKey);

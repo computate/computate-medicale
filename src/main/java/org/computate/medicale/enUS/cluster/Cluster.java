@@ -11,7 +11,7 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.writer.AllWriter;
 import org.computate.medicale.enUS.page.PageLayout;
-import org.computate.medicale.frFR.page.part.PagePart;
+import org.computate.medicale.enUS.page.part.PagePart;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 import org.computate.medicale.enUS.xml.UtilXml;
 
@@ -93,12 +93,7 @@ public class Cluster extends ClusterGen<Object> {
 	protected void _userKey(Wrap<Long> c) {
 	}
 
-	protected void _saves(Wrap<List<String>> c) {
-		try {
-			c.o((List<String>)FieldUtils.getField(getClass(), "saves" + getClass().getSimpleName(), true).get(this));
-		} catch (IllegalArgumentException | IllegalAccessException e) {
-			ExceptionUtils.rethrow(e);
-		}
+	protected void _saves(List<String> l) {
 	}
 
 	protected void _objectTitle(Wrap<String> c) {

@@ -7,6 +7,7 @@ import org.computate.medicale.frFR.requete.api.RequeteApi;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
+import java.util.ArrayList;
 import org.apache.commons.collections.CollectionUtils;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
@@ -82,7 +83,7 @@ public abstract class TousEcrivainsGen<DEV> extends Object {
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<ToutEcrivain>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<ToutEcrivain> ecrivains = new java.util.ArrayList<org.computate.medicale.frFR.ecrivain.ToutEcrivain>();
+	protected List<ToutEcrivain> ecrivains = new ArrayList<ToutEcrivain>();
 	@JsonIgnore
 	public Couverture<List<ToutEcrivain>> ecrivainsCouverture = new Couverture<List<ToutEcrivain>>().p(this).c(List.class).var("ecrivains").o(ecrivains);
 

@@ -1,4 +1,14 @@
 
+Link to 3-minute video that describes and demonstrates your solutionThis question is required. *
+A demo of your project uploaded to Box and made visible to Red Hatters.
+Please double check the permissions! Inaccessible links will disqualify your submission!
+
+Long description
+About 500 words, or about one page of text, that covers the solution in more detail
+
+Roadmap
+A document or image that shows how mature your solution is today and how you plan to improve it in the future
+
 ### You can watch a video and learn more about this project here: https://devpost.com/software/computate-medicale
 
 # Prerequisites

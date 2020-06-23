@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
 import java.util.Stack;
+import java.util.ArrayList;
 import org.computate.medicale.frFR.utilisateur.UtilisateurSite;
 import io.vertx.sqlclient.SqlConnection;
 import org.apache.commons.collections.CollectionUtils;
@@ -1061,7 +1062,7 @@ public abstract class RequeteSiteFrFRGen<DEV> extends Object {
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<String> utilisateurRolesRoyaume = new java.util.ArrayList<java.lang.String>();
+	protected List<String> utilisateurRolesRoyaume = new ArrayList<String>();
 	@JsonIgnore
 	public Couverture<List<String>> utilisateurRolesRoyaumeCouverture = new Couverture<List<String>>().p(this).c(List.class).var("utilisateurRolesRoyaume").o(utilisateurRolesRoyaume);
 
@@ -1178,7 +1179,7 @@ public abstract class RequeteSiteFrFRGen<DEV> extends Object {
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<String> utilisateurRolesRessource = new java.util.ArrayList<java.lang.String>();
+	protected List<String> utilisateurRolesRessource = new ArrayList<String>();
 	@JsonIgnore
 	public Couverture<List<String>> utilisateurRolesRessourceCouverture = new Couverture<List<String>>().p(this).c(List.class).var("utilisateurRolesRessource").o(utilisateurRolesRessource);
 
@@ -1621,7 +1622,7 @@ public abstract class RequeteSiteFrFRGen<DEV> extends Object {
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut Map<String, String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected Map<String, String> requeteVars = new java.util.HashMap<java.lang.String, java.lang.String>();
+	protected Map<String, String> requeteVars = new HashMap<String, String>();
 	@JsonIgnore
 	public Couverture<Map<String, String>> requeteVarsCouverture = new Couverture<Map<String, String>>().p(this).c(Map.class).var("requeteVars").o(requeteVars);
 

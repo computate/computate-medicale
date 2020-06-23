@@ -388,9 +388,9 @@ public class SiteConfig extends SiteConfigGen<Object> implements Serializable {
 	protected void _jdbcConnectTimeout(Wrap<Integer> c) {
 		Integer o;
 		if(config == null)
-			o = NumberUtils.toInt(System.getenv(c.var), 10);
+			o = NumberUtils.toInt(System.getenv(c.var), 5000);
 		else
-			o = config.getInt(prefixEscaped + c.var, 10);
+			o = config.getInt(prefixEscaped + c.var, 5000);
 		c.o(o);
 	}
 

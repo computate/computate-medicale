@@ -13,6 +13,9 @@ import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 import io.vertx.core.buffer.Buffer;
 
+/**
+ * CanonicalName: org.computate.medicale.frFR.ecrivain.ToutEcrivain
+ **/
 public class AllWriter extends AllWriterGen<Object> {
 
 	protected void _siteRequest_(Wrap<SiteRequestEnUS> c) {

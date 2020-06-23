@@ -533,9 +533,9 @@ public class ConfigSite extends ConfigSiteGen<Object> implements Serializable {
 	protected void _jdbcDelaiConnexion(Couverture<Integer> c) {
 		Integer o;
 		if(config == null)
-			o = NumberUtils.toInt(System.getenv(c.var), 10);
+			o = NumberUtils.toInt(System.getenv(c.var), 5000);
 		else
-			o = config.getInt(prefixeEchappe + c.var, 10);
+			o = config.getInt(prefixeEchappe + c.var, 5000);
 		c.o(o);
 	}
 
