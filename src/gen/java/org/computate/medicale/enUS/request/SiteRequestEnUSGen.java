@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.computate.medicale.enUS.cluster.Cluster;
 import org.apache.solr.common.SolrDocumentList;
 import org.computate.medicale.enUS.request.api.ApiRequest;
+import java.util.HashMap;
 import org.computate.medicale.enUS.context.SiteContextEnUS;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;

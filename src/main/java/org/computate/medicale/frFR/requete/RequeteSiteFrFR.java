@@ -1,4 +1,4 @@
-package org.computate.medicale.frFR.requete; 
+package org.computate.medicale.frFR.requete;  
 
 import java.io.IOException;
 import java.io.Serializable;
