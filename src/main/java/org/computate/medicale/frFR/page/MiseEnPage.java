@@ -28,7 +28,9 @@ import org.computate.medicale.frFR.config.ConfigSite;
 import org.computate.medicale.frFR.couverture.Couverture;
 import org.computate.medicale.frFR.design.DesignPageGenPage;
 import org.computate.medicale.frFR.ecrivain.ToutEcrivain;
+import org.computate.medicale.frFR.inscription.InscriptionGenPage;
 import org.computate.medicale.frFR.page.part.PagePart;
+import org.computate.medicale.frFR.patient.PatientGenPage;
 import org.computate.medicale.frFR.recherche.ListeRecherche;
 import org.computate.medicale.frFR.requete.RequeteSiteFrFR;
 import org.computate.medicale.frFR.utilisateur.UtilisateurSite;
@@ -958,14 +960,8 @@ public class MiseEnPage extends MiseEnPageGen<Object> {
 	 * r.enUS: EnrollmentGenPage.htmlSuggestedEnrollmentGenPage
 	 * r: PaiementGenPage.htmlSuggerePaiementGenPage
 	 * r.enUS: PaymentGenPage.htmlSuggestedPaymentGenPage
-	 * r: MereGenPage.htmlSuggereMereGenPage
-	 * r.enUS: MomGenPage.htmlSuggestedMomGenPage
-	 * r: PereGenPage.htmlSuggerePereGenPage
-	 * r.enUS: DadGenPage.htmlSuggestedDadGenPage
-	 * r: GardienGenPage.htmlSuggereGardienGenPage
-	 * r.enUS: GuardianGenPage.htmlSuggestedGuardianGenPage
-	 * r: EnfantGenPage.htmlSuggereEnfantGenPage
-	 * r.enUS: ChildGenPage.htmlSuggestedChildGenPage
+	 * r: PatientGenPage.htmlSuggerePatientGenPage
+	 * r.enUS: PatientGenPage.htmlSuggestedPatientGenPage
 	 * r: DesignPageGenPage.htmlSuggereDesignPageGenPage
 	 * r.enUS: PageDesignGenPage.htmlSuggestedPageDesignGenPage
 	 */ 
@@ -992,6 +988,26 @@ public class MiseEnPage extends MiseEnPageGen<Object> {
 					} g("div");
 					{ e("div").a("class", "w3-dropdown-content w3-card-4 w3-padding ").f();
 						CliniqueGenPage.htmlSuggereCliniqueGenPage(this, id, null);
+					} g("div");
+				} g("div");
+
+				{ e("div").a("class", "w3-dropdown-hover ").f();
+					{ e("div").a("class", "w3-button w3-hover-blue-gray ").f();
+							e("i").a("class", "far fa-notes-medical ").f().g("i");
+							sx("inscriptions");
+					} g("div");
+					{ e("div").a("class", "w3-dropdown-content w3-card-4 w3-padding ").f();
+						InscriptionGenPage.htmlSuggereInscriptionGenPage(this, id, null);
+					} g("div");
+				} g("div");
+
+				{ e("div").a("class", "w3-dropdown-hover ").f();
+					{ e("div").a("class", "w3-button w3-hover-orange ").f();
+							e("i").a("class", "far fa-hospital-user ").f().g("i");
+							sx("patients");
+					} g("div");
+					{ e("div").a("class", "w3-dropdown-content w3-card-4 w3-padding ").f();
+						PatientGenPage.htmlSuggerePatientGenPage(this, id, null);
 					} g("div");
 				} g("div");
 	

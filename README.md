@@ -1,5 +1,6 @@
 
-Link to 3-minute video that describes and demonstrates your solutionThis question is required. *
+Link to 3-minute video that describes and demonstrates your solution
+This question is required. *
 A demo of your project uploaded to Box and made visible to Red Hatters.
 Please double check the permissions! Inaccessible links will disqualify your submission!
 
@@ -17,47 +18,35 @@ A document or image that shows how mature your solution is today and how you pla
 ### Choose a domain name. 
 https://www.computate.org/enUS/course/001/001-choose-domain-name
 
-## What is the best operating system to develop my website?
-### Try my favorite, CentOS 7. 
-https://www.computate.org/enUS/course/001/002-choose-your-operating-system
-
-## How do I try CentOS 7 Linux without replacing my operating system?
-### Try CentOS 7 on a VirtualBox virtual machine. 
-https://www.computate.org/enUS/course/001/003-try-linux-on-a-virtual-machine-on-virtual-box
-
-## How do I install the operating system to start developing my website?
-### Every step to install the CentOS 7 operating system. 
-https://www.computate.org/enUS/course/001/004-how-to-install-centos7
-
-## How do I install the latest version of maven.
-### Install maven from the source code. 
-https://www.computate.org/enUS/course/001/004-how-to-install-the-latest-version-of-maven
-
-## How do I install development tools to develop my website?
-### How to install Eclipse IDE the open source way. 
-https://www.computate.org/enUS/course/001/006-how-to-install-eclipse
-
-## How do I install the latest version of PostgreSQL.
-### Install PostgreSQL from the source code.
-https://www.computate.org/enUS/course/001/007-how-to-install-the-latest-version-of-postgresql
-
 ## What can I do once I have purchased a domain name?
 ### Obtain a valid TLS certificate for free, for security and credibility. 
 https://www.computate.org/enUS/course/001/008-how-to-obtain-free-tls-certificates
 
-## How do I try out clustered configuration, requests, events and shared data sources in development?
-### Install Zookeeper from the source code. 
-https://www.computate.org/enUS/course/001/009-how-to-install-the-latest-version-of-zookeeper
-
-## How do I try out a search engine in my project?
-### Install Solr from the source code. 
-https://www.computate.org/enUS/course/001/010-how-to-install-a-recent-version-of-solr-search-engine
-
-## How do I try out some user management software for single sign on applications? 
-### Install Keycloak from the source code. 
-Currently a work in progress. 
+## Where can I host the project online? 
+### Red Hat OpenShift Online is the very best open source cloud hosting available. 
+https://www.openshift.com/products/online/
 
 # Installation
+
+The installation of the project for both development and production in containers is completely automated with Ansible. 
+Begin by installing both the ansible and python3 packages. 
+
+```bash
+sudo yum install -y ansible python3
+```
+
+If you have an older operating system that does not yet support python3, you may struggle to deploy the application on OpenShift in the cloud. The OpenShift Ansible modules seem to require python3 as the system library, so I recommend updating your operating system to something more recent, for example CentOS8 or RHEL8. You might also be able to update your ansible configuration to make it work: 
+
+```
+sudo vim /etc/ansible/ansible.cfg
+```
+
+```
+[defaults]
+interpreter_python=/usr/bin/python3
+```
+
+## Development installation of computate-medicale
 
 ```bash
 curl https://raw.githubusercontent.com/computate/computate/master/bin/frFR/installer-computate.sh -o ~/Downloads/installer-computate.sh

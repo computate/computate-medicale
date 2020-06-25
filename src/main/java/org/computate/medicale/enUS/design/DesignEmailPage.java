@@ -515,7 +515,7 @@ public class DesignEmailPage extends DesignEmailPageGen<DesignEmailGenPage> {
 		if(StringUtils.isBlank(emailToAddress))
 			throw new RuntimeException("The email to field was blank. ");
 		if(StringUtils.isBlank(emailToClinic))
-			throw new RuntimeException("The request was not matched to a school. ");
+			throw new RuntimeException("The request was not matched to a clinic. ");
 		ArrayList<String> tos = new ArrayList<>();
 		tos.addAll(Arrays.asList(emailToClinic.trim().split("\\s*,\\s*")));
 		tos.addAll(Arrays.asList(emailToAddress.trim().split("\\s*,\\s*")));

@@ -27,7 +27,9 @@ import org.computate.medicale.enUS.config.SiteConfig;
 import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.design.PageDesignGenPage;
 import org.computate.medicale.enUS.writer.AllWriter;
+import org.computate.medicale.enUS.enrollment.EnrollmentGenPage;
 import org.computate.medicale.enUS.page.part.PagePart;
+import org.computate.medicale.enUS.patient.PatientGenPage;
 import org.computate.medicale.enUS.search.SearchList;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 import org.computate.medicale.enUS.user.SiteUser;
@@ -465,6 +467,26 @@ public class PageLayout extends PageLayoutGen<Object> {
 					} g("div");
 					{ e("div").a("class", "w3-dropdown-content w3-card-4 w3-padding ").f();
 						ClinicGenPage.htmlSuggestedClinicGenPage(this, id, null);
+					} g("div");
+				} g("div");
+
+				{ e("div").a("class", "w3-dropdown-hover ").f();
+					{ e("div").a("class", "w3-button w3-hover-blue-gray ").f();
+							e("i").a("class", "far fa-notes-medical ").f().g("i");
+							sx("enrollments");
+					} g("div");
+					{ e("div").a("class", "w3-dropdown-content w3-card-4 w3-padding ").f();
+						EnrollmentGenPage.htmlSuggestedEnrollmentGenPage(this, id, null);
+					} g("div");
+				} g("div");
+
+				{ e("div").a("class", "w3-dropdown-hover ").f();
+					{ e("div").a("class", "w3-button w3-hover-orange ").f();
+							e("i").a("class", "far fa-hospital-user ").f().g("i");
+							sx("patients");
+					} g("div");
+					{ e("div").a("class", "w3-dropdown-content w3-card-4 w3-padding ").f();
+						PatientGenPage.htmlSuggestedPatientGenPage(this, id, null);
 					} g("div");
 				} g("div");
 	
