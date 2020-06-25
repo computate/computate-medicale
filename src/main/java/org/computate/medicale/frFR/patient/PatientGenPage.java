@@ -138,6 +138,16 @@ public class PatientGenPage extends PatientGenPageGen<ClusterPage> {
 
 	public void htmlFormPagePatientMedicale(PatientMedicale o) {
 		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmPk("Page");
+			o.htmCree("Page");
+			o.htmModifie("Page");
+			o.htmObjetId("Page");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmArchive("Page");
+			o.htmSupprime("Page");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmPatientPrenom("Page");
 			o.htmFamilleNom("Page");
 			o.htmPatientPrenomPrefere("Page");
@@ -151,6 +161,16 @@ public class PatientGenPage extends PatientGenPageGen<ClusterPage> {
 	}
 
 	public void htmlFormPOSTPatientMedicale(PatientMedicale o) {
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmPk("POST");
+			o.htmCree("POST");
+			o.htmModifie("POST");
+			o.htmObjetId("POST");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmArchive("POST");
+			o.htmSupprime("POST");
+		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmPatientPrenom("POST");
 			o.htmFamilleNom("POST");
@@ -190,6 +210,14 @@ public class PatientGenPage extends PatientGenPageGen<ClusterPage> {
 
 	public void htmlFormPUTCopiePatientMedicale(PatientMedicale o) {
 		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmCree("PUTCopie");
+			o.htmModifie("PUTCopie");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmArchive("PUTCopie");
+			o.htmSupprime("PUTCopie");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmPatientPrenom("PUTCopie");
 			o.htmFamilleNom("PUTCopie");
 			o.htmPatientPrenomPrefere("PUTCopie");
@@ -200,9 +228,23 @@ public class PatientGenPage extends PatientGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInscriptionCles("PUTCopie");
 		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmInheritPk("PUTCopie");
+			o.htmSessionId("PUTCopie");
+			o.htmUtilisateurId("PUTCopie");
+			o.htmUtilisateurCle("PUTCopie");
+		} g("div");
 	}
 
 	public void htmlFormPATCHPatientMedicale(PatientMedicale o) {
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmCree("PATCH");
+			o.htmModifie("PATCH");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmArchive("PATCH");
+			o.htmSupprime("PATCH");
+		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmPatientPrenom("PATCH");
 			o.htmFamilleNom("PATCH");
@@ -214,9 +256,25 @@ public class PatientGenPage extends PatientGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInscriptionCles("PATCH");
 		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmInheritPk("PATCH");
+			o.htmSessionId("PATCH");
+			o.htmUtilisateurId("PATCH");
+			o.htmUtilisateurCle("PATCH");
+		} g("div");
 	}
 
 	public void htmlFormRecherchePatientMedicale(PatientMedicale o) {
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmPk("Recherche");
+			o.htmCree("Recherche");
+			o.htmModifie("Recherche");
+			o.htmObjetId("Recherche");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmArchive("Recherche");
+			o.htmSupprime("Recherche");
+		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmPatientPrenom("Recherche");
 			o.htmFamilleNom("Recherche");
@@ -227,6 +285,13 @@ public class PatientGenPage extends PatientGenPageGen<ClusterPage> {
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInscriptionCles("Recherche");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmInheritPk("Recherche");
+			o.htmSessionId("Recherche");
+			o.htmUtilisateurId("Recherche");
+			o.htmUtilisateurCle("Recherche");
+			o.htmObjetTitre("Recherche");
 		} g("div");
 	}
 
@@ -419,6 +484,12 @@ public class PatientGenPage extends PatientGenPageGen<ClusterPage> {
 
 	public void thead2PatientGenPage() {
 			{ e("tr").f();
+			if(getColonneCree()) {
+				e("th").f().sx("crée").g("th");
+			}
+			if(getColonneObjetTitre()) {
+				e("th").f().sx("").g("th");
+			}
 			} g("tr");
 	}
 
@@ -436,6 +507,25 @@ public class PatientGenPage extends PatientGenPageGen<ClusterPage> {
 			List<String> highlightList = highlights == null ? null : highlights.get(highlights.keySet().stream().findFirst().orElse(null));
 			String uri = "/patient/" + o.getPk();
 			{ e("tr").f();
+				if(getColonneCree()) {
+					{ e("td").f();
+						{ e("a").a("href", uri).f();
+							{ e("span").f();
+								sx(o.strCree());
+							} g("span");
+						} g("a");
+					} g("td");
+				}
+				if(getColonneObjetTitre()) {
+					{ e("td").f();
+						{ e("a").a("href", uri).f();
+							e("i").a("class", "far fa-hospital-user ").f().g("i");
+							{ e("span").f();
+								sx(o.strObjetTitre());
+							} g("span");
+						} g("a");
+					} g("td");
+				}
 			} g("tr");
 		}
 	}
@@ -449,7 +539,23 @@ public class PatientGenPage extends PatientGenPageGen<ClusterPage> {
 	public void tfoot2PatientGenPage() {
 		{ e("tr").f();
 			SimpleOrderedMap facets = (SimpleOrderedMap)Optional.ofNullable(listePatientMedicale.getQueryResponse()).map(QueryResponse::getResponse).map(r -> r.get("facets")).orElse(new SimpleOrderedMap());
+			if(getColonneCree()) {
+				e("td").f();
+				g("td");
+			}
+			if(getColonneObjetTitre()) {
+				e("td").f();
+				g("td");
+			}
 		} g("tr");
+	}
+
+	public Boolean getColonneCree() {
+		return true;
+	}
+
+	public Boolean getColonneObjetTitre() {
+		return true;
 	}
 
 	public void htmlBodyFormsPatientGenPage() {

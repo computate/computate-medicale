@@ -220,7 +220,7 @@ public class PatientMedicale extends PatientMedicaleGen<Cluster> {
 	 * Definir: true
 	 * HtmlLigne: 3
 	 * HtmlCellule: 2
-	 */                   
+	 */                  
 	protected void _familleNom(Couverture<String> c) {
 	}
 
