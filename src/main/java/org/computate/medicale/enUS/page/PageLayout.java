@@ -396,15 +396,8 @@ public class PageLayout extends PageLayoutGen<Object> {
 						e("div").a("class", "w3-container ").f();
 							e("div").a("class", "w3-container w3-text-black w3-margin-top ").f();
 								e("h6").a("id", "h2-contactez-nous").a("class",  "w3-padding w3-xlarge w3-text-white ").f();
-									sx("Let's get connected. ");
+									sx("Contact us");
 								g("h6");
-								e("div").a("class", "w3-cell-row ").f();
-									e("div").a("class", "w3-cell ").f();
-										e("a").a("target", "_blank").a("rel", "noopener noreferrer").a("data-ajax", "false").a("href", "https://www.facebook.com/littleorchardpreschool/").f();
-											e("img").a("alt", "").a("class", "grow-30 ").a("style", "display: inline-block; width: 50px; height: 50px; margin: 0 10px;").a("src", staticBaseUrl, "/svg/facebook.svg").fg();
-										g("a");
-									g("div");
-								g("div");
 								e("div").a("class", "w3-cell-row w3-text-white ").f();
 									for(int i = 0; i < clinics.size(); i++) {
 										MedicalClinic clinic = clinics.get(i);
@@ -423,7 +416,7 @@ public class PageLayout extends PageLayoutGen<Object> {
 											g("div");
 											e("div").f();
 												e("span").a("class", "font-weight-bold ").f().sx("Email: ").g("span");
-												e("span").f().sx(clinic.getClinicEmailFrom()).g("span");
+												e("span").f().sx(clinic.getClinicEmail()).g("span");
 											g("div");
 										g("div");
 										if(i == 2)
