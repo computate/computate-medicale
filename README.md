@@ -49,12 +49,15 @@ interpreter_python=/usr/bin/python3
 ## Development installation of computate-medicale
 
 ```bash
-curl https://raw.githubusercontent.com/computate/computate/master/bin/frFR/installer-computate.sh -o ~/Downloads/installer-computate.sh
-bash ~/Downloads/installer-computate.sh
 
-curl https://raw.githubusercontent.com/computate/computate-medicale/master/bin/frFR/installer-computate-medicale.sh -o ~/Downloads/installer-computate-medicale.sh
-bash ~/Downloads/installer-computate-medicale.sh
+# Create a directory for the computate project containing the ansible scripts to run. 
+sudo install -d -o $USER -g $USER /usr/local/src/computate
 
+# Change to the computate ansible directory. 
+cd /usr/local/src/computate/ansible
+
+# Run the playbook to install the computate-medicale project for development. 
+ansible-playbook computate_medicale.yml -i /usr/local/src/my-ansible-project/inventories/my-ansible-inventory/hosts --vault-id @prompt
 ```
 
 # Démarrer le projet en français : 
