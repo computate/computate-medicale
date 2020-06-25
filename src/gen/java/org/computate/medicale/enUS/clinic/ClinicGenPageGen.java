@@ -3,9 +3,11 @@ package org.computate.medicale.enUS.clinic;
 import org.computate.medicale.enUS.writer.AllWriter;
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import java.util.HashMap;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
+import java.util.ArrayList;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 import org.apache.commons.collections.CollectionUtils;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -152,6 +154,8 @@ public abstract class ClinicGenPageGen<DEV> extends ClusterPage {
 
 	public void siteRequestClinicGenPage(SiteRequestEnUS siteRequest_) {
 			super.siteRequestClusterPage(siteRequest_);
+		if(listMedicalClinic != null)
+			listMedicalClinic.setSiteRequest_(siteRequest_);
 		if(medicalClinic != null)
 			medicalClinic.setSiteRequest_(siteRequest_);
 	}
@@ -244,8 +248,9 @@ public abstract class ClinicGenPageGen<DEV> extends ClusterPage {
 	// htmlScripts //
 	/////////////////
 
-	public void htmlScripts() {
+	@Override public void htmlScripts() {
 		htmlScriptsClinicGenPage();
+		super.htmlScripts();
 	}
 
 	public void htmlScriptsClinicGenPage() {
@@ -255,8 +260,9 @@ public abstract class ClinicGenPageGen<DEV> extends ClusterPage {
 	// htmlScript //
 	////////////////
 
-	public void htmlScript() {
+	@Override public void htmlScript() {
 		htmlScriptClinicGenPage();
+		super.htmlScript();
 	}
 
 	public void htmlScriptClinicGenPage() {
@@ -266,11 +272,60 @@ public abstract class ClinicGenPageGen<DEV> extends ClusterPage {
 	// htmlBody //
 	//////////////
 
-	public void htmlBody() {
+	@Override public void htmlBody() {
 		htmlBodyClinicGenPage();
+		super.htmlBody();
 	}
 
 	public void htmlBodyClinicGenPage() {
+	}
+
+	//////////
+	// html //
+	//////////
+
+	@Override public void html() {
+		htmlClinicGenPage();
+		super.html();
+	}
+
+	public void htmlClinicGenPage() {
+	}
+
+	//////////////
+	// htmlMeta //
+	//////////////
+
+	@Override public void htmlMeta() {
+		htmlMetaClinicGenPage();
+		super.htmlMeta();
+	}
+
+	public void htmlMetaClinicGenPage() {
+	}
+
+	////////////////
+	// htmlStyles //
+	////////////////
+
+	@Override public void htmlStyles() {
+		htmlStylesClinicGenPage();
+		super.htmlStyles();
+	}
+
+	public void htmlStylesClinicGenPage() {
+	}
+
+	///////////////
+	// htmlStyle //
+	///////////////
+
+	@Override public void htmlStyle() {
+		htmlStyleClinicGenPage();
+		super.htmlStyle();
+	}
+
+	public void htmlStyleClinicGenPage() {
 	}
 
 	//////////////////

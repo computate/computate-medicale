@@ -4,6 +4,7 @@ import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.computate.medicale.frFR.cluster.Cluster;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
+import java.util.HashMap;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
@@ -23,6 +24,7 @@ import org.computate.medicale.frFR.design.DesignGenPageAffichage;
 import java.util.Objects;
 import io.vertx.core.json.JsonArray;
 import org.computate.medicale.frFR.requete.RequeteSiteFrFR;
+import org.computate.medicale.frFR.design.DesignPage;
 import org.apache.commons.lang3.math.NumberUtils;
 import java.util.Optional;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -35,6 +37,46 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
  **/
 public abstract class DesignPageAffichageGen<DEV> extends DesignGenPageAffichage {
 	protected static final Logger LOGGER = LoggerFactory.getLogger(DesignPageAffichage.class);
+
+	////////////////
+	// pageDesign //
+	////////////////
+
+	/**	L'entité « pageDesign »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected DesignPage pageDesign;
+	@JsonIgnore
+	public Couverture<DesignPage> pageDesignCouverture = new Couverture<DesignPage>().p(this).c(DesignPage.class).var("pageDesign").o(pageDesign);
+
+	/**	<br/>L'entité « pageDesign »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.design.DesignPageAffichage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pageDesign">Trouver l'entité pageDesign dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _pageDesign(Couverture<DesignPage> c);
+
+	public DesignPage getPageDesign() {
+		return pageDesign;
+	}
+
+	public void setPageDesign(DesignPage pageDesign) {
+		this.pageDesign = pageDesign;
+		this.pageDesignCouverture.dejaInitialise = true;
+	}
+	protected DesignPageAffichage pageDesignInit() {
+		if(!pageDesignCouverture.dejaInitialise) {
+			_pageDesign(pageDesignCouverture);
+			if(pageDesign == null)
+				setPageDesign(pageDesignCouverture.o);
+		}
+		if(pageDesign != null)
+			pageDesign.initLoinPourClasse(requeteSite_);
+		pageDesignCouverture.dejaInitialise(true);
+		return (DesignPageAffichage)this;
+	}
 
 	//////////////
 	// initLoin //
@@ -57,6 +99,7 @@ public abstract class DesignPageAffichageGen<DEV> extends DesignGenPageAffichage
 	}
 
 	public void initDesignPageAffichage() {
+		pageDesignInit();
 	}
 
 	@Override public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) {
@@ -69,6 +112,8 @@ public abstract class DesignPageAffichageGen<DEV> extends DesignGenPageAffichage
 
 	public void requeteSiteDesignPageAffichage(RequeteSiteFrFR requeteSite_) {
 			super.requeteSiteDesignGenPageAffichage(requeteSite_);
+		if(pageDesign != null)
+			pageDesign.setRequeteSite_(requeteSite_);
 	}
 
 	public void requeteSitePourClasse(RequeteSiteFrFR requeteSite_) {
@@ -95,6 +140,8 @@ public abstract class DesignPageAffichageGen<DEV> extends DesignGenPageAffichage
 	public Object obtenirDesignPageAffichage(String var) {
 		DesignPageAffichage oDesignPageAffichage = (DesignPageAffichage)this;
 		switch(var) {
+			case "pageDesign":
+				return oDesignPageAffichage.pageDesign;
 			default:
 				return super.obtenirDesignGenPageAffichage(var);
 		}

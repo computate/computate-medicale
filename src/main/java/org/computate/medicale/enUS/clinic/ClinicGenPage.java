@@ -92,7 +92,7 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 	}
 
 	@Override protected void _contextIconName(Wrap<String> c) {
-			c.o("clinic");
+			c.o("clinic-medical");
 	}
 
 	@Override public void initDeepClinicGenPage() {
@@ -102,6 +102,7 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 
 	@Override public void htmlScriptsClinicGenPage() {
 		e("script").a("src", staticBaseUrl, "/js/enUS/ClinicPage.js").f().g("script");
+		e("script").a("src", staticBaseUrl, "/js/enUS/EnrollmentPage.js").f().g("script");
 	}
 
 	@Override public void htmlScriptClinicGenPage() {
@@ -121,6 +122,14 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 		tl(1, "window.eventBus = new EventBus('/eventbus');");
 		tl(1, "var pk = ", Optional.ofNullable(siteRequest_.getRequestPk()).map(l -> l.toString()).orElse("null"), ";");
 		tl(1, "if(pk != null) {");
+		if(
+				CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
+				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+				) {
+			tl(2, "suggestMedicalClinicEnrollmentKeys([{'name':'fq','value':'clinicKey:' + pk}], $('#listMedicalClinicEnrollmentKeys_Page'), pk, true); ");
+		} else {
+			tl(2, "suggestMedicalClinicEnrollmentKeys([{'name':'fq','value':'clinicKey:' + pk}], $('#listMedicalClinicEnrollmentKeys_Page'), pk, false); ");
+		}
 		tl(1, "}");
 		tl(1, "websocketMedicalClinic(websocketMedicalClinicInner);");
 		l("});");
@@ -140,7 +149,10 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicName("Page");
 			o.htmClinicLocation("Page");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicAdministratorName("Page");
+			o.htmClinicEmail("Page");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicEmailFrom("Page");
@@ -151,7 +163,7 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 			o.htmClinicAddress("Page");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmYearKeys("Page");
+			o.htmEnrollmentKeys("Page");
 		} g("div");
 	}
 
@@ -169,7 +181,10 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicName("POST");
 			o.htmClinicLocation("POST");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicAdministratorName("POST");
+			o.htmClinicEmail("POST");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicEmailFrom("POST");
@@ -180,7 +195,7 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 			o.htmClinicAddress("POST");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmYearKeys("POST");
+			o.htmEnrollmentKeys("POST");
 		} g("div");
 	}
 
@@ -220,7 +235,10 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicName("PUTCopy");
 			o.htmClinicLocation("PUTCopy");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicAdministratorName("PUTCopy");
+			o.htmClinicEmail("PUTCopy");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicEmailFrom("PUTCopy");
@@ -229,6 +247,9 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicPhoneNumber("PUTCopy");
 			o.htmClinicAddress("PUTCopy");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmEnrollmentKeys("PUTCopy");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInheritPk("PUTCopy");
@@ -250,7 +271,10 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicName("PATCH");
 			o.htmClinicLocation("PATCH");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicAdministratorName("PATCH");
+			o.htmClinicEmail("PATCH");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicEmailFrom("PATCH");
@@ -259,6 +283,9 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicPhoneNumber("PATCH");
 			o.htmClinicAddress("PATCH");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmEnrollmentKeys("PATCH");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInheritPk("PATCH");
@@ -282,7 +309,10 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicName("Search");
 			o.htmClinicLocation("Search");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicAdministratorName("Search");
+			o.htmClinicEmail("Search");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmClinicEmailFrom("Search");
@@ -293,7 +323,7 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 			o.htmClinicAddress("Search");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmYearKeys("Search");
+			o.htmEnrollmentKeys("Search");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInheritPk("Search");
@@ -528,7 +558,7 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 				if(getColumnObjectTitle()) {
 					{ e("td").f();
 						{ e("a").a("href", uri).f();
-							e("i").a("class", "far fa-clinic ").f().g("i");
+							e("i").a("class", "far fa-clinic-medical ").f().g("i");
 							{ e("span").f();
 								sx(o.strObjectTitle());
 							} g("span");
@@ -858,7 +888,7 @@ public class ClinicGenPage extends ClinicGenPageGen<ClusterPage> {
 			} p.g("div");
 			{ p.e("div").a("class", "").f();
 				{ p.e("a").a("href", "/clinic").a("class", "").f();
-					p.e("i").a("class", "far fa-clinic ").f().g("i");
+					p.e("i").a("class", "far fa-clinic-medical ").f().g("i");
 					p.sx("see all the clinics");
 				} p.g("a");
 			} p.g("div");

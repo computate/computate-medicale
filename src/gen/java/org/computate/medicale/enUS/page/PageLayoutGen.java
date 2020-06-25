@@ -7,6 +7,7 @@ import java.util.Date;
 import org.computate.medicale.enUS.request.api.ApiRequest;
 import java.time.ZonedDateTime;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import org.apache.commons.lang3.StringUtils;
 import java.lang.Integer;
 import java.text.NumberFormat;
@@ -2371,89 +2372,89 @@ public abstract class PageLayoutGen<DEV> extends Object {
 	}
 
 	/////////////
-	// schools //
+	// clinics //
 	/////////////
 
-	/**	L'entité « schools »
+	/**	L'entité « clinics »
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<MedicalClinic> schools;
+	protected List<MedicalClinic> clinics;
 	@JsonIgnore
-	public Wrap<List<MedicalClinic>> schoolsWrap = new Wrap<List<MedicalClinic>>().p(this).c(List.class).var("schools").o(schools);
+	public Wrap<List<MedicalClinic>> clinicsWrap = new Wrap<List<MedicalClinic>>().p(this).c(List.class).var("clinics").o(clinics);
 
-	/**	<br/>L'entité « schools »
+	/**	<br/>L'entité « clinics »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.page.PageLayout&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:schools">Trouver l'entité schools dans Solr</a>
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.page.PageLayout&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinics">Trouver l'entité clinics dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _schools(Wrap<List<MedicalClinic>> c);
+	protected abstract void _clinics(Wrap<List<MedicalClinic>> c);
 
-	public List<MedicalClinic> getSchools() {
-		return schools;
+	public List<MedicalClinic> getClinics() {
+		return clinics;
 	}
 
-	public void setSchools(List<MedicalClinic> schools) {
-		this.schools = schools;
-		this.schoolsWrap.alreadyInitialized = true;
+	public void setClinics(List<MedicalClinic> clinics) {
+		this.clinics = clinics;
+		this.clinicsWrap.alreadyInitialized = true;
 	}
-	public PageLayout addSchools(MedicalClinic...objets) {
+	public PageLayout addClinics(MedicalClinic...objets) {
 		for(MedicalClinic o : objets) {
-			addSchools(o);
+			addClinics(o);
 		}
 		return (PageLayout)this;
 	}
-	public PageLayout addSchools(MedicalClinic o) {
-		if(o != null && !schools.contains(o))
-			this.schools.add(o);
+	public PageLayout addClinics(MedicalClinic o) {
+		if(o != null && !clinics.contains(o))
+			this.clinics.add(o);
 		return (PageLayout)this;
 	}
-	protected PageLayout schoolsInit() {
-		if(!schoolsWrap.alreadyInitialized) {
-			_schools(schoolsWrap);
-			if(schools == null)
-				setSchools(schoolsWrap.o);
+	protected PageLayout clinicsInit() {
+		if(!clinicsWrap.alreadyInitialized) {
+			_clinics(clinicsWrap);
+			if(clinics == null)
+				setClinics(clinicsWrap.o);
 		}
-		schoolsWrap.alreadyInitialized(true);
+		clinicsWrap.alreadyInitialized(true);
 		return (PageLayout)this;
 	}
 
 	/////////////
-	// school_ //
+	// clinic_ //
 	/////////////
 
-	/**	L'entité « school_ »
+	/**	L'entité « clinic_ »
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected MedicalClinic school_;
+	protected MedicalClinic clinic_;
 	@JsonIgnore
-	public Wrap<MedicalClinic> school_Wrap = new Wrap<MedicalClinic>().p(this).c(MedicalClinic.class).var("school_").o(school_);
+	public Wrap<MedicalClinic> clinic_Wrap = new Wrap<MedicalClinic>().p(this).c(MedicalClinic.class).var("clinic_").o(clinic_);
 
-	/**	<br/>L'entité « school_ »
+	/**	<br/>L'entité « clinic_ »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.page.PageLayout&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:school_">Trouver l'entité school_ dans Solr</a>
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.page.PageLayout&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinic_">Trouver l'entité clinic_ dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _school_(Wrap<MedicalClinic> c);
+	protected abstract void _clinic_(Wrap<MedicalClinic> c);
 
-	public MedicalClinic getSchool_() {
-		return school_;
+	public MedicalClinic getClinic_() {
+		return clinic_;
 	}
 
-	public void setSchool_(MedicalClinic school_) {
-		this.school_ = school_;
-		this.school_Wrap.alreadyInitialized = true;
+	public void setClinic_(MedicalClinic clinic_) {
+		this.clinic_ = clinic_;
+		this.clinic_Wrap.alreadyInitialized = true;
 	}
-	protected PageLayout school_Init() {
-		if(!school_Wrap.alreadyInitialized) {
-			_school_(school_Wrap);
-			if(school_ == null)
-				setSchool_(school_Wrap.o);
+	protected PageLayout clinic_Init() {
+		if(!clinic_Wrap.alreadyInitialized) {
+			_clinic_(clinic_Wrap);
+			if(clinic_ == null)
+				setClinic_(clinic_Wrap.o);
 		}
-		school_Wrap.alreadyInitialized(true);
+		clinic_Wrap.alreadyInitialized(true);
 		return (PageLayout)this;
 	}
 
@@ -2584,8 +2585,8 @@ public abstract class PageLayoutGen<DEV> extends Object {
 		pageUserUriInit();
 		pageLogoutUriInit();
 		listClinicInit();
-		schoolsInit();
-		school_Init();
+		clinicsInit();
+		clinic_Init();
 		yearValInit();
 	}
 
@@ -2704,10 +2705,10 @@ public abstract class PageLayoutGen<DEV> extends Object {
 				return oPageLayout.pageLogoutUri;
 			case "listClinic":
 				return oPageLayout.listClinic;
-			case "schools":
-				return oPageLayout.schools;
-			case "school_":
-				return oPageLayout.school_;
+			case "clinics":
+				return oPageLayout.clinics;
+			case "clinic_":
+				return oPageLayout.clinic_;
 			case "yearVal":
 				return oPageLayout.yearVal;
 			default:

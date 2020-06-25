@@ -137,6 +137,7 @@ public class GenPageInscription extends GenPageInscriptionGen<ClusterPage> {
 
 	@Override public void htmlScriptsGenPageInscription() {
 		e("script").a("src", statiqueUrlBase, "/js/frFR/PageInscription.js").f().g("script");
+		e("script").a("src", statiqueUrlBase, "/js/frFR/CliniquePage.js").f().g("script");
 		e("script").a("src", statiqueUrlBase, "/js/frFR/EnfantPage.js").f().g("script");
 		e("script").a("src", statiqueUrlBase, "/js/frFR/UtilisateurSitePage.js").f().g("script");
 	}
@@ -173,6 +174,14 @@ public class GenPageInscription extends GenPageInscriptionGen<ClusterPage> {
 			tl(2, "suggereInscriptionMedicaleUtilisateurCles([{'name':'fq','value':'inscriptionCles:' + pk}], $('#listInscriptionMedicaleUtilisateurCles_Page'), pk, true); ");
 		} else {
 			tl(2, "suggereInscriptionMedicaleUtilisateurCles([{'name':'fq','value':'inscriptionCles:' + pk}], $('#listInscriptionMedicaleUtilisateurCles_Page'), pk, false); ");
+		}
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+			tl(2, "suggereInscriptionMedicaleCliniqueCle([{'name':'fq','value':'inscriptionCles:' + pk}], $('#listInscriptionMedicaleCliniqueCle_Page'), pk, true); ");
+		} else {
+			tl(2, "suggereInscriptionMedicaleCliniqueCle([{'name':'fq','value':'inscriptionCles:' + pk}], $('#listInscriptionMedicaleCliniqueCle_Page'), pk, false); ");
 		}
 		tl(2, "$('#signatureInputInscriptionMedicale' + pk + 'inscriptionSignature1').jSignature({'height':200}).bind('change', function(e){ patchInscriptionMedicaleVal([{ name: 'fq', value: 'pk:' + pk }], 'setInscriptionSignature1', $('#signatureInputInscriptionMedicale' + pk + 'inscriptionSignature1').jSignature('getData', 'default')); }); ");
 		tl(2, "$('#signatureInputInscriptionMedicale' + pk + 'inscriptionSignature2').jSignature({'height':200}).bind('change', function(e){ patchInscriptionMedicaleVal([{ name: 'fq', value: 'pk:' + pk }], 'setInscriptionSignature2', $('#signatureInputInscriptionMedicale' + pk + 'inscriptionSignature2').jSignature('getData', 'default')); }); ");

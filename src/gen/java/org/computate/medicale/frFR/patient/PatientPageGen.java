@@ -4,11 +4,13 @@ import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.computate.medicale.frFR.cluster.Cluster;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
+import java.util.HashMap;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
-import org.computate.medicale.frFR.patient.EnfantGenPage;
+import java.util.ArrayList;
 import org.apache.commons.collections.CollectionUtils;
+import org.computate.medicale.frFR.patient.PatientGenPage;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,49 +31,49 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.EnfantPage&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
+ * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.patient.PatientPage&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
  * <br/>
  **/
-public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
-	protected static final Logger LOGGER = LoggerFactory.getLogger(EnfantPage.class);
+public abstract class PatientPageGen<DEV> extends PatientGenPage {
+	protected static final Logger LOGGER = LoggerFactory.getLogger(PatientPage.class);
 
 	//////////////
 	// initLoin //
 	//////////////
 
-	protected boolean dejaInitialiseEnfantPage = false;
+	protected boolean dejaInitialisePatientPage = false;
 
-	public EnfantPage initLoinEnfantPage(RequeteSiteFrFR requeteSite_) {
+	public PatientPage initLoinPatientPage(RequeteSiteFrFR requeteSite_) {
 		setRequeteSite_(requeteSite_);
-		if(!dejaInitialiseEnfantPage) {
-			dejaInitialiseEnfantPage = true;
-			initLoinEnfantPage();
+		if(!dejaInitialisePatientPage) {
+			dejaInitialisePatientPage = true;
+			initLoinPatientPage();
 		}
-		return (EnfantPage)this;
+		return (PatientPage)this;
 	}
 
-	public void initLoinEnfantPage() {
-		initEnfantPage();
-		super.initLoinEnfantGenPage(requeteSite_);
+	public void initLoinPatientPage() {
+		initPatientPage();
+		super.initLoinPatientGenPage(requeteSite_);
 	}
 
-	public void initEnfantPage() {
+	public void initPatientPage() {
 	}
 
 	@Override public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) {
-		initLoinEnfantPage(requeteSite_);
+		initLoinPatientPage(requeteSite_);
 	}
 
 	/////////////////
 	// requeteSite //
 	/////////////////
 
-	public void requeteSiteEnfantPage(RequeteSiteFrFR requeteSite_) {
-			super.requeteSiteEnfantGenPage(requeteSite_);
+	public void requeteSitePatientPage(RequeteSiteFrFR requeteSite_) {
+			super.requeteSitePatientGenPage(requeteSite_);
 	}
 
 	public void requeteSitePourClasse(RequeteSiteFrFR requeteSite_) {
-		requeteSiteEnfantPage(requeteSite_);
+		requeteSitePatientPage(requeteSite_);
 	}
 
 	/////////////
@@ -83,7 +85,7 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 		Object o = null;
 		for(String v : vars) {
 			if(o == null)
-				o = obtenirEnfantPage(v);
+				o = obtenirPatientPage(v);
 			else if(o instanceof Cluster) {
 				Cluster cluster = (Cluster)o;
 				o = cluster.obtenirPourClasse(v);
@@ -91,11 +93,11 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 		}
 		return o;
 	}
-	public Object obtenirEnfantPage(String var) {
-		EnfantPage oEnfantPage = (EnfantPage)this;
+	public Object obtenirPatientPage(String var) {
+		PatientPage oPatientPage = (PatientPage)this;
 		switch(var) {
 			default:
-				return super.obtenirEnfantGenPage(var);
+				return super.obtenirPatientGenPage(var);
 		}
 	}
 
@@ -108,7 +110,7 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 		Object o = null;
 		for(String v : vars) {
 			if(o == null)
-				o = attribuerEnfantPage(v, val);
+				o = attribuerPatientPage(v, val);
 			else if(o instanceof Cluster) {
 				Cluster cluster = (Cluster)o;
 				o = cluster.attribuerPourClasse(v, val);
@@ -116,11 +118,11 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 		}
 		return o != null;
 	}
-	public Object attribuerEnfantPage(String var, Object val) {
-		EnfantPage oEnfantPage = (EnfantPage)this;
+	public Object attribuerPatientPage(String var, Object val) {
+		PatientPage oPatientPage = (PatientPage)this;
 		switch(var) {
 			default:
-				return super.attribuerEnfantGenPage(var, val);
+				return super.attribuerPatientGenPage(var, val);
 		}
 	}
 
@@ -134,7 +136,7 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 		if(val != null) {
 			for(String v : vars) {
 				if(o == null)
-					o = definirEnfantPage(v, val);
+					o = definirPatientPage(v, val);
 				else if(o instanceof Cluster) {
 					Cluster cluster = (Cluster)o;
 					o = cluster.definirPourClasse(v, val);
@@ -143,10 +145,10 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 		}
 		return o != null;
 	}
-	public Object definirEnfantPage(String var, String val) {
+	public Object definirPatientPage(String var, String val) {
 		switch(var) {
 			default:
-				return super.definirEnfantGenPage(var, val);
+				return super.definirPatientGenPage(var, val);
 		}
 	}
 
@@ -155,11 +157,11 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 	/////////////////
 
 	@Override public void htmlScripts() {
-		htmlScriptsEnfantPage();
+		htmlScriptsPatientPage();
 		super.htmlScripts();
 	}
 
-	public void htmlScriptsEnfantPage() {
+	public void htmlScriptsPatientPage() {
 	}
 
 	////////////////
@@ -167,11 +169,11 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 	////////////////
 
 	@Override public void htmlScript() {
-		htmlScriptEnfantPage();
+		htmlScriptPatientPage();
 		super.htmlScript();
 	}
 
-	public void htmlScriptEnfantPage() {
+	public void htmlScriptPatientPage() {
 	}
 
 	//////////////
@@ -179,11 +181,11 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 	//////////////
 
 	@Override public void htmlBody() {
-		htmlBodyEnfantPage();
+		htmlBodyPatientPage();
 		super.htmlBody();
 	}
 
-	public void htmlBodyEnfantPage() {
+	public void htmlBodyPatientPage() {
 	}
 
 	//////////
@@ -191,11 +193,11 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 	//////////
 
 	@Override public void html() {
-		htmlEnfantPage();
+		htmlPatientPage();
 		super.html();
 	}
 
-	public void htmlEnfantPage() {
+	public void htmlPatientPage() {
 	}
 
 	//////////////
@@ -203,11 +205,11 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 	//////////////
 
 	@Override public void htmlMeta() {
-		htmlMetaEnfantPage();
+		htmlMetaPatientPage();
 		super.htmlMeta();
 	}
 
-	public void htmlMetaEnfantPage() {
+	public void htmlMetaPatientPage() {
 	}
 
 	////////////////
@@ -215,11 +217,11 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 	////////////////
 
 	@Override public void htmlStyles() {
-		htmlStylesEnfantPage();
+		htmlStylesPatientPage();
 		super.htmlStyles();
 	}
 
-	public void htmlStylesEnfantPage() {
+	public void htmlStylesPatientPage() {
 	}
 
 	///////////////
@@ -227,23 +229,23 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 	///////////////
 
 	@Override public void htmlStyle() {
-		htmlStyleEnfantPage();
+		htmlStylePatientPage();
 		super.htmlStyle();
 	}
 
-	public void htmlStyleEnfantPage() {
+	public void htmlStylePatientPage() {
 	}
 
 	//////////////////
 	// requeteApi //
 	//////////////////
 
-	public void requeteApiEnfantPage() {
+	public void requeteApiPatientPage() {
 		RequeteApi requeteApi = Optional.ofNullable(requeteSite_).map(RequeteSiteFrFR::getRequeteApi_).orElse(null);
 		Object o = Optional.ofNullable(requeteApi).map(RequeteApi::getOriginal).orElse(null);
-		if(o != null && o instanceof EnfantPage) {
-			EnfantPage original = (EnfantPage)o;
-			super.requeteApiEnfantGenPage();
+		if(o != null && o instanceof PatientPage) {
+			PatientPage original = (PatientPage)o;
+			super.requeteApiPatientGenPage();
 		}
 	}
 
@@ -262,9 +264,9 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 	@Override public boolean equals(Object o) {
 		if(this == o)
 			return true;
-		if(!(o instanceof EnfantPage))
+		if(!(o instanceof PatientPage))
 			return false;
-		EnfantPage that = (EnfantPage)o;
+		PatientPage that = (PatientPage)o;
 		return super.equals(o);
 	}
 
@@ -275,7 +277,7 @@ public abstract class EnfantPageGen<DEV> extends EnfantGenPage {
 	@Override public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString() + "\n");
-		sb.append("EnfantPage { ");
+		sb.append("PatientPage { ");
 		sb.append(" }");
 		return sb.toString();
 	}

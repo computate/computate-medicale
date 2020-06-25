@@ -1,4 +1,4 @@
-package org.computate.medicale.frFR.design;     
+package org.computate.medicale.frFR.design;        
 
 import java.util.List;
 

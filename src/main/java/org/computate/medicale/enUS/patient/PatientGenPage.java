@@ -40,7 +40,7 @@ import org.apache.solr.client.solrj.SolrQuery.SortClause;
 /**
  * Translate: false
  **/
-public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
+public class PatientGenPage extends PatientGenPageGen<ClusterPage> {
 
 	public static final List<String> ROLES = Arrays.asList("SiteAdmin");
 	public static final List<String> ROLE_READS = Arrays.asList("");
@@ -95,17 +95,17 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 			c.o("hospital-user");
 	}
 
-	@Override public void initDeepChildGenPage() {
-		initChildGenPage();
+	@Override public void initDeepPatientGenPage() {
+		initPatientGenPage();
 		super.initDeepPageLayout();
 	}
 
-	@Override public void htmlScriptsChildGenPage() {
-		e("script").a("src", staticBaseUrl, "/js/enUS/ChildPage.js").f().g("script");
+	@Override public void htmlScriptsPatientGenPage() {
+		e("script").a("src", staticBaseUrl, "/js/enUS/PatientPage.js").f().g("script");
 		e("script").a("src", staticBaseUrl, "/js/enUS/EnrollmentPage.js").f().g("script");
 	}
 
-	@Override public void htmlScriptChildGenPage() {
+	@Override public void htmlScriptPatientGenPage() {
 		l("$(document).ready(function() {");
 		tl(1, "document.onkeydown = function(evt) {");
 		tl(2, "evt = evt || window.event;");
@@ -137,16 +137,6 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 
 	public void htmlFormPageMedicalPatient(MedicalPatient o) {
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmPk("Page");
-			o.htmCreated("Page");
-			o.htmModified("Page");
-			o.htmObjectId("Page");
-		} g("div");
-		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmArchived("Page");
-			o.htmDeleted("Page");
-		} g("div");
-		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmPatientFirstName("Page");
 			o.htmFamilyName("Page");
 			o.htmPatientFirstNamePreferred("Page");
@@ -160,16 +150,6 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 	}
 
 	public void htmlFormPOSTMedicalPatient(MedicalPatient o) {
-		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmPk("POST");
-			o.htmCreated("POST");
-			o.htmModified("POST");
-			o.htmObjectId("POST");
-		} g("div");
-		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmArchived("POST");
-			o.htmDeleted("POST");
-		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmPatientFirstName("POST");
 			o.htmFamilyName("POST");
@@ -209,14 +189,6 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 
 	public void htmlFormPUTCopyMedicalPatient(MedicalPatient o) {
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmCreated("PUTCopy");
-			o.htmModified("PUTCopy");
-		} g("div");
-		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmArchived("PUTCopy");
-			o.htmDeleted("PUTCopy");
-		} g("div");
-		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmPatientFirstName("PUTCopy");
 			o.htmFamilyName("PUTCopy");
 			o.htmPatientFirstNamePreferred("PUTCopy");
@@ -227,23 +199,9 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmEnrollmentKeys("PUTCopy");
 		} g("div");
-		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmInheritPk("PUTCopy");
-			o.htmSessionId("PUTCopy");
-			o.htmUserId("PUTCopy");
-			o.htmUserKey("PUTCopy");
-		} g("div");
 	}
 
 	public void htmlFormPATCHMedicalPatient(MedicalPatient o) {
-		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmCreated("PATCH");
-			o.htmModified("PATCH");
-		} g("div");
-		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmArchived("PATCH");
-			o.htmDeleted("PATCH");
-		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmPatientFirstName("PATCH");
 			o.htmFamilyName("PATCH");
@@ -255,25 +213,9 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmEnrollmentKeys("PATCH");
 		} g("div");
-		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmInheritPk("PATCH");
-			o.htmSessionId("PATCH");
-			o.htmUserId("PATCH");
-			o.htmUserKey("PATCH");
-		} g("div");
 	}
 
 	public void htmlFormSearchMedicalPatient(MedicalPatient o) {
-		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmPk("Search");
-			o.htmCreated("Search");
-			o.htmModified("Search");
-			o.htmObjectId("Search");
-		} g("div");
-		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmArchived("Search");
-			o.htmDeleted("Search");
-		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmPatientFirstName("Search");
 			o.htmFamilyName("Search");
@@ -285,16 +227,9 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmEnrollmentKeys("Search");
 		} g("div");
-		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmInheritPk("Search");
-			o.htmSessionId("Search");
-			o.htmUserId("Search");
-			o.htmUserKey("Search");
-			o.htmObjectTitle("Search");
-		} g("div");
 	}
 
-	@Override public void htmlBodyChildGenPage() {
+	@Override public void htmlBodyPatientGenPage() {
 
 		OperationRequest operationRequest = siteRequest_.getOperationRequest();
 		JsonObject params = operationRequest.getParams();
@@ -432,7 +367,7 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 					}
 						e("span").f().sx((start1 + 1), " - ", (start1 + rows1), " of ", num).g("span");
 				} g("div");
-				table1ChildGenPage();
+				table1PatientGenPage();
 		}
 
 		if(listMedicalPatient != null && listMedicalPatient.size() == 1 && params.getJsonObject("query").getString("q").equals("*:*")) {
@@ -459,46 +394,40 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 			} g("div");
 
 		}
-		htmlBodyFormsChildGenPage();
+		htmlBodyFormsPatientGenPage();
 		g("div");
 	}
 
-	public void table1ChildGenPage() {
+	public void table1PatientGenPage() {
 		{ e("table").a("class", "w3-table w3-bordered w3-striped w3-border w3-hoverable ").f();
-			table2ChildGenPage();
+			table2PatientGenPage();
 		} g("table");
 	}
 
-	public void table2ChildGenPage() {
-		thead1ChildGenPage();
-		tbody1ChildGenPage();
-		tfoot1ChildGenPage();
+	public void table2PatientGenPage() {
+		thead1PatientGenPage();
+		tbody1PatientGenPage();
+		tfoot1PatientGenPage();
 	}
 
-	public void thead1ChildGenPage() {
+	public void thead1PatientGenPage() {
 		{ e("thead").a("class", "w3-orange w3-hover-orange ").f();
-			thead2ChildGenPage();
+			thead2PatientGenPage();
 		} g("thead");
 	}
 
-	public void thead2ChildGenPage() {
+	public void thead2PatientGenPage() {
 			{ e("tr").f();
-			if(getColumnCreated()) {
-				e("th").f().sx("created").g("th");
-			}
-			if(getColumnObjectTitle()) {
-				e("th").f().sx("").g("th");
-			}
 			} g("tr");
 	}
 
-	public void tbody1ChildGenPage() {
+	public void tbody1PatientGenPage() {
 		{ e("tbody").f();
-			tbody2ChildGenPage();
+			tbody2PatientGenPage();
 		} g("tbody");
 	}
 
-	public void tbody2ChildGenPage() {
+	public void tbody2PatientGenPage() {
 		Map<String, Map<String, List<String>>> highlighting = listMedicalPatient.getQueryResponse().getHighlighting();
 		for(int i = 0; i < listMedicalPatient.size(); i++) {
 			MedicalPatient o = listMedicalPatient.getList().get(i);
@@ -506,58 +435,23 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 			List<String> highlightList = highlights == null ? null : highlights.get(highlights.keySet().stream().findFirst().orElse(null));
 			String uri = "/patient/" + o.getPk();
 			{ e("tr").f();
-				if(getColumnCreated()) {
-					{ e("td").f();
-						{ e("a").a("href", uri).f();
-							{ e("span").f();
-								sx(o.strCreated());
-							} g("span");
-						} g("a");
-					} g("td");
-				}
-				if(getColumnObjectTitle()) {
-					{ e("td").f();
-						{ e("a").a("href", uri).f();
-							e("i").a("class", "far fa-hospital-user ").f().g("i");
-							{ e("span").f();
-								sx(o.strObjectTitle());
-							} g("span");
-						} g("a");
-					} g("td");
-				}
 			} g("tr");
 		}
 	}
 
-	public void tfoot1ChildGenPage() {
+	public void tfoot1PatientGenPage() {
 		{ e("tfoot").a("class", "w3-orange w3-hover-orange ").f();
-			tfoot2ChildGenPage();
+			tfoot2PatientGenPage();
 		} g("tfoot");
 	}
 
-	public void tfoot2ChildGenPage() {
+	public void tfoot2PatientGenPage() {
 		{ e("tr").f();
 			SimpleOrderedMap facets = (SimpleOrderedMap)Optional.ofNullable(listMedicalPatient.getQueryResponse()).map(QueryResponse::getResponse).map(r -> r.get("facets")).orElse(new SimpleOrderedMap());
-			if(getColumnCreated()) {
-				e("td").f();
-				g("td");
-			}
-			if(getColumnObjectTitle()) {
-				e("td").f();
-				g("td");
-			}
 		} g("tr");
 	}
 
-	public Boolean getColumnCreated() {
-		return true;
-	}
-
-	public Boolean getColumnObjectTitle() {
-		return true;
-	}
-
-	public void htmlBodyFormsChildGenPage() {
+	public void htmlBodyFormsPatientGenPage() {
 		if(
 				CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
@@ -567,8 +461,8 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 			if(listMedicalPatient != null && listMedicalPatient.size() == 1) {
 				{ e("button")
 					.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-orange ")
-						.a("id", "refreshThisChildGenPage")
-						.a("onclick", "patchMedicalPatientVals( [ {name: 'fq', value: 'pk:' + " + siteRequest_.getRequestPk() + " } ], {}, function() { addGlow($('#refreshThisChildGenPage')); }, function() { addError($('#refreshThisChildGenPage')); }); return false; ").f();
+						.a("id", "refreshThisPatientGenPage")
+						.a("onclick", "patchMedicalPatientVals( [ {name: 'fq', value: 'pk:' + " + siteRequest_.getRequestPk() + " } ], {}, function() { addGlow($('#refreshThisPatientGenPage')); }, function() { addError($('#refreshThisPatientGenPage')); }); return false; ").f();
 						e("i").a("class", "fas fa-sync-alt ").f().g("i");
 					sx("refresh this patient");
 				} g("button");
@@ -745,12 +639,12 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 
 			g("div");
 		}
-		htmlSuggestedChildGenPage(this, null, listMedicalPatient);
+		htmlSuggestedPatientGenPage(this, null, listMedicalPatient);
 	}
 
 	/**
 	**/
-	public static void htmlSuggestedChildGenPage(PageLayout p, String id, SearchList<MedicalPatient> listMedicalPatient) {
+	public static void htmlSuggestedPatientGenPage(PageLayout p, String id, SearchList<MedicalPatient> listMedicalPatient) {
 		SiteRequestEnUS siteRequest_ = p.getSiteRequest_();
 		try {
 			OperationRequest operationRequest = siteRequest_.getOperationRequest();
@@ -802,11 +696,11 @@ public class ChildGenPage extends ChildGenPageGen<ClusterPage> {
 			}
 
 			if(
-					CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ChildGenPage.ROLES)
-					|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ChildGenPage.ROLES)
+					CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), PatientGenPage.ROLES)
+					|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), PatientGenPage.ROLES)
 					) {
 					{ p.e("div").a("class", "").f();
-						{ p.e("button").a("id", "refreshAllChildGenPage", id).a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-orange ").a("onclick", "patchMedicalPatientVals([], {}, function() { addGlow($('#refreshAllChildGenPage", id, "')); }, function() { addError($('#refreshAllChildGenPage", id, "')); }); ").f();
+						{ p.e("button").a("id", "refreshAllPatientGenPage", id).a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-orange ").a("onclick", "patchMedicalPatientVals([], {}, function() { addGlow($('#refreshAllPatientGenPage", id, "')); }, function() { addError($('#refreshAllPatientGenPage", id, "')); }); ").f();
 							p.e("i").a("class", "fas fa-sync-alt ").f().g("i");
 							p.sx("refresh all the patients");
 						} p.g("button");

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.computate.medicale.frFR.cluster.Cluster;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
+import java.util.HashMap;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
@@ -151,18 +152,6 @@ public abstract class ClusterPageGen<DEV> extends ClusterGenPage {
 		}
 	}
 
-	/////////////////
-	// htmlScripts //
-	/////////////////
-
-	@Override public void htmlScripts() {
-		htmlScriptsClusterPage();
-		super.htmlScripts();
-	}
-
-	public void htmlScriptsClusterPage() {
-	}
-
 	////////////////
 	// htmlScript //
 	////////////////
@@ -173,6 +162,18 @@ public abstract class ClusterPageGen<DEV> extends ClusterGenPage {
 	}
 
 	public void htmlScriptClusterPage() {
+	}
+
+	/////////////////
+	// htmlScripts //
+	/////////////////
+
+	@Override public void htmlScripts() {
+		htmlScriptsClusterPage();
+		super.htmlScripts();
+	}
+
+	public void htmlScriptsClusterPage() {
 	}
 
 	//////////////

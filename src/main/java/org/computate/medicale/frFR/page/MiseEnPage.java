@@ -507,10 +507,10 @@ public class MiseEnPage extends MiseEnPageGen<Object> {
 
 	/**
 	 * Var.enUS: pageClinicUri
-	 * String.enUS: /school
+	 * String.enUS: /clinic
 	 */
 	protected void _pageCliniqueUri(Couverture<String> c)  {
-		c.o("/frFR/ecole");
+		c.o("/frFR/clinique");
 	}
 
 	/**
@@ -569,20 +569,20 @@ public class MiseEnPage extends MiseEnPageGen<Object> {
 	}
 
 	/**
-	 * Var.enUS: schools
+	 * Var.enUS: clinics
 	 * r: listeClinique
 	 * r.enUS: listClinic
 	 */
-	protected void _ecoles(Couverture<List<CliniqueMedicale>> c) {
+	protected void _cliniques(Couverture<List<CliniqueMedicale>> c) {
 		c.o(listeClinique.getList());
 	}
 
 	/**
-	 * Var.enUS: school_
+	 * Var.enUS: clinic_
 	 * r: listeClinique
 	 * r.enUS: listClinic
 	 */
-	protected void _ecole_(Couverture<CliniqueMedicale> c) {
+	protected void _clinique_(Couverture<CliniqueMedicale> c) {
 //		c.o(listeClinique.getList().stream().findFirst().orElse(null));
 	}
 
@@ -748,8 +748,8 @@ public class MiseEnPage extends MiseEnPageGen<Object> {
 	 * r.enUS: ClinicLocation
 	 * r: CliniqueMedicale
 	 * r.enUS: MedicalClinic
-	 * r: ecole
-	 * r.enUS: school
+	 * r: clinique
+	 * r.enUS: clinic
 	 */
 	@Override public void htmlMiseEnPage() {
 		e("html").a("xmlns:xlink", "http://www.w3.org/1999/xlink").a("xmlns", "http://www.w3.org/1999/xhtml").a("xmlns:fb", "http://ogp.me/ns/fb#").f();
@@ -837,24 +837,24 @@ public class MiseEnPage extends MiseEnPageGen<Object> {
 									g("div");
 								g("div");
 								e("div").a("class", "w3-cell-row w3-text-white ").f();
-									for(int i = 0; i < ecoles.size(); i++) {
-										CliniqueMedicale ecole = ecoles.get(i);
+									for(int i = 0; i < cliniques.size(); i++) {
+										CliniqueMedicale clinique = cliniques.get(i);
 
 										e("div").a("class", "w3-cell ").f();
 											e("div").f();
-												e("span").a("class", "font-weight-bold ").f().sx(ecole.getCliniqueEmplacement()).g("span");
+												e("span").a("class", "font-weight-bold ").f().sx(clinique.getCliniqueEmplacement()).g("span");
 											g("div");
 											e("div").f();
 												e("span").a("class", "font-weight-bold ").f().sx("Address: ").g("span");
-												e("span").f().sx(ecole.getCliniqueAddresse()).g("span");
+												e("span").f().sx(clinique.getCliniqueAddresse()).g("span");
 											g("div");
 											e("div").f();
 												e("span").a("class", "font-weight-bold ").f().sx("Phone: ").g("span");
-												e("span").f().sx(ecole.getCliniqueNumeroTelephone()).g("span");
+												e("span").f().sx(clinique.getCliniqueNumeroTelephone()).g("span");
 											g("div");
 											e("div").f();
 												e("span").a("class", "font-weight-bold ").f().sx("Email: ").g("span");
-												e("span").f().sx(ecole.getCliniqueMailDe()).g("span");
+												e("span").f().sx(clinique.getCliniqueMailDe()).g("span");
 											g("div");
 										g("div");
 										if(i == 2)
@@ -924,30 +924,14 @@ public class MiseEnPage extends MiseEnPageGen<Object> {
 	 * r.enUS: "Logout"
 	 * r: "Connexion"
 	 * r.enUS: "Login"
-	 * r: "écoles"
-	 * r.enUS: "schools"
-	 * r: "années"
-	 * r.enUS: "years"
-	 * r: "saisons"
-	 * r.enUS: "seasons"
-	 * r: "sessions"
-	 * r.enUS: "sessions"
-	 * r: "âges"
-	 * r.enUS: "ages"
-	 * r: "blocs"
-	 * r.enUS: "blocks"
+	 * r: "cliniques"
+	 * r.enUS: "clinics"
 	 * r: "inscriptions"
 	 * r.enUS: "enrollments"
 	 * r: "paiements"
 	 * r.enUS: "payments"
-	 * r: "mères"
-	 * r.enUS: "moms"
-	 * r: "pères"
-	 * r.enUS: "dads"
-	 * r: "gardiens"
-	 * r.enUS: "guardians"
-	 * r: "enfants"
-	 * r.enUS: "children"
+	 * r: "patients"
+	 * r.enUS: "patients"
 	 * r: "designs"
 	 * r.enUS: "designs"
 	 * r: "/utilisateur/"
@@ -1003,8 +987,8 @@ public class MiseEnPage extends MiseEnPageGen<Object> {
 
 				{ e("div").a("class", "w3-dropdown-hover ").f();
 					{ e("div").a("class", "w3-button w3-hover-pink ").f();
-							e("i").a("class", "far fa-school ").f().g("i");
-							sx("écoles");
+							e("i").a("class", "far fa-clinic-medical ").f().g("i");
+							sx("cliniques");
 					} g("div");
 					{ e("div").a("class", "w3-dropdown-content w3-card-4 w3-padding ").f();
 						CliniqueGenPage.htmlSuggereCliniqueGenPage(this, id, null);

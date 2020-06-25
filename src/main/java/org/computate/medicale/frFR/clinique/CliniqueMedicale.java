@@ -47,7 +47,7 @@ import org.computate.medicale.frFR.couverture.Couverture;
  * UnNom.enUS: a clinic
  * Couleur: pink
  * IconeGroupe: regular
- * IconeNom: clinic
+ * IconeNom: clinic-medical
  * 
  * Role.frFR: SiteAdmin
  * Role.enUS: SiteAdmin
@@ -70,34 +70,7 @@ public class CliniqueMedicale extends CliniqueMedicaleGen<Cluster> {
 	
 	/**
 	 * {@inheritDoc}
-	 * Var.enUS: yearKeys
-	 * Indexe: true
-	 * Stocke: true
-	 * Attribuer: Anneemedicale.cliniqueCle
-	 * HtmlLigne: 6
-	 * HtmlCellule: 1
-	 * Description.frFR: 
-	 * Description.enUS: 
-	 * NomAffichage.frFR: années
-	 * NomAffichage.enUS: years
-	 */   
-	protected void _anneeCles(List<Long> o) {}
-	
-	/**
-	 * {@inheritDoc}
-	 * Var.enUS: seasonKeys
-	 * Indexe: true
-	 * Stocke: true
-	 * Description.frFR: 
-	 * Description.enUS: 
-	 * NomAffichage.frFR: 
-	 * NomAffichage.enUS: 
-	 */        
-	protected void _saisonCles(List<Long> o) {}
-	
-	/**
-	 * {@inheritDoc}
-	 * Var.enUS: sessionKeys
+	 * Var.enUS: patientKeys
 	 * Indexe: true
 	 * Stocke: true
 	 * Description.frFR: 
@@ -105,43 +78,7 @@ public class CliniqueMedicale extends CliniqueMedicaleGen<Cluster> {
 	 * NomAffichage.frFR: 
 	 * NomAffichage.enUS: 
 	 */
-	protected void _sessionCles(List<Long> o) {}
-	
-	/**
-	 * {@inheritDoc}
-	 * Var.enUS: ageGroupKeys
-	 * Indexe: true
-	 * Stocke: true
-	 * Description.frFR: 
-	 * Description.enUS: 
-	 * NomAffichage.frFR: 
-	 * NomAffichage.enUS: 
-	 */
-	protected void _groupeAgeCles(List<Long> o) {}
-	
-	/**
-	 * {@inheritDoc}
-	 * Var.enUS: blockKeys
-	 * Indexe: true
-	 * Stocke: true
-	 * Description.frFR: 
-	 * Description.enUS: 
-	 * NomAffichage.frFR: 
-	 * NomAffichage.enUS: 
-	 */
-	protected void _blocCles(List<Long> o) {}
-	
-	/**
-	 * {@inheritDoc}
-	 * Var.enUS: childKeys
-	 * Indexe: true
-	 * Stocke: true
-	 * Description.frFR: 
-	 * Description.enUS: 
-	 * NomAffichage.frFR: 
-	 * NomAffichage.enUS: 
-	 */
-	protected void _enfantCles(List<Long> o) {}
+	protected void _patientCles(List<Long> o) {}
 
 	/**      
 	 * {@inheritDoc}
@@ -193,7 +130,7 @@ public class CliniqueMedicale extends CliniqueMedicaleGen<Cluster> {
 	 * Definir: true
 	 * Indexe: true
 	 * Stocke: true
-	 * HtmlLigne: 5
+	 * HtmlLigne: 6
 	 * HtmlCellule: 1
 	 * NomAffichage.frFR: numéro de téléphone
 	 * NomAffichage.enUS: phone number
@@ -209,8 +146,8 @@ public class CliniqueMedicale extends CliniqueMedicaleGen<Cluster> {
 	 * Definir: true
 	 * Indexe: true
 	 * Stocke: true
-	 * HtmlLigne: 3
-	 * HtmlCellule: 3
+	 * HtmlLigne: 4
+	 * HtmlCellule: 1
 	 * NomAffichage.enUS: administrator of the clinic
 	 * NomAffichage.frFR: administrateur de l'école
 	 * Description.frFR: 
@@ -221,11 +158,25 @@ public class CliniqueMedicale extends CliniqueMedicaleGen<Cluster> {
 
 	/**
 	 * {@inheritDoc}
-	 * Var.enUS: clinicEmailFrom
+	 * Var.enUS: clinicEmail
 	 * Definir: true
 	 * Indexe: true
 	 * Stocke: true
 	 * HtmlLigne: 4
+	 * HtmlCellule: 2
+	 * NomAffichage.enUS: email
+	 * NomAffichage.frFR: mail
+	 */  
+	protected void _cliniqueMail(Couverture<String> c) {
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * Var.enUS: clinicEmailFrom
+	 * Definir: true
+	 * Indexe: true
+	 * Stocke: true
+	 * HtmlLigne: 5
 	 * HtmlCellule: 1
 	 * NomAffichage.enUS: emails from (1 only)
 	 * NomAffichage.frFR: mail de l'école de
@@ -239,7 +190,7 @@ public class CliniqueMedicale extends CliniqueMedicaleGen<Cluster> {
 	 * Definir: true
 	 * Indexe: true
 	 * Stocke: true
-	 * HtmlLigne: 4
+	 * HtmlLigne: 5
 	 * HtmlCellule: 2
 	 * NomAffichage.enUS: emails to (1 or more by ,)
 	 * NomAffichage.frFR: mail de l'école à
@@ -269,7 +220,7 @@ public class CliniqueMedicale extends CliniqueMedicaleGen<Cluster> {
 	 * Definir: true
 	 * Indexe: true
 	 * Stocke: true
-	 * HtmlLigne: 5
+	 * HtmlLigne: 6
 	 * HtmlCellule: 2
 	 * Multiligne: true
 	 * NomAffichage.frFR: addresse
@@ -279,6 +230,19 @@ public class CliniqueMedicale extends CliniqueMedicaleGen<Cluster> {
 	 */
 	protected void _cliniqueAddresse(Couverture<String> c) {
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * Var.enUS: enrollmentKeys
+	 * Indexe: true
+	 * Stocke: true
+	 * Attribuer: InscriptionMedicale.cliniqueCle
+	 * HtmlLigne: 7
+	 * HtmlCellule: 1
+	 * NomAffichage.frFR: inscriptions
+	 * NomAffichage.enUS: enrollments
+	 */           
+	protected void _inscriptionCles(List<Long> o) {}
 
 	/**
 	 * {@inheritDoc}

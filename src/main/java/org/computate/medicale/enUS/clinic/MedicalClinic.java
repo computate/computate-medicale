@@ -11,7 +11,7 @@ import org.computate.medicale.enUS.wrap.Wrap;
  * Saved: true
  * Color: pink
  * IconGroup: regular
- * IconName: clinic
+ * IconName: clinic-medical
  * Role.enUS: SiteAdmin
  * ApiUri.enUS: /api/clinic
  * ApiTag.enUS: Clinic
@@ -28,17 +28,7 @@ public class MedicalClinic extends MedicalClinicGen<Cluster> {
 		c.o(pk);
 	}
 
-	protected void _yearKeys(List<Long> o) {}
-
-	protected void _seasonKeys(List<Long> o) {}
-
-	protected void _sessionKeys(List<Long> o) {}
-
-	protected void _ageGroupKeys(List<Long> o) {}
-
-	protected void _blockKeys(List<Long> o) {}
-
-	protected void _childKeys(List<Long> o) {}
+	protected void _patientKeys(List<Long> o) {}
 
 	protected void _educationSort(Wrap<Integer> c) {
 		c.o(1);
@@ -57,6 +47,9 @@ public class MedicalClinic extends MedicalClinicGen<Cluster> {
 	protected void _clinicAdministratorName(Wrap<String> c) {
 	}
 
+	protected void _clinicEmail(Wrap<String> c) {
+	}
+
 	protected void _clinicEmailFrom(Wrap<String> c) {
 	}
 
@@ -68,6 +61,8 @@ public class MedicalClinic extends MedicalClinicGen<Cluster> {
 
 	protected void _clinicAddress(Wrap<String> c) {
 	}
+
+	protected void _enrollmentKeys(List<Long> o) {}
 
 	protected void _clinicShortName(Wrap<String> c) {
 		if(clinicLocation != null)

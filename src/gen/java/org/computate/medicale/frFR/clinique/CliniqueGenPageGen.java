@@ -4,9 +4,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.computate.medicale.frFR.cluster.Cluster;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
+import java.util.HashMap;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
+import java.util.ArrayList;
 import org.apache.commons.collections.CollectionUtils;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
@@ -152,6 +154,8 @@ public abstract class CliniqueGenPageGen<DEV> extends ClusterPage {
 
 	public void requeteSiteCliniqueGenPage(RequeteSiteFrFR requeteSite_) {
 			super.requeteSiteClusterPage(requeteSite_);
+		if(listeCliniqueMedicale != null)
+			listeCliniqueMedicale.setRequeteSite_(requeteSite_);
 		if(cliniqueMedicale != null)
 			cliniqueMedicale.setRequeteSite_(requeteSite_);
 	}
@@ -244,8 +248,9 @@ public abstract class CliniqueGenPageGen<DEV> extends ClusterPage {
 	// htmlScripts //
 	/////////////////
 
-	public void htmlScripts() {
+	@Override public void htmlScripts() {
 		htmlScriptsCliniqueGenPage();
+		super.htmlScripts();
 	}
 
 	public void htmlScriptsCliniqueGenPage() {
@@ -255,8 +260,9 @@ public abstract class CliniqueGenPageGen<DEV> extends ClusterPage {
 	// htmlScript //
 	////////////////
 
-	public void htmlScript() {
+	@Override public void htmlScript() {
 		htmlScriptCliniqueGenPage();
+		super.htmlScript();
 	}
 
 	public void htmlScriptCliniqueGenPage() {
@@ -266,11 +272,60 @@ public abstract class CliniqueGenPageGen<DEV> extends ClusterPage {
 	// htmlBody //
 	//////////////
 
-	public void htmlBody() {
+	@Override public void htmlBody() {
 		htmlBodyCliniqueGenPage();
+		super.htmlBody();
 	}
 
 	public void htmlBodyCliniqueGenPage() {
+	}
+
+	//////////
+	// html //
+	//////////
+
+	@Override public void html() {
+		htmlCliniqueGenPage();
+		super.html();
+	}
+
+	public void htmlCliniqueGenPage() {
+	}
+
+	//////////////
+	// htmlMeta //
+	//////////////
+
+	@Override public void htmlMeta() {
+		htmlMetaCliniqueGenPage();
+		super.htmlMeta();
+	}
+
+	public void htmlMetaCliniqueGenPage() {
+	}
+
+	////////////////
+	// htmlStyles //
+	////////////////
+
+	@Override public void htmlStyles() {
+		htmlStylesCliniqueGenPage();
+		super.htmlStyles();
+	}
+
+	public void htmlStylesCliniqueGenPage() {
+	}
+
+	///////////////
+	// htmlStyle //
+	///////////////
+
+	@Override public void htmlStyle() {
+		htmlStyleCliniqueGenPage();
+		super.htmlStyle();
+	}
+
+	public void htmlStyleCliniqueGenPage() {
 	}
 
 	//////////////////

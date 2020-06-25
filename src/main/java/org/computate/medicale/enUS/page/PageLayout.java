@@ -206,7 +206,7 @@ public class PageLayout extends PageLayoutGen<Object> {
 	}
 
 	protected void _pageClinicUri(Wrap<String> c) {
-		c.o(" /school");
+		c.o(" /clinic");
 	}
 
 	protected void _pageUserUri(Wrap<String> c) {
@@ -231,11 +231,11 @@ public class PageLayout extends PageLayoutGen<Object> {
 		l.addFilterQuery("archived_indexed_boolean:false");
 	}
 
-	protected void _schools(Wrap<List<MedicalClinic>> c) {
+	protected void _clinics(Wrap<List<MedicalClinic>> c) {
 		c.o(listClinic.getList());
 	}
 
-	protected void _school_(Wrap<MedicalClinic> c) {
+	protected void _clinic_(Wrap<MedicalClinic> c) {
 //		c.o(listClinic.getList().stream().findFirst().orElse(null));
 	}
 
@@ -404,24 +404,24 @@ public class PageLayout extends PageLayoutGen<Object> {
 									g("div");
 								g("div");
 								e("div").a("class", "w3-cell-row w3-text-white ").f();
-									for(int i = 0; i < schools.size(); i++) {
-										MedicalClinic school = schools.get(i);
+									for(int i = 0; i < clinics.size(); i++) {
+										MedicalClinic clinic = clinics.get(i);
 
 										e("div").a("class", "w3-cell ").f();
 											e("div").f();
-												e("span").a("class", "font-weight-bold ").f().sx(school.getClinicLocation()).g("span");
+												e("span").a("class", "font-weight-bold ").f().sx(clinic.getClinicLocation()).g("span");
 											g("div");
 											e("div").f();
 												e("span").a("class", "font-weight-bold ").f().sx("Address: ").g("span");
-												e("span").f().sx(school.getClinicAddress()).g("span");
+												e("span").f().sx(clinic.getClinicAddress()).g("span");
 											g("div");
 											e("div").f();
 												e("span").a("class", "font-weight-bold ").f().sx("Phone: ").g("span");
-												e("span").f().sx(school.getClinicPhoneNumber()).g("span");
+												e("span").f().sx(clinic.getClinicPhoneNumber()).g("span");
 											g("div");
 											e("div").f();
 												e("span").a("class", "font-weight-bold ").f().sx("Email: ").g("span");
-												e("span").f().sx(school.getClinicEmailFrom()).g("span");
+												e("span").f().sx(clinic.getClinicEmailFrom()).g("span");
 											g("div");
 										g("div");
 										if(i == 2)
@@ -460,8 +460,8 @@ public class PageLayout extends PageLayoutGen<Object> {
 
 				{ e("div").a("class", "w3-dropdown-hover ").f();
 					{ e("div").a("class", "w3-button w3-hover-pink ").f();
-							e("i").a("class", "far fa-school ").f().g("i");
-							sx("schools");
+							e("i").a("class", "far fa-clinic-medical ").f().g("i");
+							sx("clinics");
 					} g("div");
 					{ e("div").a("class", "w3-dropdown-content w3-card-4 w3-padding ").f();
 						ClinicGenPage.htmlSuggestedClinicGenPage(this, id, null);

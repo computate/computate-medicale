@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.computate.medicale.frFR.cluster.Cluster;
 import java.util.Date;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
+import java.util.HashMap;
+import org.computate.medicale.frFR.inscription.InscriptionMedicale;
 import org.computate.medicale.frFR.contexte.SiteContexteFrFR;
 import org.apache.commons.lang3.StringUtils;
 import java.lang.Integer;
@@ -73,7 +75,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 	public static final String CliniqueMedicale_NomAdjectifPluriel = "écoles";
 	public static final String CliniqueMedicale_Couleur = "pink";
 	public static final String CliniqueMedicale_IconeGroupe = "regular";
-	public static final String CliniqueMedicale_IconeNom = "clinic";
+	public static final String CliniqueMedicale_IconeNom = "clinic-medical";
 
 	/////////////////
 	// cliniqueCle //
@@ -144,552 +146,91 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 		return cliniqueCle == null ? "" : StringEscapeUtils.escapeHtml4(strCliniqueCle());
 	}
 
-	///////////////
-	// anneeCles //
-	///////////////
-
-	/**	L'entité « anneeCles »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> anneeCles = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Couverture<List<Long>> anneeClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("anneeCles").o(anneeCles);
-
-	/**	<br/>L'entité « anneeCles »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.clinique.CliniqueMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:anneeCles">Trouver l'entité anneeCles dans Solr</a>
-	 * <br/>
-	 * @param anneeCles est l'entité déjà construit. 
-	 **/
-	protected abstract void _anneeCles(List<Long> o);
-
-	public List<Long> getAnneeCles() {
-		return anneeCles;
-	}
-
-	public void setAnneeCles(List<Long> anneeCles) {
-		this.anneeCles = anneeCles;
-		this.anneeClesCouverture.dejaInitialise = true;
-	}
-	public CliniqueMedicale addAnneeCles(Long...objets) {
-		for(Long o : objets) {
-			addAnneeCles(o);
-		}
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale addAnneeCles(Long o) {
-		if(o != null && !anneeCles.contains(o))
-			this.anneeCles.add(o);
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale setAnneeCles(JsonArray objets) {
-		anneeCles.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addAnneeCles(o);
-		}
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale addAnneeCles(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addAnneeCles(p);
-		}
-		return (CliniqueMedicale)this;
-	}
-	protected CliniqueMedicale anneeClesInit() {
-		if(!anneeClesCouverture.dejaInitialise) {
-			_anneeCles(anneeCles);
-		}
-		anneeClesCouverture.dejaInitialise(true);
-		return (CliniqueMedicale)this;
-	}
-
-	public List<Long> solrAnneeCles() {
-		return anneeCles;
-	}
-
-	public String strAnneeCles() {
-		return anneeCles == null ? "" : anneeCles.toString();
-	}
-
-	public String jsonAnneeCles() {
-		return anneeCles == null ? "" : anneeCles.toString();
-	}
-
-	public String nomAffichageAnneeCles() {
-		return "années";
-	}
-
-	public String htmTooltipAnneeCles() {
-		return null;
-	}
-
-	public String htmAnneeCles() {
-		return anneeCles == null ? "" : StringEscapeUtils.escapeHtml4(strAnneeCles());
-	}
-
-	public void inputAnneeCles(String classeApiMethodeMethode) {
-		CliniqueMedicale s = (CliniqueMedicale)this;
-	}
-
-	public void htmAnneeCles(String classeApiMethodeMethode) {
-		CliniqueMedicale s = (CliniqueMedicale)this;
-		{ e("div").a("class", "w3-cell w3-cell-top w3-center w3-mobile ").f();
-			if("Page".equals(classeApiMethodeMethode)) {
-				{ e("div").a("class", "w3-padding ").f();
-					{ e("div").a("class", "w3-card ").f();
-						{ e("div").a("class", "w3-cell-row w3-pink ").f();
-							e("label").a("class", "").f().sx("années").g("label");
-						} g("div");
-						{ e("div").a("class", "w3-cell-row  ").f();
-							{ e("div").a("class", "w3-cell ").f();
-								{ e("div").a("class", "w3-rest ").f();
-									e("span").f().sx(strAnneeCles()).g("span");
-								} g("div");
-							} g("div");
-						} g("div");
-					} g("div");
-				} g("div");
-			}
-		} g("div");
-	}
-
-	////////////////
-	// saisonCles //
-	////////////////
-
-	/**	L'entité « saisonCles »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> saisonCles = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Couverture<List<Long>> saisonClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("saisonCles").o(saisonCles);
-
-	/**	<br/>L'entité « saisonCles »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.clinique.CliniqueMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:saisonCles">Trouver l'entité saisonCles dans Solr</a>
-	 * <br/>
-	 * @param saisonCles est l'entité déjà construit. 
-	 **/
-	protected abstract void _saisonCles(List<Long> o);
-
-	public List<Long> getSaisonCles() {
-		return saisonCles;
-	}
-
-	public void setSaisonCles(List<Long> saisonCles) {
-		this.saisonCles = saisonCles;
-		this.saisonClesCouverture.dejaInitialise = true;
-	}
-	public CliniqueMedicale addSaisonCles(Long...objets) {
-		for(Long o : objets) {
-			addSaisonCles(o);
-		}
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale addSaisonCles(Long o) {
-		if(o != null && !saisonCles.contains(o))
-			this.saisonCles.add(o);
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale setSaisonCles(JsonArray objets) {
-		saisonCles.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addSaisonCles(o);
-		}
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale addSaisonCles(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addSaisonCles(p);
-		}
-		return (CliniqueMedicale)this;
-	}
-	protected CliniqueMedicale saisonClesInit() {
-		if(!saisonClesCouverture.dejaInitialise) {
-			_saisonCles(saisonCles);
-		}
-		saisonClesCouverture.dejaInitialise(true);
-		return (CliniqueMedicale)this;
-	}
-
-	public List<Long> solrSaisonCles() {
-		return saisonCles;
-	}
-
-	public String strSaisonCles() {
-		return saisonCles == null ? "" : saisonCles.toString();
-	}
-
-	public String jsonSaisonCles() {
-		return saisonCles == null ? "" : saisonCles.toString();
-	}
-
-	public String nomAffichageSaisonCles() {
-		return "NomAffichage.enUS: ";
-	}
-
-	public String htmTooltipSaisonCles() {
-		return null;
-	}
-
-	public String htmSaisonCles() {
-		return saisonCles == null ? "" : StringEscapeUtils.escapeHtml4(strSaisonCles());
-	}
-
 	/////////////////
-	// sessionCles //
+	// patientCles //
 	/////////////////
 
-	/**	L'entité « sessionCles »
+	/**	L'entité « patientCles »
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected List<Long> sessionCles = new java.util.ArrayList<java.lang.Long>();
+	protected List<Long> patientCles = new ArrayList<Long>();
 	@JsonIgnore
-	public Couverture<List<Long>> sessionClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("sessionCles").o(sessionCles);
+	public Couverture<List<Long>> patientClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("patientCles").o(patientCles);
 
-	/**	<br/>L'entité « sessionCles »
+	/**	<br/>L'entité « patientCles »
 	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.clinique.CliniqueMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:sessionCles">Trouver l'entité sessionCles dans Solr</a>
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.clinique.CliniqueMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:patientCles">Trouver l'entité patientCles dans Solr</a>
 	 * <br/>
-	 * @param sessionCles est l'entité déjà construit. 
+	 * @param patientCles est l'entité déjà construit. 
 	 **/
-	protected abstract void _sessionCles(List<Long> o);
+	protected abstract void _patientCles(List<Long> o);
 
-	public List<Long> getSessionCles() {
-		return sessionCles;
+	public List<Long> getPatientCles() {
+		return patientCles;
 	}
 
-	public void setSessionCles(List<Long> sessionCles) {
-		this.sessionCles = sessionCles;
-		this.sessionClesCouverture.dejaInitialise = true;
+	public void setPatientCles(List<Long> patientCles) {
+		this.patientCles = patientCles;
+		this.patientClesCouverture.dejaInitialise = true;
 	}
-	public CliniqueMedicale addSessionCles(Long...objets) {
+	public CliniqueMedicale addPatientCles(Long...objets) {
 		for(Long o : objets) {
-			addSessionCles(o);
+			addPatientCles(o);
 		}
 		return (CliniqueMedicale)this;
 	}
-	public CliniqueMedicale addSessionCles(Long o) {
-		if(o != null && !sessionCles.contains(o))
-			this.sessionCles.add(o);
+	public CliniqueMedicale addPatientCles(Long o) {
+		if(o != null && !patientCles.contains(o))
+			this.patientCles.add(o);
 		return (CliniqueMedicale)this;
 	}
-	public CliniqueMedicale setSessionCles(JsonArray objets) {
-		sessionCles.clear();
+	public CliniqueMedicale setPatientCles(JsonArray objets) {
+		patientCles.clear();
 		for(int i = 0; i < objets.size(); i++) {
 			Long o = objets.getLong(i);
-			addSessionCles(o);
+			addPatientCles(o);
 		}
 		return (CliniqueMedicale)this;
 	}
-	public CliniqueMedicale addSessionCles(String o) {
+	public CliniqueMedicale addPatientCles(String o) {
 		if(NumberUtils.isParsable(o)) {
 			Long p = Long.parseLong(o);
-			addSessionCles(p);
+			addPatientCles(p);
 		}
 		return (CliniqueMedicale)this;
 	}
-	protected CliniqueMedicale sessionClesInit() {
-		if(!sessionClesCouverture.dejaInitialise) {
-			_sessionCles(sessionCles);
+	protected CliniqueMedicale patientClesInit() {
+		if(!patientClesCouverture.dejaInitialise) {
+			_patientCles(patientCles);
 		}
-		sessionClesCouverture.dejaInitialise(true);
+		patientClesCouverture.dejaInitialise(true);
 		return (CliniqueMedicale)this;
 	}
 
-	public List<Long> solrSessionCles() {
-		return sessionCles;
+	public List<Long> solrPatientCles() {
+		return patientCles;
 	}
 
-	public String strSessionCles() {
-		return sessionCles == null ? "" : sessionCles.toString();
+	public String strPatientCles() {
+		return patientCles == null ? "" : patientCles.toString();
 	}
 
-	public String jsonSessionCles() {
-		return sessionCles == null ? "" : sessionCles.toString();
+	public String jsonPatientCles() {
+		return patientCles == null ? "" : patientCles.toString();
 	}
 
-	public String nomAffichageSessionCles() {
+	public String nomAffichagePatientCles() {
 		return "NomAffichage.enUS: ";
 	}
 
-	public String htmTooltipSessionCles() {
+	public String htmTooltipPatientCles() {
 		return null;
 	}
 
-	public String htmSessionCles() {
-		return sessionCles == null ? "" : StringEscapeUtils.escapeHtml4(strSessionCles());
-	}
-
-	///////////////////
-	// groupeAgeCles //
-	///////////////////
-
-	/**	L'entité « groupeAgeCles »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> groupeAgeCles = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Couverture<List<Long>> groupeAgeClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("groupeAgeCles").o(groupeAgeCles);
-
-	/**	<br/>L'entité « groupeAgeCles »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.clinique.CliniqueMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:groupeAgeCles">Trouver l'entité groupeAgeCles dans Solr</a>
-	 * <br/>
-	 * @param groupeAgeCles est l'entité déjà construit. 
-	 **/
-	protected abstract void _groupeAgeCles(List<Long> o);
-
-	public List<Long> getGroupeAgeCles() {
-		return groupeAgeCles;
-	}
-
-	public void setGroupeAgeCles(List<Long> groupeAgeCles) {
-		this.groupeAgeCles = groupeAgeCles;
-		this.groupeAgeClesCouverture.dejaInitialise = true;
-	}
-	public CliniqueMedicale addGroupeAgeCles(Long...objets) {
-		for(Long o : objets) {
-			addGroupeAgeCles(o);
-		}
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale addGroupeAgeCles(Long o) {
-		if(o != null && !groupeAgeCles.contains(o))
-			this.groupeAgeCles.add(o);
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale setGroupeAgeCles(JsonArray objets) {
-		groupeAgeCles.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addGroupeAgeCles(o);
-		}
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale addGroupeAgeCles(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addGroupeAgeCles(p);
-		}
-		return (CliniqueMedicale)this;
-	}
-	protected CliniqueMedicale groupeAgeClesInit() {
-		if(!groupeAgeClesCouverture.dejaInitialise) {
-			_groupeAgeCles(groupeAgeCles);
-		}
-		groupeAgeClesCouverture.dejaInitialise(true);
-		return (CliniqueMedicale)this;
-	}
-
-	public List<Long> solrGroupeAgeCles() {
-		return groupeAgeCles;
-	}
-
-	public String strGroupeAgeCles() {
-		return groupeAgeCles == null ? "" : groupeAgeCles.toString();
-	}
-
-	public String jsonGroupeAgeCles() {
-		return groupeAgeCles == null ? "" : groupeAgeCles.toString();
-	}
-
-	public String nomAffichageGroupeAgeCles() {
-		return "NomAffichage.enUS: ";
-	}
-
-	public String htmTooltipGroupeAgeCles() {
-		return null;
-	}
-
-	public String htmGroupeAgeCles() {
-		return groupeAgeCles == null ? "" : StringEscapeUtils.escapeHtml4(strGroupeAgeCles());
-	}
-
-	//////////////
-	// blocCles //
-	//////////////
-
-	/**	L'entité « blocCles »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> blocCles = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Couverture<List<Long>> blocClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("blocCles").o(blocCles);
-
-	/**	<br/>L'entité « blocCles »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.clinique.CliniqueMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:blocCles">Trouver l'entité blocCles dans Solr</a>
-	 * <br/>
-	 * @param blocCles est l'entité déjà construit. 
-	 **/
-	protected abstract void _blocCles(List<Long> o);
-
-	public List<Long> getBlocCles() {
-		return blocCles;
-	}
-
-	public void setBlocCles(List<Long> blocCles) {
-		this.blocCles = blocCles;
-		this.blocClesCouverture.dejaInitialise = true;
-	}
-	public CliniqueMedicale addBlocCles(Long...objets) {
-		for(Long o : objets) {
-			addBlocCles(o);
-		}
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale addBlocCles(Long o) {
-		if(o != null && !blocCles.contains(o))
-			this.blocCles.add(o);
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale setBlocCles(JsonArray objets) {
-		blocCles.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addBlocCles(o);
-		}
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale addBlocCles(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addBlocCles(p);
-		}
-		return (CliniqueMedicale)this;
-	}
-	protected CliniqueMedicale blocClesInit() {
-		if(!blocClesCouverture.dejaInitialise) {
-			_blocCles(blocCles);
-		}
-		blocClesCouverture.dejaInitialise(true);
-		return (CliniqueMedicale)this;
-	}
-
-	public List<Long> solrBlocCles() {
-		return blocCles;
-	}
-
-	public String strBlocCles() {
-		return blocCles == null ? "" : blocCles.toString();
-	}
-
-	public String jsonBlocCles() {
-		return blocCles == null ? "" : blocCles.toString();
-	}
-
-	public String nomAffichageBlocCles() {
-		return "NomAffichage.enUS: ";
-	}
-
-	public String htmTooltipBlocCles() {
-		return null;
-	}
-
-	public String htmBlocCles() {
-		return blocCles == null ? "" : StringEscapeUtils.escapeHtml4(strBlocCles());
-	}
-
-	////////////////
-	// enfantCles //
-	////////////////
-
-	/**	L'entité « enfantCles »
-	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 */
-	@JsonSerialize(contentUsing = ToStringSerializer.class)
-	@JsonInclude(Include.NON_NULL)
-	protected List<Long> enfantCles = new java.util.ArrayList<java.lang.Long>();
-	@JsonIgnore
-	public Couverture<List<Long>> enfantClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("enfantCles").o(enfantCles);
-
-	/**	<br/>L'entité « enfantCles »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.clinique.CliniqueMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:enfantCles">Trouver l'entité enfantCles dans Solr</a>
-	 * <br/>
-	 * @param enfantCles est l'entité déjà construit. 
-	 **/
-	protected abstract void _enfantCles(List<Long> o);
-
-	public List<Long> getEnfantCles() {
-		return enfantCles;
-	}
-
-	public void setEnfantCles(List<Long> enfantCles) {
-		this.enfantCles = enfantCles;
-		this.enfantClesCouverture.dejaInitialise = true;
-	}
-	public CliniqueMedicale addEnfantCles(Long...objets) {
-		for(Long o : objets) {
-			addEnfantCles(o);
-		}
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale addEnfantCles(Long o) {
-		if(o != null && !enfantCles.contains(o))
-			this.enfantCles.add(o);
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale setEnfantCles(JsonArray objets) {
-		enfantCles.clear();
-		for(int i = 0; i < objets.size(); i++) {
-			Long o = objets.getLong(i);
-			addEnfantCles(o);
-		}
-		return (CliniqueMedicale)this;
-	}
-	public CliniqueMedicale addEnfantCles(String o) {
-		if(NumberUtils.isParsable(o)) {
-			Long p = Long.parseLong(o);
-			addEnfantCles(p);
-		}
-		return (CliniqueMedicale)this;
-	}
-	protected CliniqueMedicale enfantClesInit() {
-		if(!enfantClesCouverture.dejaInitialise) {
-			_enfantCles(enfantCles);
-		}
-		enfantClesCouverture.dejaInitialise(true);
-		return (CliniqueMedicale)this;
-	}
-
-	public List<Long> solrEnfantCles() {
-		return enfantCles;
-	}
-
-	public String strEnfantCles() {
-		return enfantCles == null ? "" : enfantCles.toString();
-	}
-
-	public String jsonEnfantCles() {
-		return enfantCles == null ? "" : enfantCles.toString();
-	}
-
-	public String nomAffichageEnfantCles() {
-		return "NomAffichage.enUS: ";
-	}
-
-	public String htmTooltipEnfantCles() {
-		return null;
-	}
-
-	public String htmEnfantCles() {
-		return enfantCles == null ? "" : StringEscapeUtils.escapeHtml4(strEnfantCles());
+	public String htmPatientCles() {
+		return patientCles == null ? "" : StringEscapeUtils.escapeHtml4(strPatientCles());
 	}
 
 	/////////////////
@@ -908,7 +449,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				}
 				if("Page".equals(classeApiMethodeMethode)) {
 					a("onclick", "enleverLueur($(this)); ");
-					a("onchange", "patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueNom', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueNom')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueNom')); }); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueNom', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueNom')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueNom')); }); ");
 				}
 				a("value", strCliniqueNom())
 			.fg();
@@ -936,7 +477,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 										{ e("button")
 											.a("tabindex", "-1")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pink ")
-										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueNom')); $('#", classeApiMethodeMethode, "_cliniqueNom').val(null); patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueNom', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueNom')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueNom')); }); ")
+										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueNom')); $('#", classeApiMethodeMethode, "_cliniqueNom').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueNom', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueNom')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueNom')); }); ")
 											.f();
 											e("i").a("class", "far fa-eraser ").f().g("i");
 										} g("button");
@@ -1028,7 +569,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				}
 				if("Page".equals(classeApiMethodeMethode)) {
 					a("onclick", "enleverLueur($(this)); ");
-					a("onchange", "patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueNumeroTelephone', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueNumeroTelephone')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueNumeroTelephone')); }); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueNumeroTelephone', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueNumeroTelephone')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueNumeroTelephone')); }); ");
 				}
 				a("value", strCliniqueNumeroTelephone())
 			.fg();
@@ -1056,7 +597,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 										{ e("button")
 											.a("tabindex", "-1")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pink ")
-										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueNumeroTelephone')); $('#", classeApiMethodeMethode, "_cliniqueNumeroTelephone').val(null); patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueNumeroTelephone', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueNumeroTelephone')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueNumeroTelephone')); }); ")
+										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueNumeroTelephone')); $('#", classeApiMethodeMethode, "_cliniqueNumeroTelephone').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueNumeroTelephone', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueNumeroTelephone')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueNumeroTelephone')); }); ")
 											.f();
 											e("i").a("class", "far fa-eraser ").f().g("i");
 										} g("button");
@@ -1148,7 +689,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				}
 				if("Page".equals(classeApiMethodeMethode)) {
 					a("onclick", "enleverLueur($(this)); ");
-					a("onchange", "patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueAdministrateurNom', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueAdministrateurNom')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueAdministrateurNom')); }); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueAdministrateurNom', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueAdministrateurNom')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueAdministrateurNom')); }); ");
 				}
 				a("value", strCliniqueAdministrateurNom())
 			.fg();
@@ -1176,7 +717,127 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 										{ e("button")
 											.a("tabindex", "-1")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pink ")
-										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueAdministrateurNom')); $('#", classeApiMethodeMethode, "_cliniqueAdministrateurNom').val(null); patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueAdministrateurNom', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueAdministrateurNom')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueAdministrateurNom')); }); ")
+										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueAdministrateurNom')); $('#", classeApiMethodeMethode, "_cliniqueAdministrateurNom').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueAdministrateurNom', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueAdministrateurNom')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueAdministrateurNom')); }); ")
+											.f();
+											e("i").a("class", "far fa-eraser ").f().g("i");
+										} g("button");
+									} g("div");
+								}
+							}
+						} g("div");
+					} g("div");
+				} g("div");
+			} g("div");
+		} g("div");
+	}
+
+	//////////////////
+	// cliniqueMail //
+	//////////////////
+
+	/**	L'entité « cliniqueMail »
+	 *	 is defined as null before being initialized. 
+	 */
+	@JsonInclude(Include.NON_NULL)
+	protected String cliniqueMail;
+	@JsonIgnore
+	public Couverture<String> cliniqueMailCouverture = new Couverture<String>().p(this).c(String.class).var("cliniqueMail").o(cliniqueMail);
+
+	/**	<br/>L'entité « cliniqueMail »
+	 *  est défini comme null avant d'être initialisé. 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.clinique.CliniqueMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:cliniqueMail">Trouver l'entité cliniqueMail dans Solr</a>
+	 * <br/>
+	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 **/
+	protected abstract void _cliniqueMail(Couverture<String> c);
+
+	public String getCliniqueMail() {
+		return cliniqueMail;
+	}
+
+	public void setCliniqueMail(String cliniqueMail) {
+		this.cliniqueMail = cliniqueMail;
+		this.cliniqueMailCouverture.dejaInitialise = true;
+	}
+	protected CliniqueMedicale cliniqueMailInit() {
+		if(!cliniqueMailCouverture.dejaInitialise) {
+			_cliniqueMail(cliniqueMailCouverture);
+			if(cliniqueMail == null)
+				setCliniqueMail(cliniqueMailCouverture.o);
+		}
+		cliniqueMailCouverture.dejaInitialise(true);
+		return (CliniqueMedicale)this;
+	}
+
+	public String solrCliniqueMail() {
+		return cliniqueMail;
+	}
+
+	public String strCliniqueMail() {
+		return cliniqueMail == null ? "" : cliniqueMail;
+	}
+
+	public String jsonCliniqueMail() {
+		return cliniqueMail == null ? "" : cliniqueMail;
+	}
+
+	public String nomAffichageCliniqueMail() {
+		return "mail";
+	}
+
+	public String htmTooltipCliniqueMail() {
+		return null;
+	}
+
+	public String htmCliniqueMail() {
+		return cliniqueMail == null ? "" : StringEscapeUtils.escapeHtml4(strCliniqueMail());
+	}
+
+	public void inputCliniqueMail(String classeApiMethodeMethode) {
+		CliniqueMedicale s = (CliniqueMedicale)this;
+		{
+			e("input")
+				.a("type", "text")
+				.a("placeholder", "mail")
+				.a("id", classeApiMethodeMethode, "_cliniqueMail");
+				if("Page".equals(classeApiMethodeMethode) || "PATCH".equals(classeApiMethodeMethode)) {
+					a("class", "setCliniqueMail classCliniqueMedicale inputCliniqueMedicale", pk, "CliniqueMail w3-input w3-border ");
+					a("name", "setCliniqueMail");
+				} else {
+					a("class", "valeurCliniqueMail w3-input w3-border classCliniqueMedicale inputCliniqueMedicale", pk, "CliniqueMail w3-input w3-border ");
+					a("name", "cliniqueMail");
+				}
+				if("Page".equals(classeApiMethodeMethode)) {
+					a("onclick", "enleverLueur($(this)); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueMail', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueMail')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueMail')); }); ");
+				}
+				a("value", strCliniqueMail())
+			.fg();
+
+		}
+	}
+
+	public void htmCliniqueMail(String classeApiMethodeMethode) {
+		CliniqueMedicale s = (CliniqueMedicale)this;
+		{ e("div").a("class", "w3-cell w3-cell-top w3-center w3-mobile ").f();
+			{ e("div").a("class", "w3-padding ").f();
+				{ e("div").a("id", "suggere", classeApiMethodeMethode, "CliniqueMedicaleCliniqueMail").f();
+					{ e("div").a("class", "w3-card ").f();
+						{ e("div").a("class", "w3-cell-row w3-pink ").f();
+							e("label").a("for", classeApiMethodeMethode, "_cliniqueMail").a("class", "").f().sx("mail").g("label");
+						} g("div");
+						{ e("div").a("class", "w3-cell-row w3-padding ").f();
+							{ e("div").a("class", "w3-cell ").f();
+
+								inputCliniqueMail(classeApiMethodeMethode);
+							} g("div");
+							{
+								if("Page".equals(classeApiMethodeMethode)) {
+									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
+										{ e("button")
+											.a("tabindex", "-1")
+											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pink ")
+										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueMail')); $('#", classeApiMethodeMethode, "_cliniqueMail').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueMail', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueMail')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueMail')); }); ")
 											.f();
 											e("i").a("class", "far fa-eraser ").f().g("i");
 										} g("button");
@@ -1268,7 +929,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				}
 				if("Page".equals(classeApiMethodeMethode)) {
 					a("onclick", "enleverLueur($(this)); ");
-					a("onchange", "patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueMailDe', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueMailDe')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueMailDe')); }); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueMailDe', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueMailDe')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueMailDe')); }); ");
 				}
 				a("value", strCliniqueMailDe())
 			.fg();
@@ -1296,7 +957,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 										{ e("button")
 											.a("tabindex", "-1")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pink ")
-										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueMailDe')); $('#", classeApiMethodeMethode, "_cliniqueMailDe').val(null); patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueMailDe', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueMailDe')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueMailDe')); }); ")
+										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueMailDe')); $('#", classeApiMethodeMethode, "_cliniqueMailDe').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueMailDe', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueMailDe')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueMailDe')); }); ")
 											.f();
 											e("i").a("class", "far fa-eraser ").f().g("i");
 										} g("button");
@@ -1388,7 +1049,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				}
 				if("Page".equals(classeApiMethodeMethode)) {
 					a("onclick", "enleverLueur($(this)); ");
-					a("onchange", "patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueMailA', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueMailA')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueMailA')); }); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueMailA', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueMailA')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueMailA')); }); ");
 				}
 				a("value", strCliniqueMailA())
 			.fg();
@@ -1416,7 +1077,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 										{ e("button")
 											.a("tabindex", "-1")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pink ")
-										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueMailA')); $('#", classeApiMethodeMethode, "_cliniqueMailA').val(null); patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueMailA', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueMailA')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueMailA')); }); ")
+										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueMailA')); $('#", classeApiMethodeMethode, "_cliniqueMailA').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueMailA', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueMailA')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueMailA')); }); ")
 											.f();
 											e("i").a("class", "far fa-eraser ").f().g("i");
 										} g("button");
@@ -1508,7 +1169,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				}
 				if("Page".equals(classeApiMethodeMethode)) {
 					a("onclick", "enleverLueur($(this)); ");
-					a("onchange", "patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueEmplacement', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueEmplacement')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueEmplacement')); }); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueEmplacement', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueEmplacement')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueEmplacement')); }); ");
 				}
 				a("value", strCliniqueEmplacement())
 			.fg();
@@ -1536,7 +1197,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 										{ e("button")
 											.a("tabindex", "-1")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pink ")
-										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueEmplacement')); $('#", classeApiMethodeMethode, "_cliniqueEmplacement').val(null); patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueEmplacement', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueEmplacement')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueEmplacement')); }); ")
+										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueEmplacement')); $('#", classeApiMethodeMethode, "_cliniqueEmplacement').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueEmplacement', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueEmplacement')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueEmplacement')); }); ")
 											.f();
 											e("i").a("class", "far fa-eraser ").f().g("i");
 										} g("button");
@@ -1627,7 +1288,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				}
 				if("Page".equals(classeApiMethodeMethode)) {
 					a("onclick", "enleverLueur($(this)); ");
-					a("onchange", "patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueAddresse', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueAddresse')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueAddresse')); }); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setCliniqueAddresse', $(this).val(), function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueAddresse')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueAddresse')); }); ");
 				}
 			f().sx(strCliniqueAddresse()).g("textarea");
 
@@ -1654,13 +1315,164 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 										{ e("button")
 											.a("tabindex", "-1")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pink ")
-										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueAddresse')); $('#", classeApiMethodeMethode, "_cliniqueAddresse').val(null); patchCliniqueMedicaleVal([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueAddresse', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueAddresse')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueAddresse')); }); ")
+										.a("onclick", "enleverLueur($('#", classeApiMethodeMethode, "_cliniqueAddresse')); $('#", classeApiMethodeMethode, "_cliniqueAddresse').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#CliniqueMedicaleForm :input[name=pk]').val() }], 'setCliniqueAddresse', null, function() { ajouterLueur($('#", classeApiMethodeMethode, "_cliniqueAddresse')); }, function() { ajouterErreur($('#", classeApiMethodeMethode, "_cliniqueAddresse')); }); ")
 											.f();
 											e("i").a("class", "far fa-eraser ").f().g("i");
 										} g("button");
 									} g("div");
 								}
 							}
+						} g("div");
+					} g("div");
+				} g("div");
+			} g("div");
+		} g("div");
+	}
+
+	/////////////////////
+	// inscriptionCles //
+	/////////////////////
+
+	/**	L'entité « inscriptionCles »
+	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
+	 */
+	@JsonSerialize(contentUsing = ToStringSerializer.class)
+	@JsonInclude(Include.NON_NULL)
+	protected List<Long> inscriptionCles = new ArrayList<Long>();
+	@JsonIgnore
+	public Couverture<List<Long>> inscriptionClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("inscriptionCles").o(inscriptionCles);
+
+	/**	<br/>L'entité « inscriptionCles »
+	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.clinique.CliniqueMedicale&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:inscriptionCles">Trouver l'entité inscriptionCles dans Solr</a>
+	 * <br/>
+	 * @param inscriptionCles est l'entité déjà construit. 
+	 **/
+	protected abstract void _inscriptionCles(List<Long> o);
+
+	public List<Long> getInscriptionCles() {
+		return inscriptionCles;
+	}
+
+	public void setInscriptionCles(List<Long> inscriptionCles) {
+		this.inscriptionCles = inscriptionCles;
+		this.inscriptionClesCouverture.dejaInitialise = true;
+	}
+	public CliniqueMedicale addInscriptionCles(Long...objets) {
+		for(Long o : objets) {
+			addInscriptionCles(o);
+		}
+		return (CliniqueMedicale)this;
+	}
+	public CliniqueMedicale addInscriptionCles(Long o) {
+		if(o != null && !inscriptionCles.contains(o))
+			this.inscriptionCles.add(o);
+		return (CliniqueMedicale)this;
+	}
+	public CliniqueMedicale setInscriptionCles(JsonArray objets) {
+		inscriptionCles.clear();
+		for(int i = 0; i < objets.size(); i++) {
+			Long o = objets.getLong(i);
+			addInscriptionCles(o);
+		}
+		return (CliniqueMedicale)this;
+	}
+	public CliniqueMedicale addInscriptionCles(String o) {
+		if(NumberUtils.isParsable(o)) {
+			Long p = Long.parseLong(o);
+			addInscriptionCles(p);
+		}
+		return (CliniqueMedicale)this;
+	}
+	protected CliniqueMedicale inscriptionClesInit() {
+		if(!inscriptionClesCouverture.dejaInitialise) {
+			_inscriptionCles(inscriptionCles);
+		}
+		inscriptionClesCouverture.dejaInitialise(true);
+		return (CliniqueMedicale)this;
+	}
+
+	public List<Long> solrInscriptionCles() {
+		return inscriptionCles;
+	}
+
+	public String strInscriptionCles() {
+		return inscriptionCles == null ? "" : inscriptionCles.toString();
+	}
+
+	public String jsonInscriptionCles() {
+		return inscriptionCles == null ? "" : inscriptionCles.toString();
+	}
+
+	public String nomAffichageInscriptionCles() {
+		return "inscriptions";
+	}
+
+	public String htmTooltipInscriptionCles() {
+		return null;
+	}
+
+	public String htmInscriptionCles() {
+		return inscriptionCles == null ? "" : StringEscapeUtils.escapeHtml4(strInscriptionCles());
+	}
+
+	public void inputInscriptionCles(String classeApiMethodeMethode) {
+		CliniqueMedicale s = (CliniqueMedicale)this;
+		{
+			e("i").a("class", "far fa-search w3-xxlarge w3-cell w3-cell-middle ").f().g("i");
+				e("input")
+					.a("type", "text")
+					.a("placeholder", "inscriptions")
+					.a("class", "valeur suggereInscriptionCles w3-input w3-border w3-cell w3-cell-middle ")
+					.a("name", "setInscriptionCles")
+					.a("id", classeApiMethodeMethode, "_inscriptionCles")
+					.a("autocomplete", "off")
+					.a("oninput", "suggereCliniqueMedicaleInscriptionCles($(this).val() ? rechercherInscriptionMedicaleFiltres($(this.parentElement)) : [", pk == null ? "" : "{'name':'fq','value':'cliniqueCle:" + pk + "'}", "], $('#listCliniqueMedicaleInscriptionCles_", classeApiMethodeMethode, "'), ", pk, "); ")
+				.fg();
+
+		}
+	}
+
+	public void htmInscriptionCles(String classeApiMethodeMethode) {
+		CliniqueMedicale s = (CliniqueMedicale)this;
+		{ e("div").a("class", "w3-cell w3-cell-top w3-center w3-mobile ").f();
+			{ e("div").a("class", "w3-padding ").f();
+				{ e("div").a("id", "suggere", classeApiMethodeMethode, "CliniqueMedicaleInscriptionCles").f();
+					{ e("div").a("class", "w3-card ").f();
+						{ e("div").a("class", "w3-cell-row ").f();
+							{ e("a").a("href", "?fq=cliniqueCle:", pk).a("class", "w3-cell w3-btn w3-center h4 w3-block h4 w3-blue-gray w3-hover-blue-gray ").f();
+								e("i").a("class", "fas fa-notes-medical ").f().g("i");
+								sx("inscriptions");
+							} g("a");
+						} g("div");
+						{ e("div").a("class", "w3-cell-row ").f();
+							{ e("h5").a("class", "w3-cell ").f();
+								sx("relier  a cette école");
+							} g("h5");
+						} g("div");
+						{ e("div").a("class", "w3-cell-row w3-padding ").f();
+							{ e("div").a("class", "w3-cell ").f();
+								{ e("div").a("class", "w3-cell-row ").f();
+
+								inputInscriptionCles(classeApiMethodeMethode);
+								} g("div");
+							} g("div");
+						} g("div");
+						{ e("div").a("class", "w3-cell-row w3-padding ").f();
+							{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
+								{ e("ul").a("class", "w3-ul w3-hoverable ").a("id", "listCliniqueMedicaleInscriptionCles_", classeApiMethodeMethode).f();
+								} g("ul");
+								{
+									{ e("div").a("class", "w3-cell-row ").f();
+										e("button")
+											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-blue-gray ")
+											.a("id", classeApiMethodeMethode, "_inscriptionCles_ajouter")
+											.a("onclick", "$(this).addClass('w3-disabled'); this.disabled = true; this.innerHTML = 'Envoi…'; postInscriptionMedicaleVals({ cliniqueCle: \"", pk, "\" }, function() {}, function() { ajouterErreur($('#", classeApiMethodeMethode, "inscriptionCles')); });")
+											.f().sx("ajouter une inscription")
+										.g("button");
+									} g("div");
+								}
+							} g("div");
 						} g("div");
 					} g("div");
 				} g("div");
@@ -1814,21 +1626,18 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 
 	public void initCliniqueMedicale() {
 		cliniqueCleInit();
-		anneeClesInit();
-		saisonClesInit();
-		sessionClesInit();
-		groupeAgeClesInit();
-		blocClesInit();
-		enfantClesInit();
+		patientClesInit();
 		medicaleTriInit();
 		cliniqueTriInit();
 		cliniqueNomInit();
 		cliniqueNumeroTelephoneInit();
 		cliniqueAdministrateurNomInit();
+		cliniqueMailInit();
 		cliniqueMailDeInit();
 		cliniqueMailAInit();
 		cliniqueEmplacementInit();
 		cliniqueAddresseInit();
+		inscriptionClesInit();
 		cliniqueNomCourtInit();
 		cliniqueNomCompletInit();
 	}
@@ -1871,18 +1680,8 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 		switch(var) {
 			case "cliniqueCle":
 				return oCliniqueMedicale.cliniqueCle;
-			case "anneeCles":
-				return oCliniqueMedicale.anneeCles;
-			case "saisonCles":
-				return oCliniqueMedicale.saisonCles;
-			case "sessionCles":
-				return oCliniqueMedicale.sessionCles;
-			case "groupeAgeCles":
-				return oCliniqueMedicale.groupeAgeCles;
-			case "blocCles":
-				return oCliniqueMedicale.blocCles;
-			case "enfantCles":
-				return oCliniqueMedicale.enfantCles;
+			case "patientCles":
+				return oCliniqueMedicale.patientCles;
 			case "medicaleTri":
 				return oCliniqueMedicale.medicaleTri;
 			case "cliniqueTri":
@@ -1893,6 +1692,8 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				return oCliniqueMedicale.cliniqueNumeroTelephone;
 			case "cliniqueAdministrateurNom":
 				return oCliniqueMedicale.cliniqueAdministrateurNom;
+			case "cliniqueMail":
+				return oCliniqueMedicale.cliniqueMail;
 			case "cliniqueMailDe":
 				return oCliniqueMedicale.cliniqueMailDe;
 			case "cliniqueMailA":
@@ -1901,6 +1702,8 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				return oCliniqueMedicale.cliniqueEmplacement;
 			case "cliniqueAddresse":
 				return oCliniqueMedicale.cliniqueAddresse;
+			case "inscriptionCles":
+				return oCliniqueMedicale.inscriptionCles;
 			case "cliniqueNomCourt":
 				return oCliniqueMedicale.cliniqueNomCourt;
 			case "cliniqueNomComplet":
@@ -1930,6 +1733,11 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 	public Object attribuerCliniqueMedicale(String var, Object val) {
 		CliniqueMedicale oCliniqueMedicale = (CliniqueMedicale)this;
 		switch(var) {
+			case "inscriptionCles":
+				oCliniqueMedicale.addInscriptionCles((Long)val);
+				if(!sauvegardes.contains(var))
+					sauvegardes.add(var);
+				return val;
 			default:
 				return super.attribuerCluster(var, val);
 		}
@@ -1959,48 +1767,47 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 			case "cliniqueNom":
 				if(val != null)
 					setCliniqueNom(val);
-				sauvegardesCliniqueMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "cliniqueNumeroTelephone":
 				if(val != null)
 					setCliniqueNumeroTelephone(val);
-				sauvegardesCliniqueMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "cliniqueAdministrateurNom":
 				if(val != null)
 					setCliniqueAdministrateurNom(val);
-				sauvegardesCliniqueMedicale.add(var);
+				sauvegardes.add(var);
+				return val;
+			case "cliniqueMail":
+				if(val != null)
+					setCliniqueMail(val);
+				sauvegardes.add(var);
 				return val;
 			case "cliniqueMailDe":
 				if(val != null)
 					setCliniqueMailDe(val);
-				sauvegardesCliniqueMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "cliniqueMailA":
 				if(val != null)
 					setCliniqueMailA(val);
-				sauvegardesCliniqueMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "cliniqueEmplacement":
 				if(val != null)
 					setCliniqueEmplacement(val);
-				sauvegardesCliniqueMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "cliniqueAddresse":
 				if(val != null)
 					setCliniqueAddresse(val);
-				sauvegardesCliniqueMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			default:
 				return super.definirCluster(var, val);
 		}
 	}
-
-	/////////////////
-	// sauvegardes //
-	/////////////////
-
-	protected List<String> sauvegardesCliniqueMedicale = new ArrayList<String>();
 
 	/////////////
 	// peupler //
@@ -2011,112 +1818,92 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 	}
 	public void peuplerCliniqueMedicale(SolrDocument solrDocument) {
 		CliniqueMedicale oCliniqueMedicale = (CliniqueMedicale)this;
-		sauvegardesCliniqueMedicale = (List<String>)solrDocument.get("sauvegardesCliniqueMedicale_stored_strings");
-		if(sauvegardesCliniqueMedicale != null) {
+		sauvegardes = (List<String>)solrDocument.get("sauvegardes_stored_strings");
+		if(sauvegardes != null) {
 
-			if(sauvegardesCliniqueMedicale.contains("cliniqueCle")) {
+			if(sauvegardes.contains("cliniqueCle")) {
 				Long cliniqueCle = (Long)solrDocument.get("cliniqueCle_stored_long");
 				if(cliniqueCle != null)
 					oCliniqueMedicale.setCliniqueCle(cliniqueCle);
 			}
 
-			if(sauvegardesCliniqueMedicale.contains("anneeCles")) {
-				List<Long> anneeCles = (List<Long>)solrDocument.get("anneeCles_stored_longs");
-				if(anneeCles != null)
-					oCliniqueMedicale.anneeCles.addAll(anneeCles);
+			if(sauvegardes.contains("patientCles")) {
+				List<Long> patientCles = (List<Long>)solrDocument.get("patientCles_stored_longs");
+				if(patientCles != null)
+					oCliniqueMedicale.patientCles.addAll(patientCles);
 			}
 
-			if(sauvegardesCliniqueMedicale.contains("saisonCles")) {
-				List<Long> saisonCles = (List<Long>)solrDocument.get("saisonCles_stored_longs");
-				if(saisonCles != null)
-					oCliniqueMedicale.saisonCles.addAll(saisonCles);
-			}
-
-			if(sauvegardesCliniqueMedicale.contains("sessionCles")) {
-				List<Long> sessionCles = (List<Long>)solrDocument.get("sessionCles_stored_longs");
-				if(sessionCles != null)
-					oCliniqueMedicale.sessionCles.addAll(sessionCles);
-			}
-
-			if(sauvegardesCliniqueMedicale.contains("groupeAgeCles")) {
-				List<Long> groupeAgeCles = (List<Long>)solrDocument.get("groupeAgeCles_stored_longs");
-				if(groupeAgeCles != null)
-					oCliniqueMedicale.groupeAgeCles.addAll(groupeAgeCles);
-			}
-
-			if(sauvegardesCliniqueMedicale.contains("blocCles")) {
-				List<Long> blocCles = (List<Long>)solrDocument.get("blocCles_stored_longs");
-				if(blocCles != null)
-					oCliniqueMedicale.blocCles.addAll(blocCles);
-			}
-
-			if(sauvegardesCliniqueMedicale.contains("enfantCles")) {
-				List<Long> enfantCles = (List<Long>)solrDocument.get("enfantCles_stored_longs");
-				if(enfantCles != null)
-					oCliniqueMedicale.enfantCles.addAll(enfantCles);
-			}
-
-			if(sauvegardesCliniqueMedicale.contains("medicaleTri")) {
+			if(sauvegardes.contains("medicaleTri")) {
 				Integer medicaleTri = (Integer)solrDocument.get("medicaleTri_stored_int");
 				if(medicaleTri != null)
 					oCliniqueMedicale.setMedicaleTri(medicaleTri);
 			}
 
-			if(sauvegardesCliniqueMedicale.contains("cliniqueTri")) {
+			if(sauvegardes.contains("cliniqueTri")) {
 				Integer cliniqueTri = (Integer)solrDocument.get("cliniqueTri_stored_int");
 				if(cliniqueTri != null)
 					oCliniqueMedicale.setCliniqueTri(cliniqueTri);
 			}
 
-			if(sauvegardesCliniqueMedicale.contains("cliniqueNom")) {
+			if(sauvegardes.contains("cliniqueNom")) {
 				String cliniqueNom = (String)solrDocument.get("cliniqueNom_stored_string");
 				if(cliniqueNom != null)
 					oCliniqueMedicale.setCliniqueNom(cliniqueNom);
 			}
 
-			if(sauvegardesCliniqueMedicale.contains("cliniqueNumeroTelephone")) {
+			if(sauvegardes.contains("cliniqueNumeroTelephone")) {
 				String cliniqueNumeroTelephone = (String)solrDocument.get("cliniqueNumeroTelephone_stored_string");
 				if(cliniqueNumeroTelephone != null)
 					oCliniqueMedicale.setCliniqueNumeroTelephone(cliniqueNumeroTelephone);
 			}
 
-			if(sauvegardesCliniqueMedicale.contains("cliniqueAdministrateurNom")) {
+			if(sauvegardes.contains("cliniqueAdministrateurNom")) {
 				String cliniqueAdministrateurNom = (String)solrDocument.get("cliniqueAdministrateurNom_stored_string");
 				if(cliniqueAdministrateurNom != null)
 					oCliniqueMedicale.setCliniqueAdministrateurNom(cliniqueAdministrateurNom);
 			}
 
-			if(sauvegardesCliniqueMedicale.contains("cliniqueMailDe")) {
+			if(sauvegardes.contains("cliniqueMail")) {
+				String cliniqueMail = (String)solrDocument.get("cliniqueMail_stored_string");
+				if(cliniqueMail != null)
+					oCliniqueMedicale.setCliniqueMail(cliniqueMail);
+			}
+
+			if(sauvegardes.contains("cliniqueMailDe")) {
 				String cliniqueMailDe = (String)solrDocument.get("cliniqueMailDe_stored_string");
 				if(cliniqueMailDe != null)
 					oCliniqueMedicale.setCliniqueMailDe(cliniqueMailDe);
 			}
 
-			if(sauvegardesCliniqueMedicale.contains("cliniqueMailA")) {
+			if(sauvegardes.contains("cliniqueMailA")) {
 				String cliniqueMailA = (String)solrDocument.get("cliniqueMailA_stored_string");
 				if(cliniqueMailA != null)
 					oCliniqueMedicale.setCliniqueMailA(cliniqueMailA);
 			}
 
-			if(sauvegardesCliniqueMedicale.contains("cliniqueEmplacement")) {
+			if(sauvegardes.contains("cliniqueEmplacement")) {
 				String cliniqueEmplacement = (String)solrDocument.get("cliniqueEmplacement_stored_string");
 				if(cliniqueEmplacement != null)
 					oCliniqueMedicale.setCliniqueEmplacement(cliniqueEmplacement);
 			}
 
-			if(sauvegardesCliniqueMedicale.contains("cliniqueAddresse")) {
+			if(sauvegardes.contains("cliniqueAddresse")) {
 				String cliniqueAddresse = (String)solrDocument.get("cliniqueAddresse_stored_string");
 				if(cliniqueAddresse != null)
 					oCliniqueMedicale.setCliniqueAddresse(cliniqueAddresse);
 			}
 
-			if(sauvegardesCliniqueMedicale.contains("cliniqueNomCourt")) {
+			List<Long> inscriptionCles = (List<Long>)solrDocument.get("inscriptionCles_stored_longs");
+			if(inscriptionCles != null)
+				oCliniqueMedicale.inscriptionCles.addAll(inscriptionCles);
+
+			if(sauvegardes.contains("cliniqueNomCourt")) {
 				String cliniqueNomCourt = (String)solrDocument.get("cliniqueNomCourt_stored_string");
 				if(cliniqueNomCourt != null)
 					oCliniqueMedicale.setCliniqueNomCourt(cliniqueNomCourt);
 			}
 
-			if(sauvegardesCliniqueMedicale.contains("cliniqueNomComplet")) {
+			if(sauvegardes.contains("cliniqueNomComplet")) {
 				String cliniqueNomComplet = (String)solrDocument.get("cliniqueNomComplet_stored_string");
 				if(cliniqueNomComplet != null)
 					oCliniqueMedicale.setCliniqueNomComplet(cliniqueNomComplet);
@@ -2188,59 +1975,16 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 	}
 
 	public void indexerCliniqueMedicale(SolrInputDocument document) {
-		if(sauvegardesCliniqueMedicale != null)
-			document.addField("sauvegardesCliniqueMedicale_stored_strings", sauvegardesCliniqueMedicale);
-
 		if(cliniqueCle != null) {
 			document.addField("cliniqueCle_indexed_long", cliniqueCle);
 			document.addField("cliniqueCle_stored_long", cliniqueCle);
 		}
-		if(anneeCles != null) {
-			for(java.lang.Long o : anneeCles) {
-				document.addField("anneeCles_indexed_longs", o);
+		if(patientCles != null) {
+			for(java.lang.Long o : patientCles) {
+				document.addField("patientCles_indexed_longs", o);
 			}
-			for(java.lang.Long o : anneeCles) {
-				document.addField("anneeCles_stored_longs", o);
-			}
-		}
-		if(saisonCles != null) {
-			for(java.lang.Long o : saisonCles) {
-				document.addField("saisonCles_indexed_longs", o);
-			}
-			for(java.lang.Long o : saisonCles) {
-				document.addField("saisonCles_stored_longs", o);
-			}
-		}
-		if(sessionCles != null) {
-			for(java.lang.Long o : sessionCles) {
-				document.addField("sessionCles_indexed_longs", o);
-			}
-			for(java.lang.Long o : sessionCles) {
-				document.addField("sessionCles_stored_longs", o);
-			}
-		}
-		if(groupeAgeCles != null) {
-			for(java.lang.Long o : groupeAgeCles) {
-				document.addField("groupeAgeCles_indexed_longs", o);
-			}
-			for(java.lang.Long o : groupeAgeCles) {
-				document.addField("groupeAgeCles_stored_longs", o);
-			}
-		}
-		if(blocCles != null) {
-			for(java.lang.Long o : blocCles) {
-				document.addField("blocCles_indexed_longs", o);
-			}
-			for(java.lang.Long o : blocCles) {
-				document.addField("blocCles_stored_longs", o);
-			}
-		}
-		if(enfantCles != null) {
-			for(java.lang.Long o : enfantCles) {
-				document.addField("enfantCles_indexed_longs", o);
-			}
-			for(java.lang.Long o : enfantCles) {
-				document.addField("enfantCles_stored_longs", o);
+			for(java.lang.Long o : patientCles) {
+				document.addField("patientCles_stored_longs", o);
 			}
 		}
 		if(medicaleTri != null) {
@@ -2263,6 +2007,10 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 			document.addField("cliniqueAdministrateurNom_indexed_string", cliniqueAdministrateurNom);
 			document.addField("cliniqueAdministrateurNom_stored_string", cliniqueAdministrateurNom);
 		}
+		if(cliniqueMail != null) {
+			document.addField("cliniqueMail_indexed_string", cliniqueMail);
+			document.addField("cliniqueMail_stored_string", cliniqueMail);
+		}
 		if(cliniqueMailDe != null) {
 			document.addField("cliniqueMailDe_indexed_string", cliniqueMailDe);
 			document.addField("cliniqueMailDe_stored_string", cliniqueMailDe);
@@ -2278,6 +2026,14 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 		if(cliniqueAddresse != null) {
 			document.addField("cliniqueAddresse_indexed_string", cliniqueAddresse);
 			document.addField("cliniqueAddresse_stored_string", cliniqueAddresse);
+		}
+		if(inscriptionCles != null) {
+			for(java.lang.Long o : inscriptionCles) {
+				document.addField("inscriptionCles_indexed_longs", o);
+			}
+			for(java.lang.Long o : inscriptionCles) {
+				document.addField("inscriptionCles_stored_longs", o);
+			}
 		}
 		if(cliniqueNomCourt != null) {
 			document.addField("cliniqueNomCourt_indexed_string", cliniqueNomCourt);
@@ -2312,18 +2068,8 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 		switch(entiteVar) {
 			case "cliniqueCle":
 				return "cliniqueCle_indexed_long";
-			case "anneeCles":
-				return "anneeCles_indexed_longs";
-			case "saisonCles":
-				return "saisonCles_indexed_longs";
-			case "sessionCles":
-				return "sessionCles_indexed_longs";
-			case "groupeAgeCles":
-				return "groupeAgeCles_indexed_longs";
-			case "blocCles":
-				return "blocCles_indexed_longs";
-			case "enfantCles":
-				return "enfantCles_indexed_longs";
+			case "patientCles":
+				return "patientCles_indexed_longs";
 			case "medicaleTri":
 				return "medicaleTri_indexed_int";
 			case "cliniqueTri":
@@ -2334,6 +2080,8 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				return "cliniqueNumeroTelephone_indexed_string";
 			case "cliniqueAdministrateurNom":
 				return "cliniqueAdministrateurNom_indexed_string";
+			case "cliniqueMail":
+				return "cliniqueMail_indexed_string";
 			case "cliniqueMailDe":
 				return "cliniqueMailDe_indexed_string";
 			case "cliniqueMailA":
@@ -2342,6 +2090,8 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				return "cliniqueEmplacement_indexed_string";
 			case "cliniqueAddresse":
 				return "cliniqueAddresse_indexed_string";
+			case "inscriptionCles":
+				return "inscriptionCles_indexed_longs";
 			case "cliniqueNomCourt":
 				return "cliniqueNomCourt_indexed_string";
 			case "cliniqueNomComplet":
@@ -2379,29 +2129,9 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 		if(cliniqueCle != null)
 			oCliniqueMedicale.setCliniqueCle(cliniqueCle);
 
-		List<Long> anneeCles = (List<Long>)solrDocument.get("anneeCles_stored_longs");
-		if(anneeCles != null)
-			oCliniqueMedicale.anneeCles.addAll(anneeCles);
-
-		List<Long> saisonCles = (List<Long>)solrDocument.get("saisonCles_stored_longs");
-		if(saisonCles != null)
-			oCliniqueMedicale.saisonCles.addAll(saisonCles);
-
-		List<Long> sessionCles = (List<Long>)solrDocument.get("sessionCles_stored_longs");
-		if(sessionCles != null)
-			oCliniqueMedicale.sessionCles.addAll(sessionCles);
-
-		List<Long> groupeAgeCles = (List<Long>)solrDocument.get("groupeAgeCles_stored_longs");
-		if(groupeAgeCles != null)
-			oCliniqueMedicale.groupeAgeCles.addAll(groupeAgeCles);
-
-		List<Long> blocCles = (List<Long>)solrDocument.get("blocCles_stored_longs");
-		if(blocCles != null)
-			oCliniqueMedicale.blocCles.addAll(blocCles);
-
-		List<Long> enfantCles = (List<Long>)solrDocument.get("enfantCles_stored_longs");
-		if(enfantCles != null)
-			oCliniqueMedicale.enfantCles.addAll(enfantCles);
+		List<Long> patientCles = (List<Long>)solrDocument.get("patientCles_stored_longs");
+		if(patientCles != null)
+			oCliniqueMedicale.patientCles.addAll(patientCles);
 
 		Integer medicaleTri = (Integer)solrDocument.get("medicaleTri_stored_int");
 		if(medicaleTri != null)
@@ -2423,6 +2153,10 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 		if(cliniqueAdministrateurNom != null)
 			oCliniqueMedicale.setCliniqueAdministrateurNom(cliniqueAdministrateurNom);
 
+		String cliniqueMail = (String)solrDocument.get("cliniqueMail_stored_string");
+		if(cliniqueMail != null)
+			oCliniqueMedicale.setCliniqueMail(cliniqueMail);
+
 		String cliniqueMailDe = (String)solrDocument.get("cliniqueMailDe_stored_string");
 		if(cliniqueMailDe != null)
 			oCliniqueMedicale.setCliniqueMailDe(cliniqueMailDe);
@@ -2438,6 +2172,10 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 		String cliniqueAddresse = (String)solrDocument.get("cliniqueAddresse_stored_string");
 		if(cliniqueAddresse != null)
 			oCliniqueMedicale.setCliniqueAddresse(cliniqueAddresse);
+
+		List<Long> inscriptionCles = (List<Long>)solrDocument.get("inscriptionCles_stored_longs");
+		if(inscriptionCles != null)
+			oCliniqueMedicale.inscriptionCles.addAll(inscriptionCles);
 
 		String cliniqueNomCourt = (String)solrDocument.get("cliniqueNomCourt_stored_string");
 		if(cliniqueNomCourt != null)
@@ -2465,6 +2203,8 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				requeteApi.addVars("cliniqueNumeroTelephone");
 			if(!Objects.equals(cliniqueAdministrateurNom, original.getCliniqueAdministrateurNom()))
 				requeteApi.addVars("cliniqueAdministrateurNom");
+			if(!Objects.equals(cliniqueMail, original.getCliniqueMail()))
+				requeteApi.addVars("cliniqueMail");
 			if(!Objects.equals(cliniqueMailDe, original.getCliniqueMailDe()))
 				requeteApi.addVars("cliniqueMailDe");
 			if(!Objects.equals(cliniqueMailA, original.getCliniqueMailA()))
@@ -2473,6 +2213,8 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				requeteApi.addVars("cliniqueEmplacement");
 			if(!Objects.equals(cliniqueAddresse, original.getCliniqueAddresse()))
 				requeteApi.addVars("cliniqueAddresse");
+			if(!Objects.equals(inscriptionCles, original.getInscriptionCles()))
+				requeteApi.addVars("inscriptionCles");
 			super.requeteApiCluster();
 		}
 	}
@@ -2482,7 +2224,7 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 	//////////////
 
 	@Override public int hashCode() {
-		return Objects.hash(super.hashCode(), cliniqueNom, cliniqueNumeroTelephone, cliniqueAdministrateurNom, cliniqueMailDe, cliniqueMailA, cliniqueEmplacement, cliniqueAddresse);
+		return Objects.hash(super.hashCode(), cliniqueNom, cliniqueNumeroTelephone, cliniqueAdministrateurNom, cliniqueMail, cliniqueMailDe, cliniqueMailA, cliniqueEmplacement, cliniqueAddresse, inscriptionCles);
 	}
 
 	////////////
@@ -2499,10 +2241,12 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 				&& Objects.equals( cliniqueNom, that.cliniqueNom )
 				&& Objects.equals( cliniqueNumeroTelephone, that.cliniqueNumeroTelephone )
 				&& Objects.equals( cliniqueAdministrateurNom, that.cliniqueAdministrateurNom )
+				&& Objects.equals( cliniqueMail, that.cliniqueMail )
 				&& Objects.equals( cliniqueMailDe, that.cliniqueMailDe )
 				&& Objects.equals( cliniqueMailA, that.cliniqueMailA )
 				&& Objects.equals( cliniqueEmplacement, that.cliniqueEmplacement )
-				&& Objects.equals( cliniqueAddresse, that.cliniqueAddresse );
+				&& Objects.equals( cliniqueAddresse, that.cliniqueAddresse )
+				&& Objects.equals( inscriptionCles, that.inscriptionCles );
 	}
 
 	//////////////
@@ -2516,10 +2260,12 @@ public abstract class CliniqueMedicaleGen<DEV> extends Cluster {
 		sb.append( "cliniqueNom: \"" ).append(cliniqueNom).append( "\"" );
 		sb.append( ", cliniqueNumeroTelephone: \"" ).append(cliniqueNumeroTelephone).append( "\"" );
 		sb.append( ", cliniqueAdministrateurNom: \"" ).append(cliniqueAdministrateurNom).append( "\"" );
+		sb.append( ", cliniqueMail: \"" ).append(cliniqueMail).append( "\"" );
 		sb.append( ", cliniqueMailDe: \"" ).append(cliniqueMailDe).append( "\"" );
 		sb.append( ", cliniqueMailA: \"" ).append(cliniqueMailA).append( "\"" );
 		sb.append( ", cliniqueEmplacement: \"" ).append(cliniqueEmplacement).append( "\"" );
 		sb.append( ", cliniqueAddresse: \"" ).append(cliniqueAddresse).append( "\"" );
+		sb.append( ", inscriptionCles: " ).append(inscriptionCles);
 		sb.append(" }");
 		return sb.toString();
 	}

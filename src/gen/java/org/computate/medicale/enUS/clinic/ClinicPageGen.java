@@ -3,9 +3,11 @@ package org.computate.medicale.enUS.clinic;
 import org.computate.medicale.enUS.writer.AllWriter;
 import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import java.util.HashMap;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
+import java.util.ArrayList;
 import org.computate.medicale.enUS.request.SiteRequestEnUS;
 import org.apache.commons.collections.CollectionUtils;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -184,6 +186,54 @@ public abstract class ClinicPageGen<DEV> extends ClinicGenPage {
 	}
 
 	public void htmlBodyClinicPage() {
+	}
+
+	//////////
+	// html //
+	//////////
+
+	@Override public void html() {
+		htmlClinicPage();
+		super.html();
+	}
+
+	public void htmlClinicPage() {
+	}
+
+	//////////////
+	// htmlMeta //
+	//////////////
+
+	@Override public void htmlMeta() {
+		htmlMetaClinicPage();
+		super.htmlMeta();
+	}
+
+	public void htmlMetaClinicPage() {
+	}
+
+	////////////////
+	// htmlStyles //
+	////////////////
+
+	@Override public void htmlStyles() {
+		htmlStylesClinicPage();
+		super.htmlStyles();
+	}
+
+	public void htmlStylesClinicPage() {
+	}
+
+	///////////////
+	// htmlStyle //
+	///////////////
+
+	@Override public void htmlStyle() {
+		htmlStyleClinicPage();
+		super.htmlStyle();
+	}
+
+	public void htmlStyleClinicPage() {
 	}
 
 	//////////////////

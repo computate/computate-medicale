@@ -22,11 +22,11 @@ import org.computate.medicale.enUS.search.SearchList;
  * IconName: hospital-user
  * Role.enUS: SiteAdmin
  * ApiUri.enUS: /api/patient
- * ApiTag.enUS: Child
+ * ApiTag.enUS: Patient
  * AName.enUS: a patient
  * Role.frFR: SiteAdmin
  * ApiUri.frFR: /api/patient
- * ApiTag.frFR: Enfant
+ * ApiTag.frFR: Patient
  * AName.frFR: un patient
  * CanonicalName: org.computate.medicale.frFR.patient.PatientMedicale
  **/

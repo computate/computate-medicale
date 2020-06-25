@@ -30,6 +30,7 @@ import org.apache.solr.common.SolrInputDocument;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.computate.medicale.enUS.cluster.Cluster;
+import java.util.HashMap;
 import org.computate.medicale.enUS.enrollment.MedicalEnrollment;
 import org.computate.medicale.enUS.context.SiteContextEnUS;
 import io.vertx.core.logging.LoggerFactory;
@@ -161,7 +162,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected List<Long> enrollmentKeys = new java.util.ArrayList<java.lang.Long>();
+	protected List<Long> enrollmentKeys = new ArrayList<Long>();
 	@JsonIgnore
 	public Wrap<List<Long>> enrollmentKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("enrollmentKeys").o(enrollmentKeys);
 
@@ -292,12 +293,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 							{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 								{ e("ul").a("class", "w3-ul w3-hoverable ").a("id", "listMedicalPatientEnrollmentKeys_", classApiMethodMethod).f();
 								} g("ul");
-								if(
-										userKeys.contains(siteRequest_.getUserKey())
-										|| Objects.equals(sessionId, siteRequest_.getSessionId())
-										|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
-										|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
-								) {
+								{
 									{ e("div").a("class", "w3-cell-row ").f();
 										e("button")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-blue-gray ")
@@ -431,7 +427,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	 */
 	@JsonIgnore
 	@JsonInclude(Include.NON_NULL)
-	protected List<MedicalEnrollment> enrollments = new java.util.ArrayList<org.computate.medicale.enUS.enrollment.MedicalEnrollment>();
+	protected List<MedicalEnrollment> enrollments = new ArrayList<MedicalEnrollment>();
 	@JsonIgnore
 	public Wrap<List<MedicalEnrollment>> enrollmentsWrap = new Wrap<List<MedicalEnrollment>>().p(this).c(List.class).var("enrollments").o(enrollments);
 
@@ -479,7 +475,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected List<Long> userKeys = new java.util.ArrayList<java.lang.Long>();
+	protected List<Long> userKeys = new ArrayList<Long>();
 	@JsonIgnore
 	public Wrap<List<Long>> userKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("userKeys").o(userKeys);
 
@@ -566,7 +562,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected List<Long> clinicKeys = new java.util.ArrayList<java.lang.Long>();
+	protected List<Long> clinicKeys = new ArrayList<Long>();
 	@JsonIgnore
 	public Wrap<List<Long>> clinicKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("clinicKeys").o(clinicKeys);
 
@@ -727,7 +723,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 				}
 				if("Page".equals(classApiMethodMethod)) {
 					a("onclick", "removeGlow($(this)); ");
-					a("onchange", "patchMedicalPatientVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPatientFirstName', $(this).val(), function() { addGlow($('#", classApiMethodMethod, "_patientFirstName')); }, function() { addError($('#", classApiMethodMethod, "_patientFirstName')); }); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPatientFirstName', $(this).val(), function() { addGlow($('#", classApiMethodMethod, "_patientFirstName')); }, function() { addError($('#", classApiMethodMethod, "_patientFirstName')); }); ");
 				}
 				a("value", strPatientFirstName())
 			.fg();
@@ -762,7 +758,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 										{ e("button")
 											.a("tabindex", "-1")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-orange ")
-										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_patientFirstName')); $('#", classApiMethodMethod, "_patientFirstName').val(null); patchMedicalPatientVal([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setPatientFirstName', null, function() { addGlow($('#", classApiMethodMethod, "_patientFirstName')); }, function() { addError($('#", classApiMethodMethod, "_patientFirstName')); }); ")
+										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_patientFirstName')); $('#", classApiMethodMethod, "_patientFirstName').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setPatientFirstName', null, function() { addGlow($('#", classApiMethodMethod, "_patientFirstName')); }, function() { addError($('#", classApiMethodMethod, "_patientFirstName')); }); ")
 											.f();
 											e("i").a("class", "far fa-eraser ").f().g("i");
 										} g("button");
@@ -859,7 +855,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 				}
 				if("Page".equals(classApiMethodMethod)) {
 					a("onclick", "removeGlow($(this)); ");
-					a("onchange", "patchMedicalPatientVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPatientFirstNamePreferred', $(this).val(), function() { addGlow($('#", classApiMethodMethod, "_patientFirstNamePreferred')); }, function() { addError($('#", classApiMethodMethod, "_patientFirstNamePreferred')); }); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPatientFirstNamePreferred', $(this).val(), function() { addGlow($('#", classApiMethodMethod, "_patientFirstNamePreferred')); }, function() { addError($('#", classApiMethodMethod, "_patientFirstNamePreferred')); }); ");
 				}
 				a("value", strPatientFirstNamePreferred())
 			.fg();
@@ -894,7 +890,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 										{ e("button")
 											.a("tabindex", "-1")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-orange ")
-										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_patientFirstNamePreferred')); $('#", classApiMethodMethod, "_patientFirstNamePreferred').val(null); patchMedicalPatientVal([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setPatientFirstNamePreferred', null, function() { addGlow($('#", classApiMethodMethod, "_patientFirstNamePreferred')); }, function() { addError($('#", classApiMethodMethod, "_patientFirstNamePreferred')); }); ")
+										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_patientFirstNamePreferred')); $('#", classApiMethodMethod, "_patientFirstNamePreferred').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setPatientFirstNamePreferred', null, function() { addGlow($('#", classApiMethodMethod, "_patientFirstNamePreferred')); }, function() { addError($('#", classApiMethodMethod, "_patientFirstNamePreferred')); }); ")
 											.f();
 											e("i").a("class", "far fa-eraser ").f().g("i");
 										} g("button");
@@ -991,7 +987,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 				}
 				if("Page".equals(classApiMethodMethod)) {
 					a("onclick", "removeGlow($(this)); ");
-					a("onchange", "patchMedicalPatientVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setFamilyName', $(this).val(), function() { addGlow($('#", classApiMethodMethod, "_familyName')); }, function() { addError($('#", classApiMethodMethod, "_familyName')); }); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setFamilyName', $(this).val(), function() { addGlow($('#", classApiMethodMethod, "_familyName')); }, function() { addError($('#", classApiMethodMethod, "_familyName')); }); ");
 				}
 				a("value", strFamilyName())
 			.fg();
@@ -1026,7 +1022,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 										{ e("button")
 											.a("tabindex", "-1")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-orange ")
-										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_familyName')); $('#", classApiMethodMethod, "_familyName').val(null); patchMedicalPatientVal([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setFamilyName', null, function() { addGlow($('#", classApiMethodMethod, "_familyName')); }, function() { addError($('#", classApiMethodMethod, "_familyName')); }); ")
+										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_familyName')); $('#", classApiMethodMethod, "_familyName').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setFamilyName', null, function() { addGlow($('#", classApiMethodMethod, "_familyName')); }, function() { addError($('#", classApiMethodMethod, "_familyName')); }); ")
 											.f();
 											e("i").a("class", "far fa-eraser ").f().g("i");
 										} g("button");
@@ -1323,7 +1319,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 				.a("id", classApiMethodMethod, "_patientBirthDate")
 				.a("onclick", "removeGlow($(this)); ")
 				.a("value", patientBirthDate == null ? "" : DateTimeFormatter.ofPattern("MM/dd/yyyy").format(patientBirthDate))
-				.a("onchange", "var t = moment(this.value, 'MM/DD/YYYY'); if(t) { var s = t.format('YYYY-MM-DD'); patchMedicalPatientVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPatientBirthDate', s, function() { addGlow($('#", classApiMethodMethod, "_patientBirthDate')); }, function() { addError($('#", classApiMethodMethod, "_patientBirthDate')); }); } ")
+				.a("onchange", "var t = moment(this.value, 'MM/DD/YYYY'); if(t) { var s = t.format('YYYY-MM-DD'); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPatientBirthDate', s, function() { addGlow($('#", classApiMethodMethod, "_patientBirthDate')); }, function() { addError($('#", classApiMethodMethod, "_patientBirthDate')); }); } ")
 				.fg();
 		} else {
 			sx(htmPatientBirthDate());
@@ -1354,7 +1350,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 										{ e("button")
 											.a("tabindex", "-1")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-orange ")
-										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_patientBirthDate')); $('#", classApiMethodMethod, "_patientBirthDate').val(null); patchMedicalPatientVal([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setPatientBirthDate', null, function() { addGlow($('#", classApiMethodMethod, "_patientBirthDate')); }, function() { addError($('#", classApiMethodMethod, "_patientBirthDate')); }); ")
+										.a("onclick", "removeGlow($('#", classApiMethodMethod, "_patientBirthDate')); $('#", classApiMethodMethod, "_patientBirthDate').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#MedicalPatientForm :input[name=pk]').val() }], 'setPatientBirthDate', null, function() { addGlow($('#", classApiMethodMethod, "_patientBirthDate')); }, function() { addError($('#", classApiMethodMethod, "_patientBirthDate')); }); ")
 											.f();
 											e("i").a("class", "far fa-eraser ").f().g("i");
 										} g("button");
@@ -1700,8 +1696,8 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 		switch(var) {
 			case "enrollmentKeys":
 				oMedicalPatient.addEnrollmentKeys((Long)val);
-				if(!savesMedicalPatient.contains(var))
-					savesMedicalPatient.add(var);
+				if(!saves.contains(var))
+					saves.add(var);
 				return val;
 			default:
 				return super.attributeCluster(var, val);
@@ -1732,33 +1728,27 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 			case "patientFirstName":
 				if(val != null)
 					setPatientFirstName(val);
-				savesMedicalPatient.add(var);
+				saves.add(var);
 				return val;
 			case "patientFirstNamePreferred":
 				if(val != null)
 					setPatientFirstNamePreferred(val);
-				savesMedicalPatient.add(var);
+				saves.add(var);
 				return val;
 			case "familyName":
 				if(val != null)
 					setFamilyName(val);
-				savesMedicalPatient.add(var);
+				saves.add(var);
 				return val;
 			case "patientBirthDate":
 				if(val != null)
 					setPatientBirthDate(val);
-				savesMedicalPatient.add(var);
+				saves.add(var);
 				return val;
 			default:
 				return super.defineCluster(var, val);
 		}
 	}
-
-	/////////////////
-	// saves //
-	/////////////////
-
-	protected List<String> savesMedicalPatient = new ArrayList<String>();
 
 	/////////////
 	// populate //
@@ -1769,10 +1759,10 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	}
 	public void populateMedicalPatient(SolrDocument solrDocument) {
 		MedicalPatient oMedicalPatient = (MedicalPatient)this;
-		savesMedicalPatient = (List<String>)solrDocument.get("savesMedicalPatient_stored_strings");
-		if(savesMedicalPatient != null) {
+		saves = (List<String>)solrDocument.get("saves_stored_strings");
+		if(saves != null) {
 
-			if(savesMedicalPatient.contains("patientKey")) {
+			if(saves.contains("patientKey")) {
 				Long patientKey = (Long)solrDocument.get("patientKey_stored_long");
 				if(patientKey != null)
 					oMedicalPatient.setPatientKey(patientKey);
@@ -1782,79 +1772,79 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 			if(enrollmentKeys != null)
 				oMedicalPatient.enrollmentKeys.addAll(enrollmentKeys);
 
-			if(savesMedicalPatient.contains("schoolSort")) {
+			if(saves.contains("schoolSort")) {
 				Integer schoolSort = (Integer)solrDocument.get("schoolSort_stored_int");
 				if(schoolSort != null)
 					oMedicalPatient.setSchoolSort(schoolSort);
 			}
 
-			if(savesMedicalPatient.contains("userKeys")) {
+			if(saves.contains("userKeys")) {
 				List<Long> userKeys = (List<Long>)solrDocument.get("userKeys_stored_longs");
 				if(userKeys != null)
 					oMedicalPatient.userKeys.addAll(userKeys);
 			}
 
-			if(savesMedicalPatient.contains("clinicKeys")) {
+			if(saves.contains("clinicKeys")) {
 				List<Long> clinicKeys = (List<Long>)solrDocument.get("clinicKeys_stored_longs");
 				if(clinicKeys != null)
 					oMedicalPatient.clinicKeys.addAll(clinicKeys);
 			}
 
-			if(savesMedicalPatient.contains("patientFirstName")) {
+			if(saves.contains("patientFirstName")) {
 				String patientFirstName = (String)solrDocument.get("patientFirstName_stored_string");
 				if(patientFirstName != null)
 					oMedicalPatient.setPatientFirstName(patientFirstName);
 			}
 
-			if(savesMedicalPatient.contains("patientFirstNamePreferred")) {
+			if(saves.contains("patientFirstNamePreferred")) {
 				String patientFirstNamePreferred = (String)solrDocument.get("patientFirstNamePreferred_stored_string");
 				if(patientFirstNamePreferred != null)
 					oMedicalPatient.setPatientFirstNamePreferred(patientFirstNamePreferred);
 			}
 
-			if(savesMedicalPatient.contains("familyName")) {
+			if(saves.contains("familyName")) {
 				String familyName = (String)solrDocument.get("familyName_stored_string");
 				if(familyName != null)
 					oMedicalPatient.setFamilyName(familyName);
 			}
 
-			if(savesMedicalPatient.contains("patientCompleteName")) {
+			if(saves.contains("patientCompleteName")) {
 				String patientCompleteName = (String)solrDocument.get("patientCompleteName_stored_string");
 				if(patientCompleteName != null)
 					oMedicalPatient.setPatientCompleteName(patientCompleteName);
 			}
 
-			if(savesMedicalPatient.contains("patientCompleteNamePreferred")) {
+			if(saves.contains("patientCompleteNamePreferred")) {
 				String patientCompleteNamePreferred = (String)solrDocument.get("patientCompleteNamePreferred_stored_string");
 				if(patientCompleteNamePreferred != null)
 					oMedicalPatient.setPatientCompleteNamePreferred(patientCompleteNamePreferred);
 			}
 
-			if(savesMedicalPatient.contains("patientFormalName")) {
+			if(saves.contains("patientFormalName")) {
 				String patientFormalName = (String)solrDocument.get("patientFormalName_stored_string");
 				if(patientFormalName != null)
 					oMedicalPatient.setPatientFormalName(patientFormalName);
 			}
 
-			if(savesMedicalPatient.contains("patientBirthDate")) {
+			if(saves.contains("patientBirthDate")) {
 				Date patientBirthDate = (Date)solrDocument.get("patientBirthDate_stored_date");
 				if(patientBirthDate != null)
 					oMedicalPatient.setPatientBirthDate(patientBirthDate);
 			}
 
-			if(savesMedicalPatient.contains("patientBirthDateYear")) {
+			if(saves.contains("patientBirthDateYear")) {
 				Integer patientBirthDateYear = (Integer)solrDocument.get("patientBirthDateYear_stored_int");
 				if(patientBirthDateYear != null)
 					oMedicalPatient.setPatientBirthDateYear(patientBirthDateYear);
 			}
 
-			if(savesMedicalPatient.contains("patientBirthDateMonthOfYear")) {
+			if(saves.contains("patientBirthDateMonthOfYear")) {
 				String patientBirthDateMonthOfYear = (String)solrDocument.get("patientBirthDateMonthOfYear_stored_string");
 				if(patientBirthDateMonthOfYear != null)
 					oMedicalPatient.setPatientBirthDateMonthOfYear(patientBirthDateMonthOfYear);
 			}
 
-			if(savesMedicalPatient.contains("patientBirthDateDayOfWeek")) {
+			if(saves.contains("patientBirthDateDayOfWeek")) {
 				String patientBirthDateDayOfWeek = (String)solrDocument.get("patientBirthDateDayOfWeek_stored_string");
 				if(patientBirthDateDayOfWeek != null)
 					oMedicalPatient.setPatientBirthDateDayOfWeek(patientBirthDateDayOfWeek);
@@ -1926,9 +1916,6 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 	}
 
 	public void indexMedicalPatient(SolrInputDocument document) {
-		if(savesMedicalPatient != null)
-			document.addField("savesMedicalPatient_stored_strings", savesMedicalPatient);
-
 		if(patientKey != null) {
 			document.addField("patientKey_indexed_long", patientKey);
 			document.addField("patientKey_stored_long", patientKey);

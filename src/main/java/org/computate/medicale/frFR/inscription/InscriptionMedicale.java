@@ -101,7 +101,7 @@ public class InscriptionMedicale extends InscriptionMedicaleGen<Cluster> {
 	 * Description.enUS: The primary key of the clinic enrollment in the database. 
 	 * NomAffichage.frFR: clé
 	 * NomAffichage.enUS: key
-	 */                              
+	 */                             
 	protected void _inscriptionCle(Couverture<Long> c) {
 		c.o(pk);
 	}

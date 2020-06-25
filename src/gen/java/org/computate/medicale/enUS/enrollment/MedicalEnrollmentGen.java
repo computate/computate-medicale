@@ -5,6 +5,7 @@ import java.util.Date;
 import org.computate.medicale.enUS.request.api.ApiRequest;
 import org.apache.commons.lang3.StringUtils;
 import java.lang.Integer;
+import org.computate.medicale.enUS.user.SiteUser;
 import java.lang.Long;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import java.util.Locale;
@@ -31,6 +32,7 @@ import org.apache.solr.common.SolrInputDocument;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.computate.medicale.enUS.cluster.Cluster;
+import java.util.HashMap;
 import org.computate.medicale.enUS.enrollment.MedicalEnrollment;
 import org.computate.medicale.enUS.context.SiteContextEnUS;
 import io.vertx.core.logging.LoggerFactory;
@@ -402,7 +404,7 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 					{ e("div").a("class", "w3-card ").f();
 						{ e("div").a("class", "w3-cell-row ").f();
 							{ e("a").a("href", "/patient?fq=enrollmentKeys:", pk).a("class", "w3-cell w3-btn w3-center h4 w3-block h4 w3-orange w3-hover-orange ").f();
-								e("i").a("class", "far fa-hostpital-user ").f().g("i");
+								e("i").a("class", "far fa-hospital-user ").f().g("i");
 								sx("patients");
 							} g("a");
 						} g("div");
@@ -423,12 +425,7 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 							{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 								{ e("ul").a("class", "w3-ul w3-hoverable ").a("id", "listMedicalEnrollmentPatientKey_", classApiMethodMethod).f();
 								} g("ul");
-								if(
-										userKeys.contains(siteRequest_.getUserKey())
-										|| Objects.equals(sessionId, siteRequest_.getSessionId())
-										|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
-										|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
-								) {
+								{
 									{ e("div").a("class", "w3-cell-row ").f();
 										e("button")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-orange ")
@@ -524,7 +521,7 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected List<Long> userKeys = new java.util.ArrayList<java.lang.Long>();
+	protected List<Long> userKeys = new ArrayList<Long>();
 	@JsonIgnore
 	public Wrap<List<Long>> userKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("userKeys").o(userKeys);
 
@@ -656,11 +653,9 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 								{ e("ul").a("class", "w3-ul w3-hoverable ").a("id", "listMedicalEnrollmentUserKeys_", classApiMethodMethod).f();
 								} g("ul");
 								if(
-										userKeys.contains(siteRequest_.getUserKey())
-										|| Objects.equals(sessionId, siteRequest_.getSessionId())
-										|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
-										|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
-								) {
+										CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), SiteUser.ROLES)
+										|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), SiteUser.ROLES)
+										) {
 									{ e("div").a("class", "w3-cell-row ").f();
 										e("button")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-gray ")
@@ -3889,11 +3884,12 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature1").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature1").f();
+			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature1 signatureInputMedicalEnrollment", pk, "EnrollmentSignature1").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature1").f();
 				e("div").a("id", "signatureInputMedicalEnrollment", pk, "enrollmentSignature1");
 					a("style", "display: ", StringUtils.isBlank(enrollmentSignature1) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgMedicalEnrollment", pk, "enrollmentSignature1");
+					a("class", "signatureImgMedicalEnrollment", pk, "EnrollmentSignature1 ");
 					a("src", StringUtils.isBlank(enrollmentSignature1) ? "data:image/png;base64," : enrollmentSignature1).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(enrollmentSignature1) ? "none" : "block", "; ");
 				fg();
@@ -4026,11 +4022,12 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature2").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature2").f();
+			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature2 signatureInputMedicalEnrollment", pk, "EnrollmentSignature2").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature2").f();
 				e("div").a("id", "signatureInputMedicalEnrollment", pk, "enrollmentSignature2");
 					a("style", "display: ", StringUtils.isBlank(enrollmentSignature2) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgMedicalEnrollment", pk, "enrollmentSignature2");
+					a("class", "signatureImgMedicalEnrollment", pk, "EnrollmentSignature2 ");
 					a("src", StringUtils.isBlank(enrollmentSignature2) ? "data:image/png;base64," : enrollmentSignature2).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(enrollmentSignature2) ? "none" : "block", "; ");
 				fg();
@@ -4163,11 +4160,12 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature3").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature3").f();
+			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature3 signatureInputMedicalEnrollment", pk, "EnrollmentSignature3").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature3").f();
 				e("div").a("id", "signatureInputMedicalEnrollment", pk, "enrollmentSignature3");
 					a("style", "display: ", StringUtils.isBlank(enrollmentSignature3) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgMedicalEnrollment", pk, "enrollmentSignature3");
+					a("class", "signatureImgMedicalEnrollment", pk, "EnrollmentSignature3 ");
 					a("src", StringUtils.isBlank(enrollmentSignature3) ? "data:image/png;base64," : enrollmentSignature3).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(enrollmentSignature3) ? "none" : "block", "; ");
 				fg();
@@ -4300,11 +4298,12 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature4").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature4").f();
+			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature4 signatureInputMedicalEnrollment", pk, "EnrollmentSignature4").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature4").f();
 				e("div").a("id", "signatureInputMedicalEnrollment", pk, "enrollmentSignature4");
 					a("style", "display: ", StringUtils.isBlank(enrollmentSignature4) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgMedicalEnrollment", pk, "enrollmentSignature4");
+					a("class", "signatureImgMedicalEnrollment", pk, "EnrollmentSignature4 ");
 					a("src", StringUtils.isBlank(enrollmentSignature4) ? "data:image/png;base64," : enrollmentSignature4).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(enrollmentSignature4) ? "none" : "block", "; ");
 				fg();
@@ -4437,11 +4436,12 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature5").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature5").f();
+			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature5 signatureInputMedicalEnrollment", pk, "EnrollmentSignature5").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature5").f();
 				e("div").a("id", "signatureInputMedicalEnrollment", pk, "enrollmentSignature5");
 					a("style", "display: ", StringUtils.isBlank(enrollmentSignature5) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgMedicalEnrollment", pk, "enrollmentSignature5");
+					a("class", "signatureImgMedicalEnrollment", pk, "EnrollmentSignature5 ");
 					a("src", StringUtils.isBlank(enrollmentSignature5) ? "data:image/png;base64," : enrollmentSignature5).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(enrollmentSignature5) ? "none" : "block", "; ");
 				fg();
@@ -4574,11 +4574,12 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature6").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature6").f();
+			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature6 signatureInputMedicalEnrollment", pk, "EnrollmentSignature6").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature6").f();
 				e("div").a("id", "signatureInputMedicalEnrollment", pk, "enrollmentSignature6");
 					a("style", "display: ", StringUtils.isBlank(enrollmentSignature6) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgMedicalEnrollment", pk, "enrollmentSignature6");
+					a("class", "signatureImgMedicalEnrollment", pk, "EnrollmentSignature6 ");
 					a("src", StringUtils.isBlank(enrollmentSignature6) ? "data:image/png;base64," : enrollmentSignature6).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(enrollmentSignature6) ? "none" : "block", "; ");
 				fg();
@@ -4711,11 +4712,12 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature7").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature7").f();
+			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature7 signatureInputMedicalEnrollment", pk, "EnrollmentSignature7").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature7").f();
 				e("div").a("id", "signatureInputMedicalEnrollment", pk, "enrollmentSignature7");
 					a("style", "display: ", StringUtils.isBlank(enrollmentSignature7) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgMedicalEnrollment", pk, "enrollmentSignature7");
+					a("class", "signatureImgMedicalEnrollment", pk, "EnrollmentSignature7 ");
 					a("src", StringUtils.isBlank(enrollmentSignature7) ? "data:image/png;base64," : enrollmentSignature7).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(enrollmentSignature7) ? "none" : "block", "; ");
 				fg();
@@ -4848,11 +4850,12 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature8").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature8").f();
+			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature8 signatureInputMedicalEnrollment", pk, "EnrollmentSignature8").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature8").f();
 				e("div").a("id", "signatureInputMedicalEnrollment", pk, "enrollmentSignature8");
 					a("style", "display: ", StringUtils.isBlank(enrollmentSignature8) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgMedicalEnrollment", pk, "enrollmentSignature8");
+					a("class", "signatureImgMedicalEnrollment", pk, "EnrollmentSignature8 ");
 					a("src", StringUtils.isBlank(enrollmentSignature8) ? "data:image/png;base64," : enrollmentSignature8).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(enrollmentSignature8) ? "none" : "block", "; ");
 				fg();
@@ -4985,11 +4988,12 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature9").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature9").f();
+			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature9 signatureInputMedicalEnrollment", pk, "EnrollmentSignature9").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature9").f();
 				e("div").a("id", "signatureInputMedicalEnrollment", pk, "enrollmentSignature9");
 					a("style", "display: ", StringUtils.isBlank(enrollmentSignature9) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgMedicalEnrollment", pk, "enrollmentSignature9");
+					a("class", "signatureImgMedicalEnrollment", pk, "EnrollmentSignature9 ");
 					a("src", StringUtils.isBlank(enrollmentSignature9) ? "data:image/png;base64," : enrollmentSignature9).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(enrollmentSignature9) ? "none" : "block", "; ");
 				fg();
@@ -5122,11 +5126,12 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature10").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature10").f();
+			e("div").a("class", "signatureDiv1MedicalEnrollment_enrollmentSignature10 signatureInputMedicalEnrollment", pk, "EnrollmentSignature10").a("id", "signatureDiv1MedicalEnrollment", pk, "enrollmentSignature10").f();
 				e("div").a("id", "signatureInputMedicalEnrollment", pk, "enrollmentSignature10");
 					a("style", "display: ", StringUtils.isBlank(enrollmentSignature10) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgMedicalEnrollment", pk, "enrollmentSignature10");
+					a("class", "signatureImgMedicalEnrollment", pk, "EnrollmentSignature10 ");
 					a("src", StringUtils.isBlank(enrollmentSignature10) ? "data:image/png;base64," : enrollmentSignature10).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(enrollmentSignature10) ? "none" : "block", "; ");
 				fg();
@@ -6587,7 +6592,7 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<MedicalEnrollment>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<MedicalEnrollment> enrollmentEnrollments = new java.util.ArrayList<org.computate.medicale.enUS.enrollment.MedicalEnrollment>();
+	protected List<MedicalEnrollment> enrollmentEnrollments = new ArrayList<MedicalEnrollment>();
 	@JsonIgnore
 	public Wrap<List<MedicalEnrollment>> enrollmentEnrollmentsWrap = new Wrap<List<MedicalEnrollment>>().p(this).c(List.class).var("enrollmentEnrollments").o(enrollmentEnrollments);
 
@@ -7040,15 +7045,20 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 	public Object attributeMedicalEnrollment(String var, Object val) {
 		MedicalEnrollment oMedicalEnrollment = (MedicalEnrollment)this;
 		switch(var) {
+			case "clinicKey":
+				oMedicalEnrollment.setClinicKey((Long)val);
+				if(!saves.contains(var))
+					saves.add(var);
+				return val;
 			case "patientKey":
 				oMedicalEnrollment.setPatientKey((Long)val);
-				if(!savesMedicalEnrollment.contains(var))
-					savesMedicalEnrollment.add(var);
+				if(!saves.contains(var))
+					saves.add(var);
 				return val;
 			case "userKeys":
 				oMedicalEnrollment.addUserKeys((Long)val);
-				if(!savesMedicalEnrollment.contains(var))
-					savesMedicalEnrollment.add(var);
+				if(!saves.contains(var))
+					saves.add(var);
 				return val;
 			default:
 				return super.attributeCluster(var, val);
@@ -7079,183 +7089,177 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 			case "patientCompleteName":
 				if(val != null)
 					setPatientCompleteName(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "patientCompleteNamePreferred":
 				if(val != null)
 					setPatientCompleteNamePreferred(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "patientBirthDate":
 				if(val != null)
 					setPatientBirthDate(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "clinicAddress":
 				if(val != null)
 					setClinicAddress(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentApproved":
 				if(val != null)
 					setEnrollmentApproved(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentImmunizations":
 				if(val != null)
 					setEnrollmentImmunizations(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "familyAddress":
 				if(val != null)
 					setFamilyAddress(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "familyHowDoYouKnowTheClinic":
 				if(val != null)
 					setFamilyHowDoYouKnowTheClinic(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentSpecialConsiderations":
 				if(val != null)
 					setEnrollmentSpecialConsiderations(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "patientMedicalConditions":
 				if(val != null)
 					setPatientMedicalConditions(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "patientPreviousClinicsAttended":
 				if(val != null)
 					setPatientPreviousClinicsAttended(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "patientDescription":
 				if(val != null)
 					setPatientDescription(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "patientObjectives":
 				if(val != null)
 					setPatientObjectives(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "customerProfileId":
 				if(val != null)
 					setCustomerProfileId(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentSignature1":
 				if(val != null)
 					setEnrollmentSignature1(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentSignature2":
 				if(val != null)
 					setEnrollmentSignature2(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentSignature3":
 				if(val != null)
 					setEnrollmentSignature3(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentSignature4":
 				if(val != null)
 					setEnrollmentSignature4(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentSignature5":
 				if(val != null)
 					setEnrollmentSignature5(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentSignature6":
 				if(val != null)
 					setEnrollmentSignature6(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentSignature7":
 				if(val != null)
 					setEnrollmentSignature7(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentSignature8":
 				if(val != null)
 					setEnrollmentSignature8(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentSignature9":
 				if(val != null)
 					setEnrollmentSignature9(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentSignature10":
 				if(val != null)
 					setEnrollmentSignature10(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentDate1":
 				if(val != null)
 					setEnrollmentDate1(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentDate2":
 				if(val != null)
 					setEnrollmentDate2(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentDate3":
 				if(val != null)
 					setEnrollmentDate3(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentDate4":
 				if(val != null)
 					setEnrollmentDate4(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentDate5":
 				if(val != null)
 					setEnrollmentDate5(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentDate6":
 				if(val != null)
 					setEnrollmentDate6(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentDate7":
 				if(val != null)
 					setEnrollmentDate7(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentDate8":
 				if(val != null)
 					setEnrollmentDate8(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentDate9":
 				if(val != null)
 					setEnrollmentDate9(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			case "enrollmentDate10":
 				if(val != null)
 					setEnrollmentDate10(val);
-				savesMedicalEnrollment.add(var);
+				saves.add(var);
 				return val;
 			default:
 				return super.defineCluster(var, val);
 		}
 	}
-
-	/////////////////
-	// saves //
-	/////////////////
-
-	protected List<String> savesMedicalEnrollment = new ArrayList<String>();
 
 	/////////////
 	// populate //
@@ -7266,26 +7270,24 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 	}
 	public void populateMedicalEnrollment(SolrDocument solrDocument) {
 		MedicalEnrollment oMedicalEnrollment = (MedicalEnrollment)this;
-		savesMedicalEnrollment = (List<String>)solrDocument.get("savesMedicalEnrollment_stored_strings");
-		if(savesMedicalEnrollment != null) {
+		saves = (List<String>)solrDocument.get("saves_stored_strings");
+		if(saves != null) {
 
-			if(savesMedicalEnrollment.contains("enrollmentKey")) {
+			if(saves.contains("enrollmentKey")) {
 				Long enrollmentKey = (Long)solrDocument.get("enrollmentKey_stored_long");
 				if(enrollmentKey != null)
 					oMedicalEnrollment.setEnrollmentKey(enrollmentKey);
 			}
 
-			if(savesMedicalEnrollment.contains("clinicKey")) {
-				Long clinicKey = (Long)solrDocument.get("clinicKey_stored_long");
-				if(clinicKey != null)
-					oMedicalEnrollment.setClinicKey(clinicKey);
-			}
+			Long clinicKey = (Long)solrDocument.get("clinicKey_stored_long");
+			if(clinicKey != null)
+				oMedicalEnrollment.setClinicKey(clinicKey);
 
 			Long patientKey = (Long)solrDocument.get("patientKey_stored_long");
 			if(patientKey != null)
 				oMedicalEnrollment.setPatientKey(patientKey);
 
-			if(savesMedicalEnrollment.contains("enrollmentFormKey")) {
+			if(saves.contains("enrollmentFormKey")) {
 				Long enrollmentFormKey = (Long)solrDocument.get("enrollmentFormKey_stored_long");
 				if(enrollmentFormKey != null)
 					oMedicalEnrollment.setEnrollmentFormKey(enrollmentFormKey);
@@ -7295,325 +7297,325 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 			if(userKeys != null)
 				oMedicalEnrollment.userKeys.addAll(userKeys);
 
-			if(savesMedicalEnrollment.contains("medicalSort")) {
+			if(saves.contains("medicalSort")) {
 				Integer medicalSort = (Integer)solrDocument.get("medicalSort_stored_int");
 				if(medicalSort != null)
 					oMedicalEnrollment.setMedicalSort(medicalSort);
 			}
 
-			if(savesMedicalEnrollment.contains("clinicSort")) {
+			if(saves.contains("clinicSort")) {
 				Integer clinicSort = (Integer)solrDocument.get("clinicSort_stored_int");
 				if(clinicSort != null)
 					oMedicalEnrollment.setClinicSort(clinicSort);
 			}
 
-			if(savesMedicalEnrollment.contains("patientFirstName")) {
+			if(saves.contains("patientFirstName")) {
 				String patientFirstName = (String)solrDocument.get("patientFirstName_stored_string");
 				if(patientFirstName != null)
 					oMedicalEnrollment.setPatientFirstName(patientFirstName);
 			}
 
-			if(savesMedicalEnrollment.contains("patientFirstNamePreferred")) {
+			if(saves.contains("patientFirstNamePreferred")) {
 				String patientFirstNamePreferred = (String)solrDocument.get("patientFirstNamePreferred_stored_string");
 				if(patientFirstNamePreferred != null)
 					oMedicalEnrollment.setPatientFirstNamePreferred(patientFirstNamePreferred);
 			}
 
-			if(savesMedicalEnrollment.contains("patientFamilyName")) {
+			if(saves.contains("patientFamilyName")) {
 				String patientFamilyName = (String)solrDocument.get("patientFamilyName_stored_string");
 				if(patientFamilyName != null)
 					oMedicalEnrollment.setPatientFamilyName(patientFamilyName);
 			}
 
-			if(savesMedicalEnrollment.contains("patientCompleteName")) {
+			if(saves.contains("patientCompleteName")) {
 				String patientCompleteName = (String)solrDocument.get("patientCompleteName_stored_string");
 				if(patientCompleteName != null)
 					oMedicalEnrollment.setPatientCompleteName(patientCompleteName);
 			}
 
-			if(savesMedicalEnrollment.contains("patientCompleteNamePreferred")) {
+			if(saves.contains("patientCompleteNamePreferred")) {
 				String patientCompleteNamePreferred = (String)solrDocument.get("patientCompleteNamePreferred_stored_string");
 				if(patientCompleteNamePreferred != null)
 					oMedicalEnrollment.setPatientCompleteNamePreferred(patientCompleteNamePreferred);
 			}
 
-			if(savesMedicalEnrollment.contains("patientBirthDate")) {
+			if(saves.contains("patientBirthDate")) {
 				Date patientBirthDate = (Date)solrDocument.get("patientBirthDate_stored_date");
 				if(patientBirthDate != null)
 					oMedicalEnrollment.setPatientBirthDate(patientBirthDate);
 			}
 
-			if(savesMedicalEnrollment.contains("patientBirthDateYear")) {
+			if(saves.contains("patientBirthDateYear")) {
 				Integer patientBirthDateYear = (Integer)solrDocument.get("patientBirthDateYear_stored_int");
 				if(patientBirthDateYear != null)
 					oMedicalEnrollment.setPatientBirthDateYear(patientBirthDateYear);
 			}
 
-			if(savesMedicalEnrollment.contains("patientBirthDateMonthOfYear")) {
+			if(saves.contains("patientBirthDateMonthOfYear")) {
 				String patientBirthDateMonthOfYear = (String)solrDocument.get("patientBirthDateMonthOfYear_stored_string");
 				if(patientBirthDateMonthOfYear != null)
 					oMedicalEnrollment.setPatientBirthDateMonthOfYear(patientBirthDateMonthOfYear);
 			}
 
-			if(savesMedicalEnrollment.contains("patientBirthDateDayOfWeek")) {
+			if(saves.contains("patientBirthDateDayOfWeek")) {
 				String patientBirthDateDayOfWeek = (String)solrDocument.get("patientBirthDateDayOfWeek_stored_string");
 				if(patientBirthDateDayOfWeek != null)
 					oMedicalEnrollment.setPatientBirthDateDayOfWeek(patientBirthDateDayOfWeek);
 			}
 
-			if(savesMedicalEnrollment.contains("patientBirthMonth")) {
+			if(saves.contains("patientBirthMonth")) {
 				Integer patientBirthMonth = (Integer)solrDocument.get("patientBirthMonth_stored_int");
 				if(patientBirthMonth != null)
 					oMedicalEnrollment.setPatientBirthMonth(patientBirthMonth);
 			}
 
-			if(savesMedicalEnrollment.contains("patientBirthDay")) {
+			if(saves.contains("patientBirthDay")) {
 				Integer patientBirthDay = (Integer)solrDocument.get("patientBirthDay_stored_int");
 				if(patientBirthDay != null)
 					oMedicalEnrollment.setPatientBirthDay(patientBirthDay);
 			}
 
-			if(savesMedicalEnrollment.contains("clinicName")) {
+			if(saves.contains("clinicName")) {
 				String clinicName = (String)solrDocument.get("clinicName_stored_string");
 				if(clinicName != null)
 					oMedicalEnrollment.setClinicName(clinicName);
 			}
 
-			if(savesMedicalEnrollment.contains("clinicCompleteName")) {
+			if(saves.contains("clinicCompleteName")) {
 				String clinicCompleteName = (String)solrDocument.get("clinicCompleteName_stored_string");
 				if(clinicCompleteName != null)
 					oMedicalEnrollment.setClinicCompleteName(clinicCompleteName);
 			}
 
-			if(savesMedicalEnrollment.contains("clinicLocation")) {
+			if(saves.contains("clinicLocation")) {
 				String clinicLocation = (String)solrDocument.get("clinicLocation_stored_string");
 				if(clinicLocation != null)
 					oMedicalEnrollment.setClinicLocation(clinicLocation);
 			}
 
-			if(savesMedicalEnrollment.contains("clinicAddress")) {
+			if(saves.contains("clinicAddress")) {
 				String clinicAddress = (String)solrDocument.get("clinicAddress_stored_string");
 				if(clinicAddress != null)
 					oMedicalEnrollment.setClinicAddress(clinicAddress);
 			}
 
-			if(savesMedicalEnrollment.contains("clinicPhoneNumber")) {
+			if(saves.contains("clinicPhoneNumber")) {
 				String clinicPhoneNumber = (String)solrDocument.get("clinicPhoneNumber_stored_string");
 				if(clinicPhoneNumber != null)
 					oMedicalEnrollment.setClinicPhoneNumber(clinicPhoneNumber);
 			}
 
-			if(savesMedicalEnrollment.contains("clinicAdministratorName")) {
+			if(saves.contains("clinicAdministratorName")) {
 				String clinicAdministratorName = (String)solrDocument.get("clinicAdministratorName_stored_string");
 				if(clinicAdministratorName != null)
 					oMedicalEnrollment.setClinicAdministratorName(clinicAdministratorName);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentApproved")) {
+			if(saves.contains("enrollmentApproved")) {
 				Boolean enrollmentApproved = (Boolean)solrDocument.get("enrollmentApproved_stored_boolean");
 				if(enrollmentApproved != null)
 					oMedicalEnrollment.setEnrollmentApproved(enrollmentApproved);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentImmunizations")) {
+			if(saves.contains("enrollmentImmunizations")) {
 				Boolean enrollmentImmunizations = (Boolean)solrDocument.get("enrollmentImmunizations_stored_boolean");
 				if(enrollmentImmunizations != null)
 					oMedicalEnrollment.setEnrollmentImmunizations(enrollmentImmunizations);
 			}
 
-			if(savesMedicalEnrollment.contains("familyAddress")) {
+			if(saves.contains("familyAddress")) {
 				String familyAddress = (String)solrDocument.get("familyAddress_stored_string");
 				if(familyAddress != null)
 					oMedicalEnrollment.setFamilyAddress(familyAddress);
 			}
 
-			if(savesMedicalEnrollment.contains("familyHowDoYouKnowTheClinic")) {
+			if(saves.contains("familyHowDoYouKnowTheClinic")) {
 				String familyHowDoYouKnowTheClinic = (String)solrDocument.get("familyHowDoYouKnowTheClinic_stored_string");
 				if(familyHowDoYouKnowTheClinic != null)
 					oMedicalEnrollment.setFamilyHowDoYouKnowTheClinic(familyHowDoYouKnowTheClinic);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentSpecialConsiderations")) {
+			if(saves.contains("enrollmentSpecialConsiderations")) {
 				String enrollmentSpecialConsiderations = (String)solrDocument.get("enrollmentSpecialConsiderations_stored_string");
 				if(enrollmentSpecialConsiderations != null)
 					oMedicalEnrollment.setEnrollmentSpecialConsiderations(enrollmentSpecialConsiderations);
 			}
 
-			if(savesMedicalEnrollment.contains("patientMedicalConditions")) {
+			if(saves.contains("patientMedicalConditions")) {
 				String patientMedicalConditions = (String)solrDocument.get("patientMedicalConditions_stored_string");
 				if(patientMedicalConditions != null)
 					oMedicalEnrollment.setPatientMedicalConditions(patientMedicalConditions);
 			}
 
-			if(savesMedicalEnrollment.contains("patientPreviousClinicsAttended")) {
+			if(saves.contains("patientPreviousClinicsAttended")) {
 				String patientPreviousClinicsAttended = (String)solrDocument.get("patientPreviousClinicsAttended_stored_string");
 				if(patientPreviousClinicsAttended != null)
 					oMedicalEnrollment.setPatientPreviousClinicsAttended(patientPreviousClinicsAttended);
 			}
 
-			if(savesMedicalEnrollment.contains("patientDescription")) {
+			if(saves.contains("patientDescription")) {
 				String patientDescription = (String)solrDocument.get("patientDescription_stored_string");
 				if(patientDescription != null)
 					oMedicalEnrollment.setPatientDescription(patientDescription);
 			}
 
-			if(savesMedicalEnrollment.contains("patientObjectives")) {
+			if(saves.contains("patientObjectives")) {
 				String patientObjectives = (String)solrDocument.get("patientObjectives_stored_string");
 				if(patientObjectives != null)
 					oMedicalEnrollment.setPatientObjectives(patientObjectives);
 			}
 
-			if(savesMedicalEnrollment.contains("customerProfileId")) {
+			if(saves.contains("customerProfileId")) {
 				String customerProfileId = (String)solrDocument.get("customerProfileId_stored_string");
 				if(customerProfileId != null)
 					oMedicalEnrollment.setCustomerProfileId(customerProfileId);
 			}
 
-			if(savesMedicalEnrollment.contains("createdYear")) {
+			if(saves.contains("createdYear")) {
 				Integer createdYear = (Integer)solrDocument.get("createdYear_stored_int");
 				if(createdYear != null)
 					oMedicalEnrollment.setCreatedYear(createdYear);
 			}
 
-			if(savesMedicalEnrollment.contains("createdDayOfWeek")) {
+			if(saves.contains("createdDayOfWeek")) {
 				String createdDayOfWeek = (String)solrDocument.get("createdDayOfWeek_stored_string");
 				if(createdDayOfWeek != null)
 					oMedicalEnrollment.setCreatedDayOfWeek(createdDayOfWeek);
 			}
 
-			if(savesMedicalEnrollment.contains("createdMonthOfYear")) {
+			if(saves.contains("createdMonthOfYear")) {
 				String createdMonthOfYear = (String)solrDocument.get("createdMonthOfYear_stored_string");
 				if(createdMonthOfYear != null)
 					oMedicalEnrollment.setCreatedMonthOfYear(createdMonthOfYear);
 			}
 
-			if(savesMedicalEnrollment.contains("createdHourOfDay")) {
+			if(saves.contains("createdHourOfDay")) {
 				String createdHourOfDay = (String)solrDocument.get("createdHourOfDay_stored_string");
 				if(createdHourOfDay != null)
 					oMedicalEnrollment.setCreatedHourOfDay(createdHourOfDay);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentSignature1")) {
+			if(saves.contains("enrollmentSignature1")) {
 				String enrollmentSignature1 = (String)solrDocument.get("enrollmentSignature1_stored_string");
 				if(enrollmentSignature1 != null)
 					oMedicalEnrollment.setEnrollmentSignature1(enrollmentSignature1);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentSignature2")) {
+			if(saves.contains("enrollmentSignature2")) {
 				String enrollmentSignature2 = (String)solrDocument.get("enrollmentSignature2_stored_string");
 				if(enrollmentSignature2 != null)
 					oMedicalEnrollment.setEnrollmentSignature2(enrollmentSignature2);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentSignature3")) {
+			if(saves.contains("enrollmentSignature3")) {
 				String enrollmentSignature3 = (String)solrDocument.get("enrollmentSignature3_stored_string");
 				if(enrollmentSignature3 != null)
 					oMedicalEnrollment.setEnrollmentSignature3(enrollmentSignature3);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentSignature4")) {
+			if(saves.contains("enrollmentSignature4")) {
 				String enrollmentSignature4 = (String)solrDocument.get("enrollmentSignature4_stored_string");
 				if(enrollmentSignature4 != null)
 					oMedicalEnrollment.setEnrollmentSignature4(enrollmentSignature4);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentSignature5")) {
+			if(saves.contains("enrollmentSignature5")) {
 				String enrollmentSignature5 = (String)solrDocument.get("enrollmentSignature5_stored_string");
 				if(enrollmentSignature5 != null)
 					oMedicalEnrollment.setEnrollmentSignature5(enrollmentSignature5);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentSignature6")) {
+			if(saves.contains("enrollmentSignature6")) {
 				String enrollmentSignature6 = (String)solrDocument.get("enrollmentSignature6_stored_string");
 				if(enrollmentSignature6 != null)
 					oMedicalEnrollment.setEnrollmentSignature6(enrollmentSignature6);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentSignature7")) {
+			if(saves.contains("enrollmentSignature7")) {
 				String enrollmentSignature7 = (String)solrDocument.get("enrollmentSignature7_stored_string");
 				if(enrollmentSignature7 != null)
 					oMedicalEnrollment.setEnrollmentSignature7(enrollmentSignature7);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentSignature8")) {
+			if(saves.contains("enrollmentSignature8")) {
 				String enrollmentSignature8 = (String)solrDocument.get("enrollmentSignature8_stored_string");
 				if(enrollmentSignature8 != null)
 					oMedicalEnrollment.setEnrollmentSignature8(enrollmentSignature8);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentSignature9")) {
+			if(saves.contains("enrollmentSignature9")) {
 				String enrollmentSignature9 = (String)solrDocument.get("enrollmentSignature9_stored_string");
 				if(enrollmentSignature9 != null)
 					oMedicalEnrollment.setEnrollmentSignature9(enrollmentSignature9);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentSignature10")) {
+			if(saves.contains("enrollmentSignature10")) {
 				String enrollmentSignature10 = (String)solrDocument.get("enrollmentSignature10_stored_string");
 				if(enrollmentSignature10 != null)
 					oMedicalEnrollment.setEnrollmentSignature10(enrollmentSignature10);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentDate1")) {
+			if(saves.contains("enrollmentDate1")) {
 				Date enrollmentDate1 = (Date)solrDocument.get("enrollmentDate1_stored_date");
 				if(enrollmentDate1 != null)
 					oMedicalEnrollment.setEnrollmentDate1(enrollmentDate1);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentDate2")) {
+			if(saves.contains("enrollmentDate2")) {
 				Date enrollmentDate2 = (Date)solrDocument.get("enrollmentDate2_stored_date");
 				if(enrollmentDate2 != null)
 					oMedicalEnrollment.setEnrollmentDate2(enrollmentDate2);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentDate3")) {
+			if(saves.contains("enrollmentDate3")) {
 				Date enrollmentDate3 = (Date)solrDocument.get("enrollmentDate3_stored_date");
 				if(enrollmentDate3 != null)
 					oMedicalEnrollment.setEnrollmentDate3(enrollmentDate3);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentDate4")) {
+			if(saves.contains("enrollmentDate4")) {
 				Date enrollmentDate4 = (Date)solrDocument.get("enrollmentDate4_stored_date");
 				if(enrollmentDate4 != null)
 					oMedicalEnrollment.setEnrollmentDate4(enrollmentDate4);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentDate5")) {
+			if(saves.contains("enrollmentDate5")) {
 				Date enrollmentDate5 = (Date)solrDocument.get("enrollmentDate5_stored_date");
 				if(enrollmentDate5 != null)
 					oMedicalEnrollment.setEnrollmentDate5(enrollmentDate5);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentDate6")) {
+			if(saves.contains("enrollmentDate6")) {
 				Date enrollmentDate6 = (Date)solrDocument.get("enrollmentDate6_stored_date");
 				if(enrollmentDate6 != null)
 					oMedicalEnrollment.setEnrollmentDate6(enrollmentDate6);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentDate7")) {
+			if(saves.contains("enrollmentDate7")) {
 				Date enrollmentDate7 = (Date)solrDocument.get("enrollmentDate7_stored_date");
 				if(enrollmentDate7 != null)
 					oMedicalEnrollment.setEnrollmentDate7(enrollmentDate7);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentDate8")) {
+			if(saves.contains("enrollmentDate8")) {
 				Date enrollmentDate8 = (Date)solrDocument.get("enrollmentDate8_stored_date");
 				if(enrollmentDate8 != null)
 					oMedicalEnrollment.setEnrollmentDate8(enrollmentDate8);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentDate9")) {
+			if(saves.contains("enrollmentDate9")) {
 				Date enrollmentDate9 = (Date)solrDocument.get("enrollmentDate9_stored_date");
 				if(enrollmentDate9 != null)
 					oMedicalEnrollment.setEnrollmentDate9(enrollmentDate9);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentDate10")) {
+			if(saves.contains("enrollmentDate10")) {
 				Date enrollmentDate10 = (Date)solrDocument.get("enrollmentDate10_stored_date");
 				if(enrollmentDate10 != null)
 					oMedicalEnrollment.setEnrollmentDate10(enrollmentDate10);
 			}
 
-			if(savesMedicalEnrollment.contains("enrollmentCompleteName")) {
+			if(saves.contains("enrollmentCompleteName")) {
 				String enrollmentCompleteName = (String)solrDocument.get("enrollmentCompleteName_stored_string");
 				if(enrollmentCompleteName != null)
 					oMedicalEnrollment.setEnrollmentCompleteName(enrollmentCompleteName);
@@ -7685,9 +7687,6 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 	}
 
 	public void indexMedicalEnrollment(SolrInputDocument document) {
-		if(savesMedicalEnrollment != null)
-			document.addField("savesMedicalEnrollment_stored_strings", savesMedicalEnrollment);
-
 		if(enrollmentKey != null) {
 			document.addField("enrollmentKey_indexed_long", enrollmentKey);
 			document.addField("enrollmentKey_stored_long", enrollmentKey);
@@ -8319,6 +8318,8 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 		Object o = Optional.ofNullable(apiRequest).map(ApiRequest::getOriginal).orElse(null);
 		if(o != null && o instanceof MedicalEnrollment) {
 			MedicalEnrollment original = (MedicalEnrollment)o;
+			if(!Objects.equals(clinicKey, original.getClinicKey()))
+				apiRequest.addVars("clinicKey");
 			if(!Objects.equals(patientKey, original.getPatientKey()))
 				apiRequest.addVars("patientKey");
 			if(!Objects.equals(userKeys, original.getUserKeys()))
@@ -8400,7 +8401,7 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 	//////////////
 
 	@Override public int hashCode() {
-		return Objects.hash(super.hashCode(), patientKey, userKeys, patientCompleteName, patientCompleteNamePreferred, patientBirthDate, clinicAddress, enrollmentApproved, enrollmentImmunizations, familyAddress, familyHowDoYouKnowTheClinic, enrollmentSpecialConsiderations, patientMedicalConditions, patientPreviousClinicsAttended, patientDescription, patientObjectives, customerProfileId, enrollmentSignature1, enrollmentSignature2, enrollmentSignature3, enrollmentSignature4, enrollmentSignature5, enrollmentSignature6, enrollmentSignature7, enrollmentSignature8, enrollmentSignature9, enrollmentSignature10, enrollmentDate1, enrollmentDate2, enrollmentDate3, enrollmentDate4, enrollmentDate5, enrollmentDate6, enrollmentDate7, enrollmentDate8, enrollmentDate9, enrollmentDate10);
+		return Objects.hash(super.hashCode(), clinicKey, patientKey, userKeys, patientCompleteName, patientCompleteNamePreferred, patientBirthDate, clinicAddress, enrollmentApproved, enrollmentImmunizations, familyAddress, familyHowDoYouKnowTheClinic, enrollmentSpecialConsiderations, patientMedicalConditions, patientPreviousClinicsAttended, patientDescription, patientObjectives, customerProfileId, enrollmentSignature1, enrollmentSignature2, enrollmentSignature3, enrollmentSignature4, enrollmentSignature5, enrollmentSignature6, enrollmentSignature7, enrollmentSignature8, enrollmentSignature9, enrollmentSignature10, enrollmentDate1, enrollmentDate2, enrollmentDate3, enrollmentDate4, enrollmentDate5, enrollmentDate6, enrollmentDate7, enrollmentDate8, enrollmentDate9, enrollmentDate10);
 	}
 
 	////////////
@@ -8414,6 +8415,7 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 			return false;
 		MedicalEnrollment that = (MedicalEnrollment)o;
 		return super.equals(o)
+				&& Objects.equals( clinicKey, that.clinicKey )
 				&& Objects.equals( patientKey, that.patientKey )
 				&& Objects.equals( userKeys, that.userKeys )
 				&& Objects.equals( patientCompleteName, that.patientCompleteName )
@@ -8460,7 +8462,8 @@ public abstract class MedicalEnrollmentGen<DEV> extends Cluster {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString() + "\n");
 		sb.append("MedicalEnrollment { ");
-		sb.append( "patientKey: " ).append(patientKey);
+		sb.append( "clinicKey: " ).append(clinicKey);
+		sb.append( ", patientKey: " ).append(patientKey);
 		sb.append( ", userKeys: " ).append(userKeys);
 		sb.append( ", patientCompleteName: \"" ).append(patientCompleteName).append( "\"" );
 		sb.append( ", patientCompleteNamePreferred: \"" ).append(patientCompleteNamePreferred).append( "\"" );

@@ -262,45 +262,6 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 				Set<String> entityVars = jsonObject.fieldNames();
 				for(String entityVar : entityVars) {
 					switch(entityVar) {
-					case "inheritPk":
-						futures.add(Future.future(a -> {
-							tx.preparedQuery(SiteContextEnUS.SQL_setD
-									, Tuple.of(pk, "inheritPk", Optional.ofNullable(jsonObject.getValue(entityVar)).map(s -> s.toString()).orElse(null))
-									, b
-							-> {
-								if(b.succeeded())
-									a.handle(Future.succeededFuture());
-								else
-									a.handle(Future.failedFuture(new Exception("value MedicalPatient.inheritPk failed", b.cause())));
-							});
-						}));
-						break;
-					case "archived":
-						futures.add(Future.future(a -> {
-							tx.preparedQuery(SiteContextEnUS.SQL_setD
-									, Tuple.of(pk, "archived", Optional.ofNullable(jsonObject.getValue(entityVar)).map(s -> s.toString()).orElse(null))
-									, b
-							-> {
-								if(b.succeeded())
-									a.handle(Future.succeededFuture());
-								else
-									a.handle(Future.failedFuture(new Exception("value MedicalPatient.archived failed", b.cause())));
-							});
-						}));
-						break;
-					case "deleted":
-						futures.add(Future.future(a -> {
-							tx.preparedQuery(SiteContextEnUS.SQL_setD
-									, Tuple.of(pk, "deleted", Optional.ofNullable(jsonObject.getValue(entityVar)).map(s -> s.toString()).orElse(null))
-									, b
-							-> {
-								if(b.succeeded())
-									a.handle(Future.succeededFuture());
-								else
-									a.handle(Future.failedFuture(new Exception("value MedicalPatient.deleted failed", b.cause())));
-							});
-						}));
-						break;
 					case "enrollmentKeys":
 						for(Long l : jsonObject.getJsonArray(entityVar).stream().map(a -> Long.parseLong((String)a)).collect(Collectors.toList())) {
 							if(l != null) {
@@ -946,45 +907,6 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 				for(Integer i = 0; i < entityVars.size(); i++) {
 					String entityVar = entityVars.getString(i);
 					switch(entityVar) {
-					case "inheritPk":
-						futures.add(Future.future(a -> {
-							tx.preparedQuery(SiteContextEnUS.SQL_setD
-									, Tuple.of(pk, "inheritPk", Optional.ofNullable(jsonObject.getValue(entityVar)).map(s -> s.toString()).orElse(null))
-									, b
-							-> {
-								if(b.succeeded())
-									a.handle(Future.succeededFuture());
-								else
-									a.handle(Future.failedFuture(new Exception("value MedicalPatient.inheritPk failed", b.cause())));
-							});
-						}));
-						break;
-					case "archived":
-						futures.add(Future.future(a -> {
-							tx.preparedQuery(SiteContextEnUS.SQL_setD
-									, Tuple.of(pk, "archived", Optional.ofNullable(jsonObject.getValue(entityVar)).map(s -> s.toString()).orElse(null))
-									, b
-							-> {
-								if(b.succeeded())
-									a.handle(Future.succeededFuture());
-								else
-									a.handle(Future.failedFuture(new Exception("value MedicalPatient.archived failed", b.cause())));
-							});
-						}));
-						break;
-					case "deleted":
-						futures.add(Future.future(a -> {
-							tx.preparedQuery(SiteContextEnUS.SQL_setD
-									, Tuple.of(pk, "deleted", Optional.ofNullable(jsonObject.getValue(entityVar)).map(s -> s.toString()).orElse(null))
-									, b
-							-> {
-								if(b.succeeded())
-									a.handle(Future.succeededFuture());
-								else
-									a.handle(Future.failedFuture(new Exception("value MedicalPatient.deleted failed", b.cause())));
-							});
-						}));
-						break;
 					case "enrollmentKeys":
 						for(Long l : jsonObject.getJsonArray(entityVar).stream().map(a -> Long.parseLong((String)a)).collect(Collectors.toList())) {
 							futures.add(Future.future(a -> {
@@ -1317,90 +1239,6 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 
 			for(String methodName : methodNames) {
 				switch(methodName) {
-					case "setInheritPk":
-						if(jsonObject.getString(methodName) == null) {
-							futures.add(Future.future(a -> {
-								tx.preparedQuery(SiteContextEnUS.SQL_removeD
-										, Tuple.of(pk, "inheritPk")
-										, b
-								-> {
-									if(b.succeeded())
-										a.handle(Future.succeededFuture());
-									else
-										a.handle(Future.failedFuture(new Exception("value MedicalPatient.inheritPk failed", b.cause())));
-								});
-							}));
-						} else {
-							o2.setInheritPk(jsonObject.getString(methodName));
-							futures.add(Future.future(a -> {
-								tx.preparedQuery(SiteContextEnUS.SQL_setD
-										, Tuple.of(pk, "inheritPk", o2.jsonInheritPk())
-										, b
-								-> {
-									if(b.succeeded())
-										a.handle(Future.succeededFuture());
-									else
-										a.handle(Future.failedFuture(new Exception("value MedicalPatient.inheritPk failed", b.cause())));
-								});
-							}));
-						}
-						break;
-					case "setArchived":
-						if(jsonObject.getBoolean(methodName) == null) {
-							futures.add(Future.future(a -> {
-								tx.preparedQuery(SiteContextEnUS.SQL_removeD
-										, Tuple.of(pk, "archived")
-										, b
-								-> {
-									if(b.succeeded())
-										a.handle(Future.succeededFuture());
-									else
-										a.handle(Future.failedFuture(new Exception("value MedicalPatient.archived failed", b.cause())));
-								});
-							}));
-						} else {
-							o2.setArchived(jsonObject.getBoolean(methodName));
-							futures.add(Future.future(a -> {
-								tx.preparedQuery(SiteContextEnUS.SQL_setD
-										, Tuple.of(pk, "archived", o2.jsonArchived())
-										, b
-								-> {
-									if(b.succeeded())
-										a.handle(Future.succeededFuture());
-									else
-										a.handle(Future.failedFuture(new Exception("value MedicalPatient.archived failed", b.cause())));
-								});
-							}));
-						}
-						break;
-					case "setDeleted":
-						if(jsonObject.getBoolean(methodName) == null) {
-							futures.add(Future.future(a -> {
-								tx.preparedQuery(SiteContextEnUS.SQL_removeD
-										, Tuple.of(pk, "deleted")
-										, b
-								-> {
-									if(b.succeeded())
-										a.handle(Future.succeededFuture());
-									else
-										a.handle(Future.failedFuture(new Exception("value MedicalPatient.deleted failed", b.cause())));
-								});
-							}));
-						} else {
-							o2.setDeleted(jsonObject.getBoolean(methodName));
-							futures.add(Future.future(a -> {
-								tx.preparedQuery(SiteContextEnUS.SQL_setD
-										, Tuple.of(pk, "deleted", o2.jsonDeleted())
-										, b
-								-> {
-									if(b.succeeded())
-										a.handle(Future.succeededFuture());
-									else
-										a.handle(Future.failedFuture(new Exception("value MedicalPatient.deleted failed", b.cause())));
-								});
-							}));
-						}
-						break;
 					case "addEnrollmentKeys":
 						{
 							Long l = Long.parseLong(jsonObject.getString(methodName));
@@ -2048,7 +1886,7 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 			SiteRequestEnUS siteRequest = listMedicalPatient.getSiteRequest_();
 			Buffer buffer = Buffer.buffer();
 			AllWriter w = AllWriter.create(listMedicalPatient.getSiteRequest_(), buffer);
-			ChildPage page = new ChildPage();
+			PatientPage page = new PatientPage();
 			SolrDocument pageSolrDocument = new SolrDocument();
 			CaseInsensitiveHeaders requestHeaders = new CaseInsensitiveHeaders();
 			siteRequest.setRequestHeaders(requestHeaders);
@@ -2061,7 +1899,7 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 			siteRequest.setW(w);
 			page.setListMedicalPatient(listMedicalPatient);
 			page.setSiteRequest_(siteRequest);
-			page.initDeepChildPage(siteRequest);
+			page.initDeepPatientPage(siteRequest);
 			page.html();
 			eventHandler.handle(Future.succeededFuture(new OperationResponse(200, "OK", buffer, requestHeaders)));
 		} catch(Exception e) {
@@ -2130,7 +1968,7 @@ public class MedicalPatientEnUSGenApiServiceImpl implements MedicalPatientEnUSGe
 
 			tx.preparedQuery(
 					SiteContextEnUS.SQL_create
-					, Tuple.of(MedicalPatient.class.getCanonicalName(), userId)
+					, Tuple.of(MedicalPatient.class.getCanonicalName(), userId, created.toOffsetDateTime())
 					, Collectors.toList()
 					, createAsync
 			-> {

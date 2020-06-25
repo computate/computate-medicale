@@ -93,7 +93,7 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 	}
 
 	@Override protected void _contexteIconeNom(Couverture<String> c) {
-			c.o("clinic");
+			c.o("clinic-medical");
 	}
 
 	@Override public void initLoinCliniqueGenPage() {
@@ -103,6 +103,7 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 
 	@Override public void htmlScriptsCliniqueGenPage() {
 		e("script").a("src", statiqueUrlBase, "/js/frFR/CliniquePage.js").f().g("script");
+		e("script").a("src", statiqueUrlBase, "/js/frFR/InscriptionPage.js").f().g("script");
 	}
 
 	@Override public void htmlScriptCliniqueGenPage() {
@@ -122,6 +123,14 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 		tl(1, "window.eventBus = new EventBus('/eventbus');");
 		tl(1, "var pk = ", Optional.ofNullable(requeteSite_.getRequetePk()).map(l -> l.toString()).orElse("null"), ";");
 		tl(1, "if(pk != null) {");
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+			tl(2, "suggereCliniqueMedicaleInscriptionCles([{'name':'fq','value':'cliniqueCle:' + pk}], $('#listCliniqueMedicaleInscriptionCles_Page'), pk, true); ");
+		} else {
+			tl(2, "suggereCliniqueMedicaleInscriptionCles([{'name':'fq','value':'cliniqueCle:' + pk}], $('#listCliniqueMedicaleInscriptionCles_Page'), pk, false); ");
+		}
 		tl(1, "}");
 		tl(1, "websocketCliniqueMedicale(websocketCliniqueMedicaleInner);");
 		l("});");
@@ -141,7 +150,10 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueNom("Page");
 			o.htmCliniqueEmplacement("Page");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueAdministrateurNom("Page");
+			o.htmCliniqueMail("Page");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueMailDe("Page");
@@ -152,7 +164,7 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 			o.htmCliniqueAddresse("Page");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmAnneeCles("Page");
+			o.htmInscriptionCles("Page");
 		} g("div");
 	}
 
@@ -170,7 +182,10 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueNom("POST");
 			o.htmCliniqueEmplacement("POST");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueAdministrateurNom("POST");
+			o.htmCliniqueMail("POST");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueMailDe("POST");
@@ -181,7 +196,7 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 			o.htmCliniqueAddresse("POST");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmAnneeCles("POST");
+			o.htmInscriptionCles("POST");
 		} g("div");
 	}
 
@@ -221,7 +236,10 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueNom("PUTCopie");
 			o.htmCliniqueEmplacement("PUTCopie");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueAdministrateurNom("PUTCopie");
+			o.htmCliniqueMail("PUTCopie");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueMailDe("PUTCopie");
@@ -230,6 +248,9 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueNumeroTelephone("PUTCopie");
 			o.htmCliniqueAddresse("PUTCopie");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmInscriptionCles("PUTCopie");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInheritPk("PUTCopie");
@@ -251,7 +272,10 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueNom("PATCH");
 			o.htmCliniqueEmplacement("PATCH");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueAdministrateurNom("PATCH");
+			o.htmCliniqueMail("PATCH");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueMailDe("PATCH");
@@ -260,6 +284,9 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueNumeroTelephone("PATCH");
 			o.htmCliniqueAddresse("PATCH");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
+			o.htmInscriptionCles("PATCH");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInheritPk("PATCH");
@@ -283,7 +310,10 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueNom("Recherche");
 			o.htmCliniqueEmplacement("Recherche");
+		} g("div");
+		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueAdministrateurNom("Recherche");
+			o.htmCliniqueMail("Recherche");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmCliniqueMailDe("Recherche");
@@ -294,7 +324,7 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 			o.htmCliniqueAddresse("Recherche");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
-			o.htmAnneeCles("Recherche");
+			o.htmInscriptionCles("Recherche");
 		} g("div");
 		{ e("div").a("class", "w3-cell-row ").f();
 			o.htmInheritPk("Recherche");
@@ -529,7 +559,7 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 				if(getColonneObjetTitre()) {
 					{ e("td").f();
 						{ e("a").a("href", uri).f();
-							e("i").a("class", "far fa-clinic ").f().g("i");
+							e("i").a("class", "far fa-clinic-medical ").f().g("i");
 							{ e("span").f();
 								sx(o.strObjetTitre());
 							} g("span");
@@ -899,7 +929,7 @@ public class CliniqueGenPage extends CliniqueGenPageGen<ClusterPage> {
 			} p.g("div");
 			{ p.e("div").a("class", "").f();
 				{ p.e("a").a("href", "/clinique").a("class", "").f();
-					p.e("i").a("class", "far fa-clinic ").f().g("i");
+					p.e("i").a("class", "far fa-clinic-medical ").f().g("i");
 					p.sx("voir toutes les écoles");
 				} p.g("a");
 			} p.g("div");

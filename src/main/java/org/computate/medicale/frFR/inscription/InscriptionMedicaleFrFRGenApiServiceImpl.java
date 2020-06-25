@@ -305,6 +305,37 @@ public class InscriptionMedicaleFrFRGenApiServiceImpl implements InscriptionMedi
 							});
 						}));
 						break;
+					case "cliniqueCle":
+						{
+							Long l = Long.parseLong(jsonObject.getString(entiteVar));
+							if(l != null) {
+								ListeRecherche<CliniqueMedicale> listeRecherche = new ListeRecherche<CliniqueMedicale>();
+								listeRecherche.setQuery("*:*");
+								listeRecherche.setStocker(true);
+								listeRecherche.setC(CliniqueMedicale.class);
+								listeRecherche.addFilterQuery((inheritPk ? "inheritPk" : "pk") + "_indexed_long:" + l);
+								listeRecherche.initLoinListeRecherche(requeteSite);
+								Long l2 = Optional.ofNullable(listeRecherche.getList().stream().findFirst().orElse(null)).map(a -> a.getPk()).orElse(null);
+								if(l2 != null) {
+									futures.add(Future.future(a -> {
+										tx.preparedQuery(SiteContexteFrFR.SQL_addA
+												, Tuple.of(pk, "cliniqueCle", l2, "inscriptionCles")
+												, b
+										-> {
+											if(b.succeeded())
+												a.handle(Future.succeededFuture());
+											else
+												a.handle(Future.failedFuture(new Exception("valeur InscriptionMedicale.cliniqueCle a échoué", b.cause())));
+										});
+									}));
+									if(!pks.contains(l2)) {
+										pks.add(l2);
+										classes.add("CliniqueMedicale");
+									}
+								}
+							}
+						}
+						break;
 					case "patientCle":
 						{
 							Long l = Long.parseLong(jsonObject.getString(entiteVar));
@@ -1410,6 +1441,22 @@ public class InscriptionMedicaleFrFRGenApiServiceImpl implements InscriptionMedi
 							});
 						}));
 						break;
+					case "cliniqueCle":
+							{
+						Long l = Long.parseLong(jsonObject.getString(entiteVar));
+						futures.add(Future.future(a -> {
+							tx.preparedQuery(SiteContexteFrFR.SQL_addA
+									, Tuple.of(pk, "cliniqueCle", l, "inscriptionCles")
+									, b
+							-> {
+								if(b.succeeded())
+									a.handle(Future.succeededFuture());
+								else
+									a.handle(Future.failedFuture(new Exception("valeur InscriptionMedicale.cliniqueCle a échoué", b.cause())));
+							});
+						}));
+						}
+						break;
 					case "patientCle":
 							{
 						Long l = Long.parseLong(jsonObject.getString(entiteVar));
@@ -2230,6 +2277,70 @@ public class InscriptionMedicaleFrFRGenApiServiceImpl implements InscriptionMedi
 										a.handle(Future.failedFuture(new Exception("valeur InscriptionMedicale.supprime a échoué", b.cause())));
 								});
 							}));
+						}
+						break;
+					case "setCliniqueCle":
+						{
+							Long l = o2.getCliniqueCle();
+							if(l != null) {
+								ListeRecherche<CliniqueMedicale> listeRecherche = new ListeRecherche<CliniqueMedicale>();
+								listeRecherche.setQuery("*:*");
+								listeRecherche.setStocker(true);
+								listeRecherche.setC(CliniqueMedicale.class);
+								listeRecherche.addFilterQuery((inheritPk ? "inheritPk" : "pk") + "_indexed_long:" + l);
+								listeRecherche.initLoinListeRecherche(requeteSite);
+								Long l2 = Optional.ofNullable(listeRecherche.getList().stream().findFirst().orElse(null)).map(a -> a.getPk()).orElse(null);
+								if(l2 != null && !l2.equals(o.getCliniqueCle())) {
+									o2.setCliniqueCle(jsonObject.getString(methodeNom));
+									futures.add(Future.future(a -> {
+										tx.preparedQuery(SiteContexteFrFR.SQL_addA
+												, Tuple.of(pk, "cliniqueCle", l2, "inscriptionCles")
+												, b
+										-> {
+											if(b.succeeded())
+												a.handle(Future.succeededFuture());
+											else
+												a.handle(Future.failedFuture(new Exception("valeur InscriptionMedicale.cliniqueCle a échoué", b.cause())));
+										});
+									}));
+									if(!pks.contains(l2)) {
+										pks.add(l2);
+										classes.add("CliniqueMedicale");
+									}
+								}
+							}
+						}
+						break;
+					case "removeCliniqueCle":
+						{
+							Long l = o2.getCliniqueCle();
+							if(l != null) {
+								ListeRecherche<CliniqueMedicale> listeRecherche = new ListeRecherche<CliniqueMedicale>();
+								listeRecherche.setQuery("*:*");
+								listeRecherche.setStocker(true);
+								listeRecherche.setC(CliniqueMedicale.class);
+								listeRecherche.addFilterQuery((inheritPk ? "inheritPk" : "pk") + "_indexed_long:" + l);
+								listeRecherche.initLoinListeRecherche(requeteSite);
+								Long l2 = Optional.ofNullable(listeRecherche.getList().stream().findFirst().orElse(null)).map(a -> a.getPk()).orElse(null);
+								if(l2 != null && l2.equals(o.getCliniqueCle())) {
+									o2.setCliniqueCle(jsonObject.getString(methodeNom));
+									futures.add(Future.future(a -> {
+										tx.preparedQuery(SiteContexteFrFR.SQL_removeA
+												, Tuple.of(pk, "cliniqueCle", l2, "inscriptionCles")
+												, b
+										-> {
+											if(b.succeeded())
+												a.handle(Future.succeededFuture());
+											else
+												a.handle(Future.failedFuture(new Exception("valeur InscriptionMedicale.cliniqueCle a échoué", b.cause())));
+										});
+									}));
+									if(!pks.contains(l2)) {
+										pks.add(l2);
+										classes.add("CliniqueMedicale");
+									}
+								}
+							}
 						}
 						break;
 					case "setPatientCle":
@@ -4020,6 +4131,70 @@ public class InscriptionMedicaleFrFRGenApiServiceImpl implements InscriptionMedi
 							}));
 						}
 						break;
+					case "setCliniqueCle":
+						{
+							Long l = o2.getCliniqueCle();
+							if(l != null) {
+								ListeRecherche<CliniqueMedicale> listeRecherche = new ListeRecherche<CliniqueMedicale>();
+								listeRecherche.setQuery("*:*");
+								listeRecherche.setStocker(true);
+								listeRecherche.setC(CliniqueMedicale.class);
+								listeRecherche.addFilterQuery((inheritPk ? "inheritPk" : "pk") + "_indexed_long:" + l);
+								listeRecherche.initLoinListeRecherche(requeteSite);
+								Long l2 = Optional.ofNullable(listeRecherche.getList().stream().findFirst().orElse(null)).map(a -> a.getPk()).orElse(null);
+								if(l2 != null && !l2.equals(o.getCliniqueCle())) {
+									o2.setCliniqueCle(jsonObject.getString(methodeNom));
+									futures.add(Future.future(a -> {
+										tx.preparedQuery(SiteContexteFrFR.SQL_addA
+												, Tuple.of(pk, "cliniqueCle", l2, "inscriptionCles")
+												, b
+										-> {
+											if(b.succeeded())
+												a.handle(Future.succeededFuture());
+											else
+												a.handle(Future.failedFuture(new Exception("valeur InscriptionMedicale.cliniqueCle a échoué", b.cause())));
+										});
+									}));
+									if(!pks.contains(l2)) {
+										pks.add(l2);
+										classes.add("CliniqueMedicale");
+									}
+								}
+							}
+						}
+						break;
+					case "removeCliniqueCle":
+						{
+							Long l = o2.getCliniqueCle();
+							if(l != null) {
+								ListeRecherche<CliniqueMedicale> listeRecherche = new ListeRecherche<CliniqueMedicale>();
+								listeRecherche.setQuery("*:*");
+								listeRecherche.setStocker(true);
+								listeRecherche.setC(CliniqueMedicale.class);
+								listeRecherche.addFilterQuery((inheritPk ? "inheritPk" : "pk") + "_indexed_long:" + l);
+								listeRecherche.initLoinListeRecherche(requeteSite);
+								Long l2 = Optional.ofNullable(listeRecherche.getList().stream().findFirst().orElse(null)).map(a -> a.getPk()).orElse(null);
+								if(l2 != null && l2.equals(o.getCliniqueCle())) {
+									o2.setCliniqueCle(jsonObject.getString(methodeNom));
+									futures.add(Future.future(a -> {
+										tx.preparedQuery(SiteContexteFrFR.SQL_removeA
+												, Tuple.of(pk, "cliniqueCle", l2, "inscriptionCles")
+												, b
+										-> {
+											if(b.succeeded())
+												a.handle(Future.succeededFuture());
+											else
+												a.handle(Future.failedFuture(new Exception("valeur InscriptionMedicale.cliniqueCle a échoué", b.cause())));
+										});
+									}));
+									if(!pks.contains(l2)) {
+										pks.add(l2);
+										classes.add("CliniqueMedicale");
+									}
+								}
+							}
+						}
+						break;
 					case "setPatientCle":
 						{
 							Long l = o2.getPatientCle();
@@ -5463,7 +5638,7 @@ public class InscriptionMedicaleFrFRGenApiServiceImpl implements InscriptionMedi
 
 			tx.preparedQuery(
 					SiteContexteFrFR.SQL_creer
-					, Tuple.of(InscriptionMedicale.class.getCanonicalName(), utilisateurId)
+					, Tuple.of(InscriptionMedicale.class.getCanonicalName(), utilisateurId, cree.toOffsetDateTime())
 					, Collectors.toList()
 					, creerAsync
 			-> {
@@ -6130,6 +6305,7 @@ public class InscriptionMedicaleFrFRGenApiServiceImpl implements InscriptionMedi
 				listeRecherche.setQuery("*:*");
 				listeRecherche.setC(InscriptionMedicale.class);
 				listeRecherche.addFilterQuery("modifie_indexed_date:[" + DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(ZonedDateTime.ofInstant(requeteSite.getRequeteApi_().getCree().toInstant(), ZoneId.of("UTC"))) + " TO *]");
+				listeRecherche.add("json.facet", "{cliniqueCle:{terms:{field:cliniqueCle_indexed_longs, limit:1000}}}");
 				listeRecherche.add("json.facet", "{patientCle:{terms:{field:patientCle_indexed_longs, limit:1000}}}");
 				listeRecherche.add("json.facet", "{utilisateurCles:{terms:{field:utilisateurCles_indexed_longs, limit:1000}}}");
 				listeRecherche.setRows(1000);
@@ -6139,6 +6315,41 @@ public class InscriptionMedicaleFrFRGenApiServiceImpl implements InscriptionMedi
 				for(int i=0; i < pks.size(); i++) {
 					Long pk2 = pks.get(i);
 					String classeNomSimple2 = classes.get(i);
+
+					if("CliniqueMedicale".equals(classeNomSimple2) && pk2 != null) {
+						ListeRecherche<CliniqueMedicale> listeRecherche2 = new ListeRecherche<CliniqueMedicale>();
+						listeRecherche2.setStocker(true);
+						listeRecherche2.setQuery("*:*");
+						listeRecherche2.setC(CliniqueMedicale.class);
+						listeRecherche2.addFilterQuery("pk_indexed_long:" + pk2);
+						listeRecherche2.setRows(1);
+						listeRecherche2.initLoinListeRecherche(requeteSite);
+						CliniqueMedicale o2 = listeRecherche2.getList().stream().findFirst().orElse(null);
+
+						if(o2 != null) {
+							CliniqueMedicaleFrFRGenApiServiceImpl service = new CliniqueMedicaleFrFRGenApiServiceImpl(requeteSite.getSiteContexte_());
+							RequeteSiteFrFR requeteSite2 = genererRequeteSiteFrFRPourInscriptionMedicale(siteContexte, requeteSite.getOperationRequete(), new JsonObject());
+							RequeteApi requeteApi2 = new RequeteApi();
+							requeteApi2.setRows(1);
+							requeteApi2.setNumFound(1l);
+							requeteApi2.setNumPATCH(0L);
+							requeteApi2.initLoinRequeteApi(requeteSite2);
+							requeteSite2.setRequeteApi_(requeteApi2);
+							requeteSite2.getVertx().eventBus().publish("websocketCliniqueMedicale", JsonObject.mapFrom(requeteApi2).toString());
+
+							o2.setPk(pk2);
+							o2.setRequeteSite_(requeteSite2);
+							futures.add(
+								service.patchCliniqueMedicaleFuture(o2, false, a -> {
+									if(a.succeeded()) {
+									} else {
+										LOGGER.info(String.format("CliniqueMedicale %s a échoué. ", pk2));
+										gestionnaireEvenements.handle(Future.failedFuture(a.cause()));
+									}
+								})
+							);
+						}
+					}
 
 					if("PatientMedicale".equals(classeNomSimple2) && pk2 != null) {
 						ListeRecherche<PatientMedicale> listeRecherche2 = new ListeRecherche<PatientMedicale>();

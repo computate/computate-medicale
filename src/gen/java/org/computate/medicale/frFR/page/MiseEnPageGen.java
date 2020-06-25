@@ -7,6 +7,7 @@ import java.util.Date;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
 import java.time.ZonedDateTime;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import org.apache.commons.lang3.StringUtils;
 import java.lang.Integer;
 import java.text.NumberFormat;
@@ -2370,90 +2371,90 @@ public abstract class MiseEnPageGen<DEV> extends Object {
 		return (MiseEnPage)this;
 	}
 
-	////////////
-	// ecoles //
-	////////////
+	///////////////
+	// cliniques //
+	///////////////
 
-	/**	L'entité « ecoles »
+	/**	L'entité « cliniques »
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<CliniqueMedicale> ecoles;
+	protected List<CliniqueMedicale> cliniques;
 	@JsonIgnore
-	public Couverture<List<CliniqueMedicale>> ecolesCouverture = new Couverture<List<CliniqueMedicale>>().p(this).c(List.class).var("ecoles").o(ecoles);
+	public Couverture<List<CliniqueMedicale>> cliniquesCouverture = new Couverture<List<CliniqueMedicale>>().p(this).c(List.class).var("cliniques").o(cliniques);
 
-	/**	<br/>L'entité « ecoles »
+	/**	<br/>L'entité « cliniques »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.page.MiseEnPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:ecoles">Trouver l'entité ecoles dans Solr</a>
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.page.MiseEnPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:cliniques">Trouver l'entité cliniques dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _ecoles(Couverture<List<CliniqueMedicale>> c);
+	protected abstract void _cliniques(Couverture<List<CliniqueMedicale>> c);
 
-	public List<CliniqueMedicale> getEcoles() {
-		return ecoles;
+	public List<CliniqueMedicale> getCliniques() {
+		return cliniques;
 	}
 
-	public void setEcoles(List<CliniqueMedicale> ecoles) {
-		this.ecoles = ecoles;
-		this.ecolesCouverture.dejaInitialise = true;
+	public void setCliniques(List<CliniqueMedicale> cliniques) {
+		this.cliniques = cliniques;
+		this.cliniquesCouverture.dejaInitialise = true;
 	}
-	public MiseEnPage addEcoles(CliniqueMedicale...objets) {
+	public MiseEnPage addCliniques(CliniqueMedicale...objets) {
 		for(CliniqueMedicale o : objets) {
-			addEcoles(o);
+			addCliniques(o);
 		}
 		return (MiseEnPage)this;
 	}
-	public MiseEnPage addEcoles(CliniqueMedicale o) {
-		if(o != null && !ecoles.contains(o))
-			this.ecoles.add(o);
+	public MiseEnPage addCliniques(CliniqueMedicale o) {
+		if(o != null && !cliniques.contains(o))
+			this.cliniques.add(o);
 		return (MiseEnPage)this;
 	}
-	protected MiseEnPage ecolesInit() {
-		if(!ecolesCouverture.dejaInitialise) {
-			_ecoles(ecolesCouverture);
-			if(ecoles == null)
-				setEcoles(ecolesCouverture.o);
+	protected MiseEnPage cliniquesInit() {
+		if(!cliniquesCouverture.dejaInitialise) {
+			_cliniques(cliniquesCouverture);
+			if(cliniques == null)
+				setCliniques(cliniquesCouverture.o);
 		}
-		ecolesCouverture.dejaInitialise(true);
+		cliniquesCouverture.dejaInitialise(true);
 		return (MiseEnPage)this;
 	}
 
-	////////////
-	// ecole_ //
-	////////////
+	///////////////
+	// clinique_ //
+	///////////////
 
-	/**	L'entité « ecole_ »
+	/**	L'entité « clinique_ »
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected CliniqueMedicale ecole_;
+	protected CliniqueMedicale clinique_;
 	@JsonIgnore
-	public Couverture<CliniqueMedicale> ecole_Couverture = new Couverture<CliniqueMedicale>().p(this).c(CliniqueMedicale.class).var("ecole_").o(ecole_);
+	public Couverture<CliniqueMedicale> clinique_Couverture = new Couverture<CliniqueMedicale>().p(this).c(CliniqueMedicale.class).var("clinique_").o(clinique_);
 
-	/**	<br/>L'entité « ecole_ »
+	/**	<br/>L'entité « clinique_ »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.page.MiseEnPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:ecole_">Trouver l'entité ecole_ dans Solr</a>
+	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.page.MiseEnPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:clinique_">Trouver l'entité clinique_ dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _ecole_(Couverture<CliniqueMedicale> c);
+	protected abstract void _clinique_(Couverture<CliniqueMedicale> c);
 
-	public CliniqueMedicale getEcole_() {
-		return ecole_;
+	public CliniqueMedicale getClinique_() {
+		return clinique_;
 	}
 
-	public void setEcole_(CliniqueMedicale ecole_) {
-		this.ecole_ = ecole_;
-		this.ecole_Couverture.dejaInitialise = true;
+	public void setClinique_(CliniqueMedicale clinique_) {
+		this.clinique_ = clinique_;
+		this.clinique_Couverture.dejaInitialise = true;
 	}
-	protected MiseEnPage ecole_Init() {
-		if(!ecole_Couverture.dejaInitialise) {
-			_ecole_(ecole_Couverture);
-			if(ecole_ == null)
-				setEcole_(ecole_Couverture.o);
+	protected MiseEnPage clinique_Init() {
+		if(!clinique_Couverture.dejaInitialise) {
+			_clinique_(clinique_Couverture);
+			if(clinique_ == null)
+				setClinique_(clinique_Couverture.o);
 		}
-		ecole_Couverture.dejaInitialise(true);
+		clinique_Couverture.dejaInitialise(true);
 		return (MiseEnPage)this;
 	}
 
@@ -2584,8 +2585,8 @@ public abstract class MiseEnPageGen<DEV> extends Object {
 		pageUtilisateurUriInit();
 		pageDeconnexionUriInit();
 		listeCliniqueInit();
-		ecolesInit();
-		ecole_Init();
+		cliniquesInit();
+		clinique_Init();
 		anneeValInit();
 	}
 
@@ -2704,10 +2705,10 @@ public abstract class MiseEnPageGen<DEV> extends Object {
 				return oMiseEnPage.pageDeconnexionUri;
 			case "listeClinique":
 				return oMiseEnPage.listeClinique;
-			case "ecoles":
-				return oMiseEnPage.ecoles;
-			case "ecole_":
-				return oMiseEnPage.ecole_;
+			case "cliniques":
+				return oMiseEnPage.cliniques;
+			case "clinique_":
+				return oMiseEnPage.clinique_;
 			case "anneeVal":
 				return oMiseEnPage.anneeVal;
 			default:

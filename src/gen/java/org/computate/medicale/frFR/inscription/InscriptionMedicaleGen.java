@@ -5,6 +5,7 @@ import java.util.Date;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
 import org.apache.commons.lang3.StringUtils;
 import java.lang.Integer;
+import org.computate.medicale.frFR.utilisateur.UtilisateurSite;
 import java.lang.Long;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import java.util.Locale;
@@ -31,6 +32,7 @@ import org.apache.solr.common.SolrInputDocument;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.computate.medicale.frFR.cluster.Cluster;
+import java.util.HashMap;
 import org.computate.medicale.frFR.inscription.InscriptionMedicale;
 import org.computate.medicale.frFR.contexte.SiteContexteFrFR;
 import io.vertx.core.logging.LoggerFactory;
@@ -404,7 +406,7 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 					{ e("div").a("class", "w3-card ").f();
 						{ e("div").a("class", "w3-cell-row ").f();
 							{ e("a").a("href", "?fq=inscriptionCles:", pk).a("class", "w3-cell w3-btn w3-center h4 w3-block h4 w3-orange w3-hover-orange ").f();
-								e("i").a("class", "far fa-hostpital-user ").f().g("i");
+								e("i").a("class", "far fa-hospital-user ").f().g("i");
 								sx("patients");
 							} g("a");
 						} g("div");
@@ -425,12 +427,7 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 							{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 								{ e("ul").a("class", "w3-ul w3-hoverable ").a("id", "listInscriptionMedicalePatientCle_", classeApiMethodeMethode).f();
 								} g("ul");
-								if(
-										utilisateurCles.contains(requeteSite_.getUtilisateurCle())
-										|| Objects.equals(sessionId, requeteSite_.getSessionId())
-										|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
-										|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
-								) {
+								{
 									{ e("div").a("class", "w3-cell-row ").f();
 										e("button")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-orange ")
@@ -526,7 +523,7 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
 	@JsonInclude(Include.NON_NULL)
-	protected List<Long> utilisateurCles = new java.util.ArrayList<java.lang.Long>();
+	protected List<Long> utilisateurCles = new ArrayList<Long>();
 	@JsonIgnore
 	public Couverture<List<Long>> utilisateurClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("utilisateurCles").o(utilisateurCles);
 
@@ -659,11 +656,9 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 								{ e("ul").a("class", "w3-ul w3-hoverable ").a("id", "listInscriptionMedicaleUtilisateurCles_", classeApiMethodeMethode).f();
 								} g("ul");
 								if(
-										utilisateurCles.contains(requeteSite_.getUtilisateurCle())
-										|| Objects.equals(sessionId, requeteSite_.getSessionId())
-										|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
-										|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
-								) {
+										CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), UtilisateurSite.ROLES)
+										|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), UtilisateurSite.ROLES)
+										) {
 									{ e("div").a("class", "w3-cell-row ").f();
 										e("button")
 											.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-gray ")
@@ -3904,11 +3899,12 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature1").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature1").f();
+			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature1 signatureInputInscriptionMedicale", pk, "InscriptionSignature1").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature1").f();
 				e("div").a("id", "signatureInputInscriptionMedicale", pk, "inscriptionSignature1");
 					a("style", "display: ", StringUtils.isBlank(inscriptionSignature1) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgInscriptionMedicale", pk, "inscriptionSignature1");
+					a("class", "signatureImgInscriptionMedicale", pk, "InscriptionSignature1 ");
 					a("src", StringUtils.isBlank(inscriptionSignature1) ? "data:image/png;base64," : inscriptionSignature1).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(inscriptionSignature1) ? "none" : "block", "; ");
 				fg();
@@ -4041,11 +4037,12 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature2").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature2").f();
+			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature2 signatureInputInscriptionMedicale", pk, "InscriptionSignature2").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature2").f();
 				e("div").a("id", "signatureInputInscriptionMedicale", pk, "inscriptionSignature2");
 					a("style", "display: ", StringUtils.isBlank(inscriptionSignature2) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgInscriptionMedicale", pk, "inscriptionSignature2");
+					a("class", "signatureImgInscriptionMedicale", pk, "InscriptionSignature2 ");
 					a("src", StringUtils.isBlank(inscriptionSignature2) ? "data:image/png;base64," : inscriptionSignature2).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(inscriptionSignature2) ? "none" : "block", "; ");
 				fg();
@@ -4178,11 +4175,12 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature3").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature3").f();
+			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature3 signatureInputInscriptionMedicale", pk, "InscriptionSignature3").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature3").f();
 				e("div").a("id", "signatureInputInscriptionMedicale", pk, "inscriptionSignature3");
 					a("style", "display: ", StringUtils.isBlank(inscriptionSignature3) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgInscriptionMedicale", pk, "inscriptionSignature3");
+					a("class", "signatureImgInscriptionMedicale", pk, "InscriptionSignature3 ");
 					a("src", StringUtils.isBlank(inscriptionSignature3) ? "data:image/png;base64," : inscriptionSignature3).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(inscriptionSignature3) ? "none" : "block", "; ");
 				fg();
@@ -4315,11 +4313,12 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature4").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature4").f();
+			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature4 signatureInputInscriptionMedicale", pk, "InscriptionSignature4").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature4").f();
 				e("div").a("id", "signatureInputInscriptionMedicale", pk, "inscriptionSignature4");
 					a("style", "display: ", StringUtils.isBlank(inscriptionSignature4) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgInscriptionMedicale", pk, "inscriptionSignature4");
+					a("class", "signatureImgInscriptionMedicale", pk, "InscriptionSignature4 ");
 					a("src", StringUtils.isBlank(inscriptionSignature4) ? "data:image/png;base64," : inscriptionSignature4).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(inscriptionSignature4) ? "none" : "block", "; ");
 				fg();
@@ -4452,11 +4451,12 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature5").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature5").f();
+			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature5 signatureInputInscriptionMedicale", pk, "InscriptionSignature5").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature5").f();
 				e("div").a("id", "signatureInputInscriptionMedicale", pk, "inscriptionSignature5");
 					a("style", "display: ", StringUtils.isBlank(inscriptionSignature5) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgInscriptionMedicale", pk, "inscriptionSignature5");
+					a("class", "signatureImgInscriptionMedicale", pk, "InscriptionSignature5 ");
 					a("src", StringUtils.isBlank(inscriptionSignature5) ? "data:image/png;base64," : inscriptionSignature5).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(inscriptionSignature5) ? "none" : "block", "; ");
 				fg();
@@ -4589,11 +4589,12 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature6").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature6").f();
+			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature6 signatureInputInscriptionMedicale", pk, "InscriptionSignature6").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature6").f();
 				e("div").a("id", "signatureInputInscriptionMedicale", pk, "inscriptionSignature6");
 					a("style", "display: ", StringUtils.isBlank(inscriptionSignature6) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgInscriptionMedicale", pk, "inscriptionSignature6");
+					a("class", "signatureImgInscriptionMedicale", pk, "InscriptionSignature6 ");
 					a("src", StringUtils.isBlank(inscriptionSignature6) ? "data:image/png;base64," : inscriptionSignature6).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(inscriptionSignature6) ? "none" : "block", "; ");
 				fg();
@@ -4726,11 +4727,12 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature7").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature7").f();
+			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature7 signatureInputInscriptionMedicale", pk, "InscriptionSignature7").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature7").f();
 				e("div").a("id", "signatureInputInscriptionMedicale", pk, "inscriptionSignature7");
 					a("style", "display: ", StringUtils.isBlank(inscriptionSignature7) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgInscriptionMedicale", pk, "inscriptionSignature7");
+					a("class", "signatureImgInscriptionMedicale", pk, "InscriptionSignature7 ");
 					a("src", StringUtils.isBlank(inscriptionSignature7) ? "data:image/png;base64," : inscriptionSignature7).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(inscriptionSignature7) ? "none" : "block", "; ");
 				fg();
@@ -4863,11 +4865,12 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature8").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature8").f();
+			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature8 signatureInputInscriptionMedicale", pk, "InscriptionSignature8").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature8").f();
 				e("div").a("id", "signatureInputInscriptionMedicale", pk, "inscriptionSignature8");
 					a("style", "display: ", StringUtils.isBlank(inscriptionSignature8) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgInscriptionMedicale", pk, "inscriptionSignature8");
+					a("class", "signatureImgInscriptionMedicale", pk, "InscriptionSignature8 ");
 					a("src", StringUtils.isBlank(inscriptionSignature8) ? "data:image/png;base64," : inscriptionSignature8).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(inscriptionSignature8) ? "none" : "block", "; ");
 				fg();
@@ -5000,11 +5003,12 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature9").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature9").f();
+			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature9 signatureInputInscriptionMedicale", pk, "InscriptionSignature9").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature9").f();
 				e("div").a("id", "signatureInputInscriptionMedicale", pk, "inscriptionSignature9");
 					a("style", "display: ", StringUtils.isBlank(inscriptionSignature9) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgInscriptionMedicale", pk, "inscriptionSignature9");
+					a("class", "signatureImgInscriptionMedicale", pk, "InscriptionSignature9 ");
 					a("src", StringUtils.isBlank(inscriptionSignature9) ? "data:image/png;base64," : inscriptionSignature9).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(inscriptionSignature9) ? "none" : "block", "; ");
 				fg();
@@ -5137,11 +5141,12 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
 				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
 		) {
-			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature10").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature10").f();
+			e("div").a("class", "signatureDiv1InscriptionMedicale_inscriptionSignature10 signatureInputInscriptionMedicale", pk, "InscriptionSignature10").a("id", "signatureDiv1InscriptionMedicale", pk, "inscriptionSignature10").f();
 				e("div").a("id", "signatureInputInscriptionMedicale", pk, "inscriptionSignature10");
 					a("style", "display: ", StringUtils.isBlank(inscriptionSignature10) ? "block" : "none", "; ");
 				f().g("div");
 				e("img").a("id", "signatureImgInscriptionMedicale", pk, "inscriptionSignature10");
+					a("class", "signatureImgInscriptionMedicale", pk, "InscriptionSignature10 ");
 					a("src", StringUtils.isBlank(inscriptionSignature10) ? "data:image/png;base64," : inscriptionSignature10).a("alt", "");
 					a("style", "padding: 10px; display: ", StringUtils.isBlank(inscriptionSignature10) ? "none" : "block", "; ");
 				fg();
@@ -6612,7 +6617,7 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<InscriptionMedicale>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<InscriptionMedicale> inscriptionsInscription = new java.util.ArrayList<org.computate.medicale.frFR.inscription.InscriptionMedicale>();
+	protected List<InscriptionMedicale> inscriptionsInscription = new ArrayList<InscriptionMedicale>();
 	@JsonIgnore
 	public Couverture<List<InscriptionMedicale>> inscriptionsInscriptionCouverture = new Couverture<List<InscriptionMedicale>>().p(this).c(List.class).var("inscriptionsInscription").o(inscriptionsInscription);
 
@@ -7065,15 +7070,20 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 	public Object attribuerInscriptionMedicale(String var, Object val) {
 		InscriptionMedicale oInscriptionMedicale = (InscriptionMedicale)this;
 		switch(var) {
+			case "cliniqueCle":
+				oInscriptionMedicale.setCliniqueCle((Long)val);
+				if(!sauvegardes.contains(var))
+					sauvegardes.add(var);
+				return val;
 			case "patientCle":
 				oInscriptionMedicale.setPatientCle((Long)val);
-				if(!sauvegardesInscriptionMedicale.contains(var))
-					sauvegardesInscriptionMedicale.add(var);
+				if(!sauvegardes.contains(var))
+					sauvegardes.add(var);
 				return val;
 			case "utilisateurCles":
 				oInscriptionMedicale.addUtilisateurCles((Long)val);
-				if(!sauvegardesInscriptionMedicale.contains(var))
-					sauvegardesInscriptionMedicale.add(var);
+				if(!sauvegardes.contains(var))
+					sauvegardes.add(var);
 				return val;
 			default:
 				return super.attribuerCluster(var, val);
@@ -7104,183 +7114,177 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 			case "patientNomComplet":
 				if(val != null)
 					setPatientNomComplet(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "patientNomCompletPrefere":
 				if(val != null)
 					setPatientNomCompletPrefere(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "patientDateNaissance":
 				if(val != null)
 					setPatientDateNaissance(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "cliniqueAddresse":
 				if(val != null)
 					setCliniqueAddresse(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionApprouve":
 				if(val != null)
 					setInscriptionApprouve(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionImmunisations":
 				if(val != null)
 					setInscriptionImmunisations(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "familleAddresse":
 				if(val != null)
 					setFamilleAddresse(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "familleCommentVousConnaissezClinique":
 				if(val != null)
 					setFamilleCommentVousConnaissezClinique(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionConsiderationsSpeciales":
 				if(val != null)
 					setInscriptionConsiderationsSpeciales(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "patientConditionsMedicales":
 				if(val != null)
 					setPatientConditionsMedicales(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "patientCliniquesPrecedemmentFrequentees":
 				if(val != null)
 					setPatientCliniquesPrecedemmentFrequentees(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "patientDescription":
 				if(val != null)
 					setPatientDescription(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "patientObjectifs":
 				if(val != null)
 					setPatientObjectifs(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "customerProfileId":
 				if(val != null)
 					setCustomerProfileId(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionSignature1":
 				if(val != null)
 					setInscriptionSignature1(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionSignature2":
 				if(val != null)
 					setInscriptionSignature2(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionSignature3":
 				if(val != null)
 					setInscriptionSignature3(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionSignature4":
 				if(val != null)
 					setInscriptionSignature4(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionSignature5":
 				if(val != null)
 					setInscriptionSignature5(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionSignature6":
 				if(val != null)
 					setInscriptionSignature6(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionSignature7":
 				if(val != null)
 					setInscriptionSignature7(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionSignature8":
 				if(val != null)
 					setInscriptionSignature8(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionSignature9":
 				if(val != null)
 					setInscriptionSignature9(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionSignature10":
 				if(val != null)
 					setInscriptionSignature10(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionDate1":
 				if(val != null)
 					setInscriptionDate1(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionDate2":
 				if(val != null)
 					setInscriptionDate2(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionDate3":
 				if(val != null)
 					setInscriptionDate3(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionDate4":
 				if(val != null)
 					setInscriptionDate4(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionDate5":
 				if(val != null)
 					setInscriptionDate5(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionDate6":
 				if(val != null)
 					setInscriptionDate6(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionDate7":
 				if(val != null)
 					setInscriptionDate7(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionDate8":
 				if(val != null)
 					setInscriptionDate8(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionDate9":
 				if(val != null)
 					setInscriptionDate9(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			case "inscriptionDate10":
 				if(val != null)
 					setInscriptionDate10(val);
-				sauvegardesInscriptionMedicale.add(var);
+				sauvegardes.add(var);
 				return val;
 			default:
 				return super.definirCluster(var, val);
 		}
 	}
-
-	/////////////////
-	// sauvegardes //
-	/////////////////
-
-	protected List<String> sauvegardesInscriptionMedicale = new ArrayList<String>();
 
 	/////////////
 	// peupler //
@@ -7291,26 +7295,24 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 	}
 	public void peuplerInscriptionMedicale(SolrDocument solrDocument) {
 		InscriptionMedicale oInscriptionMedicale = (InscriptionMedicale)this;
-		sauvegardesInscriptionMedicale = (List<String>)solrDocument.get("sauvegardesInscriptionMedicale_stored_strings");
-		if(sauvegardesInscriptionMedicale != null) {
+		sauvegardes = (List<String>)solrDocument.get("sauvegardes_stored_strings");
+		if(sauvegardes != null) {
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionCle")) {
+			if(sauvegardes.contains("inscriptionCle")) {
 				Long inscriptionCle = (Long)solrDocument.get("inscriptionCle_stored_long");
 				if(inscriptionCle != null)
 					oInscriptionMedicale.setInscriptionCle(inscriptionCle);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("cliniqueCle")) {
-				Long cliniqueCle = (Long)solrDocument.get("cliniqueCle_stored_long");
-				if(cliniqueCle != null)
-					oInscriptionMedicale.setCliniqueCle(cliniqueCle);
-			}
+			Long cliniqueCle = (Long)solrDocument.get("cliniqueCle_stored_long");
+			if(cliniqueCle != null)
+				oInscriptionMedicale.setCliniqueCle(cliniqueCle);
 
 			Long patientCle = (Long)solrDocument.get("patientCle_stored_long");
 			if(patientCle != null)
 				oInscriptionMedicale.setPatientCle(patientCle);
 
-			if(sauvegardesInscriptionMedicale.contains("formInscriptionCle")) {
+			if(sauvegardes.contains("formInscriptionCle")) {
 				Long formInscriptionCle = (Long)solrDocument.get("formInscriptionCle_stored_long");
 				if(formInscriptionCle != null)
 					oInscriptionMedicale.setFormInscriptionCle(formInscriptionCle);
@@ -7320,325 +7322,325 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 			if(utilisateurCles != null)
 				oInscriptionMedicale.utilisateurCles.addAll(utilisateurCles);
 
-			if(sauvegardesInscriptionMedicale.contains("medicaleTri")) {
+			if(sauvegardes.contains("medicaleTri")) {
 				Integer medicaleTri = (Integer)solrDocument.get("medicaleTri_stored_int");
 				if(medicaleTri != null)
 					oInscriptionMedicale.setMedicaleTri(medicaleTri);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("cliniqueTri")) {
+			if(sauvegardes.contains("cliniqueTri")) {
 				Integer cliniqueTri = (Integer)solrDocument.get("cliniqueTri_stored_int");
 				if(cliniqueTri != null)
 					oInscriptionMedicale.setCliniqueTri(cliniqueTri);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientPrenom")) {
+			if(sauvegardes.contains("patientPrenom")) {
 				String patientPrenom = (String)solrDocument.get("patientPrenom_stored_string");
 				if(patientPrenom != null)
 					oInscriptionMedicale.setPatientPrenom(patientPrenom);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientPrenomPrefere")) {
+			if(sauvegardes.contains("patientPrenomPrefere")) {
 				String patientPrenomPrefere = (String)solrDocument.get("patientPrenomPrefere_stored_string");
 				if(patientPrenomPrefere != null)
 					oInscriptionMedicale.setPatientPrenomPrefere(patientPrenomPrefere);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientFamilleNom")) {
+			if(sauvegardes.contains("patientFamilleNom")) {
 				String patientFamilleNom = (String)solrDocument.get("patientFamilleNom_stored_string");
 				if(patientFamilleNom != null)
 					oInscriptionMedicale.setPatientFamilleNom(patientFamilleNom);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientNomComplet")) {
+			if(sauvegardes.contains("patientNomComplet")) {
 				String patientNomComplet = (String)solrDocument.get("patientNomComplet_stored_string");
 				if(patientNomComplet != null)
 					oInscriptionMedicale.setPatientNomComplet(patientNomComplet);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientNomCompletPrefere")) {
+			if(sauvegardes.contains("patientNomCompletPrefere")) {
 				String patientNomCompletPrefere = (String)solrDocument.get("patientNomCompletPrefere_stored_string");
 				if(patientNomCompletPrefere != null)
 					oInscriptionMedicale.setPatientNomCompletPrefere(patientNomCompletPrefere);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientDateNaissance")) {
+			if(sauvegardes.contains("patientDateNaissance")) {
 				Date patientDateNaissance = (Date)solrDocument.get("patientDateNaissance_stored_date");
 				if(patientDateNaissance != null)
 					oInscriptionMedicale.setPatientDateNaissance(patientDateNaissance);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientDateNaissanceDAnnee")) {
+			if(sauvegardes.contains("patientDateNaissanceDAnnee")) {
 				Integer patientDateNaissanceDAnnee = (Integer)solrDocument.get("patientDateNaissanceDAnnee_stored_int");
 				if(patientDateNaissanceDAnnee != null)
 					oInscriptionMedicale.setPatientDateNaissanceDAnnee(patientDateNaissanceDAnnee);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientDateNaissanceMoisDAnnee")) {
+			if(sauvegardes.contains("patientDateNaissanceMoisDAnnee")) {
 				String patientDateNaissanceMoisDAnnee = (String)solrDocument.get("patientDateNaissanceMoisDAnnee_stored_string");
 				if(patientDateNaissanceMoisDAnnee != null)
 					oInscriptionMedicale.setPatientDateNaissanceMoisDAnnee(patientDateNaissanceMoisDAnnee);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientDateNaissanceJourDeSemaine")) {
+			if(sauvegardes.contains("patientDateNaissanceJourDeSemaine")) {
 				String patientDateNaissanceJourDeSemaine = (String)solrDocument.get("patientDateNaissanceJourDeSemaine_stored_string");
 				if(patientDateNaissanceJourDeSemaine != null)
 					oInscriptionMedicale.setPatientDateNaissanceJourDeSemaine(patientDateNaissanceJourDeSemaine);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientMoisNaissance")) {
+			if(sauvegardes.contains("patientMoisNaissance")) {
 				Integer patientMoisNaissance = (Integer)solrDocument.get("patientMoisNaissance_stored_int");
 				if(patientMoisNaissance != null)
 					oInscriptionMedicale.setPatientMoisNaissance(patientMoisNaissance);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientJourNaissance")) {
+			if(sauvegardes.contains("patientJourNaissance")) {
 				Integer patientJourNaissance = (Integer)solrDocument.get("patientJourNaissance_stored_int");
 				if(patientJourNaissance != null)
 					oInscriptionMedicale.setPatientJourNaissance(patientJourNaissance);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("cliniqueNom")) {
+			if(sauvegardes.contains("cliniqueNom")) {
 				String cliniqueNom = (String)solrDocument.get("cliniqueNom_stored_string");
 				if(cliniqueNom != null)
 					oInscriptionMedicale.setCliniqueNom(cliniqueNom);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("cliniqueNomComplet")) {
+			if(sauvegardes.contains("cliniqueNomComplet")) {
 				String cliniqueNomComplet = (String)solrDocument.get("cliniqueNomComplet_stored_string");
 				if(cliniqueNomComplet != null)
 					oInscriptionMedicale.setCliniqueNomComplet(cliniqueNomComplet);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("cliniqueEmplacement")) {
+			if(sauvegardes.contains("cliniqueEmplacement")) {
 				String cliniqueEmplacement = (String)solrDocument.get("cliniqueEmplacement_stored_string");
 				if(cliniqueEmplacement != null)
 					oInscriptionMedicale.setCliniqueEmplacement(cliniqueEmplacement);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("cliniqueAddresse")) {
+			if(sauvegardes.contains("cliniqueAddresse")) {
 				String cliniqueAddresse = (String)solrDocument.get("cliniqueAddresse_stored_string");
 				if(cliniqueAddresse != null)
 					oInscriptionMedicale.setCliniqueAddresse(cliniqueAddresse);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("cliniqueNumeroTelephone")) {
+			if(sauvegardes.contains("cliniqueNumeroTelephone")) {
 				String cliniqueNumeroTelephone = (String)solrDocument.get("cliniqueNumeroTelephone_stored_string");
 				if(cliniqueNumeroTelephone != null)
 					oInscriptionMedicale.setCliniqueNumeroTelephone(cliniqueNumeroTelephone);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("cliniqueAdministrateurNom")) {
+			if(sauvegardes.contains("cliniqueAdministrateurNom")) {
 				String cliniqueAdministrateurNom = (String)solrDocument.get("cliniqueAdministrateurNom_stored_string");
 				if(cliniqueAdministrateurNom != null)
 					oInscriptionMedicale.setCliniqueAdministrateurNom(cliniqueAdministrateurNom);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionApprouve")) {
+			if(sauvegardes.contains("inscriptionApprouve")) {
 				Boolean inscriptionApprouve = (Boolean)solrDocument.get("inscriptionApprouve_stored_boolean");
 				if(inscriptionApprouve != null)
 					oInscriptionMedicale.setInscriptionApprouve(inscriptionApprouve);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionImmunisations")) {
+			if(sauvegardes.contains("inscriptionImmunisations")) {
 				Boolean inscriptionImmunisations = (Boolean)solrDocument.get("inscriptionImmunisations_stored_boolean");
 				if(inscriptionImmunisations != null)
 					oInscriptionMedicale.setInscriptionImmunisations(inscriptionImmunisations);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("familleAddresse")) {
+			if(sauvegardes.contains("familleAddresse")) {
 				String familleAddresse = (String)solrDocument.get("familleAddresse_stored_string");
 				if(familleAddresse != null)
 					oInscriptionMedicale.setFamilleAddresse(familleAddresse);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("familleCommentVousConnaissezClinique")) {
+			if(sauvegardes.contains("familleCommentVousConnaissezClinique")) {
 				String familleCommentVousConnaissezClinique = (String)solrDocument.get("familleCommentVousConnaissezClinique_stored_string");
 				if(familleCommentVousConnaissezClinique != null)
 					oInscriptionMedicale.setFamilleCommentVousConnaissezClinique(familleCommentVousConnaissezClinique);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionConsiderationsSpeciales")) {
+			if(sauvegardes.contains("inscriptionConsiderationsSpeciales")) {
 				String inscriptionConsiderationsSpeciales = (String)solrDocument.get("inscriptionConsiderationsSpeciales_stored_string");
 				if(inscriptionConsiderationsSpeciales != null)
 					oInscriptionMedicale.setInscriptionConsiderationsSpeciales(inscriptionConsiderationsSpeciales);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientConditionsMedicales")) {
+			if(sauvegardes.contains("patientConditionsMedicales")) {
 				String patientConditionsMedicales = (String)solrDocument.get("patientConditionsMedicales_stored_string");
 				if(patientConditionsMedicales != null)
 					oInscriptionMedicale.setPatientConditionsMedicales(patientConditionsMedicales);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientCliniquesPrecedemmentFrequentees")) {
+			if(sauvegardes.contains("patientCliniquesPrecedemmentFrequentees")) {
 				String patientCliniquesPrecedemmentFrequentees = (String)solrDocument.get("patientCliniquesPrecedemmentFrequentees_stored_string");
 				if(patientCliniquesPrecedemmentFrequentees != null)
 					oInscriptionMedicale.setPatientCliniquesPrecedemmentFrequentees(patientCliniquesPrecedemmentFrequentees);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientDescription")) {
+			if(sauvegardes.contains("patientDescription")) {
 				String patientDescription = (String)solrDocument.get("patientDescription_stored_string");
 				if(patientDescription != null)
 					oInscriptionMedicale.setPatientDescription(patientDescription);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("patientObjectifs")) {
+			if(sauvegardes.contains("patientObjectifs")) {
 				String patientObjectifs = (String)solrDocument.get("patientObjectifs_stored_string");
 				if(patientObjectifs != null)
 					oInscriptionMedicale.setPatientObjectifs(patientObjectifs);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("customerProfileId")) {
+			if(sauvegardes.contains("customerProfileId")) {
 				String customerProfileId = (String)solrDocument.get("customerProfileId_stored_string");
 				if(customerProfileId != null)
 					oInscriptionMedicale.setCustomerProfileId(customerProfileId);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("creeDAnnee")) {
+			if(sauvegardes.contains("creeDAnnee")) {
 				Integer creeDAnnee = (Integer)solrDocument.get("creeDAnnee_stored_int");
 				if(creeDAnnee != null)
 					oInscriptionMedicale.setCreeDAnnee(creeDAnnee);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("creeJourDeSemaine")) {
+			if(sauvegardes.contains("creeJourDeSemaine")) {
 				String creeJourDeSemaine = (String)solrDocument.get("creeJourDeSemaine_stored_string");
 				if(creeJourDeSemaine != null)
 					oInscriptionMedicale.setCreeJourDeSemaine(creeJourDeSemaine);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("creeMoisDAnnee")) {
+			if(sauvegardes.contains("creeMoisDAnnee")) {
 				String creeMoisDAnnee = (String)solrDocument.get("creeMoisDAnnee_stored_string");
 				if(creeMoisDAnnee != null)
 					oInscriptionMedicale.setCreeMoisDAnnee(creeMoisDAnnee);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("creeHeureDuJour")) {
+			if(sauvegardes.contains("creeHeureDuJour")) {
 				String creeHeureDuJour = (String)solrDocument.get("creeHeureDuJour_stored_string");
 				if(creeHeureDuJour != null)
 					oInscriptionMedicale.setCreeHeureDuJour(creeHeureDuJour);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionSignature1")) {
+			if(sauvegardes.contains("inscriptionSignature1")) {
 				String inscriptionSignature1 = (String)solrDocument.get("inscriptionSignature1_stored_string");
 				if(inscriptionSignature1 != null)
 					oInscriptionMedicale.setInscriptionSignature1(inscriptionSignature1);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionSignature2")) {
+			if(sauvegardes.contains("inscriptionSignature2")) {
 				String inscriptionSignature2 = (String)solrDocument.get("inscriptionSignature2_stored_string");
 				if(inscriptionSignature2 != null)
 					oInscriptionMedicale.setInscriptionSignature2(inscriptionSignature2);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionSignature3")) {
+			if(sauvegardes.contains("inscriptionSignature3")) {
 				String inscriptionSignature3 = (String)solrDocument.get("inscriptionSignature3_stored_string");
 				if(inscriptionSignature3 != null)
 					oInscriptionMedicale.setInscriptionSignature3(inscriptionSignature3);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionSignature4")) {
+			if(sauvegardes.contains("inscriptionSignature4")) {
 				String inscriptionSignature4 = (String)solrDocument.get("inscriptionSignature4_stored_string");
 				if(inscriptionSignature4 != null)
 					oInscriptionMedicale.setInscriptionSignature4(inscriptionSignature4);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionSignature5")) {
+			if(sauvegardes.contains("inscriptionSignature5")) {
 				String inscriptionSignature5 = (String)solrDocument.get("inscriptionSignature5_stored_string");
 				if(inscriptionSignature5 != null)
 					oInscriptionMedicale.setInscriptionSignature5(inscriptionSignature5);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionSignature6")) {
+			if(sauvegardes.contains("inscriptionSignature6")) {
 				String inscriptionSignature6 = (String)solrDocument.get("inscriptionSignature6_stored_string");
 				if(inscriptionSignature6 != null)
 					oInscriptionMedicale.setInscriptionSignature6(inscriptionSignature6);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionSignature7")) {
+			if(sauvegardes.contains("inscriptionSignature7")) {
 				String inscriptionSignature7 = (String)solrDocument.get("inscriptionSignature7_stored_string");
 				if(inscriptionSignature7 != null)
 					oInscriptionMedicale.setInscriptionSignature7(inscriptionSignature7);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionSignature8")) {
+			if(sauvegardes.contains("inscriptionSignature8")) {
 				String inscriptionSignature8 = (String)solrDocument.get("inscriptionSignature8_stored_string");
 				if(inscriptionSignature8 != null)
 					oInscriptionMedicale.setInscriptionSignature8(inscriptionSignature8);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionSignature9")) {
+			if(sauvegardes.contains("inscriptionSignature9")) {
 				String inscriptionSignature9 = (String)solrDocument.get("inscriptionSignature9_stored_string");
 				if(inscriptionSignature9 != null)
 					oInscriptionMedicale.setInscriptionSignature9(inscriptionSignature9);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionSignature10")) {
+			if(sauvegardes.contains("inscriptionSignature10")) {
 				String inscriptionSignature10 = (String)solrDocument.get("inscriptionSignature10_stored_string");
 				if(inscriptionSignature10 != null)
 					oInscriptionMedicale.setInscriptionSignature10(inscriptionSignature10);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionDate1")) {
+			if(sauvegardes.contains("inscriptionDate1")) {
 				Date inscriptionDate1 = (Date)solrDocument.get("inscriptionDate1_stored_date");
 				if(inscriptionDate1 != null)
 					oInscriptionMedicale.setInscriptionDate1(inscriptionDate1);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionDate2")) {
+			if(sauvegardes.contains("inscriptionDate2")) {
 				Date inscriptionDate2 = (Date)solrDocument.get("inscriptionDate2_stored_date");
 				if(inscriptionDate2 != null)
 					oInscriptionMedicale.setInscriptionDate2(inscriptionDate2);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionDate3")) {
+			if(sauvegardes.contains("inscriptionDate3")) {
 				Date inscriptionDate3 = (Date)solrDocument.get("inscriptionDate3_stored_date");
 				if(inscriptionDate3 != null)
 					oInscriptionMedicale.setInscriptionDate3(inscriptionDate3);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionDate4")) {
+			if(sauvegardes.contains("inscriptionDate4")) {
 				Date inscriptionDate4 = (Date)solrDocument.get("inscriptionDate4_stored_date");
 				if(inscriptionDate4 != null)
 					oInscriptionMedicale.setInscriptionDate4(inscriptionDate4);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionDate5")) {
+			if(sauvegardes.contains("inscriptionDate5")) {
 				Date inscriptionDate5 = (Date)solrDocument.get("inscriptionDate5_stored_date");
 				if(inscriptionDate5 != null)
 					oInscriptionMedicale.setInscriptionDate5(inscriptionDate5);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionDate6")) {
+			if(sauvegardes.contains("inscriptionDate6")) {
 				Date inscriptionDate6 = (Date)solrDocument.get("inscriptionDate6_stored_date");
 				if(inscriptionDate6 != null)
 					oInscriptionMedicale.setInscriptionDate6(inscriptionDate6);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionDate7")) {
+			if(sauvegardes.contains("inscriptionDate7")) {
 				Date inscriptionDate7 = (Date)solrDocument.get("inscriptionDate7_stored_date");
 				if(inscriptionDate7 != null)
 					oInscriptionMedicale.setInscriptionDate7(inscriptionDate7);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionDate8")) {
+			if(sauvegardes.contains("inscriptionDate8")) {
 				Date inscriptionDate8 = (Date)solrDocument.get("inscriptionDate8_stored_date");
 				if(inscriptionDate8 != null)
 					oInscriptionMedicale.setInscriptionDate8(inscriptionDate8);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionDate9")) {
+			if(sauvegardes.contains("inscriptionDate9")) {
 				Date inscriptionDate9 = (Date)solrDocument.get("inscriptionDate9_stored_date");
 				if(inscriptionDate9 != null)
 					oInscriptionMedicale.setInscriptionDate9(inscriptionDate9);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionDate10")) {
+			if(sauvegardes.contains("inscriptionDate10")) {
 				Date inscriptionDate10 = (Date)solrDocument.get("inscriptionDate10_stored_date");
 				if(inscriptionDate10 != null)
 					oInscriptionMedicale.setInscriptionDate10(inscriptionDate10);
 			}
 
-			if(sauvegardesInscriptionMedicale.contains("inscriptionNomComplet")) {
+			if(sauvegardes.contains("inscriptionNomComplet")) {
 				String inscriptionNomComplet = (String)solrDocument.get("inscriptionNomComplet_stored_string");
 				if(inscriptionNomComplet != null)
 					oInscriptionMedicale.setInscriptionNomComplet(inscriptionNomComplet);
@@ -7710,9 +7712,6 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 	}
 
 	public void indexerInscriptionMedicale(SolrInputDocument document) {
-		if(sauvegardesInscriptionMedicale != null)
-			document.addField("sauvegardesInscriptionMedicale_stored_strings", sauvegardesInscriptionMedicale);
-
 		if(inscriptionCle != null) {
 			document.addField("inscriptionCle_indexed_long", inscriptionCle);
 			document.addField("inscriptionCle_stored_long", inscriptionCle);
@@ -8344,6 +8343,8 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 		Object o = Optional.ofNullable(requeteApi).map(RequeteApi::getOriginal).orElse(null);
 		if(o != null && o instanceof InscriptionMedicale) {
 			InscriptionMedicale original = (InscriptionMedicale)o;
+			if(!Objects.equals(cliniqueCle, original.getCliniqueCle()))
+				requeteApi.addVars("cliniqueCle");
 			if(!Objects.equals(patientCle, original.getPatientCle()))
 				requeteApi.addVars("patientCle");
 			if(!Objects.equals(utilisateurCles, original.getUtilisateurCles()))
@@ -8425,7 +8426,7 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 	//////////////
 
 	@Override public int hashCode() {
-		return Objects.hash(super.hashCode(), patientCle, utilisateurCles, patientNomComplet, patientNomCompletPrefere, patientDateNaissance, cliniqueAddresse, inscriptionApprouve, inscriptionImmunisations, familleAddresse, familleCommentVousConnaissezClinique, inscriptionConsiderationsSpeciales, patientConditionsMedicales, patientCliniquesPrecedemmentFrequentees, patientDescription, patientObjectifs, customerProfileId, inscriptionSignature1, inscriptionSignature2, inscriptionSignature3, inscriptionSignature4, inscriptionSignature5, inscriptionSignature6, inscriptionSignature7, inscriptionSignature8, inscriptionSignature9, inscriptionSignature10, inscriptionDate1, inscriptionDate2, inscriptionDate3, inscriptionDate4, inscriptionDate5, inscriptionDate6, inscriptionDate7, inscriptionDate8, inscriptionDate9, inscriptionDate10);
+		return Objects.hash(super.hashCode(), cliniqueCle, patientCle, utilisateurCles, patientNomComplet, patientNomCompletPrefere, patientDateNaissance, cliniqueAddresse, inscriptionApprouve, inscriptionImmunisations, familleAddresse, familleCommentVousConnaissezClinique, inscriptionConsiderationsSpeciales, patientConditionsMedicales, patientCliniquesPrecedemmentFrequentees, patientDescription, patientObjectifs, customerProfileId, inscriptionSignature1, inscriptionSignature2, inscriptionSignature3, inscriptionSignature4, inscriptionSignature5, inscriptionSignature6, inscriptionSignature7, inscriptionSignature8, inscriptionSignature9, inscriptionSignature10, inscriptionDate1, inscriptionDate2, inscriptionDate3, inscriptionDate4, inscriptionDate5, inscriptionDate6, inscriptionDate7, inscriptionDate8, inscriptionDate9, inscriptionDate10);
 	}
 
 	////////////
@@ -8439,6 +8440,7 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 			return false;
 		InscriptionMedicale that = (InscriptionMedicale)o;
 		return super.equals(o)
+				&& Objects.equals( cliniqueCle, that.cliniqueCle )
 				&& Objects.equals( patientCle, that.patientCle )
 				&& Objects.equals( utilisateurCles, that.utilisateurCles )
 				&& Objects.equals( patientNomComplet, that.patientNomComplet )
@@ -8485,7 +8487,8 @@ public abstract class InscriptionMedicaleGen<DEV> extends Cluster {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString() + "\n");
 		sb.append("InscriptionMedicale { ");
-		sb.append( "patientCle: " ).append(patientCle);
+		sb.append( "cliniqueCle: " ).append(cliniqueCle);
+		sb.append( ", patientCle: " ).append(patientCle);
 		sb.append( ", utilisateurCles: " ).append(utilisateurCles);
 		sb.append( ", patientNomComplet: \"" ).append(patientNomComplet).append( "\"" );
 		sb.append( ", patientNomCompletPrefere: \"" ).append(patientNomCompletPrefere).append( "\"" );

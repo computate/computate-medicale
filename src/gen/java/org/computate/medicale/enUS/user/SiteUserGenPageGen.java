@@ -4,6 +4,7 @@ import org.computate.medicale.enUS.writer.AllWriter;
 import java.util.Arrays;
 import org.computate.medicale.enUS.user.SiteUser;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import java.util.HashMap;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;

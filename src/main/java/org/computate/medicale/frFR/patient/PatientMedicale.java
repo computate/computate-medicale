@@ -18,10 +18,10 @@ import org.computate.medicale.frFR.recherche.ListeRecherche;
  * Indexe: true
  * Sauvegarde: true
  * 
- * ApiTag.frFR: Enfant
+ * ApiTag.frFR: Patient
  * ApiUri.frFR: /api/patient
  * 
- * ApiTag.enUS: Child
+ * ApiTag.enUS: Patient
  * ApiUri.enUS: /api/patient
  * 
  * ApiMethode: POST
@@ -49,12 +49,12 @@ import org.computate.medicale.frFR.recherche.ListeRecherche;
  * RoleUtilisateurAdminSearch.enUS: true
  * 
  * ApiMethode.frFR: PageRecherche
- * PagePageRecherche.frFR: EnfantPage
+ * PagePageRecherche.frFR: PatientPage
  * PageSuperPageRecherche.frFR: ClusterPage
  * ApiUriPageRecherche.frFR: /patient
  * 
  * ApiMethode.enUS: SearchPage
- * PageSearchPage.enUS: ChildPage
+ * PageSearchPage.enUS: PatientPage
  * PageSuperSearchPage.enUS: ClusterPage
  * ApiUriSearchPage.enUS: /patient
  * 
@@ -69,7 +69,7 @@ import org.computate.medicale.frFR.recherche.ListeRecherche;
  * RoleSession: true
  * RoleUtilisateur: true
 */   
-public class PatientMedicale extends PatientMedicaleGen<Cluster> {
+public class PatientMedicale extends PatientMedicaleGen<Cluster> { 
 
 	/**
 	 * {@inheritDoc}

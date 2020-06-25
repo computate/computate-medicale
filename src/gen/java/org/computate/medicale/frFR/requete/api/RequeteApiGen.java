@@ -7,6 +7,7 @@ import java.util.Date;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
 import java.time.ZonedDateTime;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import org.apache.commons.lang3.StringUtils;
 import java.lang.Integer;
 import java.text.NumberFormat;

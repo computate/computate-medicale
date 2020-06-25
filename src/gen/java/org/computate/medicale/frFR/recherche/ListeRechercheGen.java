@@ -5,9 +5,11 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.computate.medicale.frFR.cluster.Cluster;
 import org.apache.solr.common.SolrDocumentList;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
+import java.util.HashMap;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
+import java.util.ArrayList;
 import org.apache.commons.collections.CollectionUtils;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
@@ -260,7 +262,7 @@ public abstract class ListeRechercheGen<DEV> {
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<String> fields = new java.util.ArrayList<java.lang.String>();
+	protected List<String> fields = new ArrayList<String>();
 	@JsonIgnore
 	public Couverture<List<String>> fieldsCouverture = new Couverture<List<String>>().p(this).c(List.class).var("fields").o(fields);
 
@@ -451,7 +453,7 @@ public abstract class ListeRechercheGen<DEV> {
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<DEV>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected List<DEV> list = new java.util.ArrayList<DEV>();
+	protected List<DEV> list = new ArrayList<DEV>();
 	@JsonIgnore
 	public Couverture<List<DEV>> listCouverture = new Couverture<List<DEV>>().p(this).c(List.class).var("list").o(list);
 

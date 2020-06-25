@@ -137,6 +137,7 @@ public class EnrollmentGenPage extends EnrollmentGenPageGen<ClusterPage> {
 
 	@Override public void htmlScriptsEnrollmentGenPage() {
 		e("script").a("src", staticBaseUrl, "/js/enUS/EnrollmentPage.js").f().g("script");
+		e("script").a("src", staticBaseUrl, "/js/enUS/ClinicPage.js").f().g("script");
 		e("script").a("src", staticBaseUrl, "/js/enUS/ChildPage.js").f().g("script");
 		e("script").a("src", staticBaseUrl, "/js/enUS/SiteUserPage.js").f().g("script");
 	}
@@ -173,6 +174,14 @@ public class EnrollmentGenPage extends EnrollmentGenPageGen<ClusterPage> {
 			tl(2, "suggestMedicalEnrollmentUserKeys([{'name':'fq','value':'enrollmentKeys:' + pk}], $('#listMedicalEnrollmentUserKeys_Page'), pk, true); ");
 		} else {
 			tl(2, "suggestMedicalEnrollmentUserKeys([{'name':'fq','value':'enrollmentKeys:' + pk}], $('#listMedicalEnrollmentUserKeys_Page'), pk, false); ");
+		}
+		if(
+				CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
+				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+				) {
+			tl(2, "suggestMedicalEnrollmentClinicKey([{'name':'fq','value':'enrollmentKeys:' + pk}], $('#listMedicalEnrollmentClinicKey_Page'), pk, true); ");
+		} else {
+			tl(2, "suggestMedicalEnrollmentClinicKey([{'name':'fq','value':'enrollmentKeys:' + pk}], $('#listMedicalEnrollmentClinicKey_Page'), pk, false); ");
 		}
 		tl(2, "$('#signatureInputMedicalEnrollment' + pk + 'enrollmentSignature1').jSignature({'height':200}).bind('change', function(e){ patchMedicalEnrollmentVal([{ name: 'fq', value: 'pk:' + pk }], 'setEnrollmentSignature1', $('#signatureInputMedicalEnrollment' + pk + 'enrollmentSignature1').jSignature('getData', 'default')); }); ");
 		tl(2, "$('#signatureInputMedicalEnrollment' + pk + 'enrollmentSignature2').jSignature({'height':200}).bind('change', function(e){ patchMedicalEnrollmentVal([{ name: 'fq', value: 'pk:' + pk }], 'setEnrollmentSignature2', $('#signatureInputMedicalEnrollment' + pk + 'enrollmentSignature2').jSignature('getData', 'default')); }); ");

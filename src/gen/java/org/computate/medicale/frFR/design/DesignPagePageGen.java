@@ -4,6 +4,7 @@ import java.util.Arrays;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.computate.medicale.frFR.cluster.Cluster;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
+import java.util.HashMap;
 import org.computate.medicale.frFR.design.DesignPageGenPage;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;

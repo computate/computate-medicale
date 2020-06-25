@@ -5,9 +5,11 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.computate.medicale.frFR.clinique.CliniqueGenPage;
 import org.computate.medicale.frFR.cluster.Cluster;
 import org.computate.medicale.frFR.requete.api.RequeteApi;
+import java.util.HashMap;
 import org.apache.commons.lang3.StringUtils;
 import java.text.NumberFormat;
 import io.vertx.core.logging.LoggerFactory;
+import java.util.ArrayList;
 import org.apache.commons.collections.CollectionUtils;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
@@ -184,6 +186,54 @@ public abstract class CliniquePageGen<DEV> extends CliniqueGenPage {
 	}
 
 	public void htmlBodyCliniquePage() {
+	}
+
+	//////////
+	// html //
+	//////////
+
+	@Override public void html() {
+		htmlCliniquePage();
+		super.html();
+	}
+
+	public void htmlCliniquePage() {
+	}
+
+	//////////////
+	// htmlMeta //
+	//////////////
+
+	@Override public void htmlMeta() {
+		htmlMetaCliniquePage();
+		super.htmlMeta();
+	}
+
+	public void htmlMetaCliniquePage() {
+	}
+
+	////////////////
+	// htmlStyles //
+	////////////////
+
+	@Override public void htmlStyles() {
+		htmlStylesCliniquePage();
+		super.htmlStyles();
+	}
+
+	public void htmlStylesCliniquePage() {
+	}
+
+	///////////////
+	// htmlStyle //
+	///////////////
+
+	@Override public void htmlStyle() {
+		htmlStyleCliniquePage();
+		super.htmlStyle();
+	}
+
+	public void htmlStyleCliniquePage() {
 	}
 
 	//////////////////
