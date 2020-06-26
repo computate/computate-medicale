@@ -35,6 +35,8 @@ Begin by installing both the ansible and python3 packages.
 sudo yum install -y ansible python3
 ```
 
+## Ansible on older operating systems
+
 If you have an older operating system that does not yet support python3, you may struggle to deploy the application on OpenShift in the cloud. The OpenShift Ansible modules seem to require python3 as the system library, so I recommend updating your operating system to something more recent, for example CentOS8 or RHEL8. You might also be able to update your ansible configuration to make it work: 
 
 ```
@@ -45,18 +47,64 @@ sudo vim /etc/ansible/ansible.cfg
 [defaults]
 interpreter_python=/usr/bin/python3
 ```
+## Ansible training
+
+For training on ansible and automation, I recommend the following Red Hat course. 
+By completing the course and taking the exam, you can be a Certified Specialist in Ansible Automation. 
+
+https://www.redhat.com/en/services/training/do407-automation-ansible-i
 
 ## Development installation of computate-medicale
 
+### Create an ansible inventory
+
+You will want to create your own directory to store your ansible inventories for both development and production in the cloud. 
+
+Create a directory for your ansible scripts. 
+
 ```bash
+sudo install -d -o $USER -g $USER /usr/local/src/computate-ansible
+```
 
-# Create a directory for the computate project containing the ansible scripts to run. 
+Create a directory for your development inventory. 
+
+```bash
+install -d /usr/local/src/computate-ansible/inventories/$USER-$HOSTNAME
+```
+
+Create a hosts file for your development inventory. 
+
+```bash
+echo 'localhost' > /usr/local/src/computate-ansible/inventories/$USER-$HOSTNAME/hosts
+```
+
+Create an encrypted ansible vault with a password for the host secrets for your development inventory. 
+
+```bash
+ansible-vault edit /usr/local/src/computate-ansible/inventories/$USER-$HOSTNAME/host_vars/$HOSTNAME/vault
+```
+
+The contents of the vault will contain the secrets needed to override any default values you want to change in the computate-medicale defaults defined here. 
+
+https://github.com/computate/computate/blob/master/ansible/roles/computate_medicale/defaults/main.yml
+
+### Clone the computate project to run the ansible scripts
+
+Create a directory for the computate project containing the ansible scripts to run. 
+
+```bash
 sudo install -d -o $USER -g $USER /usr/local/src/computate
+```
 
-# Change to the computate ansible directory. 
+Change to the computate ansible directory. 
+
+```bash
 cd /usr/local/src/computate/ansible
+```
 
-# Run the playbook to install the computate-medicale project for development. 
+Run the playbook to install the computate-medicale project for development. 
+
+```bash
 ansible-playbook computate_medicale.yml -i /usr/local/src/my-ansible-project/inventories/my-ansible-inventory/hosts --vault-id @prompt
 ```
 
