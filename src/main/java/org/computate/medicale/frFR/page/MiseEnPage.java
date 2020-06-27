@@ -644,28 +644,10 @@ public class MiseEnPage extends MiseEnPageGen<Object> {
 	 * r.enUS: /enUS/SiteUserPage.js
 	 * r: /frFR/CliniquePage.js
 	 * r.enUS: /enUS/ClinicPage.js
-	 * r: /frFR/AnneePage.js
-	 * r.enUS: /enUS/YearPage.js
-	 * r: /frFR/SaisonPage.js
-	 * r.enUS: /enUS/SeasonPage.js
-	 * r: /frFR/SessionPage.js
-	 * r.enUS: /enUS/SessionPage.js
-	 * r: /frFR/AgePage.js
-	 * r.enUS: /enUS/AgePage.js
-	 * r: /frFR/BlocPage.js
-	 * r.enUS: /enUS/BlockPage.js
 	 * r: /frFR/InscriptionPage.js
 	 * r.enUS: /enUS/EnrollmentPage.js
-	 * r: /frFR/PaiementPage.js
-	 * r.enUS: /enUS/PaymentPage.js
-	 * r: /frFR/MerePage.js
-	 * r.enUS: /enUS/MomPage.js
-	 * r: /frFR/PerePage.js
-	 * r.enUS: /enUS/DadPage.js
-	 * r: /frFR/GardienPage.js
-	 * r.enUS: /enUS/GuardianPage.js
-	 * r: /frFR/EnfantPage.js
-	 * r.enUS: /enUS/ChildPage.js
+	 * r: /frFR/PatientPage.js
+	 * r.enUS: /enUS/PatientPage.js
 	 * r: frFR
 	 * r.enUS: enUS
 	 */
@@ -676,17 +658,8 @@ public class MiseEnPage extends MiseEnPageGen<Object> {
 		e("script").a("src", statiqueUrlBase, "/js/vertx-eventbus.js").f().g("script");
 		e("script").a("src", statiqueUrlBase, "/js/frFR/UtilisateurSitePage.js").f().g("script");
 		e("script").a("src", statiqueUrlBase, "/js/frFR/CliniquePage.js").f().g("script");
-		e("script").a("src", statiqueUrlBase, "/js/frFR/AnneePage.js").f().g("script");
-		e("script").a("src", statiqueUrlBase, "/js/frFR/SaisonPage.js").f().g("script");
-		e("script").a("src", statiqueUrlBase, "/js/frFR/SessionPage.js").f().g("script");
-		e("script").a("src", statiqueUrlBase, "/js/frFR/AgePage.js").f().g("script");
-		e("script").a("src", statiqueUrlBase, "/js/frFR/BlocPage.js").f().g("script");
 		e("script").a("src", statiqueUrlBase, "/js/frFR/InscriptionPage.js").f().g("script");
-		e("script").a("src", statiqueUrlBase, "/js/frFR/PaiementPage.js").f().g("script");
-		e("script").a("src", statiqueUrlBase, "/js/frFR/MerePage.js").f().g("script");
-		e("script").a("src", statiqueUrlBase, "/js/frFR/PerePage.js").f().g("script");
-		e("script").a("src", statiqueUrlBase, "/js/frFR/GardienPage.js").f().g("script");
-		e("script").a("src", statiqueUrlBase, "/js/frFR/EnfantPage.js").f().g("script");
+		e("script").a("src", statiqueUrlBase, "/js/frFR/PatientPage.js").f().g("script");
 		e("script").a("src", statiqueUrlBase, "/js/moment.min.js").f().g("script");
 		e("script").a("src", statiqueUrlBase, "/js/jqDatePicker.js").f().g("script");
 		e("script").a("src", statiqueUrlBase, "/js/jquery.serialize-object.js").f().g("script");

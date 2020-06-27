@@ -277,17 +277,8 @@ public class PageLayout extends PageLayoutGen<Object> {
 		e("script").a("src", staticBaseUrl, "/js/vertx-eventbus.js").f().g("script");
 		e("script").a("src", staticBaseUrl, "/js/enUS/SiteUserPage.js").f().g("script");
 		e("script").a("src", staticBaseUrl, "/js/enUS/ClinicPage.js").f().g("script");
-		e("script").a("src", staticBaseUrl, "/js/enUS/YearPage.js").f().g("script");
-		e("script").a("src", staticBaseUrl, "/js/enUS/SeasonPage.js").f().g("script");
-		e("script").a("src", staticBaseUrl, "/js/enUS/SessionPage.js").f().g("script");
-		e("script").a("src", staticBaseUrl, "/js/enUS/AgePage.js").f().g("script");
-		e("script").a("src", staticBaseUrl, "/js/enUS/BlockPage.js").f().g("script");
 		e("script").a("src", staticBaseUrl, "/js/enUS/EnrollmentPage.js").f().g("script");
-		e("script").a("src", staticBaseUrl, "/js/enUS/PaymentPage.js").f().g("script");
-		e("script").a("src", staticBaseUrl, "/js/enUS/MomPage.js").f().g("script");
-		e("script").a("src", staticBaseUrl, "/js/enUS/DadPage.js").f().g("script");
-		e("script").a("src", staticBaseUrl, "/js/enUS/GuardianPage.js").f().g("script");
-		e("script").a("src", staticBaseUrl, "/js/enUS/ChildPage.js").f().g("script");
+		e("script").a("src", staticBaseUrl, "/js/enUS/PatientPage.js").f().g("script");
 		e("script").a("src", staticBaseUrl, "/js/moment.min.js").f().g("script");
 		e("script").a("src", staticBaseUrl, "/js/jqDatePicker.js").f().g("script");
 		e("script").a("src", staticBaseUrl, "/js/jquery.serialize-object.js").f().g("script");
