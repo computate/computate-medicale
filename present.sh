@@ -1,6 +1,8 @@
 
 # Be sure to be signed into both openshift accounts. 
 # Be sure to log out of your application. 
+# Be sure to delete the OpenShift project. 
+# Copy the ansible password to the clipboard. 
 
 function computate() {
 	echo
@@ -14,110 +16,110 @@ function computate() {
 	esac
 }
 
-computate "figlet -f slant Christopher;\
-xdg-open 'https://books.google.com/books?id=D4gzDAAAQBAJ&pg=PA53&lpg=PA53&dq=Open+is+an+opportunity,+a+chance+to+broaden+the+mind,+free+tools+and+resources+to+benefit+all+of+mankind.+Open+is+an+aperture,+something+you+look+through,+access+for+all,+not+just+the+few.&source=bl&ots=6_mG4PsIK1&sig=ACfU3U3Dn2Qx7bZuuoN3tnwDCj8oFRQMPQ&hl=en&sa=X&ved=2ahUKEwiPqYbZnoPlAhU2CjQIHXgzBwEQ6AEwAXoECAkQAQ';\
+computate "gio open 'https://books.google.com/books?id=D4gzDAAAQBAJ&pg=PA53&lpg=PA53&dq=Open+is+an+opportunity,+a+chance+to+broaden+the+mind,+free+tools+and+resources+to+benefit+all+of+mankind.+Open+is+an+aperture,+something+you+look+through,+access+for+all,+not+just+the+few.&source=bl&ots=6_mG4PsIK1&sig=ACfU3U3Dn2Qx7bZuuoN3tnwDCj8oFRQMPQ&hl=en&sa=X&ved=2ahUKEwiPqYbZnoPlAhU2CjQIHXgzBwEQ6AEwAXoECAkQAQ';\
 echo 'Open is an opportunity, a chance to broaden the mind, free tools and resources to benefit all of mankind. Open is an aperture, something you look through, access for all, not just the few. '"
 
 computate "echo 'My name is Christopher Tate, and I love to create systems for people to use in many places to solve things. '"
 
-computate "xdg-open 'http://idahoheartinstitute.com/';\
+computate "gio open 'http://idahoheartinstitute.com/';\
 echo 'Like this heart clinic who would love to have custom software that works with cardiac data in a more specialized way than their larger Electronic Medical Records solution. '"
 
-computate "xdg-open 'https://gis.cdc.gov/grasp/COVIDNet/COVID19_5.html';\
+computate "gio open 'https://gis.cdc.gov/grasp/COVIDNet/COVID19_5.html';\
 echo 'I also wanted to build some software that help a medical clinic identify their own patients who may be in most need of caution during this time of COVID-19. For example, those with pre-existing cardiovascular, lung, hypertension, metabolic, asthma conditions which the Center For Disease Control reports here may be more likely to be hospitalized during this time. '"
 
-computate "xdg-open 'https://console.rh-us-east-1.openshift.com/console/catalog';\
+computate "gio open 'https://console.rh-us-east-1.openshift.com/console/catalog';\
 echo 'So I setup an OpenShift Online environment to deploy my applications in the cloud. '"
 
 computate "echo 'I created a medical project in OpenShift. '"
 
-computate "echo 'I deployed a PostgreSQL database secret, volume claim, service, and deployment config to OpenShift using ansible automation. '\
+computate "echo 'I deployed a PostgreSQL database secret, volume claim, service, and deployment config to OpenShift using ansible automation. ';\
 (cd /usr/local/src/computate/ansible && ansible-playbook postgres_openshift.yml -i inventories/ctate-call-for-code-2020/hosts --vault-id @prompt)"
 
-computate "echo 'I deployed an Apache Zookeeper cluster manager config map, volume claim, image stream, service, and deployment config to OpenShift using ansible to manage scaling applications. '\
+computate "echo 'I deployed an Apache Zookeeper cluster manager config map, volume claim, image stream, service, and deployment config to OpenShift using ansible to manage scaling applications. ';\
 (cd /usr/local/src/computate/ansible && ansible-playbook computate_zookeeper_openshift.yml -i inventories/ctate-call-for-code-2020/hosts --vault-id @prompt)"
 
-computate "echo 'I deployed an Apache Solr search engine volume claim, image stream, service, and deployment config to OpenShift using ansible to provide powerful querying, faceting, filtering and sorting of the data. '\
+computate "echo 'I deployed an Apache Solr search engine volume claim, image stream, service, and deployment config to OpenShift using ansible to provide powerful querying, faceting, filtering and sorting of the data. ';\
 (cd /usr/local/src/computate/ansible && ansible-playbook computate_solr_openshift.yml -i inventories/ctate-call-for-code-2020/hosts --vault-id @prompt)"
 
-computate "xdg-open 'https://console.pro-us-east-1.openshift.com/console/project/computateorg/overview';\
+computate "gio open 'https://console.pro-us-east-1.openshift.com/console/project/computateorg/overview';\
 echo 'And a Red Hat Single Sign On server which I already had deployed here in another OpenShift environment to manage OpenID Connect user authorization and authentication. '"
 
-computate "xdg-open 'https://github.com/computate/computate-medicale/';\
+computate "gio open 'https://github.com/computate/computate-medicale/';\
 echo 'I created a github project called computate-medicale to build a Vert.X application to solve the problem. '"
 
-computate "xdg-open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/enUS/clinic/MedicalClinic.java';\
+computate "gio open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/enUS/clinic/MedicalClinic.java';\
 echo 'I created code to manage medical clinics. '"
 
-computate "xdg-open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/enUS/patient/MedicalPatient.java';\
+computate "gio open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/enUS/patient/MedicalPatient.java';\
 echo 'And medical patients. '"
 
-computate "xdg-open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/enUS/enrollment/MedicalEnrollment.java';\
+computate "gio open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/enUS/enrollment/MedicalEnrollment.java';\
 echo 'And medical enrollments. '"
 
-computate "xdg-open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/enUS/user/SiteUser.java';\
+computate "gio open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/enUS/user/SiteUser.java';\
 echo 'And site users for customizable site options for each registered Red Hat SSO user. '"
 
-computate "xdg-open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/enUS/design/PageDesign.java';\
+computate "gio open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/enUS/design/PageDesign.java';\
 echo 'And page designs, for designing custom data driven pages, forms, reports and PDFs in the site. '"
 
-computate "xdg-open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/enUS/vertx/AppVertx.java#L525';\
+computate "gio open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/enUS/vertx/AppVertx.java#L525';\
 echo 'And the rest of the code to bring it all together in a ready to deploy reactive Vert.X application. '"
 
-computate "xdg-open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/frFR/vertx/AppliVertx.java#L846';\
+computate "gio open 'https://github.com/computate/computate-medicale/blob/master/src/main/java/org/computate/medicale/frFR/vertx/AppliVertx.java#L846';\
 echo 'You may also note that the code was actually written entirely in French first, and translated into English as a second language, to ensure that it works in multiple languages and supports complete internationalization. '"
 
-computate "xdg-open 'http://editor.swagger.io/';\
+computate "gio open 'http://editor.swagger.io/';\
 echo 'The application runs based on an OpenApi3 specification for all the web page and API calls in the whole site. You can see the rich collection of APIs available for enrollments, clinics, html, users, pages, patients and more. '"
 
-computate "echo 'I deployed the computate-medicale secret, keystore, image stream, build config, service, deployment config and route to OpenShift using ansible. '\
+computate "echo 'I deployed the computate-medicale secret, keystore, image stream, build config, service, deployment config and route to OpenShift using ansible. ';\
+gio open 'https://console.rh-us-east-1.openshift.com/console/project/medical/overview';\
 (cd /usr/local/src/computate/ansible && ansible-playbook computate_medicale_openshift_enUS.yml -i inventories/ctate-call-for-code-2020/hosts --vault-id @prompt)"
 
-computate "echo 'I created a set of sample patient data for an example clinic and imported that data into my application through it's own secured APIs. The backup and restore of data is completely automated using ansible, and the data is always backed up as a password encrypted Ansible vault.  '\
+computate "echo 'I created a set of sample patient data for an example clinic and imported that data into my application through its own secured APIs. The backup and restore of data is completely automated using ansible, and the data is always backed up as a password encrypted Ansible vault.  ';\
 (cd /usr/local/src/computate/ansible && ansible-playbook computate_medicale_restore_enUS.yml -i inventories/ctate-call-for-code-2020/hosts --vault-id @prompt)"
 
-computate "xdg-open 'https://medical.heytate.com/html-part';\
+computate "gio open 'https://medical.heytate.com/html-part';\
 echo 'Lets watch, as the application data is imported and updated in the UI using websocket updates. We need to sign in through Red Hat SSO to access these parts of the site. '"
 
-computate "xdg-open 'https://medical.heytate.com/api/enrollment';\
+computate "gio open 'https://medical.heytate.com/api/enrollment';\
 echo 'Behind every page on the site is a powerful JSON REST API. Here we can see the enrollment data. '"
 
-computate "xdg-open 'https://medical.heytate.com/api/enrollment?fq=patientFirstName:Sarah';\
+computate "gio open 'https://medical.heytate.com/api/enrollment?fq=patientFirstName:Sarah';\
 echo 'The API can filter on first name for example. '"
 
-computate "xdg-open 'https://medical.heytate.com/api/enrollment?start=10';\
+computate "gio open 'https://medical.heytate.com/api/enrollment?start=10';\
 echo 'paginates... '"
 
-computate "xdg-open 'https://medical.heytate.com/api/enrollment?rows=100';\
+computate "gio open 'https://medical.heytate.com/api/enrollment?rows=100';\
 echo 'returns any number of rows... '"
 
-computate "xdg-open 'https://medical.heytate.com/api/enrollment?fl=patientFirstName';\
+computate "gio open 'https://medical.heytate.com/api/enrollment?fl=patientFirstName';\
 echo 'or any number of columns. '"
 
-computate "xdg-open 'https://medical.heytate.com/page-design';\
+computate "gio open 'https://medical.heytate.com/page-design';\
 echo 'Here we can generate custom, data-driven pages in the site. '"
 
-computate "xdg-open 'https://medical.heytate.com/page-design/home-page';\
+computate "gio open 'https://medical.heytate.com/page-design/home-page';\
 echo 'You can see how the page design is made up of many sortable HTML fragments. '"
 
-computate "xdg-open 'https://medical.heytate.com';\
+computate "gio open 'https://medical.heytate.com';\
 echo 'Let's visit the home page to see what a visitor sees. '"
 
-computate "xdg-open 'https://medical.heytate.com/page/contact-us';\
+computate "gio open 'https://medical.heytate.com/page/contact-us';\
 echo 'Here a visitor can ask the clinic a question. '"
 
-computate "xdg-open 'https://medical.heytate.com/page/patient-registration-form?var=clinicLocation:Montmartre';\
+computate "gio open 'https://medical.heytate.com/page/patient-registration-form?var=clinicLocation:Montmartre';\
 echo 'Here a visitor can submit a registration form before an appointment. '"
 
-computate "xdg-open 'https://medical.heytate.com/enrollment';\
+computate "gio open 'https://medical.heytate.com/enrollment';\
 echo 'Here a site admin can see the enrollments that have been submitted. '"
 
-computate "xdg-open 'http://ctate.remote.csb:10383/solr/banana/src/index.html#/dashboard/solr/medical?server=%2Fsolr%2F';\
+computate "gio open 'http://ctate.remote.csb:10383/solr/banana/src/index.html#/dashboard/solr/medical?server=%2Fsolr%2F';\
 echo 'Because we use a search engine with our data, we can generate powerful analytics to help us solve COVID-19 related problems. '"
 
 computate "echo 'Here are some dashboards that I built for a clinic to gain insight into their patients most likey affected by COVID-19. '"
 
-computate "xdg-open 'https://gis.cdc.gov/grasp/COVIDNet/COVID19_5.html';\
+computate "gio open 'https://gis.cdc.gov/grasp/COVIDNet/COVID19_5.html';\
 echo 'We add relevance to our data based on the graphs I showed earlier from the CDC. '"
 
 computate "echo 'Thanks to the search engine, we can score patients medical conditions, and filter through less relevant conditions like those patients with none: patientMedicalConditions_text_enUS:(*) '"
