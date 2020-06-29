@@ -75,25 +75,25 @@ computate "echo 'I deployed the computate-medicale secret, keystore, image strea
 gio open 'https://console.rh-us-east-1.openshift.com/console/project/medical/overview';\
 (cd /usr/local/src/computate/ansible && ansible-playbook computate_medicale_openshift_enUS.yml -i inventories/ctate-call-for-code-2020/hosts --vault-id @prompt)"
 
-computate "echo 'I created a set of sample patient data for an example clinic and imported that data into my application through its own secured APIs. The backup and restore of data is completely automated using ansible, and the data is always backed up as a password encrypted Ansible vault.  ';\
-(cd /usr/local/src/computate/ansible && ansible-playbook computate_medicale_restore_enUS.yml -i inventories/ctate-call-for-code-2020/hosts --vault-id @prompt)"
+computate "gio open 'https://medical.heytate.com/user';\
+echo 'Now lets visit the site and login to the site through the single sign on server. '"
 
-computate "gio open 'https://medical.heytate.com/html-part';\
-echo 'Lets watch, as the application data is imported and updated in the UI using websocket updates. We need to sign in through Red Hat SSO to access these parts of the site. '"
+computate "echo 'I created a set of sample patient data for an example clinic and imported that data into my application through its own secured APIs. The backup and restore of data is completely automated using ansible, and the data is always backed up as a password encrypted Ansible vault. Lets watch, as the application data is imported and updated in the UI using websocket updates. We need to sign in through Red Hat SSO to access these parts of the site. ';\
+(cd /usr/local/src/computate/ansible && ansible-playbook computate_medicale_restore_enUS.yml -i inventories/ctate-call-for-code-2020/hosts --vault-id @prompt)"
 
 computate "gio open 'https://medical.heytate.com/api/enrollment';\
 echo 'Behind every page on the site is a powerful JSON REST API. Here we can see the enrollment data. '"
 
-computate "gio open 'https://medical.heytate.com/api/enrollment?fq=patientFirstName:Sarah';\
-echo 'The API can filter on first name for example. '"
+computate "gio open 'https://medical.heytate.com/api/enrollment?fq=patientFirstName:Sarah&fl=pk,patientFirstName';\
+echo 'The API can filter on a first name of Sarah, for example. '"
 
-computate "gio open 'https://medical.heytate.com/api/enrollment?start=10';\
+computate "gio open 'https://medical.heytate.com/api/enrollment?start=10&fl=pk,patientFirstName';\
 echo 'paginates... '"
 
-computate "gio open 'https://medical.heytate.com/api/enrollment?rows=100';\
+computate "gio open 'https://medical.heytate.com/api/enrollment?rows=100&fl=pk,patientFirstName';\
 echo 'returns any number of rows... '"
 
-computate "gio open 'https://medical.heytate.com/api/enrollment?fl=patientFirstName';\
+computate "gio open 'https://medical.heytate.com/api/enrollment?rows=100&fl=patientFirstName';\
 echo 'or any number of columns. '"
 
 computate "gio open 'https://medical.heytate.com/page-design';\
@@ -103,7 +103,7 @@ computate "gio open 'https://medical.heytate.com/page-design/home-page';\
 echo 'You can see how the page design is made up of many sortable HTML fragments. '"
 
 computate "gio open 'https://medical.heytate.com';\
-echo 'Let's visit the home page to see what a visitor sees. '"
+echo 'Lets visit the home page to see what a visitor sees. '"
 
 computate "gio open 'https://medical.heytate.com/page/contact-us';\
 echo 'Here a visitor can ask the clinic a question. '"
@@ -126,8 +126,6 @@ computate "echo 'Thanks to the search engine, we can score patients medical cond
 
 computate "echo 'If we add a score to certain keywords in a patients medical conditions, we can norrow in on patients most in need of help at this time: patientMedicalConditions_text_enUS:() '"
 
-computate "echo 'We will give weight a factor of 11: overweight^=11 weight^=11'"
-
 computate "echo 'We will give asthma a factor of 4: asthma^=4'"
 
 computate "echo 'We will give neurologic conditions a factor of 4: nerves^=4 brain^=4 nervous^=4'"
@@ -136,10 +134,13 @@ computate "echo 'We will give respiratory conditions a factor of 4: lung^=4 resp
 
 computate "echo 'We will give immune conditions a factor of 3: immune^=3'"
 
-computate "echo 'We will give metabolic conditions a factor of 3: metabolic^=3'"
-
-computate "echo 'We will give hypertension conditions a factor of 2: hypertension^=2'"
-
 computate "echo 'We will give heart conditions a factor of 3: heart^=2'"
 
 computate "echo 'And stomach conditions a factor of 3: stomach^=1 intestine^=1'"
+
+computate "echo 'Now we see how the analytics have changed to focus in on COVID-19 targeted conditions, and here is the list of patients of most concern during this time sorted by score. Like those with combined asthma, airway and lung concerns. '"
+
+computate "echo 'Like that, any medical clinic can extend this open source software to solve their own challenges with data analytics during the pandemic. '"
+
+computate "gio open 'https://github.com/computate/computate-medicale';\
+echo 'Check out computate-medicale on github. Don't give up on your dreams, you can do hard things. Courage! '"
