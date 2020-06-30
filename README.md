@@ -10,7 +10,11 @@ About 500 words, or about one page of text, that covers the solution in more det
 Roadmap
 A document or image that shows how mature your solution is today and how you plan to improve it in the future
 
-### You can watch a video and learn more about this project here: https://devpost.com/software/computate-medicale
+### You can watch a video and learn more about this project here: 
+
+11 min version: https://youtu.be/Y1YZZSXGc8s
+
+3 min version: https://youtu.be/drtUb1UfmKw
 
 # Prerequisites
 
