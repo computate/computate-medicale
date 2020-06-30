@@ -5,15 +5,15 @@
 # Copy the ansible password to the clipboard. 
 
 function computate() {
-	echo
-	read -p '' -i '' ACTION_COMMAND
-	case $ACTION_COMMAND in 
-		[Ss]* );;
-		[Qq]* ) exit 0 ;;
-		* )
-		eval "$1"
-		;;
-	esac
+        echo
+        read -p '' -i '' ACTION_COMMAND
+        case $ACTION_COMMAND in 
+                [Ss]* );;
+                [Qq]* ) exit 0 ;;
+                * )
+                eval "$1"
+                ;;
+        esac
 }
 
 computate "gio open 'https://books.google.com/books?id=D4gzDAAAQBAJ&pg=PA53&lpg=PA53&dq=Open+is+an+opportunity,+a+chance+to+broaden+the+mind,+free+tools+and+resources+to+benefit+all+of+mankind.+Open+is+an+aperture,+something+you+look+through,+access+for+all,+not+just+the+few.&source=bl&ots=6_mG4PsIK1&sig=ACfU3U3Dn2Qx7bZuuoN3tnwDCj8oFRQMPQ&hl=en&sa=X&ved=2ahUKEwiPqYbZnoPlAhU2CjQIHXgzBwEQ6AEwAXoECAkQAQ';\
@@ -143,4 +143,5 @@ computate "echo 'Now we see how the analytics have changed to focus in on COVID-
 computate "echo 'Like that, any medical clinic can extend this open source software to solve their own challenges with data analytics during the pandemic. '"
 
 computate "gio open 'https://github.com/computate/computate-medicale';\
-echo 'Check out computate-medicale on github. Don't give up on your dreams, you can do hard things. Courage! '"
+echo 'Check out computate-medicale on github. Dont give up on your dreams, you can do hard things. Courage! '"
+
