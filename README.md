@@ -195,7 +195,7 @@ ansible-playbook computate_zookeeper.yml -i /usr/local/src/computate-ansible/inv
 Run the playbook to install a Solr search engine on your development computer. 
 
 ```bash
-ansible-playbook computate_zookeeper.yml -i /usr/local/src/computate-ansible/inventories/$USER-$HOSTNAME/hosts --vault-id @prompt
+ansible-playbook computate_solr.yml -i /usr/local/src/computate-ansible/inventories/$USER-$HOSTNAME/hosts --vault-id @prompt
 ```
 
 Run the playbook to install the computate-medicale project for development. 
@@ -210,7 +210,7 @@ ansible-playbook computate_medicale.yml -i /usr/local/src/computate-ansible/inve
 
 ```bash
 cd /usr/local/src/computate-medicale
-mvn clean insta..
+mvn clean install
 ```
 
 ## Make sure the Eclipse Marketplace and Git integration are installed. 
@@ -320,7 +320,7 @@ ansible-playbook computate_zookeeper_openshift.yml -i /usr/local/src/computate-a
 Run the playbook to install a Solr search engine in your OpenShift environment. 
 
 ```bash
-ansible-playbook computate_zookeeper_openshift.yml -i /usr/local/src/computate-ansible/inventories/$USER-openshift/hosts --vault-id @prompt
+ansible-playbook computate_solr_openshift.yml -i /usr/local/src/computate-ansible/inventories/$USER-openshift/hosts --vault-id @prompt
 ```
 
 Run the playbook to install a Red Hat SSO server in your OpenShift environment. 
