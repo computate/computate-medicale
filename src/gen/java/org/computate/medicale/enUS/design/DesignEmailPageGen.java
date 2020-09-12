@@ -19,6 +19,7 @@ import org.computate.medicale.enUS.design.DesignEmailGenPage;
 import java.lang.String;
 import org.computate.medicale.enUS.request.api.ApiRequest;
 import io.vertx.core.logging.Logger;
+import java.math.RoundingMode;
 import org.computate.medicale.enUS.html.part.HtmlPart;
 import org.computate.medicale.enUS.wrap.Wrap;
 import java.math.MathContext;
@@ -39,7 +40,7 @@ import org.computate.medicale.enUS.cluster.Cluster;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
+ * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true">Find the class  in Solr. </a>
  * <br/>
  **/
 public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
@@ -49,7 +50,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// w1 //
 	////////
 
-	/**	L'entité « w1 »
+	/**	 The entity w1
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -57,11 +58,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<AllWriter> w1Wrap = new Wrap<AllWriter>().p(this).c(AllWriter.class).var("w1").o(w1);
 
-	/**	<br/>L'entité « w1 »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:w1">Trouver l'entité w1 dans Solr</a>
+	/**	<br/> The entity w1
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:w1">Find the entity w1 in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _w1(Wrap<AllWriter> c);
 
@@ -89,7 +90,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// wPage //
 	///////////
 
-	/**	L'entité « wPage »
+	/**	 The entity wPage
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -97,11 +98,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<AllWriter> wPageWrap = new Wrap<AllWriter>().p(this).c(AllWriter.class).var("wPage").o(wPage);
 
-	/**	<br/>L'entité « wPage »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:wPage">Trouver l'entité wPage dans Solr</a>
+	/**	<br/> The entity wPage
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:wPage">Find the entity wPage in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _wPage(Wrap<AllWriter> c);
 
@@ -129,7 +130,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// pageDesign //
 	////////////////
 
-	/**	L'entité « pageDesign »
+	/**	 The entity pageDesign
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -137,11 +138,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<PageDesign> pageDesignWrap = new Wrap<PageDesign>().p(this).c(PageDesign.class).var("pageDesign").o(pageDesign);
 
-	/**	<br/>L'entité « pageDesign »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageDesign">Trouver l'entité pageDesign dans Solr</a>
+	/**	<br/> The entity pageDesign
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageDesign">Find the entity pageDesign in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _pageDesign(Wrap<PageDesign> c);
 
@@ -169,7 +170,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// pageDesignId //
 	//////////////////
 
-	/**	L'entité « pageDesignId »
+	/**	 The entity pageDesignId
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -177,11 +178,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> pageDesignIdWrap = new Wrap<String>().p(this).c(String.class).var("pageDesignId").o(pageDesignId);
 
-	/**	<br/>L'entité « pageDesignId »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageDesignId">Trouver l'entité pageDesignId dans Solr</a>
+	/**	<br/> The entity pageDesignId
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageDesignId">Find the entity pageDesignId in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _pageDesignId(Wrap<String> c);
 
@@ -231,7 +232,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// pageHtmlPartSearch //
 	////////////////////////
 
-	/**	L'entité « pageHtmlPartSearch »
+	/**	 The entity pageHtmlPartSearch
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<HtmlPart>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -239,11 +240,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<SearchList<HtmlPart>> pageHtmlPartSearchWrap = new Wrap<SearchList<HtmlPart>>().p(this).c(SearchList.class).var("pageHtmlPartSearch").o(pageHtmlPartSearch);
 
-	/**	<br/>L'entité « pageHtmlPartSearch »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<HtmlPart>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageHtmlPartSearch">Trouver l'entité pageHtmlPartSearch dans Solr</a>
+	/**	<br/> The entity pageHtmlPartSearch
+	 *  It is constructed before being initialized with the constructor by default SearchList<HtmlPart>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageHtmlPartSearch">Find the entity pageHtmlPartSearch in Solr</a>
 	 * <br/>
-	 * @param pageHtmlPartSearch est l'entité déjà construit. 
+	 * @param pageHtmlPartSearch is the entity already constructed. 
 	 **/
 	protected abstract void _pageHtmlPartSearch(SearchList<HtmlPart> l);
 
@@ -268,7 +269,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// pageHtmlPartList //
 	//////////////////////
 
-	/**	L'entité « pageHtmlPartList »
+	/**	 The entity pageHtmlPartList
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -276,11 +277,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<List<HtmlPart>> pageHtmlPartListWrap = new Wrap<List<HtmlPart>>().p(this).c(List.class).var("pageHtmlPartList").o(pageHtmlPartList);
 
-	/**	<br/>L'entité « pageHtmlPartList »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageHtmlPartList">Trouver l'entité pageHtmlPartList dans Solr</a>
+	/**	<br/> The entity pageHtmlPartList
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageHtmlPartList">Find the entity pageHtmlPartList in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _pageHtmlPartList(Wrap<List<HtmlPart>> c);
 
@@ -317,7 +318,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// wEmail //
 	////////////
 
-	/**	L'entité « wEmail »
+	/**	 The entity wEmail
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -325,11 +326,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<AllWriter> wEmailWrap = new Wrap<AllWriter>().p(this).c(AllWriter.class).var("wEmail").o(wEmail);
 
-	/**	<br/>L'entité « wEmail »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:wEmail">Trouver l'entité wEmail dans Solr</a>
+	/**	<br/> The entity wEmail
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:wEmail">Find the entity wEmail in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _wEmail(Wrap<AllWriter> c);
 
@@ -357,7 +358,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// emailContentType //
 	//////////////////////
 
-	/**	L'entité « emailContentType »
+	/**	 The entity emailContentType
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -365,11 +366,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> emailContentTypeWrap = new Wrap<String>().p(this).c(String.class).var("emailContentType").o(emailContentType);
 
-	/**	<br/>L'entité « emailContentType »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailContentType">Trouver l'entité emailContentType dans Solr</a>
+	/**	<br/> The entity emailContentType
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailContentType">Find the entity emailContentType in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _emailContentType(Wrap<String> c);
 
@@ -419,7 +420,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// emailDesignId //
 	///////////////////
 
-	/**	L'entité « emailDesignId »
+	/**	 The entity emailDesignId
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -427,11 +428,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> emailDesignIdWrap = new Wrap<String>().p(this).c(String.class).var("emailDesignId").o(emailDesignId);
 
-	/**	<br/>L'entité « emailDesignId »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailDesignId">Trouver l'entité emailDesignId dans Solr</a>
+	/**	<br/> The entity emailDesignId
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailDesignId">Find the entity emailDesignId in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _emailDesignId(Wrap<String> c);
 
@@ -481,7 +482,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// emailDesignSearch //
 	///////////////////////
 
-	/**	L'entité « emailDesignSearch »
+	/**	 The entity emailDesignSearch
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<PageDesign>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -489,11 +490,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<SearchList<PageDesign>> emailDesignSearchWrap = new Wrap<SearchList<PageDesign>>().p(this).c(SearchList.class).var("emailDesignSearch").o(emailDesignSearch);
 
-	/**	<br/>L'entité « emailDesignSearch »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<PageDesign>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailDesignSearch">Trouver l'entité emailDesignSearch dans Solr</a>
+	/**	<br/> The entity emailDesignSearch
+	 *  It is constructed before being initialized with the constructor by default SearchList<PageDesign>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailDesignSearch">Find the entity emailDesignSearch in Solr</a>
 	 * <br/>
-	 * @param emailDesignSearch est l'entité déjà construit. 
+	 * @param emailDesignSearch is the entity already constructed. 
 	 **/
 	protected abstract void _emailDesignSearch(SearchList<PageDesign> l);
 
@@ -518,7 +519,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// emailDesign //
 	/////////////////
 
-	/**	L'entité « emailDesign »
+	/**	 The entity emailDesign
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -526,11 +527,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<PageDesign> emailDesignWrap = new Wrap<PageDesign>().p(this).c(PageDesign.class).var("emailDesign").o(emailDesign);
 
-	/**	<br/>L'entité « emailDesign »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailDesign">Trouver l'entité emailDesign dans Solr</a>
+	/**	<br/> The entity emailDesign
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailDesign">Find the entity emailDesign in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _emailDesign(Wrap<PageDesign> c);
 
@@ -558,7 +559,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// emailHtmlPartSearch //
 	/////////////////////////
 
-	/**	L'entité « emailHtmlPartSearch »
+	/**	 The entity emailHtmlPartSearch
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<HtmlPart>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -566,11 +567,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<SearchList<HtmlPart>> emailHtmlPartSearchWrap = new Wrap<SearchList<HtmlPart>>().p(this).c(SearchList.class).var("emailHtmlPartSearch").o(emailHtmlPartSearch);
 
-	/**	<br/>L'entité « emailHtmlPartSearch »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<HtmlPart>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailHtmlPartSearch">Trouver l'entité emailHtmlPartSearch dans Solr</a>
+	/**	<br/> The entity emailHtmlPartSearch
+	 *  It is constructed before being initialized with the constructor by default SearchList<HtmlPart>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailHtmlPartSearch">Find the entity emailHtmlPartSearch in Solr</a>
 	 * <br/>
-	 * @param emailHtmlPartSearch est l'entité déjà construit. 
+	 * @param emailHtmlPartSearch is the entity already constructed. 
 	 **/
 	protected abstract void _emailHtmlPartSearch(SearchList<HtmlPart> l);
 
@@ -595,7 +596,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// emailHtmlPartList //
 	///////////////////////
 
-	/**	L'entité « emailHtmlPartList »
+	/**	 The entity emailHtmlPartList
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -603,11 +604,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<List<HtmlPart>> emailHtmlPartListWrap = new Wrap<List<HtmlPart>>().p(this).c(List.class).var("emailHtmlPartList").o(emailHtmlPartList);
 
-	/**	<br/>L'entité « emailHtmlPartList »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailHtmlPartList">Trouver l'entité emailHtmlPartList dans Solr</a>
+	/**	<br/> The entity emailHtmlPartList
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailHtmlPartList">Find the entity emailHtmlPartList in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _emailHtmlPartList(Wrap<List<HtmlPart>> c);
 
@@ -644,7 +645,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// wAttachment //
 	/////////////////
 
-	/**	L'entité « wAttachment »
+	/**	 The entity wAttachment
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -652,11 +653,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<AllWriter> wAttachmentWrap = new Wrap<AllWriter>().p(this).c(AllWriter.class).var("wAttachment").o(wAttachment);
 
-	/**	<br/>L'entité « wAttachment »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:wAttachment">Trouver l'entité wAttachment dans Solr</a>
+	/**	<br/> The entity wAttachment
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:wAttachment">Find the entity wAttachment in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _wAttachment(Wrap<AllWriter> c);
 
@@ -684,7 +685,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// attachmentContentType //
 	///////////////////////////
 
-	/**	L'entité « attachmentContentType »
+	/**	 The entity attachmentContentType
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -692,11 +693,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> attachmentContentTypeWrap = new Wrap<String>().p(this).c(String.class).var("attachmentContentType").o(attachmentContentType);
 
-	/**	<br/>L'entité « attachmentContentType »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:attachmentContentType">Trouver l'entité attachmentContentType dans Solr</a>
+	/**	<br/> The entity attachmentContentType
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:attachmentContentType">Find the entity attachmentContentType in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _attachmentContentType(Wrap<String> c);
 
@@ -746,7 +747,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// attachmentDesignId //
 	////////////////////////
 
-	/**	L'entité « attachmentDesignId »
+	/**	 The entity attachmentDesignId
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -754,11 +755,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> attachmentDesignIdWrap = new Wrap<String>().p(this).c(String.class).var("attachmentDesignId").o(attachmentDesignId);
 
-	/**	<br/>L'entité « attachmentDesignId »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:attachmentDesignId">Trouver l'entité attachmentDesignId dans Solr</a>
+	/**	<br/> The entity attachmentDesignId
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:attachmentDesignId">Find the entity attachmentDesignId in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _attachmentDesignId(Wrap<String> c);
 
@@ -808,7 +809,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// attachmentDesignSearch //
 	////////////////////////////
 
-	/**	L'entité « attachmentDesignSearch »
+	/**	 The entity attachmentDesignSearch
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<PageDesign>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -816,11 +817,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<SearchList<PageDesign>> attachmentDesignSearchWrap = new Wrap<SearchList<PageDesign>>().p(this).c(SearchList.class).var("attachmentDesignSearch").o(attachmentDesignSearch);
 
-	/**	<br/>L'entité « attachmentDesignSearch »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<PageDesign>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:attachmentDesignSearch">Trouver l'entité attachmentDesignSearch dans Solr</a>
+	/**	<br/> The entity attachmentDesignSearch
+	 *  It is constructed before being initialized with the constructor by default SearchList<PageDesign>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:attachmentDesignSearch">Find the entity attachmentDesignSearch in Solr</a>
 	 * <br/>
-	 * @param attachmentDesignSearch est l'entité déjà construit. 
+	 * @param attachmentDesignSearch is the entity already constructed. 
 	 **/
 	protected abstract void _attachmentDesignSearch(SearchList<PageDesign> l);
 
@@ -845,7 +846,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// attachmentDesign //
 	//////////////////////
 
-	/**	L'entité « attachmentDesign »
+	/**	 The entity attachmentDesign
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -853,11 +854,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<PageDesign> attachmentDesignWrap = new Wrap<PageDesign>().p(this).c(PageDesign.class).var("attachmentDesign").o(attachmentDesign);
 
-	/**	<br/>L'entité « attachmentDesign »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:attachmentDesign">Trouver l'entité attachmentDesign dans Solr</a>
+	/**	<br/> The entity attachmentDesign
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:attachmentDesign">Find the entity attachmentDesign in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _attachmentDesign(Wrap<PageDesign> c);
 
@@ -885,7 +886,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// attachmentHtmlPartSearch //
 	//////////////////////////////
 
-	/**	L'entité « attachmentHtmlPartSearch »
+	/**	 The entity attachmentHtmlPartSearch
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<HtmlPart>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -893,11 +894,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<SearchList<HtmlPart>> attachmentHtmlPartSearchWrap = new Wrap<SearchList<HtmlPart>>().p(this).c(SearchList.class).var("attachmentHtmlPartSearch").o(attachmentHtmlPartSearch);
 
-	/**	<br/>L'entité « attachmentHtmlPartSearch »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<HtmlPart>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:attachmentHtmlPartSearch">Trouver l'entité attachmentHtmlPartSearch dans Solr</a>
+	/**	<br/> The entity attachmentHtmlPartSearch
+	 *  It is constructed before being initialized with the constructor by default SearchList<HtmlPart>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:attachmentHtmlPartSearch">Find the entity attachmentHtmlPartSearch in Solr</a>
 	 * <br/>
-	 * @param attachmentHtmlPartSearch est l'entité déjà construit. 
+	 * @param attachmentHtmlPartSearch is the entity already constructed. 
 	 **/
 	protected abstract void _attachmentHtmlPartSearch(SearchList<HtmlPart> l);
 
@@ -922,7 +923,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// attachmentHtmlPartList //
 	////////////////////////////
 
-	/**	L'entité « attachmentHtmlPartList »
+	/**	 The entity attachmentHtmlPartList
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -930,11 +931,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<List<HtmlPart>> attachmentHtmlPartListWrap = new Wrap<List<HtmlPart>>().p(this).c(List.class).var("attachmentHtmlPartList").o(attachmentHtmlPartList);
 
-	/**	<br/>L'entité « attachmentHtmlPartList »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:attachmentHtmlPartList">Trouver l'entité attachmentHtmlPartList dans Solr</a>
+	/**	<br/> The entity attachmentHtmlPartList
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:attachmentHtmlPartList">Find the entity attachmentHtmlPartList in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _attachmentHtmlPartList(Wrap<List<HtmlPart>> c);
 
@@ -971,7 +972,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// enrollmentSearch //
 	//////////////////////
 
-	/**	L'entité « enrollmentSearch »
+	/**	 The entity enrollmentSearch
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<MedicalEnrollment>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -979,11 +980,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<SearchList<MedicalEnrollment>> enrollmentSearchWrap = new Wrap<SearchList<MedicalEnrollment>>().p(this).c(SearchList.class).var("enrollmentSearch").o(enrollmentSearch);
 
-	/**	<br/>L'entité « enrollmentSearch »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<MedicalEnrollment>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentSearch">Trouver l'entité enrollmentSearch dans Solr</a>
+	/**	<br/> The entity enrollmentSearch
+	 *  It is constructed before being initialized with the constructor by default SearchList<MedicalEnrollment>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentSearch">Find the entity enrollmentSearch in Solr</a>
 	 * <br/>
-	 * @param enrollmentSearch est l'entité déjà construit. 
+	 * @param enrollmentSearch is the entity already constructed. 
 	 **/
 	protected abstract void _enrollmentSearch(SearchList<MedicalEnrollment> l);
 
@@ -1008,7 +1009,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// patientEnrollment //
 	///////////////////////
 
-	/**	L'entité « patientEnrollment »
+	/**	 The entity patientEnrollment
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1016,11 +1017,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<MedicalEnrollment> patientEnrollmentWrap = new Wrap<MedicalEnrollment>().p(this).c(MedicalEnrollment.class).var("patientEnrollment").o(patientEnrollment);
 
-	/**	<br/>L'entité « patientEnrollment »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientEnrollment">Trouver l'entité patientEnrollment dans Solr</a>
+	/**	<br/> The entity patientEnrollment
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientEnrollment">Find the entity patientEnrollment in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _patientEnrollment(Wrap<MedicalEnrollment> c);
 
@@ -1048,7 +1049,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// enrollments //
 	/////////////////
 
-	/**	L'entité « enrollments »
+	/**	 The entity enrollments
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1056,11 +1057,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<List<MedicalEnrollment>> enrollmentsWrap = new Wrap<List<MedicalEnrollment>>().p(this).c(List.class).var("enrollments").o(enrollments);
 
-	/**	<br/>L'entité « enrollments »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollments">Trouver l'entité enrollments dans Solr</a>
+	/**	<br/> The entity enrollments
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollments">Find the entity enrollments in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _enrollments(Wrap<List<MedicalEnrollment>> c);
 
@@ -1097,7 +1098,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// enrollmentBlocks //
 	//////////////////////
 
-	/**	L'entité « enrollmentBlocks »
+	/**	 The entity enrollmentBlocks
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<MedicalEnrollment>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1105,11 +1106,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<List<MedicalEnrollment>> enrollmentBlocksWrap = new Wrap<List<MedicalEnrollment>>().p(this).c(List.class).var("enrollmentBlocks").o(enrollmentBlocks);
 
-	/**	<br/>L'entité « enrollmentBlocks »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<MedicalEnrollment>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentBlocks">Trouver l'entité enrollmentBlocks dans Solr</a>
+	/**	<br/> The entity enrollmentBlocks
+	 *  It is constructed before being initialized with the constructor by default List<MedicalEnrollment>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentBlocks">Find the entity enrollmentBlocks in Solr</a>
 	 * <br/>
-	 * @param enrollmentBlocks est l'entité déjà construit. 
+	 * @param enrollmentBlocks is the entity already constructed. 
 	 **/
 	protected abstract void _enrollmentBlocks(List<MedicalEnrollment> c);
 
@@ -1144,7 +1145,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// enrollmentBlock //
 	/////////////////////
 
-	/**	L'entité « enrollmentBlock »
+	/**	 The entity enrollmentBlock
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1152,11 +1153,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<MedicalEnrollment> enrollmentBlockWrap = new Wrap<MedicalEnrollment>().p(this).c(MedicalEnrollment.class).var("enrollmentBlock").o(enrollmentBlock);
 
-	/**	<br/>L'entité « enrollmentBlock »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentBlock">Trouver l'entité enrollmentBlock dans Solr</a>
+	/**	<br/> The entity enrollmentBlock
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentBlock">Find the entity enrollmentBlock in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _enrollmentBlock(Wrap<MedicalEnrollment> c);
 
@@ -1184,7 +1185,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// enrollmentEnrollment //
 	//////////////////////////
 
-	/**	L'entité « enrollmentEnrollment »
+	/**	 The entity enrollmentEnrollment
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1192,11 +1193,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<MedicalEnrollment> enrollmentEnrollmentWrap = new Wrap<MedicalEnrollment>().p(this).c(MedicalEnrollment.class).var("enrollmentEnrollment").o(enrollmentEnrollment);
 
-	/**	<br/>L'entité « enrollmentEnrollment »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentEnrollment">Trouver l'entité enrollmentEnrollment dans Solr</a>
+	/**	<br/> The entity enrollmentEnrollment
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentEnrollment">Find the entity enrollmentEnrollment in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _enrollmentEnrollment(Wrap<MedicalEnrollment> c);
 
@@ -1224,7 +1225,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// clinicSearch //
 	//////////////////
 
-	/**	L'entité « clinicSearch »
+	/**	 The entity clinicSearch
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<MedicalClinic>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1232,11 +1233,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<SearchList<MedicalClinic>> clinicSearchWrap = new Wrap<SearchList<MedicalClinic>>().p(this).c(SearchList.class).var("clinicSearch").o(clinicSearch);
 
-	/**	<br/>L'entité « clinicSearch »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<MedicalClinic>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicSearch">Trouver l'entité clinicSearch dans Solr</a>
+	/**	<br/> The entity clinicSearch
+	 *  It is constructed before being initialized with the constructor by default SearchList<MedicalClinic>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicSearch">Find the entity clinicSearch in Solr</a>
 	 * <br/>
-	 * @param clinicSearch est l'entité déjà construit. 
+	 * @param clinicSearch is the entity already constructed. 
 	 **/
 	protected abstract void _clinicSearch(SearchList<MedicalClinic> l);
 
@@ -1261,7 +1262,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// clinic_ //
 	/////////////
 
-	/**	L'entité « clinic_ »
+	/**	 The entity clinic_
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1269,11 +1270,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<MedicalClinic> clinic_Wrap = new Wrap<MedicalClinic>().p(this).c(MedicalClinic.class).var("clinic_").o(clinic_);
 
-	/**	<br/>L'entité « clinic_ »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinic_">Trouver l'entité clinic_ dans Solr</a>
+	/**	<br/> The entity clinic_
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinic_">Find the entity clinic_ in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _clinic_(Wrap<MedicalClinic> c);
 
@@ -1299,7 +1300,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// clinicKey //
 	///////////////
 
-	/**	L'entité « clinicKey »
+	/**	 The entity clinicKey
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -1308,11 +1309,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<Long> clinicKeyWrap = new Wrap<Long>().p(this).c(Long.class).var("clinicKey").o(clinicKey);
 
-	/**	<br/>L'entité « clinicKey »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicKey">Trouver l'entité clinicKey dans Solr</a>
+	/**	<br/> The entity clinicKey
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicKey">Find the entity clinicKey in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _clinicKey(Wrap<Long> c);
 
@@ -1368,7 +1369,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// clinicName //
 	////////////////
 
-	/**	L'entité « clinicName »
+	/**	 The entity clinicName
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1376,11 +1377,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> clinicNameWrap = new Wrap<String>().p(this).c(String.class).var("clinicName").o(clinicName);
 
-	/**	<br/>L'entité « clinicName »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicName">Trouver l'entité clinicName dans Solr</a>
+	/**	<br/> The entity clinicName
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicName">Find the entity clinicName in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _clinicName(Wrap<String> c);
 
@@ -1430,7 +1431,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// clinicCompleteName //
 	////////////////////////
 
-	/**	L'entité « clinicCompleteName »
+	/**	 The entity clinicCompleteName
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1438,11 +1439,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> clinicCompleteNameWrap = new Wrap<String>().p(this).c(String.class).var("clinicCompleteName").o(clinicCompleteName);
 
-	/**	<br/>L'entité « clinicCompleteName »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicCompleteName">Trouver l'entité clinicCompleteName dans Solr</a>
+	/**	<br/> The entity clinicCompleteName
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicCompleteName">Find the entity clinicCompleteName in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _clinicCompleteName(Wrap<String> c);
 
@@ -1492,7 +1493,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// clinicLocation //
 	////////////////////
 
-	/**	L'entité « clinicLocation »
+	/**	 The entity clinicLocation
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1500,11 +1501,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> clinicLocationWrap = new Wrap<String>().p(this).c(String.class).var("clinicLocation").o(clinicLocation);
 
-	/**	<br/>L'entité « clinicLocation »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicLocation">Trouver l'entité clinicLocation dans Solr</a>
+	/**	<br/> The entity clinicLocation
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicLocation">Find the entity clinicLocation in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _clinicLocation(Wrap<String> c);
 
@@ -1554,7 +1555,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// clinicAddress //
 	///////////////////
 
-	/**	L'entité « clinicAddress »
+	/**	 The entity clinicAddress
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1562,11 +1563,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> clinicAddressWrap = new Wrap<String>().p(this).c(String.class).var("clinicAddress").o(clinicAddress);
 
-	/**	<br/>L'entité « clinicAddress »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicAddress">Trouver l'entité clinicAddress dans Solr</a>
+	/**	<br/> The entity clinicAddress
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicAddress">Find the entity clinicAddress in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _clinicAddress(Wrap<String> c);
 
@@ -1616,7 +1617,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// clinicPhoneNumber //
 	///////////////////////
 
-	/**	L'entité « clinicPhoneNumber »
+	/**	 The entity clinicPhoneNumber
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1624,11 +1625,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> clinicPhoneNumberWrap = new Wrap<String>().p(this).c(String.class).var("clinicPhoneNumber").o(clinicPhoneNumber);
 
-	/**	<br/>L'entité « clinicPhoneNumber »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicPhoneNumber">Trouver l'entité clinicPhoneNumber dans Solr</a>
+	/**	<br/> The entity clinicPhoneNumber
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicPhoneNumber">Find the entity clinicPhoneNumber in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _clinicPhoneNumber(Wrap<String> c);
 
@@ -1678,7 +1679,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// clinicAdministratorName //
 	/////////////////////////////
 
-	/**	L'entité « clinicAdministratorName »
+	/**	 The entity clinicAdministratorName
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1686,11 +1687,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> clinicAdministratorNameWrap = new Wrap<String>().p(this).c(String.class).var("clinicAdministratorName").o(clinicAdministratorName);
 
-	/**	<br/>L'entité « clinicAdministratorName »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicAdministratorName">Trouver l'entité clinicAdministratorName dans Solr</a>
+	/**	<br/> The entity clinicAdministratorName
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicAdministratorName">Find the entity clinicAdministratorName in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _clinicAdministratorName(Wrap<String> c);
 
@@ -1740,7 +1741,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// emailFrom //
 	///////////////
 
-	/**	L'entité « emailFrom »
+	/**	 The entity emailFrom
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1748,11 +1749,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> emailFromWrap = new Wrap<String>().p(this).c(String.class).var("emailFrom").o(emailFrom);
 
-	/**	<br/>L'entité « emailFrom »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailFrom">Trouver l'entité emailFrom dans Solr</a>
+	/**	<br/> The entity emailFrom
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailFrom">Find the entity emailFrom in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _emailFrom(Wrap<String> c);
 
@@ -1802,7 +1803,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// emailToClinic //
 	///////////////////
 
-	/**	L'entité « emailToClinic »
+	/**	 The entity emailToClinic
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1810,11 +1811,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> emailToClinicWrap = new Wrap<String>().p(this).c(String.class).var("emailToClinic").o(emailToClinic);
 
-	/**	<br/>L'entité « emailToClinic »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailToClinic">Trouver l'entité emailToClinic dans Solr</a>
+	/**	<br/> The entity emailToClinic
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailToClinic">Find the entity emailToClinic in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _emailToClinic(Wrap<String> c);
 
@@ -1864,7 +1865,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// emailToAddress //
 	////////////////////
 
-	/**	L'entité « emailToAddress »
+	/**	 The entity emailToAddress
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1872,11 +1873,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> emailToAddressWrap = new Wrap<String>().p(this).c(String.class).var("emailToAddress").o(emailToAddress);
 
-	/**	<br/>L'entité « emailToAddress »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailToAddress">Trouver l'entité emailToAddress dans Solr</a>
+	/**	<br/> The entity emailToAddress
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailToAddress">Find the entity emailToAddress in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _emailToAddress(Wrap<String> c);
 
@@ -1926,7 +1927,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// emailToName //
 	/////////////////
 
-	/**	L'entité « emailToName »
+	/**	 The entity emailToName
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1934,11 +1935,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> emailToNameWrap = new Wrap<String>().p(this).c(String.class).var("emailToName").o(emailToName);
 
-	/**	<br/>L'entité « emailToName »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailToName">Trouver l'entité emailToName dans Solr</a>
+	/**	<br/> The entity emailToName
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailToName">Find the entity emailToName in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _emailToName(Wrap<String> c);
 
@@ -1988,7 +1989,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// emailMessage //
 	//////////////////
 
-	/**	L'entité « emailMessage »
+	/**	 The entity emailMessage
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1996,11 +1997,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> emailMessageWrap = new Wrap<String>().p(this).c(String.class).var("emailMessage").o(emailMessage);
 
-	/**	<br/>L'entité « emailMessage »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailMessage">Trouver l'entité emailMessage dans Solr</a>
+	/**	<br/> The entity emailMessage
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailMessage">Find the entity emailMessage in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _emailMessage(Wrap<String> c);
 
@@ -2050,7 +2051,7 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	// emailSubject //
 	//////////////////
 
-	/**	L'entité « emailSubject »
+	/**	 The entity emailSubject
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -2058,11 +2059,11 @@ public abstract class DesignEmailPageGen<DEV> extends DesignEmailGenPage {
 	@JsonIgnore
 	public Wrap<String> emailSubjectWrap = new Wrap<String>().p(this).c(String.class).var("emailSubject").o(emailSubject);
 
-	/**	<br/>L'entité « emailSubject »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailSubject">Trouver l'entité emailSubject dans Solr</a>
+	/**	<br/> The entity emailSubject
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignEmailPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:emailSubject">Find the entity emailSubject in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _emailSubject(Wrap<String> c);
 

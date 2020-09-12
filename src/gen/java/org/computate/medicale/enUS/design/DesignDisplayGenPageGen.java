@@ -15,6 +15,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.computate.medicale.enUS.request.api.ApiRequest;
 import io.vertx.core.logging.Logger;
+import java.math.RoundingMode;
 import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.cluster.ClusterPage;
 import java.math.MathContext;
@@ -33,7 +34,7 @@ import org.computate.medicale.enUS.cluster.Cluster;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignDisplayGenPage&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
+ * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignDisplayGenPage&fq=classeEtendGen_indexed_boolean:true">Find the class  in Solr. </a>
  * <br/>
  **/
 public abstract class DesignDisplayGenPageGen<DEV> extends ClusterPage {
@@ -43,7 +44,7 @@ public abstract class DesignDisplayGenPageGen<DEV> extends ClusterPage {
 	// listPageDesign //
 	////////////////////
 
-	/**	L'entité « listPageDesign »
+	/**	 The entity listPageDesign
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -51,11 +52,11 @@ public abstract class DesignDisplayGenPageGen<DEV> extends ClusterPage {
 	@JsonIgnore
 	public Wrap<SearchList<PageDesign>> listPageDesignWrap = new Wrap<SearchList<PageDesign>>().p(this).c(SearchList.class).var("listPageDesign").o(listPageDesign);
 
-	/**	<br/>L'entité « listPageDesign »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignDisplayGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:listPageDesign">Trouver l'entité listPageDesign dans Solr</a>
+	/**	<br/> The entity listPageDesign
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignDisplayGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:listPageDesign">Find the entity listPageDesign in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _listPageDesign(Wrap<SearchList<PageDesign>> c);
 
@@ -79,43 +80,41 @@ public abstract class DesignDisplayGenPageGen<DEV> extends ClusterPage {
 		return (DesignDisplayGenPage)this;
 	}
 
-	////////////////
-	// pageDesign //
-	////////////////
+	/////////////////
+	// pageDesign_ //
+	/////////////////
 
-	/**	L'entité « pageDesign »
+	/**	 The entity pageDesign_
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected PageDesign pageDesign;
+	protected PageDesign pageDesign_;
 	@JsonIgnore
-	public Wrap<PageDesign> pageDesignWrap = new Wrap<PageDesign>().p(this).c(PageDesign.class).var("pageDesign").o(pageDesign);
+	public Wrap<PageDesign> pageDesign_Wrap = new Wrap<PageDesign>().p(this).c(PageDesign.class).var("pageDesign_").o(pageDesign_);
 
-	/**	<br/>L'entité « pageDesign »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignDisplayGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageDesign">Trouver l'entité pageDesign dans Solr</a>
+	/**	<br/> The entity pageDesign_
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.DesignDisplayGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageDesign_">Find the entity pageDesign_ in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
-	protected abstract void _pageDesign(Wrap<PageDesign> c);
+	protected abstract void _pageDesign_(Wrap<PageDesign> c);
 
-	public PageDesign getPageDesign() {
-		return pageDesign;
+	public PageDesign getPageDesign_() {
+		return pageDesign_;
 	}
 
-	public void setPageDesign(PageDesign pageDesign) {
-		this.pageDesign = pageDesign;
-		this.pageDesignWrap.alreadyInitialized = true;
+	public void setPageDesign_(PageDesign pageDesign_) {
+		this.pageDesign_ = pageDesign_;
+		this.pageDesign_Wrap.alreadyInitialized = true;
 	}
-	protected DesignDisplayGenPage pageDesignInit() {
-		if(!pageDesignWrap.alreadyInitialized) {
-			_pageDesign(pageDesignWrap);
-			if(pageDesign == null)
-				setPageDesign(pageDesignWrap.o);
+	protected DesignDisplayGenPage pageDesign_Init() {
+		if(!pageDesign_Wrap.alreadyInitialized) {
+			_pageDesign_(pageDesign_Wrap);
+			if(pageDesign_ == null)
+				setPageDesign_(pageDesign_Wrap.o);
 		}
-		if(pageDesign != null)
-			pageDesign.initDeepForClass(siteRequest_);
-		pageDesignWrap.alreadyInitialized(true);
+		pageDesign_Wrap.alreadyInitialized(true);
 		return (DesignDisplayGenPage)this;
 	}
 
@@ -141,7 +140,7 @@ public abstract class DesignDisplayGenPageGen<DEV> extends ClusterPage {
 
 	public void initDesignDisplayGenPage() {
 		listPageDesignInit();
-		pageDesignInit();
+		pageDesign_Init();
 	}
 
 	@Override public void initDeepForClass(SiteRequestEnUS siteRequest_) {
@@ -156,8 +155,6 @@ public abstract class DesignDisplayGenPageGen<DEV> extends ClusterPage {
 			super.siteRequestClusterPage(siteRequest_);
 		if(listPageDesign != null)
 			listPageDesign.setSiteRequest_(siteRequest_);
-		if(pageDesign != null)
-			pageDesign.setSiteRequest_(siteRequest_);
 	}
 
 	public void siteRequestForClass(SiteRequestEnUS siteRequest_) {
@@ -186,8 +183,8 @@ public abstract class DesignDisplayGenPageGen<DEV> extends ClusterPage {
 		switch(var) {
 			case "listPageDesign":
 				return oDesignDisplayGenPage.listPageDesign;
-			case "pageDesign":
-				return oDesignDisplayGenPage.pageDesign;
+			case "pageDesign_":
+				return oDesignDisplayGenPage.pageDesign_;
 			default:
 				return super.obtainClusterPage(var);
 		}

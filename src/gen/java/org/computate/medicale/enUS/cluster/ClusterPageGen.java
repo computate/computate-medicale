@@ -16,6 +16,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.computate.medicale.enUS.request.api.ApiRequest;
 import io.vertx.core.logging.Logger;
+import java.math.RoundingMode;
 import org.computate.medicale.enUS.wrap.Wrap;
 import java.math.MathContext;
 import org.apache.commons.text.StringEscapeUtils;
@@ -31,7 +32,7 @@ import org.computate.medicale.enUS.cluster.Cluster;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.cluster.ClusterPage&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
+ * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.cluster.ClusterPage&fq=classeEtendGen_indexed_boolean:true">Find the class  in Solr. </a>
  * <br/>
  **/
 public abstract class ClusterPageGen<DEV> extends ClusterGenPage {

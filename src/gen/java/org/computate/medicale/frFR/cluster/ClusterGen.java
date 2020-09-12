@@ -11,6 +11,7 @@ import java.util.Locale;
 import io.vertx.core.json.JsonObject;
 import java.time.ZoneOffset;
 import io.vertx.core.logging.Logger;
+import java.math.RoundingMode;
 import org.computate.medicale.frFR.couverture.Couverture;
 import java.math.MathContext;
 import java.util.Set;
@@ -55,7 +56,7 @@ import java.lang.Object;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true">Trouver la classe pageH1 dans Solr</a>
+ * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true">Trouver la classe pageH1 dans Solr. </a>
  * <br/>
  **/
 public abstract class ClusterGen<DEV> extends Object {
@@ -76,6 +77,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	public static final String Cluster_TousNom = "tous les clusters";
 	public static final String Cluster_RechercherTousNomPar = "rechercher clusters par ";
 	public static final String Cluster_RechercherTousNom = "rechercher clusters";
+	public static final String Cluster_Titre = "clusters";
 	public static final String Cluster_LesNom = "les clusters";
 	public static final String Cluster_AucunNomTrouve = "aucun cluster trouvé";
 	public static final String Cluster_NomVar = "cluster";
@@ -90,7 +92,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// requeteSite_ //
 	//////////////////
 
-	/**	L'entité « requeteSite_ »
+	/**	 L'entité requeteSite_
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonIgnore
@@ -99,9 +101,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<RequeteSiteFrFR> requeteSite_Couverture = new Couverture<RequeteSiteFrFR>().p(this).c(RequeteSiteFrFR.class).var("requeteSite_").o(requeteSite_);
 
-	/**	<br/>L'entité « requeteSite_ »
+	/**	<br/> L'entité requeteSite_
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:requeteSite_">Trouver l'entité requeteSite_ dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:requeteSite_">Trouver l'entité requeteSite_ dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -129,7 +131,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// pageParts //
 	///////////////
 
-	/**	L'entité « pageParts »
+	/**	 L'entité pageParts
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<PagePart>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -137,9 +139,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<List<PagePart>> pagePartsCouverture = new Couverture<List<PagePart>>().p(this).c(List.class).var("pageParts").o(pageParts);
 
-	/**	<br/>L'entité « pageParts »
+	/**	<br/> L'entité pageParts
 	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<PagePart>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pageParts">Trouver l'entité pageParts dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pageParts">Trouver l'entité pageParts dans Solr</a>
 	 * <br/>
 	 * @param pageParts est l'entité déjà construit. 
 	 **/
@@ -177,7 +179,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// pk //
 	////////
 
-	/**	L'entité « pk »
+	/**	 L'entité pk
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -186,9 +188,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<Long> pkCouverture = new Couverture<Long>().p(this).c(Long.class).var("pk").o(pk);
 
-	/**	<br/>L'entité « pk »
+	/**	<br/> L'entité pk
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pk">Trouver l'entité pk dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pk">Trouver l'entité pk dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -244,7 +246,7 @@ public abstract class ClusterGen<DEV> extends Object {
 
 	public void inputPk(String classeApiMethodeMethode) {
 		Cluster s = (Cluster)this;
-		s.sx(htmPk());
+		s.e("span").a("class", "varCluster", pk, "Pk ").f().sx(htmPk()).g("span");
 	}
 
 	public void htmPk(String classeApiMethodeMethode) {
@@ -273,7 +275,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// inheritPk //
 	///////////////
 
-	/**	L'entité « inheritPk »
+	/**	 L'entité inheritPk
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -282,9 +284,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<Long> inheritPkCouverture = new Couverture<Long>().p(this).c(Long.class).var("inheritPk").o(inheritPk);
 
-	/**	<br/>L'entité « inheritPk »
+	/**	<br/> L'entité inheritPk
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:inheritPk">Trouver l'entité inheritPk dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:inheritPk">Trouver l'entité inheritPk dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -368,7 +370,7 @@ public abstract class ClusterGen<DEV> extends Object {
 					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLE_READS)
 					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLE_READS)
 					) {
-				s.sx(htmInheritPk());
+				s.e("span").a("class", "varCluster", pk, "InheritPk ").f().sx(htmInheritPk()).g("span");
 			}
 		}
 	}
@@ -411,7 +413,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// id //
 	////////
 
-	/**	L'entité « id »
+	/**	 L'entité id
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -419,9 +421,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> idCouverture = new Couverture<String>().p(this).c(String.class).var("id").o(id);
 
-	/**	<br/>L'entité « id »
+	/**	<br/> L'entité id
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:id">Trouver l'entité id dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:id">Trouver l'entité id dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -473,7 +475,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// cree //
 	//////////
 
-	/**	L'entité « cree »
+	/**	 L'entité cree
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -482,9 +484,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<ZonedDateTime> creeCouverture = new Couverture<ZonedDateTime>().p(this).c(ZonedDateTime.class).var("cree").o(cree);
 
-	/**	<br/>L'entité « cree »
+	/**	<br/> L'entité cree
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:cree">Trouver l'entité cree dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:cree">Trouver l'entité cree dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -550,7 +552,7 @@ public abstract class ClusterGen<DEV> extends Object {
 
 	public void inputCree(String classeApiMethodeMethode) {
 		Cluster s = (Cluster)this;
-		s.sx(htmCree());
+		s.e("span").a("class", "varCluster", pk, "Cree ").f().sx(htmCree()).g("span");
 	}
 
 	public void htmCree(String classeApiMethodeMethode) {
@@ -577,7 +579,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// modifie //
 	/////////////
 
-	/**	L'entité « modifie »
+	/**	 L'entité modifie
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -586,9 +588,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<ZonedDateTime> modifieCouverture = new Couverture<ZonedDateTime>().p(this).c(ZonedDateTime.class).var("modifie").o(modifie);
 
-	/**	<br/>L'entité « modifie »
+	/**	<br/> L'entité modifie
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:modifie">Trouver l'entité modifie dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:modifie">Trouver l'entité modifie dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -654,7 +656,7 @@ public abstract class ClusterGen<DEV> extends Object {
 
 	public void inputModifie(String classeApiMethodeMethode) {
 		Cluster s = (Cluster)this;
-		s.sx(htmModifie());
+		s.e("span").a("class", "varCluster", pk, "Modifie ").f().sx(htmModifie()).g("span");
 	}
 
 	public void htmModifie(String classeApiMethodeMethode) {
@@ -681,7 +683,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// archive //
 	/////////////
 
-	/**	L'entité « archive »
+	/**	 L'entité archive
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -689,9 +691,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<Boolean> archiveCouverture = new Couverture<Boolean>().p(this).c(Boolean.class).var("archive").o(archive);
 
-	/**	<br/>L'entité « archive »
+	/**	<br/> L'entité archive
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:archive">Trouver l'entité archive dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:archive">Trouver l'entité archive dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -788,7 +790,7 @@ public abstract class ClusterGen<DEV> extends Object {
 					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLE_READS)
 					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLE_READS)
 					) {
-				s.sx(htmArchive());
+				s.e("span").a("class", "varCluster", pk, "Archive ").f().sx(htmArchive()).g("span");
 			}
 		}
 	}
@@ -818,7 +820,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// supprime //
 	//////////////
 
-	/**	L'entité « supprime »
+	/**	 L'entité supprime
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -826,9 +828,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<Boolean> supprimeCouverture = new Couverture<Boolean>().p(this).c(Boolean.class).var("supprime").o(supprime);
 
-	/**	<br/>L'entité « supprime »
+	/**	<br/> L'entité supprime
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:supprime">Trouver l'entité supprime dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:supprime">Trouver l'entité supprime dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -925,7 +927,7 @@ public abstract class ClusterGen<DEV> extends Object {
 					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLE_READS)
 					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLE_READS)
 					) {
-				s.sx(htmSupprime());
+				s.e("span").a("class", "varCluster", pk, "Supprime ").f().sx(htmSupprime()).g("span");
 			}
 		}
 	}
@@ -955,7 +957,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// classeNomCanonique //
 	////////////////////////
 
-	/**	L'entité « classeNomCanonique »
+	/**	 L'entité classeNomCanonique
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -963,9 +965,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> classeNomCanoniqueCouverture = new Couverture<String>().p(this).c(String.class).var("classeNomCanonique").o(classeNomCanonique);
 
-	/**	<br/>L'entité « classeNomCanonique »
+	/**	<br/> L'entité classeNomCanonique
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:classeNomCanonique">Trouver l'entité classeNomCanonique dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:classeNomCanonique">Trouver l'entité classeNomCanonique dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1017,7 +1019,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// classeNomSimple //
 	/////////////////////
 
-	/**	L'entité « classeNomSimple »
+	/**	 L'entité classeNomSimple
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1025,9 +1027,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> classeNomSimpleCouverture = new Couverture<String>().p(this).c(String.class).var("classeNomSimple").o(classeNomSimple);
 
-	/**	<br/>L'entité « classeNomSimple »
+	/**	<br/> L'entité classeNomSimple
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:classeNomSimple">Trouver l'entité classeNomSimple dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:classeNomSimple">Trouver l'entité classeNomSimple dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1079,7 +1081,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// classeNomsCanoniques //
 	//////////////////////////
 
-	/**	L'entité « classeNomsCanoniques »
+	/**	 L'entité classeNomsCanoniques
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1087,9 +1089,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<List<String>> classeNomsCanoniquesCouverture = new Couverture<List<String>>().p(this).c(List.class).var("classeNomsCanoniques").o(classeNomsCanoniques);
 
-	/**	<br/>L'entité « classeNomsCanoniques »
+	/**	<br/> L'entité classeNomsCanoniques
 	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:classeNomsCanoniques">Trouver l'entité classeNomsCanoniques dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:classeNomsCanoniques">Trouver l'entité classeNomsCanoniques dans Solr</a>
 	 * <br/>
 	 * @param classeNomsCanoniques est l'entité déjà construit. 
 	 **/
@@ -1158,7 +1160,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// sessionId //
 	///////////////
 
-	/**	L'entité « sessionId »
+	/**	 L'entité sessionId
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1166,9 +1168,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> sessionIdCouverture = new Couverture<String>().p(this).c(String.class).var("sessionId").o(sessionId);
 
-	/**	<br/>L'entité « sessionId »
+	/**	<br/> L'entité sessionId
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:sessionId">Trouver l'entité sessionId dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:sessionId">Trouver l'entité sessionId dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1218,7 +1220,7 @@ public abstract class ClusterGen<DEV> extends Object {
 
 	public void inputSessionId(String classeApiMethodeMethode) {
 		Cluster s = (Cluster)this;
-		s.sx(htmSessionId());
+		s.e("span").a("class", "varCluster", pk, "SessionId ").f().sx(htmSessionId()).g("span");
 	}
 
 	public void htmSessionId(String classeApiMethodeMethode) {
@@ -1243,7 +1245,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// utilisateurId //
 	///////////////////
 
-	/**	L'entité « utilisateurId »
+	/**	 L'entité utilisateurId
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1251,9 +1253,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> utilisateurIdCouverture = new Couverture<String>().p(this).c(String.class).var("utilisateurId").o(utilisateurId);
 
-	/**	<br/>L'entité « utilisateurId »
+	/**	<br/> L'entité utilisateurId
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:utilisateurId">Trouver l'entité utilisateurId dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:utilisateurId">Trouver l'entité utilisateurId dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1303,7 +1305,7 @@ public abstract class ClusterGen<DEV> extends Object {
 
 	public void inputUtilisateurId(String classeApiMethodeMethode) {
 		Cluster s = (Cluster)this;
-		s.sx(htmUtilisateurId());
+		s.e("span").a("class", "varCluster", pk, "UtilisateurId ").f().sx(htmUtilisateurId()).g("span");
 	}
 
 	public void htmUtilisateurId(String classeApiMethodeMethode) {
@@ -1328,7 +1330,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// utilisateurCle //
 	////////////////////
 
-	/**	L'entité « utilisateurCle »
+	/**	 L'entité utilisateurCle
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -1337,9 +1339,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<Long> utilisateurCleCouverture = new Couverture<Long>().p(this).c(Long.class).var("utilisateurCle").o(utilisateurCle);
 
-	/**	<br/>L'entité « utilisateurCle »
+	/**	<br/> L'entité utilisateurCle
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:utilisateurCle">Trouver l'entité utilisateurCle dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:utilisateurCle">Trouver l'entité utilisateurCle dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1395,7 +1397,7 @@ public abstract class ClusterGen<DEV> extends Object {
 
 	public void inputUtilisateurCle(String classeApiMethodeMethode) {
 		Cluster s = (Cluster)this;
-		s.sx(htmUtilisateurCle());
+		s.e("span").a("class", "varCluster", pk, "UtilisateurCle ").f().sx(htmUtilisateurCle()).g("span");
 	}
 
 	public void htmUtilisateurCle(String classeApiMethodeMethode) {
@@ -1420,7 +1422,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// sauvegardes //
 	/////////////////
 
-	/**	L'entité « sauvegardes »
+	/**	 L'entité sauvegardes
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1428,9 +1430,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<List<String>> sauvegardesCouverture = new Couverture<List<String>>().p(this).c(List.class).var("sauvegardes").o(sauvegardes);
 
-	/**	<br/>L'entité « sauvegardes »
+	/**	<br/> L'entité sauvegardes
 	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:sauvegardes">Trouver l'entité sauvegardes dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:sauvegardes">Trouver l'entité sauvegardes dans Solr</a>
 	 * <br/>
 	 * @param sauvegardes est l'entité déjà construit. 
 	 **/
@@ -1499,7 +1501,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// objetTitre //
 	////////////////
 
-	/**	L'entité « objetTitre »
+	/**	 L'entité objetTitre
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1507,9 +1509,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> objetTitreCouverture = new Couverture<String>().p(this).c(String.class).var("objetTitre").o(objetTitre);
 
-	/**	<br/>L'entité « objetTitre »
+	/**	<br/> L'entité objetTitre
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:objetTitre">Trouver l'entité objetTitre dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:objetTitre">Trouver l'entité objetTitre dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1570,7 +1572,7 @@ public abstract class ClusterGen<DEV> extends Object {
 						{ s.e("div").a("class", "w3-cell-row  ").f();
 							{ s.e("div").a("class", "w3-cell ").f();
 								{ s.e("div").a("class", "w3-rest ").f();
-									s.e("span").f().sx(strObjetTitre()).g("span");
+									s.e("span").a("class", "varCluster", pk, "ObjetTitre ").f().sx(strObjetTitre()).g("span");
 								} s.g("div");
 							} s.g("div");
 						} s.g("div");
@@ -1584,7 +1586,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// objetId //
 	/////////////
 
-	/**	L'entité « objetId »
+	/**	 L'entité objetId
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1592,9 +1594,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> objetIdCouverture = new Couverture<String>().p(this).c(String.class).var("objetId").o(objetId);
 
-	/**	<br/>L'entité « objetId »
+	/**	<br/> L'entité objetId
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:objetId">Trouver l'entité objetId dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:objetId">Trouver l'entité objetId dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1672,7 +1674,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// objetNomVar //
 	/////////////////
 
-	/**	L'entité « objetNomVar »
+	/**	 L'entité objetNomVar
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1680,9 +1682,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> objetNomVarCouverture = new Couverture<String>().p(this).c(String.class).var("objetNomVar").o(objetNomVar);
 
-	/**	<br/>L'entité « objetNomVar »
+	/**	<br/> L'entité objetNomVar
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:objetNomVar">Trouver l'entité objetNomVar dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:objetNomVar">Trouver l'entité objetNomVar dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1734,7 +1736,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// objetSuggere //
 	//////////////////
 
-	/**	L'entité « objetSuggere »
+	/**	 L'entité objetSuggere
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1742,9 +1744,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> objetSuggereCouverture = new Couverture<String>().p(this).c(String.class).var("objetSuggere").o(objetSuggere);
 
-	/**	<br/>L'entité « objetSuggere »
+	/**	<br/> L'entité objetSuggere
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:objetSuggere">Trouver l'entité objetSuggere dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:objetSuggere">Trouver l'entité objetSuggere dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1796,7 +1798,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// objetTexte //
 	////////////////
 
-	/**	L'entité « objetTexte »
+	/**	 L'entité objetTexte
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1804,9 +1806,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> objetTexteCouverture = new Couverture<String>().p(this).c(String.class).var("objetTexte").o(objetTexte);
 
-	/**	<br/>L'entité « objetTexte »
+	/**	<br/> L'entité objetTexte
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:objetTexte">Trouver l'entité objetTexte dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:objetTexte">Trouver l'entité objetTexte dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1858,7 +1860,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// pageUrlId //
 	///////////////
 
-	/**	L'entité « pageUrlId »
+	/**	 L'entité pageUrlId
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1866,9 +1868,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> pageUrlIdCouverture = new Couverture<String>().p(this).c(String.class).var("pageUrlId").o(pageUrlId);
 
-	/**	<br/>L'entité « pageUrlId »
+	/**	<br/> L'entité pageUrlId
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pageUrlId">Trouver l'entité pageUrlId dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pageUrlId">Trouver l'entité pageUrlId dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1920,7 +1922,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// pageUrlPk //
 	///////////////
 
-	/**	L'entité « pageUrlPk »
+	/**	 L'entité pageUrlPk
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1928,9 +1930,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> pageUrlPkCouverture = new Couverture<String>().p(this).c(String.class).var("pageUrlPk").o(pageUrlPk);
 
-	/**	<br/>L'entité « pageUrlPk »
+	/**	<br/> L'entité pageUrlPk
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pageUrlPk">Trouver l'entité pageUrlPk dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pageUrlPk">Trouver l'entité pageUrlPk dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1982,7 +1984,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// pageUrlApi //
 	////////////////
 
-	/**	L'entité « pageUrlApi »
+	/**	 L'entité pageUrlApi
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1990,9 +1992,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> pageUrlApiCouverture = new Couverture<String>().p(this).c(String.class).var("pageUrlApi").o(pageUrlApi);
 
-	/**	<br/>L'entité « pageUrlApi »
+	/**	<br/> L'entité pageUrlApi
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pageUrlApi">Trouver l'entité pageUrlApi dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pageUrlApi">Trouver l'entité pageUrlApi dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -2044,7 +2046,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	// pageH1 //
 	////////////
 
-	/**	L'entité « pageH1 »
+	/**	 L'entité pageH1
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -2052,9 +2054,9 @@ public abstract class ClusterGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> pageH1Couverture = new Couverture<String>().p(this).c(String.class).var("pageH1").o(pageH1);
 
-	/**	<br/>L'entité « pageH1 »
+	/**	<br/> L'entité pageH1
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pageH1">Trouver l'entité pageH1 dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.Cluster&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pageH1">Trouver l'entité pageH1 dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -2800,8 +2802,12 @@ public abstract class ClusterGen<DEV> extends Object {
 		Object o = Optional.ofNullable(requeteApi).map(RequeteApi::getOriginal).orElse(null);
 		if(o != null && o instanceof Cluster) {
 			Cluster original = (Cluster)o;
+			if(!Objects.equals(pk, original.getPk()))
+				requeteApi.addVars("pk");
 			if(!Objects.equals(inheritPk, original.getInheritPk()))
 				requeteApi.addVars("inheritPk");
+			if(!Objects.equals(id, original.getId()))
+				requeteApi.addVars("id");
 			if(!Objects.equals(cree, original.getCree()))
 				requeteApi.addVars("cree");
 			if(!Objects.equals(modifie, original.getModifie()))
@@ -2810,12 +2816,34 @@ public abstract class ClusterGen<DEV> extends Object {
 				requeteApi.addVars("archive");
 			if(!Objects.equals(supprime, original.getSupprime()))
 				requeteApi.addVars("supprime");
+			if(!Objects.equals(classeNomCanonique, original.getClasseNomCanonique()))
+				requeteApi.addVars("classeNomCanonique");
+			if(!Objects.equals(classeNomSimple, original.getClasseNomSimple()))
+				requeteApi.addVars("classeNomSimple");
+			if(!Objects.equals(classeNomsCanoniques, original.getClasseNomsCanoniques()))
+				requeteApi.addVars("classeNomsCanoniques");
 			if(!Objects.equals(sessionId, original.getSessionId()))
 				requeteApi.addVars("sessionId");
 			if(!Objects.equals(utilisateurId, original.getUtilisateurId()))
 				requeteApi.addVars("utilisateurId");
 			if(!Objects.equals(utilisateurCle, original.getUtilisateurCle()))
 				requeteApi.addVars("utilisateurCle");
+			if(!Objects.equals(sauvegardes, original.getSauvegardes()))
+				requeteApi.addVars("sauvegardes");
+			if(!Objects.equals(objetTitre, original.getObjetTitre()))
+				requeteApi.addVars("objetTitre");
+			if(!Objects.equals(objetId, original.getObjetId()))
+				requeteApi.addVars("objetId");
+			if(!Objects.equals(objetSuggere, original.getObjetSuggere()))
+				requeteApi.addVars("objetSuggere");
+			if(!Objects.equals(objetTexte, original.getObjetTexte()))
+				requeteApi.addVars("objetTexte");
+			if(!Objects.equals(pageUrlId, original.getPageUrlId()))
+				requeteApi.addVars("pageUrlId");
+			if(!Objects.equals(pageUrlPk, original.getPageUrlPk()))
+				requeteApi.addVars("pageUrlPk");
+			if(!Objects.equals(pageUrlApi, original.getPageUrlApi()))
+				requeteApi.addVars("pageUrlApi");
 		}
 	}
 
@@ -2824,7 +2852,7 @@ public abstract class ClusterGen<DEV> extends Object {
 	//////////////
 
 	@Override public int hashCode() {
-		return Objects.hash(inheritPk, cree, modifie, archive, supprime, sessionId, utilisateurId, utilisateurCle);
+		return Objects.hash(pk, inheritPk, id, cree, modifie, archive, supprime, classeNomCanonique, classeNomSimple, classeNomsCanoniques, sessionId, utilisateurId, utilisateurCle, sauvegardes, objetTitre, objetId, objetSuggere, objetTexte, pageUrlId, pageUrlPk, pageUrlApi);
 	}
 
 	////////////
@@ -2837,14 +2865,27 @@ public abstract class ClusterGen<DEV> extends Object {
 		if(!(o instanceof Cluster))
 			return false;
 		Cluster that = (Cluster)o;
-		return Objects.equals( inheritPk, that.inheritPk )
+		return Objects.equals( pk, that.pk )
+				&& Objects.equals( inheritPk, that.inheritPk )
+				&& Objects.equals( id, that.id )
 				&& Objects.equals( cree, that.cree )
 				&& Objects.equals( modifie, that.modifie )
 				&& Objects.equals( archive, that.archive )
 				&& Objects.equals( supprime, that.supprime )
+				&& Objects.equals( classeNomCanonique, that.classeNomCanonique )
+				&& Objects.equals( classeNomSimple, that.classeNomSimple )
+				&& Objects.equals( classeNomsCanoniques, that.classeNomsCanoniques )
 				&& Objects.equals( sessionId, that.sessionId )
 				&& Objects.equals( utilisateurId, that.utilisateurId )
-				&& Objects.equals( utilisateurCle, that.utilisateurCle );
+				&& Objects.equals( utilisateurCle, that.utilisateurCle )
+				&& Objects.equals( sauvegardes, that.sauvegardes )
+				&& Objects.equals( objetTitre, that.objetTitre )
+				&& Objects.equals( objetId, that.objetId )
+				&& Objects.equals( objetSuggere, that.objetSuggere )
+				&& Objects.equals( objetTexte, that.objetTexte )
+				&& Objects.equals( pageUrlId, that.pageUrlId )
+				&& Objects.equals( pageUrlPk, that.pageUrlPk )
+				&& Objects.equals( pageUrlApi, that.pageUrlApi );
 	}
 
 	//////////////
@@ -2854,14 +2895,27 @@ public abstract class ClusterGen<DEV> extends Object {
 	@Override public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Cluster { ");
-		sb.append( "inheritPk: " ).append(inheritPk);
+		sb.append( "pk: " ).append(pk);
+		sb.append( ", inheritPk: " ).append(inheritPk);
+		sb.append( ", id: \"" ).append(id).append( "\"" );
 		sb.append( ", cree: " ).append(cree);
 		sb.append( ", modifie: " ).append(modifie);
 		sb.append( ", archive: " ).append(archive);
 		sb.append( ", supprime: " ).append(supprime);
+		sb.append( ", classeNomCanonique: \"" ).append(classeNomCanonique).append( "\"" );
+		sb.append( ", classeNomSimple: \"" ).append(classeNomSimple).append( "\"" );
+		sb.append( ", classeNomsCanoniques: " ).append(classeNomsCanoniques);
 		sb.append( ", sessionId: \"" ).append(sessionId).append( "\"" );
 		sb.append( ", utilisateurId: \"" ).append(utilisateurId).append( "\"" );
 		sb.append( ", utilisateurCle: " ).append(utilisateurCle);
+		sb.append( ", sauvegardes: " ).append(sauvegardes);
+		sb.append( ", objetTitre: \"" ).append(objetTitre).append( "\"" );
+		sb.append( ", objetId: \"" ).append(objetId).append( "\"" );
+		sb.append( ", objetSuggere: \"" ).append(objetSuggere).append( "\"" );
+		sb.append( ", objetTexte: \"" ).append(objetTexte).append( "\"" );
+		sb.append( ", pageUrlId: \"" ).append(pageUrlId).append( "\"" );
+		sb.append( ", pageUrlPk: \"" ).append(pageUrlPk).append( "\"" );
+		sb.append( ", pageUrlApi: \"" ).append(pageUrlApi).append( "\"" );
 		sb.append(" }");
 		return sb.toString();
 	}

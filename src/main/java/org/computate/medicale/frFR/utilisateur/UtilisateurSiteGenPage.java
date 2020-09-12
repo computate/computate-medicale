@@ -31,6 +31,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -53,7 +54,7 @@ public class UtilisateurSiteGenPage extends UtilisateurSiteGenPageGen<ClusterPag
 	protected void _listeUtilisateurSite(Couverture<ListeRecherche<UtilisateurSite>> c) {
 	}
 
-	protected void _utilisateurSite(Couverture<UtilisateurSite> c) {
+	protected void _utilisateurSite_(Couverture<UtilisateurSite> c) {
 		if(listeUtilisateurSite != null && listeUtilisateurSite.size() == 1)
 			c.o(listeUtilisateurSite.get(0));
 	}
@@ -71,12 +72,14 @@ public class UtilisateurSiteGenPage extends UtilisateurSiteGenPageGen<ClusterPag
 	}
 
 	@Override protected void _pageTitre(Couverture<String> c) {
-		if(utilisateurSite != null && utilisateurSite.getObjetTitre() != null)
-			c.o(utilisateurSite.getObjetTitre());
-		else if(utilisateurSite != null)
-			c.o("");
+		if(utilisateurSite_ != null && utilisateurSite_.getObjetTitre() != null)
+			c.o(utilisateurSite_.getObjetTitre());
+		else if(utilisateurSite_ != null)
+			c.o("utilisateurs du site");
 		else if(listeUtilisateurSite == null || listeUtilisateurSite.size() == 0)
 			c.o("aucun utilisateur du site trouvé");
+		else
+			c.o("utilisateurs du site");
 	}
 
 	@Override protected void _pageUri(Couverture<String> c) {
@@ -572,17 +575,14 @@ public class UtilisateurSiteGenPage extends UtilisateurSiteGenPageGen<ClusterPag
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#patchUtilisateurSiteModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Modifier utilisateurs du site").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "patchUtilisateurSiteFormulaireValeurs").f();
 							UtilisateurSite o = new UtilisateurSite();
 							o.setRequeteSite_(requeteSite_);
 
-							// FormulaireValeurs PATCH
-							{ e("form").a("action", "").a("id", "patchUtilisateurSiteFormulaireValeurs").a("onsubmit", "event.preventDefault(); return false; ").f();
-								htmlFormPATCHUtilisateurSite(o);
-							} g("form");
+							htmlFormPATCHUtilisateurSite(o);
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-gray ")
-								.a("onclick", "patchUtilisateurSite(null, $('#patchUtilisateurSiteFormulaireValeurs'), ", Optional.ofNullable(utilisateurSite).map(UtilisateurSite::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
+								.a("onclick", "patchUtilisateurSite(null, $('#patchUtilisateurSiteFormulaireValeurs'), ", Optional.ofNullable(utilisateurSite_).map(UtilisateurSite::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
 								.f().sx("Modifier utilisateurs du site")
 							.g("button");
 
@@ -606,7 +606,7 @@ public class UtilisateurSiteGenPage extends UtilisateurSiteGenPageGen<ClusterPag
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#postUtilisateurSiteModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Créer un utilisateur du site").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "postUtilisateurSiteFormulaireValeurs").f();
 							UtilisateurSite o = new UtilisateurSite();
 							o.setRequeteSite_(requeteSite_);
 
@@ -749,7 +749,7 @@ public class UtilisateurSiteGenPage extends UtilisateurSiteGenPageGen<ClusterPag
 					.a("name", "suggereUtilisateurSite")
 					.a("id", "suggereUtilisateurSite", id)
 					.a("autocomplete", "off")
-					.a("oninput", "suggereUtilisateurSiteObjetSuggere( [ { 'name': 'q', 'value': 'objetSuggere:' + $(this).val() } ], $('#suggereListUtilisateurSite", id, "'), ", p.getRequeteSite_().getRequetePk(), "); ")
+					.a("oninput", "suggereUtilisateurSiteObjetSuggere( [ { 'name': 'q', 'value': 'objetSuggere:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objetTitre' } ], $('#suggereListUtilisateurSite", id, "'), ", p.getRequeteSite_().getRequetePk(), "); ")
 					.a("onkeyup", "if (event.keyCode === 13) { event.preventDefault(); window.location.href = '/utilisateur?q=", query1, ":' + encodeURIComponent(this.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; }"); 
 				if(listeUtilisateurSite != null)
 					p.a("value", query2);

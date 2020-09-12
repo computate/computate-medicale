@@ -31,6 +31,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -53,7 +54,7 @@ public class PartHtmlGenPage extends PartHtmlGenPageGen<ClusterPage> {
 	protected void _listePartHtml(Couverture<ListeRecherche<PartHtml>> c) {
 	}
 
-	protected void _partHtml(Couverture<PartHtml> c) {
+	protected void _partHtml_(Couverture<PartHtml> c) {
 		if(listePartHtml != null && listePartHtml.size() == 1)
 			c.o(listePartHtml.get(0));
 	}
@@ -71,12 +72,14 @@ public class PartHtmlGenPage extends PartHtmlGenPageGen<ClusterPage> {
 	}
 
 	@Override protected void _pageTitre(Couverture<String> c) {
-		if(partHtml != null && partHtml.getObjetTitre() != null)
-			c.o(partHtml.getObjetTitre());
-		else if(partHtml != null)
-			c.o("");
+		if(partHtml_ != null && partHtml_.getObjetTitre() != null)
+			c.o(partHtml_.getObjetTitre());
+		else if(partHtml_ != null)
+			c.o("part de HTMLs");
 		else if(listePartHtml == null || listePartHtml.size() == 0)
 			c.o("aucun part de HTML trouvé");
+		else
+			c.o("part de HTMLs");
 	}
 
 	@Override protected void _pageUri(Couverture<String> c) {
@@ -759,7 +762,7 @@ public class PartHtmlGenPage extends PartHtmlGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#postPartHtmlModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Créer un part de HTML").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "postPartHtmlFormulaireValeurs").f();
 							PartHtml o = new PartHtml();
 							o.setRequeteSite_(requeteSite_);
 
@@ -793,7 +796,7 @@ public class PartHtmlGenPage extends PartHtmlGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putimportPartHtmlModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Importer part de HTMLs").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putimportPartHtmlFormulaireValeurs").f();
 							PartHtml o = new PartHtml();
 							o.setRequeteSite_(requeteSite_);
 
@@ -827,7 +830,7 @@ public class PartHtmlGenPage extends PartHtmlGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putfusionPartHtmlModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Fusionner part de HTMLs").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putfusionPartHtmlFormulaireValeurs").f();
 							PartHtml o = new PartHtml();
 							o.setRequeteSite_(requeteSite_);
 
@@ -861,7 +864,7 @@ public class PartHtmlGenPage extends PartHtmlGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putcopiePartHtmlModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Dupliquer part de HTMLs").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putcopiePartHtmlFormulaireValeurs").f();
 							PartHtml o = new PartHtml();
 							o.setRequeteSite_(requeteSite_);
 
@@ -871,7 +874,7 @@ public class PartHtmlGenPage extends PartHtmlGenPageGen<ClusterPage> {
 							} g("div");
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-yellow ")
-								.a("onclick", "putcopiePartHtml($('#putcopiePartHtmlForm'), ", partHtml == null ? "null" : partHtml.getPk(), "); ")
+								.a("onclick", "putcopiePartHtml($('#putcopiePartHtmlForm'), ", partHtml_ == null ? "null" : partHtml_.getPk(), "); ")
 								.f().sx("Dupliquer part de HTMLs")
 							.g("button");
 
@@ -895,17 +898,14 @@ public class PartHtmlGenPage extends PartHtmlGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#patchPartHtmlModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Modifier part de HTMLs").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "patchPartHtmlFormulaireValeurs").f();
 							PartHtml o = new PartHtml();
 							o.setRequeteSite_(requeteSite_);
 
-							// FormulaireValeurs PATCH
-							{ e("form").a("action", "").a("id", "patchPartHtmlFormulaireValeurs").a("onsubmit", "event.preventDefault(); return false; ").f();
-								htmlFormPATCHPartHtml(o);
-							} g("form");
+							htmlFormPATCHPartHtml(o);
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-yellow ")
-								.a("onclick", "patchPartHtml(null, $('#patchPartHtmlFormulaireValeurs'), ", Optional.ofNullable(partHtml).map(PartHtml::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
+								.a("onclick", "patchPartHtml(null, $('#patchPartHtmlFormulaireValeurs'), ", Optional.ofNullable(partHtml_).map(PartHtml::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
 								.f().sx("Modifier part de HTMLs")
 							.g("button");
 
@@ -1038,7 +1038,7 @@ public class PartHtmlGenPage extends PartHtmlGenPageGen<ClusterPage> {
 					.a("name", "suggerePartHtml")
 					.a("id", "suggerePartHtml", id)
 					.a("autocomplete", "off")
-					.a("oninput", "suggerePartHtmlObjetSuggere( [ { 'name': 'q', 'value': 'objetSuggere:' + $(this).val() } ], $('#suggereListPartHtml", id, "'), ", p.getRequeteSite_().getRequetePk(), "); ")
+					.a("oninput", "suggerePartHtmlObjetSuggere( [ { 'name': 'q', 'value': 'objetSuggere:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objetTitre' } ], $('#suggereListPartHtml", id, "'), ", p.getRequeteSite_().getRequetePk(), "); ")
 					.a("onkeyup", "if (event.keyCode === 13) { event.preventDefault(); window.location.href = '/part-html?q=", query1, ":' + encodeURIComponent(this.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; }"); 
 				if(listePartHtml != null)
 					p.a("value", query2);

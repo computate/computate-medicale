@@ -30,6 +30,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -52,7 +53,7 @@ public class ClusterGenPage extends ClusterGenPageGen<MiseEnPage> {
 	protected void _listeCluster(Couverture<ListeRecherche<Cluster>> c) {
 	}
 
-	protected void _cluster(Couverture<Cluster> c) {
+	protected void _cluster_(Couverture<Cluster> c) {
 		if(listeCluster != null && listeCluster.size() == 1)
 			c.o(listeCluster.get(0));
 	}
@@ -70,12 +71,14 @@ public class ClusterGenPage extends ClusterGenPageGen<MiseEnPage> {
 	}
 
 	@Override protected void _pageTitre(Couverture<String> c) {
-		if(cluster != null && cluster.getObjetTitre() != null)
-			c.o(cluster.getObjetTitre());
-		else if(cluster != null)
-			c.o("");
+		if(cluster_ != null && cluster_.getObjetTitre() != null)
+			c.o(cluster_.getObjetTitre());
+		else if(cluster_ != null)
+			c.o("clusters");
 		else if(listeCluster == null || listeCluster.size() == 0)
 			c.o("aucun cluster trouvé");
+		else
+			c.o("clusters");
 	}
 
 	@Override protected void _pageUri(Couverture<String> c) {
@@ -523,7 +526,7 @@ public class ClusterGenPage extends ClusterGenPageGen<MiseEnPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#postClusterModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Créer un cluster").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "postClusterFormulaireValeurs").f();
 							Cluster o = new Cluster();
 							o.setRequeteSite_(requeteSite_);
 
@@ -557,7 +560,7 @@ public class ClusterGenPage extends ClusterGenPageGen<MiseEnPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putimportClusterModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Importer clusters").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putimportClusterFormulaireValeurs").f();
 							Cluster o = new Cluster();
 							o.setRequeteSite_(requeteSite_);
 
@@ -591,7 +594,7 @@ public class ClusterGenPage extends ClusterGenPageGen<MiseEnPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putfusionClusterModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Fusionner clusters").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putfusionClusterFormulaireValeurs").f();
 							Cluster o = new Cluster();
 							o.setRequeteSite_(requeteSite_);
 
@@ -625,7 +628,7 @@ public class ClusterGenPage extends ClusterGenPageGen<MiseEnPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putcopieClusterModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Dupliquer clusters").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putcopieClusterFormulaireValeurs").f();
 							Cluster o = new Cluster();
 							o.setRequeteSite_(requeteSite_);
 
@@ -635,7 +638,7 @@ public class ClusterGenPage extends ClusterGenPageGen<MiseEnPage> {
 							} g("div");
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-gray ")
-								.a("onclick", "putcopieCluster($('#putcopieClusterForm'), ", cluster == null ? "null" : cluster.getPk(), "); ")
+								.a("onclick", "putcopieCluster($('#putcopieClusterForm'), ", cluster_ == null ? "null" : cluster_.getPk(), "); ")
 								.f().sx("Dupliquer clusters")
 							.g("button");
 
@@ -659,17 +662,14 @@ public class ClusterGenPage extends ClusterGenPageGen<MiseEnPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#patchClusterModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Modifier clusters").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "patchClusterFormulaireValeurs").f();
 							Cluster o = new Cluster();
 							o.setRequeteSite_(requeteSite_);
 
-							// FormulaireValeurs PATCH
-							{ e("form").a("action", "").a("id", "patchClusterFormulaireValeurs").a("onsubmit", "event.preventDefault(); return false; ").f();
-								htmlFormPATCHCluster(o);
-							} g("form");
+							htmlFormPATCHCluster(o);
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-gray ")
-								.a("onclick", "patchCluster(null, $('#patchClusterFormulaireValeurs'), ", Optional.ofNullable(cluster).map(Cluster::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
+								.a("onclick", "patchCluster(null, $('#patchClusterFormulaireValeurs'), ", Optional.ofNullable(cluster_).map(Cluster::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
 								.f().sx("Modifier clusters")
 							.g("button");
 
@@ -802,7 +802,7 @@ public class ClusterGenPage extends ClusterGenPageGen<MiseEnPage> {
 					.a("name", "suggereCluster")
 					.a("id", "suggereCluster", id)
 					.a("autocomplete", "off")
-					.a("oninput", "suggereClusterObjetSuggere( [ { 'name': 'q', 'value': 'objetSuggere:' + $(this).val() } ], $('#suggereListCluster", id, "'), ", p.getRequeteSite_().getRequetePk(), "); ")
+					.a("oninput", "suggereClusterObjetSuggere( [ { 'name': 'q', 'value': 'objetSuggere:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objetTitre' } ], $('#suggereListCluster", id, "'), ", p.getRequeteSite_().getRequetePk(), "); ")
 					.a("onkeyup", "if (event.keyCode === 13) { event.preventDefault(); window.location.href = '/cluster?q=", query1, ":' + encodeURIComponent(this.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; }"); 
 				if(listeCluster != null)
 					p.a("value", query2);

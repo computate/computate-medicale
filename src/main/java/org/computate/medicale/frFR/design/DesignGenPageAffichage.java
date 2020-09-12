@@ -31,6 +31,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -66,6 +67,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -101,6 +103,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -136,6 +139,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -171,6 +175,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -192,7 +197,7 @@ public class DesignGenPageAffichage extends DesignGenPageAffichageGen<ClusterPag
 	protected void _listeDesignPage(Couverture<ListeRecherche<DesignPage>> c) {
 	}
 
-	protected void _designPage(Couverture<DesignPage> c) {
+	protected void _designPage_(Couverture<DesignPage> c) {
 		if(listeDesignPage != null && listeDesignPage.size() == 1)
 			c.o(listeDesignPage.get(0));
 	}
@@ -202,8 +207,8 @@ public class DesignGenPageAffichage extends DesignGenPageAffichageGen<ClusterPag
 	}
 
 	@Override protected void _pageH2(Couverture<String> c) {
-		if(designPage != null && designPage.getDesignPageNomComplet() != null)
-			c.o(designPage.getDesignPageNomComplet());
+		if(designPage_ != null && designPage_.getDesignPageNomComplet() != null)
+			c.o(designPage_.getDesignPageNomComplet());
 	}
 
 	@Override protected void _pageH3(Couverture<String> c) {
@@ -211,12 +216,14 @@ public class DesignGenPageAffichage extends DesignGenPageAffichageGen<ClusterPag
 	}
 
 	@Override protected void _pageTitre(Couverture<String> c) {
-		if(designPage != null && designPage.getDesignPageNomComplet() != null)
-			c.o(designPage.getDesignPageNomComplet());
-		else if(designPage != null)
-			c.o("");
+		if(designPage_ != null && designPage_.getDesignPageNomComplet() != null)
+			c.o(designPage_.getDesignPageNomComplet());
+		else if(designPage_ != null)
+			c.o("design de pages");
 		else if(listeDesignPage == null || listeDesignPage.size() == 0)
 			c.o("aucun design de page trouvé");
+		else
+			c.o("design de pages");
 	}
 
 	@Override protected void _pageUri(Couverture<String> c) {
@@ -741,7 +748,7 @@ public class DesignGenPageAffichage extends DesignGenPageAffichageGen<ClusterPag
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#postDesignPageModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Créer un design de page").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "postDesignPageFormulaireValeurs").f();
 							DesignPage o = new DesignPage();
 							o.setRequeteSite_(requeteSite_);
 
@@ -775,7 +782,7 @@ public class DesignGenPageAffichage extends DesignGenPageAffichageGen<ClusterPag
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putimportDesignPageModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Importer design de pages").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putimportDesignPageFormulaireValeurs").f();
 							DesignPage o = new DesignPage();
 							o.setRequeteSite_(requeteSite_);
 
@@ -809,7 +816,7 @@ public class DesignGenPageAffichage extends DesignGenPageAffichageGen<ClusterPag
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putfusionDesignPageModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Fusionner design de pages").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putfusionDesignPageFormulaireValeurs").f();
 							DesignPage o = new DesignPage();
 							o.setRequeteSite_(requeteSite_);
 
@@ -843,7 +850,7 @@ public class DesignGenPageAffichage extends DesignGenPageAffichageGen<ClusterPag
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putcopieDesignPageModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Dupliquer design de pages").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putcopieDesignPageFormulaireValeurs").f();
 							DesignPage o = new DesignPage();
 							o.setRequeteSite_(requeteSite_);
 
@@ -853,7 +860,7 @@ public class DesignGenPageAffichage extends DesignGenPageAffichageGen<ClusterPag
 							} g("div");
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-khaki ")
-								.a("onclick", "putcopieDesignPage($('#putcopieDesignPageForm'), ", designPage == null ? "null" : designPage.getPk(), "); ")
+								.a("onclick", "putcopieDesignPage($('#putcopieDesignPageForm'), ", designPage_ == null ? "null" : designPage_.getPk(), "); ")
 								.f().sx("Dupliquer design de pages")
 							.g("button");
 
@@ -877,17 +884,14 @@ public class DesignGenPageAffichage extends DesignGenPageAffichageGen<ClusterPag
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#patchDesignPageModale').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Modifier design de pages").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "patchDesignPageFormulaireValeurs").f();
 							DesignPage o = new DesignPage();
 							o.setRequeteSite_(requeteSite_);
 
-							// FormulaireValeurs PATCH
-							{ e("form").a("action", "").a("id", "patchDesignPageFormulaireValeurs").a("onsubmit", "event.preventDefault(); return false; ").f();
-								htmlFormPATCHDesignPage(o);
-							} g("form");
+							htmlFormPATCHDesignPage(o);
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-khaki ")
-								.a("onclick", "patchDesignPage(null, $('#patchDesignPageFormulaireValeurs'), ", Optional.ofNullable(designPage).map(DesignPage::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
+								.a("onclick", "patchDesignPage(null, $('#patchDesignPageFormulaireValeurs'), ", Optional.ofNullable(designPage_).map(DesignPage::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
 								.f().sx("Modifier design de pages")
 							.g("button");
 
@@ -981,7 +985,7 @@ public class DesignGenPageAffichage extends DesignGenPageAffichageGen<ClusterPag
 					.a("name", "suggereDesignPage")
 					.a("id", "suggereDesignPage", id)
 					.a("autocomplete", "off")
-					.a("oninput", "suggereDesignPageObjetSuggere( [ { 'name': 'q', 'value': 'objetSuggere:' + $(this).val() } ], $('#suggereListDesignPage", id, "'), ", p.getRequeteSite_().getRequetePk(), "); ")
+					.a("oninput", "suggereDesignPageObjetSuggere( [ { 'name': 'q', 'value': 'objetSuggere:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,designPageNomComplet' } ], $('#suggereListDesignPage", id, "'), ", p.getRequeteSite_().getRequetePk(), "); ")
 					.a("onkeyup", "if (event.keyCode === 13) { event.preventDefault(); window.location.href = '/page?q=", query1, ":' + encodeURIComponent(this.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; }"); 
 				if(listeDesignPage != null)
 					p.a("value", query2);

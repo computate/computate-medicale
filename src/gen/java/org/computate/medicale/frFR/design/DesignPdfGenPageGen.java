@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.vertx.core.logging.Logger;
+import java.math.RoundingMode;
 import org.computate.medicale.frFR.couverture.Couverture;
 import java.math.MathContext;
 import org.computate.medicale.frFR.ecrivain.ToutEcrivain;
@@ -33,7 +34,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.design.DesignPdfGenPage&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
+ * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.design.DesignPdfGenPage&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr. </a>
  * <br/>
  **/
 public abstract class DesignPdfGenPageGen<DEV> extends ClusterPage {
@@ -43,7 +44,7 @@ public abstract class DesignPdfGenPageGen<DEV> extends ClusterPage {
 	// listeDesignPage //
 	/////////////////////
 
-	/**	L'entité « listeDesignPage »
+	/**	 L'entité listeDesignPage
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -51,9 +52,9 @@ public abstract class DesignPdfGenPageGen<DEV> extends ClusterPage {
 	@JsonIgnore
 	public Couverture<ListeRecherche<DesignPage>> listeDesignPageCouverture = new Couverture<ListeRecherche<DesignPage>>().p(this).c(ListeRecherche.class).var("listeDesignPage").o(listeDesignPage);
 
-	/**	<br/>L'entité « listeDesignPage »
+	/**	<br/> L'entité listeDesignPage
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.design.DesignPdfGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:listeDesignPage">Trouver l'entité listeDesignPage dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.design.DesignPdfGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:listeDesignPage">Trouver l'entité listeDesignPage dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -79,43 +80,41 @@ public abstract class DesignPdfGenPageGen<DEV> extends ClusterPage {
 		return (DesignPdfGenPage)this;
 	}
 
-	////////////////
-	// designPage //
-	////////////////
+	/////////////////
+	// designPage_ //
+	/////////////////
 
-	/**	L'entité « designPage »
+	/**	 L'entité designPage_
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected DesignPage designPage;
+	protected DesignPage designPage_;
 	@JsonIgnore
-	public Couverture<DesignPage> designPageCouverture = new Couverture<DesignPage>().p(this).c(DesignPage.class).var("designPage").o(designPage);
+	public Couverture<DesignPage> designPage_Couverture = new Couverture<DesignPage>().p(this).c(DesignPage.class).var("designPage_").o(designPage_);
 
-	/**	<br/>L'entité « designPage »
+	/**	<br/> L'entité designPage_
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.design.DesignPdfGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:designPage">Trouver l'entité designPage dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.design.DesignPdfGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:designPage_">Trouver l'entité designPage_ dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _designPage(Couverture<DesignPage> c);
+	protected abstract void _designPage_(Couverture<DesignPage> c);
 
-	public DesignPage getDesignPage() {
-		return designPage;
+	public DesignPage getDesignPage_() {
+		return designPage_;
 	}
 
-	public void setDesignPage(DesignPage designPage) {
-		this.designPage = designPage;
-		this.designPageCouverture.dejaInitialise = true;
+	public void setDesignPage_(DesignPage designPage_) {
+		this.designPage_ = designPage_;
+		this.designPage_Couverture.dejaInitialise = true;
 	}
-	protected DesignPdfGenPage designPageInit() {
-		if(!designPageCouverture.dejaInitialise) {
-			_designPage(designPageCouverture);
-			if(designPage == null)
-				setDesignPage(designPageCouverture.o);
+	protected DesignPdfGenPage designPage_Init() {
+		if(!designPage_Couverture.dejaInitialise) {
+			_designPage_(designPage_Couverture);
+			if(designPage_ == null)
+				setDesignPage_(designPage_Couverture.o);
 		}
-		if(designPage != null)
-			designPage.initLoinPourClasse(requeteSite_);
-		designPageCouverture.dejaInitialise(true);
+		designPage_Couverture.dejaInitialise(true);
 		return (DesignPdfGenPage)this;
 	}
 
@@ -141,7 +140,7 @@ public abstract class DesignPdfGenPageGen<DEV> extends ClusterPage {
 
 	public void initDesignPdfGenPage() {
 		listeDesignPageInit();
-		designPageInit();
+		designPage_Init();
 	}
 
 	@Override public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) {
@@ -156,8 +155,6 @@ public abstract class DesignPdfGenPageGen<DEV> extends ClusterPage {
 			super.requeteSiteClusterPage(requeteSite_);
 		if(listeDesignPage != null)
 			listeDesignPage.setRequeteSite_(requeteSite_);
-		if(designPage != null)
-			designPage.setRequeteSite_(requeteSite_);
 	}
 
 	public void requeteSitePourClasse(RequeteSiteFrFR requeteSite_) {
@@ -186,8 +183,8 @@ public abstract class DesignPdfGenPageGen<DEV> extends ClusterPage {
 		switch(var) {
 			case "listeDesignPage":
 				return oDesignPdfGenPage.listeDesignPage;
-			case "designPage":
-				return oDesignPdfGenPage.designPage;
+			case "designPage_":
+				return oDesignPdfGenPage.designPage_;
 			default:
 				return super.obtenirClusterPage(var);
 		}

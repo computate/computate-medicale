@@ -54,7 +54,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
+ * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
  * <br/>
  **/
 public abstract class MedicalPatientGen<DEV> extends Cluster {
@@ -99,7 +99,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « patientKey »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientKey">Trouver l'entité patientKey dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientKey">Trouver l'entité patientKey dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -168,7 +168,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « enrollmentKeys »
 	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentKeys">Trouver l'entité enrollmentKeys dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentKeys">Trouver l'entité enrollmentKeys dans Solr</a>
 	 * <br/>
 	 * @param enrollmentKeys est l'entité déjà construit. 
 	 **/
@@ -326,7 +326,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « schoolSort »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:schoolSort">Trouver l'entité schoolSort dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:schoolSort">Trouver l'entité schoolSort dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -395,7 +395,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « enrollmentSearch »
 	 * Il est construit avant d'être initialisé avec le constructeur par défaut SearchList<MedicalEnrollment>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentSearch">Trouver l'entité enrollmentSearch dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentSearch">Trouver l'entité enrollmentSearch dans Solr</a>
 	 * <br/>
 	 * @param enrollmentSearch est l'entité déjà construit. 
 	 **/
@@ -433,7 +433,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « enrollments »
 	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<MedicalEnrollment>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollments">Trouver l'entité enrollments dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollments">Trouver l'entité enrollments dans Solr</a>
 	 * <br/>
 	 * @param enrollments est l'entité déjà construit. 
 	 **/
@@ -481,7 +481,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « userKeys »
 	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userKeys">Trouver l'entité userKeys dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userKeys">Trouver l'entité userKeys dans Solr</a>
 	 * <br/>
 	 * @param userKeys est l'entité déjà construit. 
 	 **/
@@ -568,7 +568,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « clinicKeys »
 	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicKeys">Trouver l'entité clinicKeys dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:clinicKeys">Trouver l'entité clinicKeys dans Solr</a>
 	 * <br/>
 	 * @param clinicKeys est l'entité déjà construit. 
 	 **/
@@ -654,7 +654,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « patientFirstName »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientFirstName">Trouver l'entité patientFirstName dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientFirstName">Trouver l'entité patientFirstName dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -786,7 +786,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « patientFirstNamePreferred »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientFirstNamePreferred">Trouver l'entité patientFirstNamePreferred dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientFirstNamePreferred">Trouver l'entité patientFirstNamePreferred dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -918,7 +918,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « familyName »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:familyName">Trouver l'entité familyName dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:familyName">Trouver l'entité familyName dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1050,7 +1050,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « patientCompleteName »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientCompleteName">Trouver l'entité patientCompleteName dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientCompleteName">Trouver l'entité patientCompleteName dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1112,7 +1112,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « patientCompleteNamePreferred »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientCompleteNamePreferred">Trouver l'entité patientCompleteNamePreferred dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientCompleteNamePreferred">Trouver l'entité patientCompleteNamePreferred dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1174,7 +1174,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « patientFormalName »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientFormalName">Trouver l'entité patientFormalName dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientFormalName">Trouver l'entité patientFormalName dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1239,7 +1239,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « patientBirthDate »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDate">Trouver l'entité patientBirthDate dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDate">Trouver l'entité patientBirthDate dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1379,7 +1379,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « patientBirthDateYear »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDateYear">Trouver l'entité patientBirthDateYear dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDateYear">Trouver l'entité patientBirthDateYear dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1447,7 +1447,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « patientBirthDateMonthOfYear »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDateMonthOfYear">Trouver l'entité patientBirthDateMonthOfYear dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDateMonthOfYear">Trouver l'entité patientBirthDateMonthOfYear dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1509,7 +1509,7 @@ public abstract class MedicalPatientGen<DEV> extends Cluster {
 
 	/**	<br/>L'entité « patientBirthDateDayOfWeek »
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDateDayOfWeek">Trouver l'entité patientBirthDateDayOfWeek dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.patient.MedicalPatient&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:patientBirthDateDayOfWeek">Trouver l'entité patientBirthDateDayOfWeek dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/

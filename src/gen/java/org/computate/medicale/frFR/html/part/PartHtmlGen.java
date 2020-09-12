@@ -21,6 +21,7 @@ import java.lang.Boolean;
 import io.vertx.core.json.JsonObject;
 import java.lang.String;
 import io.vertx.core.logging.Logger;
+import java.math.RoundingMode;
 import org.computate.medicale.frFR.couverture.Couverture;
 import java.math.MathContext;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -47,7 +48,7 @@ import org.apache.solr.common.SolrInputDocument;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true">Trouver la classe sort10 dans Solr</a>
+ * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true">Trouver la classe sort10 dans Solr. </a>
  * <br/>
  **/
 public abstract class PartHtmlGen<DEV> extends Cluster {
@@ -68,6 +69,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	public static final String PartHtml_TousNom = "tous les part de HTMLs";
 	public static final String PartHtml_RechercherTousNomPar = "rechercher part de HTMLs par ";
 	public static final String PartHtml_RechercherTousNom = "rechercher part de HTMLs";
+	public static final String PartHtml_Titre = "part de HTMLs";
 	public static final String PartHtml_LesNom = "les part de HTMLs";
 	public static final String PartHtml_AucunNomTrouve = "aucun part de HTML trouvé";
 	public static final String PartHtml_NomVar = "part-html";
@@ -83,7 +85,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// partHtmlCle //
 	/////////////////
 
-	/**	L'entité « partHtmlCle »
+	/**	 L'entité partHtmlCle
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -92,9 +94,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Long> partHtmlCleCouverture = new Couverture<Long>().p(this).c(Long.class).var("partHtmlCle").o(partHtmlCle);
 
-	/**	<br/>L'entité « partHtmlCle »
+	/**	<br/> L'entité partHtmlCle
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:partHtmlCle">Trouver l'entité partHtmlCle dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:partHtmlCle">Trouver l'entité partHtmlCle dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -152,7 +154,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// designPageCles //
 	////////////////////
 
-	/**	L'entité « designPageCles »
+	/**	 L'entité designPageCles
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
@@ -161,9 +163,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<List<Long>> designPageClesCouverture = new Couverture<List<Long>>().p(this).c(List.class).var("designPageCles").o(designPageCles);
 
-	/**	<br/>L'entité « designPageCles »
+	/**	<br/> L'entité designPageCles
 	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:designPageCles">Trouver l'entité designPageCles dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:designPageCles">Trouver l'entité designPageCles dans Solr</a>
 	 * <br/>
 	 * @param designPageCles est l'entité déjà construit. 
 	 **/
@@ -237,7 +239,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputDesignPageCles(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("i").a("class", "far fa-search w3-xxlarge w3-cell w3-cell-middle ").f().g("i");
 				e("input")
 					.a("type", "text")
@@ -249,6 +254,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 					.a("oninput", "suggerePartHtmlDesignPageCles($(this).val() ? rechercherDesignPageFiltres($(this.parentElement)) : [", pk == null ? "" : "{'name':'fq','value':'partHtmlCles:" + pk + "'}", "], $('#listPartHtmlDesignPageCles_", classeApiMethodeMethode, "'), ", pk, "); ")
 				.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "DesignPageCles ").f().sx(htmDesignPageCles()).g("span");
+			}
 		}
 	}
 
@@ -259,7 +271,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				{ e("div").a("id", "suggere", classeApiMethodeMethode, "PartHtmlDesignPageCles").f();
 					{ e("div").a("class", "w3-card ").f();
 						{ e("div").a("class", "w3-cell-row ").f();
-							{ e("a").a("href", "?fq=partHtmlCles:", pk).a("class", "w3-cell w3-btn w3-center h4 w3-block h4 w3-khaki w3-hover-khaki ").f();
+							{ e("a").a("href", "/design-page?fq=partHtmlCles:", pk).a("class", "w3-cell w3-btn w3-center h4 w3-block h4 w3-khaki w3-hover-khaki ").f();
 								e("i").a("class", "far fa-drafting-compass ").f().g("i");
 								sx("designs de page");
 							} g("a");
@@ -306,7 +318,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlLien //
 	//////////////
 
-	/**	L'entité « htmlLien »
+	/**	 L'entité htmlLien
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -314,9 +326,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<String> htmlLienCouverture = new Couverture<String>().p(this).c(String.class).var("htmlLien").o(htmlLien);
 
-	/**	<br/>L'entité « htmlLien »
+	/**	<br/> L'entité htmlLien
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlLien">Trouver l'entité htmlLien dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlLien">Trouver l'entité htmlLien dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -366,7 +378,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlLien(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "lien")
@@ -385,6 +400,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strHtmlLien())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlLien ").f().sx(htmHtmlLien()).g("span");
+			}
 		}
 	}
 
@@ -402,7 +424,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputHtmlLien(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -426,7 +451,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlElement //
 	/////////////////
 
-	/**	L'entité « htmlElement »
+	/**	 L'entité htmlElement
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -434,9 +459,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<String> htmlElementCouverture = new Couverture<String>().p(this).c(String.class).var("htmlElement").o(htmlElement);
 
-	/**	<br/>L'entité « htmlElement »
+	/**	<br/> L'entité htmlElement
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlElement">Trouver l'entité htmlElement dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlElement">Trouver l'entité htmlElement dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -486,7 +511,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlElement(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "HTML élément")
@@ -505,6 +533,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strHtmlElement())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlElement ").f().sx(htmHtmlElement()).g("span");
+			}
 		}
 	}
 
@@ -522,7 +557,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputHtmlElement(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -546,7 +584,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlId //
 	////////////
 
-	/**	L'entité « htmlId »
+	/**	 L'entité htmlId
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -554,9 +592,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<String> htmlIdCouverture = new Couverture<String>().p(this).c(String.class).var("htmlId").o(htmlId);
 
-	/**	<br/>L'entité « htmlId »
+	/**	<br/> L'entité htmlId
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlId">Trouver l'entité htmlId dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlId">Trouver l'entité htmlId dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -606,7 +644,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlId(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "HTML ID")
@@ -625,6 +666,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strHtmlId())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlId ").f().sx(htmHtmlId()).g("span");
+			}
 		}
 	}
 
@@ -642,7 +690,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputHtmlId(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -666,7 +717,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlClasses //
 	/////////////////
 
-	/**	L'entité « htmlClasses »
+	/**	 L'entité htmlClasses
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -674,9 +725,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<String> htmlClassesCouverture = new Couverture<String>().p(this).c(String.class).var("htmlClasses").o(htmlClasses);
 
-	/**	<br/>L'entité « htmlClasses »
+	/**	<br/> L'entité htmlClasses
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlClasses">Trouver l'entité htmlClasses dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlClasses">Trouver l'entité htmlClasses dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -726,7 +777,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlClasses(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "HTML classes")
@@ -745,6 +799,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strHtmlClasses())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlClasses ").f().sx(htmHtmlClasses()).g("span");
+			}
 		}
 	}
 
@@ -762,7 +823,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputHtmlClasses(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -786,7 +850,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlStyle //
 	///////////////
 
-	/**	L'entité « htmlStyle »
+	/**	 L'entité htmlStyle
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -794,9 +858,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<String> htmlStyleCouverture = new Couverture<String>().p(this).c(String.class).var("htmlStyle").o(htmlStyle);
 
-	/**	<br/>L'entité « htmlStyle »
+	/**	<br/> L'entité htmlStyle
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlStyle">Trouver l'entité htmlStyle dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlStyle">Trouver l'entité htmlStyle dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -846,7 +910,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlStyle(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "HTML style")
@@ -865,6 +932,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strHtmlStyle())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlStyle ").f().sx(htmHtmlStyle()).g("span");
+			}
 		}
 	}
 
@@ -882,7 +956,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputHtmlStyle(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -906,7 +983,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlAvant //
 	///////////////
 
-	/**	L'entité « htmlAvant »
+	/**	 L'entité htmlAvant
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -914,9 +991,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<String> htmlAvantCouverture = new Couverture<String>().p(this).c(String.class).var("htmlAvant").o(htmlAvant);
 
-	/**	<br/>L'entité « htmlAvant »
+	/**	<br/> L'entité htmlAvant
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlAvant">Trouver l'entité htmlAvant dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlAvant">Trouver l'entité htmlAvant dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -966,7 +1043,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlAvant(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("textarea")
 				.a("placeholder", "HTML avant")
 				.a("id", classeApiMethodeMethode, "_htmlAvant");
@@ -983,6 +1063,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				}
 			f().sx(strHtmlAvant()).g("textarea");
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlAvant ").f().sx(htmHtmlAvant()).g("span");
+			}
 		}
 	}
 
@@ -1000,7 +1087,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputHtmlAvant(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -1024,7 +1114,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlApres //
 	///////////////
 
-	/**	L'entité « htmlApres »
+	/**	 L'entité htmlApres
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1032,9 +1122,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<String> htmlApresCouverture = new Couverture<String>().p(this).c(String.class).var("htmlApres").o(htmlApres);
 
-	/**	<br/>L'entité « htmlApres »
+	/**	<br/> L'entité htmlApres
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlApres">Trouver l'entité htmlApres dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlApres">Trouver l'entité htmlApres dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1084,7 +1174,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlApres(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("textarea")
 				.a("placeholder", "HTML après")
 				.a("id", classeApiMethodeMethode, "_htmlApres");
@@ -1101,6 +1194,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				}
 			f().sx(strHtmlApres()).g("textarea");
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlApres ").f().sx(htmHtmlApres()).g("span");
+			}
 		}
 	}
 
@@ -1118,7 +1218,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputHtmlApres(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -1142,7 +1245,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlTexte //
 	///////////////
 
-	/**	L'entité « htmlTexte »
+	/**	 L'entité htmlTexte
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1150,9 +1253,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<String> htmlTexteCouverture = new Couverture<String>().p(this).c(String.class).var("htmlTexte").o(htmlTexte);
 
-	/**	<br/>L'entité « htmlTexte »
+	/**	<br/> L'entité htmlTexte
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlTexte">Trouver l'entité htmlTexte dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlTexte">Trouver l'entité htmlTexte dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1202,7 +1305,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlTexte(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("textarea")
 				.a("placeholder", "texte")
 				.a("id", classeApiMethodeMethode, "_htmlTexte");
@@ -1219,6 +1325,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				}
 			f().sx(strHtmlTexte()).g("textarea");
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlTexte ").f().sx(htmHtmlTexte()).g("span");
+			}
 		}
 	}
 
@@ -1236,7 +1349,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputHtmlTexte(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -1260,7 +1376,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlVar //
 	/////////////
 
-	/**	L'entité « htmlVar »
+	/**	 L'entité htmlVar
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1268,9 +1384,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<String> htmlVarCouverture = new Couverture<String>().p(this).c(String.class).var("htmlVar").o(htmlVar);
 
-	/**	<br/>L'entité « htmlVar »
+	/**	<br/> L'entité htmlVar
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlVar">Trouver l'entité htmlVar dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlVar">Trouver l'entité htmlVar dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1320,7 +1436,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlVar(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "var")
@@ -1339,6 +1458,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strHtmlVar())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlVar ").f().sx(htmHtmlVar()).g("span");
+			}
 		}
 	}
 
@@ -1356,7 +1482,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputHtmlVar(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -1380,7 +1509,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlVarSpan //
 	/////////////////
 
-	/**	L'entité « htmlVarSpan »
+	/**	 L'entité htmlVarSpan
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1388,9 +1517,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<String> htmlVarSpanCouverture = new Couverture<String>().p(this).c(String.class).var("htmlVarSpan").o(htmlVarSpan);
 
-	/**	<br/>L'entité « htmlVarSpan »
+	/**	<br/> L'entité htmlVarSpan
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlVarSpan">Trouver l'entité htmlVarSpan dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlVarSpan">Trouver l'entité htmlVarSpan dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1440,7 +1569,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlVarSpan(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "var span")
@@ -1459,6 +1591,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strHtmlVarSpan())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlVarSpan ").f().sx(htmHtmlVarSpan()).g("span");
+			}
 		}
 	}
 
@@ -1476,7 +1615,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputHtmlVarSpan(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -1500,7 +1642,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlVarForm //
 	/////////////////
 
-	/**	L'entité « htmlVarForm »
+	/**	 L'entité htmlVarForm
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1508,9 +1650,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<String> htmlVarFormCouverture = new Couverture<String>().p(this).c(String.class).var("htmlVarForm").o(htmlVarForm);
 
-	/**	<br/>L'entité « htmlVarForm »
+	/**	<br/> L'entité htmlVarForm
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlVarForm">Trouver l'entité htmlVarForm dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlVarForm">Trouver l'entité htmlVarForm dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1560,7 +1702,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlVarForm(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "var form")
@@ -1579,6 +1724,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strHtmlVarForm())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlVarForm ").f().sx(htmHtmlVarForm()).g("span");
+			}
 		}
 	}
 
@@ -1596,7 +1748,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputHtmlVarForm(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -1620,7 +1775,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlVarInput //
 	//////////////////
 
-	/**	L'entité « htmlVarInput »
+	/**	 L'entité htmlVarInput
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1628,9 +1783,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<String> htmlVarInputCouverture = new Couverture<String>().p(this).c(String.class).var("htmlVarInput").o(htmlVarInput);
 
-	/**	<br/>L'entité « htmlVarInput »
+	/**	<br/> L'entité htmlVarInput
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlVarInput">Trouver l'entité htmlVarInput dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlVarInput">Trouver l'entité htmlVarInput dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1680,7 +1835,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlVarInput(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "var input")
@@ -1699,6 +1857,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strHtmlVarInput())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlVarInput ").f().sx(htmHtmlVarInput()).g("span");
+			}
 		}
 	}
 
@@ -1716,7 +1881,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputHtmlVarInput(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -1740,7 +1908,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlVarForEach //
 	////////////////////
 
-	/**	L'entité « htmlVarForEach »
+	/**	 L'entité htmlVarForEach
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1748,9 +1916,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<String> htmlVarForEachCouverture = new Couverture<String>().p(this).c(String.class).var("htmlVarForEach").o(htmlVarForEach);
 
-	/**	<br/>L'entité « htmlVarForEach »
+	/**	<br/> L'entité htmlVarForEach
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlVarForEach">Trouver l'entité htmlVarForEach dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlVarForEach">Trouver l'entité htmlVarForEach dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1800,7 +1968,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlVarForEach(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "var for each")
@@ -1819,6 +1990,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strHtmlVarForEach())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlVarForEach ").f().sx(htmHtmlVarForEach()).g("span");
+			}
 		}
 	}
 
@@ -1836,7 +2014,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputHtmlVarForEach(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -1860,7 +2041,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// htmlExclure //
 	/////////////////
 
-	/**	L'entité « htmlExclure »
+	/**	 L'entité htmlExclure
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1868,9 +2049,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Boolean> htmlExclureCouverture = new Couverture<Boolean>().p(this).c(Boolean.class).var("htmlExclure").o(htmlExclure);
 
-	/**	<br/>L'entité « htmlExclure »
+	/**	<br/> L'entité htmlExclure
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlExclure">Trouver l'entité htmlExclure dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:htmlExclure">Trouver l'entité htmlExclure dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -1925,7 +2106,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputHtmlExclure(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			if("Page".equals(classeApiMethodeMethode)) {
 				e("input")
 					.a("type", "checkbox")
@@ -1957,6 +2141,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				g("select");
 			}
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "HtmlExclure ").f().sx(htmHtmlExclure()).g("span");
+			}
 		}
 	}
 
@@ -1985,7 +2176,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// pdfExclure //
 	////////////////
 
-	/**	L'entité « pdfExclure »
+	/**	 L'entité pdfExclure
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1993,9 +2184,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Boolean> pdfExclureCouverture = new Couverture<Boolean>().p(this).c(Boolean.class).var("pdfExclure").o(pdfExclure);
 
-	/**	<br/>L'entité « pdfExclure »
+	/**	<br/> L'entité pdfExclure
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pdfExclure">Trouver l'entité pdfExclure dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:pdfExclure">Trouver l'entité pdfExclure dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -2050,7 +2241,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputPdfExclure(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			if("Page".equals(classeApiMethodeMethode)) {
 				e("input")
 					.a("type", "checkbox")
@@ -2082,6 +2276,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				g("select");
 			}
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "PdfExclure ").f().sx(htmPdfExclure()).g("span");
+			}
 		}
 	}
 
@@ -2110,7 +2311,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// connecterDeconnecter //
 	//////////////////////////
 
-	/**	L'entité « connecterDeconnecter »
+	/**	 L'entité connecterDeconnecter
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -2118,9 +2319,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Boolean> connecterDeconnecterCouverture = new Couverture<Boolean>().p(this).c(Boolean.class).var("connecterDeconnecter").o(connecterDeconnecter);
 
-	/**	<br/>L'entité « connecterDeconnecter »
+	/**	<br/> L'entité connecterDeconnecter
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:connecterDeconnecter">Trouver l'entité connecterDeconnecter dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:connecterDeconnecter">Trouver l'entité connecterDeconnecter dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -2175,7 +2376,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputConnecterDeconnecter(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			if("Page".equals(classeApiMethodeMethode)) {
 				e("input")
 					.a("type", "checkbox")
@@ -2207,6 +2411,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				g("select");
 			}
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "ConnecterDeconnecter ").f().sx(htmConnecterDeconnecter()).g("span");
+			}
 		}
 	}
 
@@ -2235,7 +2446,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// tri1 //
 	//////////
 
-	/**	L'entité « tri1 »
+	/**	 L'entité tri1
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -2244,9 +2455,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Double> tri1Couverture = new Couverture<Double>().p(this).c(Double.class).var("tri1").o(tri1);
 
-	/**	<br/>L'entité « tri1 »
+	/**	<br/> L'entité tri1
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri1">Trouver l'entité tri1 dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri1">Trouver l'entité tri1 dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -2302,7 +2513,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputTri1(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "tri1")
@@ -2321,6 +2535,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strTri1())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "Tri1 ").f().sx(htmTri1()).g("span");
+			}
 		}
 	}
 
@@ -2338,7 +2559,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputTri1(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -2362,7 +2586,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// tri2 //
 	//////////
 
-	/**	L'entité « tri2 »
+	/**	 L'entité tri2
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -2371,9 +2595,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Double> tri2Couverture = new Couverture<Double>().p(this).c(Double.class).var("tri2").o(tri2);
 
-	/**	<br/>L'entité « tri2 »
+	/**	<br/> L'entité tri2
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri2">Trouver l'entité tri2 dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri2">Trouver l'entité tri2 dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -2429,7 +2653,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputTri2(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "tri2")
@@ -2448,6 +2675,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strTri2())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "Tri2 ").f().sx(htmTri2()).g("span");
+			}
 		}
 	}
 
@@ -2465,7 +2699,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputTri2(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -2489,7 +2726,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// tri3 //
 	//////////
 
-	/**	L'entité « tri3 »
+	/**	 L'entité tri3
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -2498,9 +2735,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Double> tri3Couverture = new Couverture<Double>().p(this).c(Double.class).var("tri3").o(tri3);
 
-	/**	<br/>L'entité « tri3 »
+	/**	<br/> L'entité tri3
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri3">Trouver l'entité tri3 dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri3">Trouver l'entité tri3 dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -2556,7 +2793,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputTri3(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "tri3")
@@ -2575,6 +2815,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strTri3())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "Tri3 ").f().sx(htmTri3()).g("span");
+			}
 		}
 	}
 
@@ -2592,7 +2839,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputTri3(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -2616,7 +2866,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// tri4 //
 	//////////
 
-	/**	L'entité « tri4 »
+	/**	 L'entité tri4
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -2625,9 +2875,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Double> tri4Couverture = new Couverture<Double>().p(this).c(Double.class).var("tri4").o(tri4);
 
-	/**	<br/>L'entité « tri4 »
+	/**	<br/> L'entité tri4
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri4">Trouver l'entité tri4 dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri4">Trouver l'entité tri4 dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -2683,7 +2933,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputTri4(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "tri4")
@@ -2702,6 +2955,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strTri4())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "Tri4 ").f().sx(htmTri4()).g("span");
+			}
 		}
 	}
 
@@ -2719,7 +2979,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputTri4(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -2743,7 +3006,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// tri5 //
 	//////////
 
-	/**	L'entité « tri5 »
+	/**	 L'entité tri5
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -2752,9 +3015,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Double> tri5Couverture = new Couverture<Double>().p(this).c(Double.class).var("tri5").o(tri5);
 
-	/**	<br/>L'entité « tri5 »
+	/**	<br/> L'entité tri5
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri5">Trouver l'entité tri5 dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri5">Trouver l'entité tri5 dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -2810,7 +3073,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputTri5(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "tri5")
@@ -2829,6 +3095,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strTri5())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "Tri5 ").f().sx(htmTri5()).g("span");
+			}
 		}
 	}
 
@@ -2846,7 +3119,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputTri5(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -2870,7 +3146,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// tri6 //
 	//////////
 
-	/**	L'entité « tri6 »
+	/**	 L'entité tri6
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -2879,9 +3155,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Double> tri6Couverture = new Couverture<Double>().p(this).c(Double.class).var("tri6").o(tri6);
 
-	/**	<br/>L'entité « tri6 »
+	/**	<br/> L'entité tri6
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri6">Trouver l'entité tri6 dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri6">Trouver l'entité tri6 dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -2937,7 +3213,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputTri6(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "tri6")
@@ -2956,6 +3235,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strTri6())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "Tri6 ").f().sx(htmTri6()).g("span");
+			}
 		}
 	}
 
@@ -2973,7 +3259,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputTri6(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -2997,7 +3286,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// tri7 //
 	//////////
 
-	/**	L'entité « tri7 »
+	/**	 L'entité tri7
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -3006,9 +3295,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Double> tri7Couverture = new Couverture<Double>().p(this).c(Double.class).var("tri7").o(tri7);
 
-	/**	<br/>L'entité « tri7 »
+	/**	<br/> L'entité tri7
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri7">Trouver l'entité tri7 dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri7">Trouver l'entité tri7 dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -3064,7 +3353,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputTri7(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "tri7")
@@ -3083,6 +3375,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strTri7())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "Tri7 ").f().sx(htmTri7()).g("span");
+			}
 		}
 	}
 
@@ -3100,7 +3399,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputTri7(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -3124,7 +3426,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// tri8 //
 	//////////
 
-	/**	L'entité « tri8 »
+	/**	 L'entité tri8
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -3133,9 +3435,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Double> tri8Couverture = new Couverture<Double>().p(this).c(Double.class).var("tri8").o(tri8);
 
-	/**	<br/>L'entité « tri8 »
+	/**	<br/> L'entité tri8
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri8">Trouver l'entité tri8 dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri8">Trouver l'entité tri8 dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -3191,7 +3493,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputTri8(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "tri8")
@@ -3210,6 +3515,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strTri8())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "Tri8 ").f().sx(htmTri8()).g("span");
+			}
 		}
 	}
 
@@ -3227,7 +3539,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputTri8(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -3251,7 +3566,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// tri9 //
 	//////////
 
-	/**	L'entité « tri9 »
+	/**	 L'entité tri9
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -3260,9 +3575,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Double> tri9Couverture = new Couverture<Double>().p(this).c(Double.class).var("tri9").o(tri9);
 
-	/**	<br/>L'entité « tri9 »
+	/**	<br/> L'entité tri9
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri9">Trouver l'entité tri9 dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri9">Trouver l'entité tri9 dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -3318,7 +3633,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputTri9(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "tri9")
@@ -3337,6 +3655,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strTri9())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "Tri9 ").f().sx(htmTri9()).g("span");
+			}
 		}
 	}
 
@@ -3354,7 +3679,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputTri9(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -3378,7 +3706,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	// tri10 //
 	///////////
 
-	/**	L'entité « tri10 »
+	/**	 L'entité tri10
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -3387,9 +3715,9 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Couverture<Double> tri10Couverture = new Couverture<Double>().p(this).c(Double.class).var("tri10").o(tri10);
 
-	/**	<br/>L'entité « tri10 »
+	/**	<br/> L'entité tri10
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri10">Trouver l'entité tri10 dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtml&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tri10">Trouver l'entité tri10 dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -3445,7 +3773,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 	public void inputTri10(String classeApiMethodeMethode) {
 		PartHtml s = (PartHtml)this;
-		{
+		if(
+				CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+				|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
 			e("input")
 				.a("type", "text")
 				.a("placeholder", "tri10")
@@ -3464,6 +3795,13 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 				a("value", strTri10())
 			.fg();
 
+		} else {
+			if(
+					CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+					|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+				) {
+				e("span").a("class", "varPartHtml", pk, "Tri10 ").f().sx(htmTri10()).g("span");
+			}
 		}
 	}
 
@@ -3481,7 +3819,10 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 
 								inputTri10(classeApiMethodeMethode);
 							} g("div");
-							{
+							if(
+									CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRessource(), ROLES)
+									|| CollectionUtils.containsAny(requeteSite_.getUtilisateurRolesRoyaume(), ROLES)
+									) {
 								if("Page".equals(classeApiMethodeMethode)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -4418,6 +4759,8 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 		Object o = Optional.ofNullable(requeteApi).map(RequeteApi::getOriginal).orElse(null);
 		if(o != null && o instanceof PartHtml) {
 			PartHtml original = (PartHtml)o;
+			if(!Objects.equals(partHtmlCle, original.getPartHtmlCle()))
+				requeteApi.addVars("partHtmlCle");
 			if(!Objects.equals(designPageCles, original.getDesignPageCles()))
 				requeteApi.addVars("designPageCles");
 			if(!Objects.equals(htmlLien, original.getHtmlLien()))
@@ -4481,7 +4824,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 	//////////////
 
 	@Override public int hashCode() {
-		return Objects.hash(super.hashCode(), designPageCles, htmlLien, htmlElement, htmlId, htmlClasses, htmlStyle, htmlAvant, htmlApres, htmlTexte, htmlVar, htmlVarSpan, htmlVarForm, htmlVarInput, htmlVarForEach, htmlExclure, pdfExclure, connecterDeconnecter, tri1, tri2, tri3, tri4, tri5, tri6, tri7, tri8, tri9, tri10);
+		return Objects.hash(super.hashCode(), partHtmlCle, designPageCles, htmlLien, htmlElement, htmlId, htmlClasses, htmlStyle, htmlAvant, htmlApres, htmlTexte, htmlVar, htmlVarSpan, htmlVarForm, htmlVarInput, htmlVarForEach, htmlExclure, pdfExclure, connecterDeconnecter, tri1, tri2, tri3, tri4, tri5, tri6, tri7, tri8, tri9, tri10);
 	}
 
 	////////////
@@ -4495,6 +4838,7 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 			return false;
 		PartHtml that = (PartHtml)o;
 		return super.equals(o)
+				&& Objects.equals( partHtmlCle, that.partHtmlCle )
 				&& Objects.equals( designPageCles, that.designPageCles )
 				&& Objects.equals( htmlLien, that.htmlLien )
 				&& Objects.equals( htmlElement, that.htmlElement )
@@ -4532,7 +4876,8 @@ public abstract class PartHtmlGen<DEV> extends Cluster {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString() + "\n");
 		sb.append("PartHtml { ");
-		sb.append( "designPageCles: " ).append(designPageCles);
+		sb.append( "partHtmlCle: " ).append(partHtmlCle);
+		sb.append( ", designPageCles: " ).append(designPageCles);
 		sb.append( ", htmlLien: \"" ).append(htmlLien).append( "\"" );
 		sb.append( ", htmlElement: \"" ).append(htmlElement).append( "\"" );
 		sb.append( ", htmlId: \"" ).append(htmlId).append( "\"" );

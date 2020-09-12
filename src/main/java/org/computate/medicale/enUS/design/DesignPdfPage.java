@@ -3,6 +3,7 @@ package org.computate.medicale.enUS.design;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -23,11 +24,11 @@ import org.computate.medicale.enUS.patient.MedicalPatient;
 import org.computate.medicale.enUS.search.SearchList;
 import org.computate.medicale.enUS.wrap.Wrap;
 import org.computate.medicale.enUS.writer.AllWriter;
+import org.w3c.dom.Document;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 import org.xhtmlrenderer.resource.FSEntityResolver;
 import org.xml.sax.SAXException;
 
-import org.w3c.dom.Document;
 import com.itextpdf.text.DocumentException;
 
 /**
@@ -307,7 +308,7 @@ public class DesignPdfPage extends DesignPdfPageGen<DesignPdfGenPage> {
 
 			DocumentBuilder builder = fac.newDocumentBuilder();
 			builder.setEntityResolver(FSEntityResolver.instance());
-			Document doc = builder.parse(new ByteArrayInputStream(str.getBytes()));
+			Document doc = builder.parse(new ByteArrayInputStream(str.getBytes(Charset.forName("UTF-8"))));
 
 			ITextRenderer renderer = new ITextRenderer();
 			renderer.setDocument(doc, null);

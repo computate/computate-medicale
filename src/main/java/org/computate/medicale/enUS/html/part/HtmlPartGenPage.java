@@ -31,6 +31,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -52,7 +53,7 @@ public class HtmlPartGenPage extends HtmlPartGenPageGen<ClusterPage> {
 	protected void _listHtmlPart(Wrap<SearchList<HtmlPart>> c) {
 	}
 
-	protected void _htmlPart(Wrap<HtmlPart> c) {
+	protected void _htmlPart_(Wrap<HtmlPart> c) {
 		if(listHtmlPart != null && listHtmlPart.size() == 1)
 			c.o(listHtmlPart.get(0));
 	}
@@ -70,12 +71,14 @@ public class HtmlPartGenPage extends HtmlPartGenPageGen<ClusterPage> {
 	}
 
 	@Override protected void _pageTitle(Wrap<String> c) {
-		if(htmlPart != null && htmlPart.getObjectTitle() != null)
-			c.o(htmlPart.getObjectTitle());
-		else if(htmlPart != null)
-			c.o("");
+		if(htmlPart_ != null && htmlPart_.getObjectTitle() != null)
+			c.o(htmlPart_.getObjectTitle());
+		else if(htmlPart_ != null)
+			c.o("HTML parts");
 		else if(listHtmlPart == null || listHtmlPart.size() == 0)
 			c.o("no HTML part found");
+		else
+			c.o("HTML parts");
 	}
 
 	@Override protected void _pageUri(Wrap<String> c) {
@@ -758,7 +761,7 @@ public class HtmlPartGenPage extends HtmlPartGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#postHtmlPartModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Create an HTML part").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "postHtmlPartFormValues").f();
 							HtmlPart o = new HtmlPart();
 							o.setSiteRequest_(siteRequest_);
 
@@ -792,7 +795,7 @@ public class HtmlPartGenPage extends HtmlPartGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putimportHtmlPartModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Import HTML parts").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putimportHtmlPartFormValues").f();
 							HtmlPart o = new HtmlPart();
 							o.setSiteRequest_(siteRequest_);
 
@@ -826,7 +829,7 @@ public class HtmlPartGenPage extends HtmlPartGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putmergeHtmlPartModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Merge HTML parts").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putmergeHtmlPartFormValues").f();
 							HtmlPart o = new HtmlPart();
 							o.setSiteRequest_(siteRequest_);
 
@@ -860,7 +863,7 @@ public class HtmlPartGenPage extends HtmlPartGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putcopyHtmlPartModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Duplicate HTML parts").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putcopyHtmlPartFormValues").f();
 							HtmlPart o = new HtmlPart();
 							o.setSiteRequest_(siteRequest_);
 
@@ -870,7 +873,7 @@ public class HtmlPartGenPage extends HtmlPartGenPageGen<ClusterPage> {
 							} g("div");
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-yellow ")
-								.a("onclick", "putcopyHtmlPart($('#putcopyHtmlPartForm'), ", htmlPart == null ? "null" : htmlPart.getPk(), "); ")
+								.a("onclick", "putcopyHtmlPart($('#putcopyHtmlPartForm'), ", htmlPart_ == null ? "null" : htmlPart_.getPk(), "); ")
 								.f().sx("Duplicate HTML parts")
 							.g("button");
 
@@ -894,17 +897,14 @@ public class HtmlPartGenPage extends HtmlPartGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#patchHtmlPartModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Modify HTML parts").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "patchHtmlPartFormValues").f();
 							HtmlPart o = new HtmlPart();
 							o.setSiteRequest_(siteRequest_);
 
-							// FormValues PATCH
-							{ e("form").a("action", "").a("id", "patchHtmlPartFormValues").a("onsubmit", "event.preventDefault(); return false; ").f();
-								htmlFormPATCHHtmlPart(o);
-							} g("form");
+							htmlFormPATCHHtmlPart(o);
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-yellow ")
-								.a("onclick", "patchHtmlPart(null, $('#patchHtmlPartFormValues'), ", Optional.ofNullable(htmlPart).map(HtmlPart::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
+								.a("onclick", "patchHtmlPart(null, $('#patchHtmlPartFormValues'), ", Optional.ofNullable(htmlPart_).map(HtmlPart::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
 								.f().sx("Modify HTML parts")
 							.g("button");
 
@@ -997,7 +997,7 @@ public class HtmlPartGenPage extends HtmlPartGenPageGen<ClusterPage> {
 					.a("name", "suggestHtmlPart")
 					.a("id", "suggestHtmlPart", id)
 					.a("autocomplete", "off")
-					.a("oninput", "suggestHtmlPartObjectSuggest( [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() } ], $('#suggestListHtmlPart", id, "'), ", p.getSiteRequest_().getRequestPk(), "); ")
+					.a("oninput", "suggestHtmlPartObjectSuggest( [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objectTitle' } ], $('#suggestListHtmlPart", id, "'), ", p.getSiteRequest_().getRequestPk(), "); ")
 					.a("onkeyup", "if (event.keyCode === 13) { event.preventDefault(); window.location.href = '/html-part?q=", query1, ":' + encodeURIComponent(this.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; }"); 
 				if(listHtmlPart != null)
 					p.a("value", query2);

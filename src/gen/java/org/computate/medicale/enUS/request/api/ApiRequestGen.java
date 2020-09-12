@@ -23,6 +23,7 @@ import java.lang.Boolean;
 import java.time.ZoneOffset;
 import java.lang.String;
 import io.vertx.core.logging.Logger;
+import java.math.RoundingMode;
 import org.computate.medicale.enUS.wrap.Wrap;
 import java.math.MathContext;
 import org.computate.medicale.enUS.writer.AllWriter;
@@ -45,7 +46,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
+ * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true">Find the class  in Solr. </a>
  * <br/>
  **/
 public abstract class ApiRequestGen<DEV> extends Object {
@@ -55,7 +56,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	// siteRequest_ //
 	//////////////////
 
-	/**	L'entité « siteRequest_ »
+	/**	 The entity siteRequest_
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonIgnore
@@ -64,11 +65,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@JsonIgnore
 	public Wrap<SiteRequestEnUS> siteRequest_Wrap = new Wrap<SiteRequestEnUS>().p(this).c(SiteRequestEnUS.class).var("siteRequest_").o(siteRequest_);
 
-	/**	<br/>L'entité « siteRequest_ »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:siteRequest_">Trouver l'entité siteRequest_ dans Solr</a>
+	/**	<br/> The entity siteRequest_
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:siteRequest_">Find the entity siteRequest_ in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _siteRequest_(Wrap<SiteRequestEnUS> c);
 
@@ -94,7 +95,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	// created //
 	/////////////
 
-	/**	L'entité « created »
+	/**	 The entity created
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -103,11 +104,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@JsonIgnore
 	public Wrap<ZonedDateTime> createdWrap = new Wrap<ZonedDateTime>().p(this).c(ZonedDateTime.class).var("created").o(created);
 
-	/**	<br/>L'entité « created »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:created">Trouver l'entité created dans Solr</a>
+	/**	<br/> The entity created
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:created">Find the entity created in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _created(Wrap<ZonedDateTime> c);
 
@@ -173,7 +174,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	// rows //
 	//////////
 
-	/**	L'entité « rows »
+	/**	 The entity rows
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -182,11 +183,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@JsonIgnore
 	public Wrap<Integer> rowsWrap = new Wrap<Integer>().p(this).c(Integer.class).var("rows").o(rows);
 
-	/**	<br/>L'entité « rows »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:rows">Trouver l'entité rows dans Solr</a>
+	/**	<br/> The entity rows
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:rows">Find the entity rows in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _rows(Wrap<Integer> c);
 
@@ -242,7 +243,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	// numFound //
 	//////////////
 
-	/**	L'entité « numFound »
+	/**	 The entity numFound
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -251,11 +252,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@JsonIgnore
 	public Wrap<Long> numFoundWrap = new Wrap<Long>().p(this).c(Long.class).var("numFound").o(numFound);
 
-	/**	<br/>L'entité « numFound »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:numFound">Trouver l'entité numFound dans Solr</a>
+	/**	<br/> The entity numFound
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:numFound">Find the entity numFound in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _numFound(Wrap<Long> c);
 
@@ -311,7 +312,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	// numPATCH //
 	//////////////
 
-	/**	L'entité « numPATCH »
+	/**	 The entity numPATCH
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -320,11 +321,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@JsonIgnore
 	public Wrap<Long> numPATCHWrap = new Wrap<Long>().p(this).c(Long.class).var("numPATCH").o(numPATCH);
 
-	/**	<br/>L'entité « numPATCH »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:numPATCH">Trouver l'entité numPATCH dans Solr</a>
+	/**	<br/> The entity numPATCH
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:numPATCH">Find the entity numPATCH in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _numPATCH(Wrap<Long> c);
 
@@ -380,7 +381,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	// uuid //
 	//////////
 
-	/**	L'entité « uuid »
+	/**	 The entity uuid
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -388,11 +389,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@JsonIgnore
 	public Wrap<String> uuidWrap = new Wrap<String>().p(this).c(String.class).var("uuid").o(uuid);
 
-	/**	<br/>L'entité « uuid »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:uuid">Trouver l'entité uuid dans Solr</a>
+	/**	<br/> The entity uuid
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:uuid">Find the entity uuid in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _uuid(Wrap<String> c);
 
@@ -442,7 +443,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	// id //
 	////////
 
-	/**	L'entité « id »
+	/**	 The entity id
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -450,11 +451,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@JsonIgnore
 	public Wrap<String> idWrap = new Wrap<String>().p(this).c(String.class).var("id").o(id);
 
-	/**	<br/>L'entité « id »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:id">Trouver l'entité id dans Solr</a>
+	/**	<br/> The entity id
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:id">Find the entity id in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _id(Wrap<String> c);
 
@@ -504,7 +505,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	// empty //
 	///////////
 
-	/**	L'entité « empty »
+	/**	 The entity empty
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -512,11 +513,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@JsonIgnore
 	public Wrap<Boolean> emptyWrap = new Wrap<Boolean>().p(this).c(Boolean.class).var("empty").o(empty);
 
-	/**	<br/>L'entité « empty »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:empty">Trouver l'entité empty dans Solr</a>
+	/**	<br/> The entity empty
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:empty">Find the entity empty in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _empty(Wrap<Boolean> c);
 
@@ -571,7 +572,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	// pk //
 	////////
 
-	/**	L'entité « pk »
+	/**	 The entity pk
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -580,11 +581,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@JsonIgnore
 	public Wrap<Long> pkWrap = new Wrap<Long>().p(this).c(Long.class).var("pk").o(pk);
 
-	/**	<br/>L'entité « pk »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pk">Trouver l'entité pk dans Solr</a>
+	/**	<br/> The entity pk
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pk">Find the entity pk in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _pk(Wrap<Long> c);
 
@@ -640,7 +641,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	// original //
 	//////////////
 
-	/**	L'entité « original »
+	/**	 The entity original
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonIgnore
@@ -649,11 +650,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@JsonIgnore
 	public Wrap<Object> originalWrap = new Wrap<Object>().p(this).c(Object.class).var("original").o(original);
 
-	/**	<br/>L'entité « original »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:original">Trouver l'entité original dans Solr</a>
+	/**	<br/> The entity original
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:original">Find the entity original in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _original(Wrap<Object> c);
 
@@ -679,7 +680,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	// pks //
 	/////////
 
-	/**	L'entité « pks »
+	/**	 The entity pks
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
@@ -688,11 +689,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@JsonIgnore
 	public Wrap<List<Long>> pksWrap = new Wrap<List<Long>>().p(this).c(List.class).var("pks").o(pks);
 
-	/**	<br/>L'entité « pks »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pks">Trouver l'entité pks dans Solr</a>
+	/**	<br/> The entity pks
+	 *  It is constructed before being initialized with the constructor by default List<Long>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pks">Find the entity pks in Solr</a>
 	 * <br/>
-	 * @param pks est l'entité déjà construit. 
+	 * @param pks is the entity already constructed. 
 	 **/
 	protected abstract void _pks(List<Long> c);
 
@@ -766,7 +767,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	// classes //
 	/////////////
 
-	/**	L'entité « classes »
+	/**	 The entity classes
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -774,11 +775,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@JsonIgnore
 	public Wrap<List<String>> classesWrap = new Wrap<List<String>>().p(this).c(List.class).var("classes").o(classes);
 
-	/**	<br/>L'entité « classes »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:classes">Trouver l'entité classes dans Solr</a>
+	/**	<br/> The entity classes
+	 *  It is constructed before being initialized with the constructor by default List<String>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:classes">Find the entity classes in Solr</a>
 	 * <br/>
-	 * @param classes est l'entité déjà construit. 
+	 * @param classes is the entity already constructed. 
 	 **/
 	protected abstract void _classes(List<String> c);
 
@@ -845,7 +846,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	// vars //
 	//////////
 
-	/**	L'entité « vars »
+	/**	 The entity vars
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -853,11 +854,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@JsonIgnore
 	public Wrap<List<String>> varsWrap = new Wrap<List<String>>().p(this).c(List.class).var("vars").o(vars);
 
-	/**	<br/>L'entité « vars »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<String>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:vars">Trouver l'entité vars dans Solr</a>
+	/**	<br/> The entity vars
+	 *  It is constructed before being initialized with the constructor by default List<String>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.request.api.ApiRequest&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:vars">Find the entity vars in Solr</a>
 	 * <br/>
-	 * @param vars est l'entité déjà construit. 
+	 * @param vars is the entity already constructed. 
 	 **/
 	protected abstract void _vars(List<String> c);
 
@@ -1081,6 +1082,16 @@ public abstract class ApiRequestGen<DEV> extends Object {
 		Object o = Optional.ofNullable(apiRequest).map(ApiRequest::getOriginal).orElse(null);
 		if(o != null && o instanceof ApiRequest) {
 			ApiRequest original = (ApiRequest)o;
+			if(!Objects.equals(created, original.getCreated()))
+				apiRequest.addVars("created");
+			if(!Objects.equals(rows, original.getRows()))
+				apiRequest.addVars("rows");
+			if(!Objects.equals(numFound, original.getNumFound()))
+				apiRequest.addVars("numFound");
+			if(!Objects.equals(numPATCH, original.getNumPATCH()))
+				apiRequest.addVars("numPATCH");
+			if(!Objects.equals(uuid, original.getUuid()))
+				apiRequest.addVars("uuid");
 		}
 	}
 
@@ -1089,7 +1100,7 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	//////////////
 
 	@Override public int hashCode() {
-		return Objects.hash();
+		return Objects.hash(created, rows, numFound, numPATCH, uuid);
 	}
 
 	////////////
@@ -1102,7 +1113,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 		if(!(o instanceof ApiRequest))
 			return false;
 		ApiRequest that = (ApiRequest)o;
-		return true;
+		return Objects.equals( created, that.created )
+				&& Objects.equals( rows, that.rows )
+				&& Objects.equals( numFound, that.numFound )
+				&& Objects.equals( numPATCH, that.numPATCH )
+				&& Objects.equals( uuid, that.uuid );
 	}
 
 	//////////////
@@ -1112,6 +1127,11 @@ public abstract class ApiRequestGen<DEV> extends Object {
 	@Override public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("ApiRequest { ");
+		sb.append( "created: " ).append(created);
+		sb.append( ", rows: " ).append(rows);
+		sb.append( ", numFound: " ).append(numFound);
+		sb.append( ", numPATCH: " ).append(numPATCH);
+		sb.append( ", uuid: \"" ).append(uuid).append( "\"" );
 		sb.append(" }");
 		return sb.toString();
 	}

@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.vertx.core.logging.Logger;
+import java.math.RoundingMode;
 import org.computate.medicale.frFR.couverture.Couverture;
 import java.math.MathContext;
 import org.computate.medicale.frFR.ecrivain.ToutEcrivain;
@@ -33,7 +34,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtmlGenPage&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
+ * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtmlGenPage&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr. </a>
  * <br/>
  **/
 public abstract class PartHtmlGenPageGen<DEV> extends ClusterPage {
@@ -43,7 +44,7 @@ public abstract class PartHtmlGenPageGen<DEV> extends ClusterPage {
 	// listePartHtml //
 	///////////////////
 
-	/**	L'entité « listePartHtml »
+	/**	 L'entité listePartHtml
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -51,9 +52,9 @@ public abstract class PartHtmlGenPageGen<DEV> extends ClusterPage {
 	@JsonIgnore
 	public Couverture<ListeRecherche<PartHtml>> listePartHtmlCouverture = new Couverture<ListeRecherche<PartHtml>>().p(this).c(ListeRecherche.class).var("listePartHtml").o(listePartHtml);
 
-	/**	<br/>L'entité « listePartHtml »
+	/**	<br/> L'entité listePartHtml
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtmlGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:listePartHtml">Trouver l'entité listePartHtml dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtmlGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:listePartHtml">Trouver l'entité listePartHtml dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -79,43 +80,41 @@ public abstract class PartHtmlGenPageGen<DEV> extends ClusterPage {
 		return (PartHtmlGenPage)this;
 	}
 
-	//////////////
-	// partHtml //
-	//////////////
+	///////////////
+	// partHtml_ //
+	///////////////
 
-	/**	L'entité « partHtml »
+	/**	 L'entité partHtml_
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected PartHtml partHtml;
+	protected PartHtml partHtml_;
 	@JsonIgnore
-	public Couverture<PartHtml> partHtmlCouverture = new Couverture<PartHtml>().p(this).c(PartHtml.class).var("partHtml").o(partHtml);
+	public Couverture<PartHtml> partHtml_Couverture = new Couverture<PartHtml>().p(this).c(PartHtml.class).var("partHtml_").o(partHtml_);
 
-	/**	<br/>L'entité « partHtml »
+	/**	<br/> L'entité partHtml_
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtmlGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:partHtml">Trouver l'entité partHtml dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.html.part.PartHtmlGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:partHtml_">Trouver l'entité partHtml_ dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _partHtml(Couverture<PartHtml> c);
+	protected abstract void _partHtml_(Couverture<PartHtml> c);
 
-	public PartHtml getPartHtml() {
-		return partHtml;
+	public PartHtml getPartHtml_() {
+		return partHtml_;
 	}
 
-	public void setPartHtml(PartHtml partHtml) {
-		this.partHtml = partHtml;
-		this.partHtmlCouverture.dejaInitialise = true;
+	public void setPartHtml_(PartHtml partHtml_) {
+		this.partHtml_ = partHtml_;
+		this.partHtml_Couverture.dejaInitialise = true;
 	}
-	protected PartHtmlGenPage partHtmlInit() {
-		if(!partHtmlCouverture.dejaInitialise) {
-			_partHtml(partHtmlCouverture);
-			if(partHtml == null)
-				setPartHtml(partHtmlCouverture.o);
+	protected PartHtmlGenPage partHtml_Init() {
+		if(!partHtml_Couverture.dejaInitialise) {
+			_partHtml_(partHtml_Couverture);
+			if(partHtml_ == null)
+				setPartHtml_(partHtml_Couverture.o);
 		}
-		if(partHtml != null)
-			partHtml.initLoinPourClasse(requeteSite_);
-		partHtmlCouverture.dejaInitialise(true);
+		partHtml_Couverture.dejaInitialise(true);
 		return (PartHtmlGenPage)this;
 	}
 
@@ -141,7 +140,7 @@ public abstract class PartHtmlGenPageGen<DEV> extends ClusterPage {
 
 	public void initPartHtmlGenPage() {
 		listePartHtmlInit();
-		partHtmlInit();
+		partHtml_Init();
 	}
 
 	@Override public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) {
@@ -156,8 +155,6 @@ public abstract class PartHtmlGenPageGen<DEV> extends ClusterPage {
 			super.requeteSiteClusterPage(requeteSite_);
 		if(listePartHtml != null)
 			listePartHtml.setRequeteSite_(requeteSite_);
-		if(partHtml != null)
-			partHtml.setRequeteSite_(requeteSite_);
 	}
 
 	public void requeteSitePourClasse(RequeteSiteFrFR requeteSite_) {
@@ -186,8 +183,8 @@ public abstract class PartHtmlGenPageGen<DEV> extends ClusterPage {
 		switch(var) {
 			case "listePartHtml":
 				return oPartHtmlGenPage.listePartHtml;
-			case "partHtml":
-				return oPartHtmlGenPage.partHtml;
+			case "partHtml_":
+				return oPartHtmlGenPage.partHtml_;
 			default:
 				return super.obtenirClusterPage(var);
 		}

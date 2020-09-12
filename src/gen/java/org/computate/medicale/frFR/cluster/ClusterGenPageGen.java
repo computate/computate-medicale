@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.vertx.core.logging.Logger;
+import java.math.RoundingMode;
 import org.computate.medicale.frFR.couverture.Couverture;
 import java.math.MathContext;
 import org.computate.medicale.frFR.ecrivain.ToutEcrivain;
@@ -32,7 +33,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.ClusterGenPage&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
+ * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.ClusterGenPage&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr. </a>
  * <br/>
  **/
 public abstract class ClusterGenPageGen<DEV> extends MiseEnPage {
@@ -42,7 +43,7 @@ public abstract class ClusterGenPageGen<DEV> extends MiseEnPage {
 	// listeCluster //
 	//////////////////
 
-	/**	L'entité « listeCluster »
+	/**	 L'entité listeCluster
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -50,9 +51,9 @@ public abstract class ClusterGenPageGen<DEV> extends MiseEnPage {
 	@JsonIgnore
 	public Couverture<ListeRecherche<Cluster>> listeClusterCouverture = new Couverture<ListeRecherche<Cluster>>().p(this).c(ListeRecherche.class).var("listeCluster").o(listeCluster);
 
-	/**	<br/>L'entité « listeCluster »
+	/**	<br/> L'entité listeCluster
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.ClusterGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:listeCluster">Trouver l'entité listeCluster dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.ClusterGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:listeCluster">Trouver l'entité listeCluster dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -78,43 +79,41 @@ public abstract class ClusterGenPageGen<DEV> extends MiseEnPage {
 		return (ClusterGenPage)this;
 	}
 
-	/////////////
-	// cluster //
-	/////////////
+	//////////////
+	// cluster_ //
+	//////////////
 
-	/**	L'entité « cluster »
+	/**	 L'entité cluster_
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
-	protected Cluster cluster;
+	protected Cluster cluster_;
 	@JsonIgnore
-	public Couverture<Cluster> clusterCouverture = new Couverture<Cluster>().p(this).c(Cluster.class).var("cluster").o(cluster);
+	public Couverture<Cluster> cluster_Couverture = new Couverture<Cluster>().p(this).c(Cluster.class).var("cluster_").o(cluster_);
 
-	/**	<br/>L'entité « cluster »
+	/**	<br/> L'entité cluster_
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.ClusterGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:cluster">Trouver l'entité cluster dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.cluster.ClusterGenPage&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:cluster_">Trouver l'entité cluster_ dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
-	protected abstract void _cluster(Couverture<Cluster> c);
+	protected abstract void _cluster_(Couverture<Cluster> c);
 
-	public Cluster getCluster() {
-		return cluster;
+	public Cluster getCluster_() {
+		return cluster_;
 	}
 
-	public void setCluster(Cluster cluster) {
-		this.cluster = cluster;
-		this.clusterCouverture.dejaInitialise = true;
+	public void setCluster_(Cluster cluster_) {
+		this.cluster_ = cluster_;
+		this.cluster_Couverture.dejaInitialise = true;
 	}
-	protected ClusterGenPage clusterInit() {
-		if(!clusterCouverture.dejaInitialise) {
-			_cluster(clusterCouverture);
-			if(cluster == null)
-				setCluster(clusterCouverture.o);
+	protected ClusterGenPage cluster_Init() {
+		if(!cluster_Couverture.dejaInitialise) {
+			_cluster_(cluster_Couverture);
+			if(cluster_ == null)
+				setCluster_(cluster_Couverture.o);
 		}
-		if(cluster != null)
-			cluster.initLoinPourClasse(requeteSite_);
-		clusterCouverture.dejaInitialise(true);
+		cluster_Couverture.dejaInitialise(true);
 		return (ClusterGenPage)this;
 	}
 
@@ -140,7 +139,7 @@ public abstract class ClusterGenPageGen<DEV> extends MiseEnPage {
 
 	public void initClusterGenPage() {
 		listeClusterInit();
-		clusterInit();
+		cluster_Init();
 	}
 
 	@Override public void initLoinPourClasse(RequeteSiteFrFR requeteSite_) {
@@ -155,8 +154,6 @@ public abstract class ClusterGenPageGen<DEV> extends MiseEnPage {
 			super.requeteSiteMiseEnPage(requeteSite_);
 		if(listeCluster != null)
 			listeCluster.setRequeteSite_(requeteSite_);
-		if(cluster != null)
-			cluster.setRequeteSite_(requeteSite_);
 	}
 
 	public void requeteSitePourClasse(RequeteSiteFrFR requeteSite_) {
@@ -185,8 +182,8 @@ public abstract class ClusterGenPageGen<DEV> extends MiseEnPage {
 		switch(var) {
 			case "listeCluster":
 				return oClusterGenPage.listeCluster;
-			case "cluster":
-				return oClusterGenPage.cluster;
+			case "cluster_":
+				return oClusterGenPage.cluster_;
 			default:
 				return super.obtenirMiseEnPage(var);
 		}

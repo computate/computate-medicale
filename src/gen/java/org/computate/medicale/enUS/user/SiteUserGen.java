@@ -20,6 +20,7 @@ import java.lang.Boolean;
 import io.vertx.core.json.JsonObject;
 import java.lang.String;
 import io.vertx.core.logging.Logger;
+import java.math.RoundingMode;
 import org.computate.medicale.enUS.wrap.Wrap;
 import java.math.MathContext;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -45,7 +46,7 @@ import org.apache.solr.common.SolrInputDocument;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
+ * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true">Find the class  in Solr. </a>
  * <br/>
  **/
 public abstract class SiteUserGen<DEV> extends Cluster {
@@ -64,6 +65,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	public static final String SiteUser_NameActual = "current site user";
 	public static final String SiteUser_AllName = "all the site users";
 	public static final String SiteUser_SearchAllNameBy = "search site users by ";
+	public static final String SiteUser_Title = "site users";
 	public static final String SiteUser_ThePluralName = "the site users";
 	public static final String SiteUser_NoNameFound = "no site user found";
 	public static final String SiteUser_NameVar = "user";
@@ -79,7 +81,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	// userKeys //
 	//////////////
 
-	/**	L'entité « userKeys »
+	/**	 The entity userKeys
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
@@ -88,11 +90,11 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<List<Long>> userKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("userKeys").o(userKeys);
 
-	/**	<br/>L'entité « userKeys »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userKeys">Trouver l'entité userKeys dans Solr</a>
+	/**	<br/> The entity userKeys
+	 *  It is constructed before being initialized with the constructor by default List<Long>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userKeys">Find the entity userKeys in Solr</a>
 	 * <br/>
-	 * @param userKeys est l'entité déjà construit. 
+	 * @param userKeys is the entity already constructed. 
 	 **/
 	protected abstract void _userKeys(List<Long> l);
 
@@ -166,7 +168,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	// enrollmentKeys //
 	////////////////////
 
-	/**	L'entité « enrollmentKeys »
+	/**	 The entity enrollmentKeys
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
@@ -175,11 +177,11 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<List<Long>> enrollmentKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("enrollmentKeys").o(enrollmentKeys);
 
-	/**	<br/>L'entité « enrollmentKeys »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentKeys">Trouver l'entité enrollmentKeys dans Solr</a>
+	/**	<br/> The entity enrollmentKeys
+	 *  It is constructed before being initialized with the constructor by default List<Long>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:enrollmentKeys">Find the entity enrollmentKeys in Solr</a>
 	 * <br/>
-	 * @param enrollmentKeys est l'entité déjà construit. 
+	 * @param enrollmentKeys is the entity already constructed. 
 	 **/
 	protected abstract void _enrollmentKeys(List<Long> o);
 
@@ -265,7 +267,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 						{ e("div").a("class", "w3-cell-row  ").f();
 							{ e("div").a("class", "w3-cell ").f();
 								{ e("div").a("class", "w3-rest ").f();
-									e("span").f().sx(strEnrollmentKeys()).g("span");
+									e("span").a("class", "varSiteUser", pk, "EnrollmentKeys ").f().sx(strEnrollmentKeys()).g("span");
 								} g("div");
 							} g("div");
 						} g("div");
@@ -279,7 +281,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	// userName //
 	//////////////
 
-	/**	L'entité « userName »
+	/**	 The entity userName
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -287,11 +289,11 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<String> userNameWrap = new Wrap<String>().p(this).c(String.class).var("userName").o(userName);
 
-	/**	<br/>L'entité « userName »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userName">Trouver l'entité userName dans Solr</a>
+	/**	<br/> The entity userName
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userName">Find the entity userName in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _userName(Wrap<String> c);
 
@@ -365,7 +367,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 					CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 					|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 					) {
-				sx(htmUserName());
+				e("span").a("class", "varSiteUser", pk, "UserName ").f().sx(htmUserName()).g("span");
 			}
 		}
 	}
@@ -408,7 +410,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	// userEmail //
 	///////////////
 
-	/**	L'entité « userEmail »
+	/**	 The entity userEmail
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -416,11 +418,11 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<String> userEmailWrap = new Wrap<String>().p(this).c(String.class).var("userEmail").o(userEmail);
 
-	/**	<br/>L'entité « userEmail »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userEmail">Trouver l'entité userEmail dans Solr</a>
+	/**	<br/> The entity userEmail
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userEmail">Find the entity userEmail in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _userEmail(Wrap<String> c);
 
@@ -494,7 +496,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 					CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 					|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 					) {
-				sx(htmUserEmail());
+				e("span").a("class", "varSiteUser", pk, "UserEmail ").f().sx(htmUserEmail()).g("span");
 			}
 		}
 	}
@@ -537,7 +539,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	// userFirstName //
 	///////////////////
 
-	/**	L'entité « userFirstName »
+	/**	 The entity userFirstName
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -545,11 +547,11 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<String> userFirstNameWrap = new Wrap<String>().p(this).c(String.class).var("userFirstName").o(userFirstName);
 
-	/**	<br/>L'entité « userFirstName »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userFirstName">Trouver l'entité userFirstName dans Solr</a>
+	/**	<br/> The entity userFirstName
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userFirstName">Find the entity userFirstName in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _userFirstName(Wrap<String> c);
 
@@ -599,7 +601,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	// userLastName //
 	//////////////////
 
-	/**	L'entité « userLastName »
+	/**	 The entity userLastName
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -607,11 +609,11 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<String> userLastNameWrap = new Wrap<String>().p(this).c(String.class).var("userLastName").o(userLastName);
 
-	/**	<br/>L'entité « userLastName »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userLastName">Trouver l'entité userLastName dans Solr</a>
+	/**	<br/> The entity userLastName
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userLastName">Find the entity userLastName in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _userLastName(Wrap<String> c);
 
@@ -661,7 +663,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	// userFullName //
 	//////////////////
 
-	/**	L'entité « userFullName »
+	/**	 The entity userFullName
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -669,11 +671,11 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<String> userFullNameWrap = new Wrap<String>().p(this).c(String.class).var("userFullName").o(userFullName);
 
-	/**	<br/>L'entité « userFullName »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userFullName">Trouver l'entité userFullName dans Solr</a>
+	/**	<br/> The entity userFullName
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userFullName">Find the entity userFullName in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _userFullName(Wrap<String> c);
 
@@ -723,7 +725,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	// userSite //
 	//////////////
 
-	/**	L'entité « userSite »
+	/**	 The entity userSite
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -731,11 +733,11 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<String> userSiteWrap = new Wrap<String>().p(this).c(String.class).var("userSite").o(userSite);
 
-	/**	<br/>L'entité « userSite »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userSite">Trouver l'entité userSite dans Solr</a>
+	/**	<br/> The entity userSite
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userSite">Find the entity userSite in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _userSite(Wrap<String> c);
 
@@ -785,7 +787,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	// customerProfileId //
 	///////////////////////
 
-	/**	L'entité « customerProfileId »
+	/**	 The entity customerProfileId
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -793,11 +795,11 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<String> customerProfileIdWrap = new Wrap<String>().p(this).c(String.class).var("customerProfileId").o(customerProfileId);
 
-	/**	<br/>L'entité « customerProfileId »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:customerProfileId">Trouver l'entité customerProfileId dans Solr</a>
+	/**	<br/> The entity customerProfileId
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:customerProfileId">Find the entity customerProfileId in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _customerProfileId(Wrap<String> c);
 
@@ -872,7 +874,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 					CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 					|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 					) {
-				sx(htmCustomerProfileId());
+				e("span").a("class", "varSiteUser", pk, "CustomerProfileId ").f().sx(htmCustomerProfileId()).g("span");
 			}
 		}
 	}
@@ -918,7 +920,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	// userReceiveEmails //
 	///////////////////////
 
-	/**	L'entité « userReceiveEmails »
+	/**	 The entity userReceiveEmails
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -926,11 +928,11 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<Boolean> userReceiveEmailsWrap = new Wrap<Boolean>().p(this).c(Boolean.class).var("userReceiveEmails").o(userReceiveEmails);
 
-	/**	<br/>L'entité « userReceiveEmails »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userReceiveEmails">Trouver l'entité userReceiveEmails dans Solr</a>
+	/**	<br/> The entity userReceiveEmails
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:userReceiveEmails">Find the entity userReceiveEmails in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _userReceiveEmails(Wrap<Boolean> c);
 
@@ -1023,7 +1025,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 					CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 					|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 					) {
-				sx(htmUserReceiveEmails());
+				e("span").a("class", "varSiteUser", pk, "UserReceiveEmails ").f().sx(htmUserReceiveEmails()).g("span");
 			}
 		}
 	}
@@ -1053,7 +1055,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	// seeArchived //
 	/////////////////
 
-	/**	L'entité « seeArchived »
+	/**	 The entity seeArchived
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1061,11 +1063,11 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<Boolean> seeArchivedWrap = new Wrap<Boolean>().p(this).c(Boolean.class).var("seeArchived").o(seeArchived);
 
-	/**	<br/>L'entité « seeArchived »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:seeArchived">Trouver l'entité seeArchived dans Solr</a>
+	/**	<br/> The entity seeArchived
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:seeArchived">Find the entity seeArchived in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _seeArchived(Wrap<Boolean> c);
 
@@ -1158,7 +1160,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 					CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 					|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 					) {
-				sx(htmSeeArchived());
+				e("span").a("class", "varSiteUser", pk, "SeeArchived ").f().sx(htmSeeArchived()).g("span");
 			}
 		}
 	}
@@ -1188,7 +1190,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	// seeDeleted //
 	////////////////
 
-	/**	L'entité « seeDeleted »
+	/**	 The entity seeDeleted
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -1196,11 +1198,11 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<Boolean> seeDeletedWrap = new Wrap<Boolean>().p(this).c(Boolean.class).var("seeDeleted").o(seeDeleted);
 
-	/**	<br/>L'entité « seeDeleted »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:seeDeleted">Trouver l'entité seeDeleted dans Solr</a>
+	/**	<br/> The entity seeDeleted
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.user.SiteUser&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:seeDeleted">Find the entity seeDeleted in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _seeDeleted(Wrap<Boolean> c);
 
@@ -1293,7 +1295,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 					CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 					|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 					) {
-				sx(htmSeeDeleted());
+				e("span").a("class", "varSiteUser", pk, "SeeDeleted ").f().sx(htmSeeDeleted()).g("span");
 			}
 		}
 	}
@@ -1853,10 +1855,22 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 		Object o = Optional.ofNullable(apiRequest).map(ApiRequest::getOriginal).orElse(null);
 		if(o != null && o instanceof SiteUser) {
 			SiteUser original = (SiteUser)o;
+			if(!Objects.equals(userKeys, original.getUserKeys()))
+				apiRequest.addVars("userKeys");
+			if(!Objects.equals(enrollmentKeys, original.getEnrollmentKeys()))
+				apiRequest.addVars("enrollmentKeys");
 			if(!Objects.equals(userName, original.getUserName()))
 				apiRequest.addVars("userName");
 			if(!Objects.equals(userEmail, original.getUserEmail()))
 				apiRequest.addVars("userEmail");
+			if(!Objects.equals(userFirstName, original.getUserFirstName()))
+				apiRequest.addVars("userFirstName");
+			if(!Objects.equals(userLastName, original.getUserLastName()))
+				apiRequest.addVars("userLastName");
+			if(!Objects.equals(userFullName, original.getUserFullName()))
+				apiRequest.addVars("userFullName");
+			if(!Objects.equals(userSite, original.getUserSite()))
+				apiRequest.addVars("userSite");
 			if(!Objects.equals(customerProfileId, original.getCustomerProfileId()))
 				apiRequest.addVars("customerProfileId");
 			if(!Objects.equals(userReceiveEmails, original.getUserReceiveEmails()))
@@ -1874,7 +1888,7 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 	//////////////
 
 	@Override public int hashCode() {
-		return Objects.hash(super.hashCode(), userName, userEmail, customerProfileId, userReceiveEmails, seeArchived, seeDeleted);
+		return Objects.hash(super.hashCode(), userKeys, enrollmentKeys, userName, userEmail, userFirstName, userLastName, userFullName, userSite, customerProfileId, userReceiveEmails, seeArchived, seeDeleted);
 	}
 
 	////////////
@@ -1888,8 +1902,14 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 			return false;
 		SiteUser that = (SiteUser)o;
 		return super.equals(o)
+				&& Objects.equals( userKeys, that.userKeys )
+				&& Objects.equals( enrollmentKeys, that.enrollmentKeys )
 				&& Objects.equals( userName, that.userName )
 				&& Objects.equals( userEmail, that.userEmail )
+				&& Objects.equals( userFirstName, that.userFirstName )
+				&& Objects.equals( userLastName, that.userLastName )
+				&& Objects.equals( userFullName, that.userFullName )
+				&& Objects.equals( userSite, that.userSite )
 				&& Objects.equals( customerProfileId, that.customerProfileId )
 				&& Objects.equals( userReceiveEmails, that.userReceiveEmails )
 				&& Objects.equals( seeArchived, that.seeArchived )
@@ -1904,8 +1924,14 @@ public abstract class SiteUserGen<DEV> extends Cluster {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString() + "\n");
 		sb.append("SiteUser { ");
-		sb.append( "userName: \"" ).append(userName).append( "\"" );
+		sb.append( "userKeys: " ).append(userKeys);
+		sb.append( ", enrollmentKeys: " ).append(enrollmentKeys);
+		sb.append( ", userName: \"" ).append(userName).append( "\"" );
 		sb.append( ", userEmail: \"" ).append(userEmail).append( "\"" );
+		sb.append( ", userFirstName: \"" ).append(userFirstName).append( "\"" );
+		sb.append( ", userLastName: \"" ).append(userLastName).append( "\"" );
+		sb.append( ", userFullName: \"" ).append(userFullName).append( "\"" );
+		sb.append( ", userSite: \"" ).append(userSite).append( "\"" );
 		sb.append( ", customerProfileId: \"" ).append(customerProfileId).append( "\"" );
 		sb.append( ", userReceiveEmails: " ).append(userReceiveEmails);
 		sb.append( ", seeArchived: " ).append(seeArchived);

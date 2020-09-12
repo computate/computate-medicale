@@ -30,6 +30,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -51,7 +52,7 @@ public class ClusterGenPage extends ClusterGenPageGen<PageLayout> {
 	protected void _listCluster(Wrap<SearchList<Cluster>> c) {
 	}
 
-	protected void _cluster(Wrap<Cluster> c) {
+	protected void _cluster_(Wrap<Cluster> c) {
 		if(listCluster != null && listCluster.size() == 1)
 			c.o(listCluster.get(0));
 	}
@@ -69,12 +70,14 @@ public class ClusterGenPage extends ClusterGenPageGen<PageLayout> {
 	}
 
 	@Override protected void _pageTitle(Wrap<String> c) {
-		if(cluster != null && cluster.getObjectTitle() != null)
-			c.o(cluster.getObjectTitle());
-		else if(cluster != null)
-			c.o("");
+		if(cluster_ != null && cluster_.getObjectTitle() != null)
+			c.o(cluster_.getObjectTitle());
+		else if(cluster_ != null)
+			c.o("clusters");
 		else if(listCluster == null || listCluster.size() == 0)
 			c.o("no cluster found");
+		else
+			c.o("clusters");
 	}
 
 	@Override protected void _pageUri(Wrap<String> c) {
@@ -522,7 +525,7 @@ public class ClusterGenPage extends ClusterGenPageGen<PageLayout> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#postClusterModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Create a cluster").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "postClusterFormValues").f();
 							Cluster o = new Cluster();
 							o.setSiteRequest_(siteRequest_);
 
@@ -556,7 +559,7 @@ public class ClusterGenPage extends ClusterGenPageGen<PageLayout> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putimportClusterModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Import clusters").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putimportClusterFormValues").f();
 							Cluster o = new Cluster();
 							o.setSiteRequest_(siteRequest_);
 
@@ -590,7 +593,7 @@ public class ClusterGenPage extends ClusterGenPageGen<PageLayout> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putmergeClusterModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Merge clusters").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putmergeClusterFormValues").f();
 							Cluster o = new Cluster();
 							o.setSiteRequest_(siteRequest_);
 
@@ -624,7 +627,7 @@ public class ClusterGenPage extends ClusterGenPageGen<PageLayout> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putcopyClusterModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Duplicate clusters").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putcopyClusterFormValues").f();
 							Cluster o = new Cluster();
 							o.setSiteRequest_(siteRequest_);
 
@@ -634,7 +637,7 @@ public class ClusterGenPage extends ClusterGenPageGen<PageLayout> {
 							} g("div");
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-gray ")
-								.a("onclick", "putcopyCluster($('#putcopyClusterForm'), ", cluster == null ? "null" : cluster.getPk(), "); ")
+								.a("onclick", "putcopyCluster($('#putcopyClusterForm'), ", cluster_ == null ? "null" : cluster_.getPk(), "); ")
 								.f().sx("Duplicate clusters")
 							.g("button");
 
@@ -658,17 +661,14 @@ public class ClusterGenPage extends ClusterGenPageGen<PageLayout> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#patchClusterModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Modify clusters").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "patchClusterFormValues").f();
 							Cluster o = new Cluster();
 							o.setSiteRequest_(siteRequest_);
 
-							// FormValues PATCH
-							{ e("form").a("action", "").a("id", "patchClusterFormValues").a("onsubmit", "event.preventDefault(); return false; ").f();
-								htmlFormPATCHCluster(o);
-							} g("form");
+							htmlFormPATCHCluster(o);
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-gray ")
-								.a("onclick", "patchCluster(null, $('#patchClusterFormValues'), ", Optional.ofNullable(cluster).map(Cluster::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
+								.a("onclick", "patchCluster(null, $('#patchClusterFormValues'), ", Optional.ofNullable(cluster_).map(Cluster::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
 								.f().sx("Modify clusters")
 							.g("button");
 
@@ -761,7 +761,7 @@ public class ClusterGenPage extends ClusterGenPageGen<PageLayout> {
 					.a("name", "suggestCluster")
 					.a("id", "suggestCluster", id)
 					.a("autocomplete", "off")
-					.a("oninput", "suggestClusterObjectSuggest( [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() } ], $('#suggestListCluster", id, "'), ", p.getSiteRequest_().getRequestPk(), "); ")
+					.a("oninput", "suggestClusterObjectSuggest( [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objectTitle' } ], $('#suggestListCluster", id, "'), ", p.getSiteRequest_().getRequestPk(), "); ")
 					.a("onkeyup", "if (event.keyCode === 13) { event.preventDefault(); window.location.href = '/cluster?q=", query1, ":' + encodeURIComponent(this.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; }"); 
 				if(listCluster != null)
 					p.a("value", query2);

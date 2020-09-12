@@ -31,6 +31,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -66,6 +67,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -101,6 +103,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -136,6 +139,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -171,6 +175,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.math.MathContext;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.Objects;
@@ -192,7 +197,7 @@ public class DesignEmailGenPage extends DesignEmailGenPageGen<ClusterPage> {
 	protected void _listPageDesign(Wrap<SearchList<PageDesign>> c) {
 	}
 
-	protected void _pageDesign(Wrap<PageDesign> c) {
+	protected void _pageDesign_(Wrap<PageDesign> c) {
 		if(listPageDesign != null && listPageDesign.size() == 1)
 			c.o(listPageDesign.get(0));
 	}
@@ -202,8 +207,8 @@ public class DesignEmailGenPage extends DesignEmailGenPageGen<ClusterPage> {
 	}
 
 	@Override protected void _pageH2(Wrap<String> c) {
-		if(pageDesign != null && pageDesign.getPageDesignCompleteName() != null)
-			c.o(pageDesign.getPageDesignCompleteName());
+		if(pageDesign_ != null && pageDesign_.getPageDesignCompleteName() != null)
+			c.o(pageDesign_.getPageDesignCompleteName());
 	}
 
 	@Override protected void _pageH3(Wrap<String> c) {
@@ -211,12 +216,14 @@ public class DesignEmailGenPage extends DesignEmailGenPageGen<ClusterPage> {
 	}
 
 	@Override protected void _pageTitle(Wrap<String> c) {
-		if(pageDesign != null && pageDesign.getPageDesignCompleteName() != null)
-			c.o(pageDesign.getPageDesignCompleteName());
-		else if(pageDesign != null)
-			c.o("");
+		if(pageDesign_ != null && pageDesign_.getPageDesignCompleteName() != null)
+			c.o(pageDesign_.getPageDesignCompleteName());
+		else if(pageDesign_ != null)
+			c.o("page designs");
 		else if(listPageDesign == null || listPageDesign.size() == 0)
 			c.o("no page design found");
+		else
+			c.o("page designs");
 	}
 
 	@Override protected void _pageUri(Wrap<String> c) {
@@ -741,7 +748,7 @@ public class DesignEmailGenPage extends DesignEmailGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#postPageDesignModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Create a page design").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "postPageDesignFormValues").f();
 							PageDesign o = new PageDesign();
 							o.setSiteRequest_(siteRequest_);
 
@@ -775,7 +782,7 @@ public class DesignEmailGenPage extends DesignEmailGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putimportPageDesignModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Import page designs").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putimportPageDesignFormValues").f();
 							PageDesign o = new PageDesign();
 							o.setSiteRequest_(siteRequest_);
 
@@ -809,7 +816,7 @@ public class DesignEmailGenPage extends DesignEmailGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putmergePageDesignModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Merge page designs").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putmergePageDesignFormValues").f();
 							PageDesign o = new PageDesign();
 							o.setSiteRequest_(siteRequest_);
 
@@ -843,7 +850,7 @@ public class DesignEmailGenPage extends DesignEmailGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#putcopyPageDesignModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Duplicate page designs").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "putcopyPageDesignFormValues").f();
 							PageDesign o = new PageDesign();
 							o.setSiteRequest_(siteRequest_);
 
@@ -853,7 +860,7 @@ public class DesignEmailGenPage extends DesignEmailGenPageGen<ClusterPage> {
 							} g("div");
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-khaki ")
-								.a("onclick", "putcopyPageDesign($('#putcopyPageDesignForm'), ", pageDesign == null ? "null" : pageDesign.getPk(), "); ")
+								.a("onclick", "putcopyPageDesign($('#putcopyPageDesignForm'), ", pageDesign_ == null ? "null" : pageDesign_.getPk(), "); ")
 								.f().sx("Duplicate page designs")
 							.g("button");
 
@@ -877,17 +884,14 @@ public class DesignEmailGenPage extends DesignEmailGenPageGen<ClusterPage> {
 							e("span").a("class", "w3-button w3-display-topright ").a("onclick", "$('#patchPageDesignModal').hide(); ").f().sx("×").g("span");
 							e("h2").a("class", "w3-padding ").f().sx("Modify page designs").g("h2");
 						} g("header");
-						{ e("div").a("class", "w3-container ").f();
+						{ e("div").a("class", "w3-container ").a("id", "patchPageDesignFormValues").f();
 							PageDesign o = new PageDesign();
 							o.setSiteRequest_(siteRequest_);
 
-							// FormValues PATCH
-							{ e("form").a("action", "").a("id", "patchPageDesignFormValues").a("onsubmit", "event.preventDefault(); return false; ").f();
-								htmlFormPATCHPageDesign(o);
-							} g("form");
+							htmlFormPATCHPageDesign(o);
 							e("button")
 								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-khaki ")
-								.a("onclick", "patchPageDesign(null, $('#patchPageDesignFormValues'), ", Optional.ofNullable(pageDesign).map(PageDesign::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
+								.a("onclick", "patchPageDesign(null, $('#patchPageDesignFormValues'), ", Optional.ofNullable(pageDesign_).map(PageDesign::getPk).map(a -> a.toString()).orElse("null"), ", function() {}, function() {}); ")
 								.f().sx("Modify page designs")
 							.g("button");
 
@@ -980,7 +984,7 @@ public class DesignEmailGenPage extends DesignEmailGenPageGen<ClusterPage> {
 					.a("name", "suggestPageDesign")
 					.a("id", "suggestPageDesign", id)
 					.a("autocomplete", "off")
-					.a("oninput", "suggestPageDesignObjectSuggest( [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() } ], $('#suggestListPageDesign", id, "'), ", p.getSiteRequest_().getRequestPk(), "); ")
+					.a("oninput", "suggestPageDesignObjectSuggest( [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,pageDesignCompleteName' } ], $('#suggestListPageDesign", id, "'), ", p.getSiteRequest_().getRequestPk(), "); ")
 					.a("onkeyup", "if (event.keyCode === 13) { event.preventDefault(); window.location.href = '/email?q=", query1, ":' + encodeURIComponent(this.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; }"); 
 				if(listPageDesign != null)
 					p.a("value", query2);

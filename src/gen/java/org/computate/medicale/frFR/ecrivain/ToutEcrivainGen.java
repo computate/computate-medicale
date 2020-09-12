@@ -16,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Boolean;
 import java.lang.String;
 import io.vertx.core.logging.Logger;
+import java.math.RoundingMode;
 import java.io.PrintWriter;
 import org.computate.medicale.frFR.couverture.Couverture;
 import java.math.MathContext;
@@ -37,7 +38,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
+ * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr. </a>
  * <br/>
  **/
 public abstract class ToutEcrivainGen<DEV> extends Object {
@@ -47,7 +48,7 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	// requeteSite_ //
 	//////////////////
 
-	/**	L'entité « requeteSite_ »
+	/**	 L'entité requeteSite_
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -55,9 +56,9 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<RequeteSiteFrFR> requeteSite_Couverture = new Couverture<RequeteSiteFrFR>().p(this).c(RequeteSiteFrFR.class).var("requeteSite_").o(requeteSite_);
 
-	/**	<br/>L'entité « requeteSite_ »
+	/**	<br/> L'entité requeteSite_
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:requeteSite_">Trouver l'entité requeteSite_ dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:requeteSite_">Trouver l'entité requeteSite_ dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -85,7 +86,7 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	// tabStr //
 	////////////
 
-	/**	L'entité « tabStr »
+	/**	 L'entité tabStr
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -93,9 +94,9 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<String> tabStrCouverture = new Couverture<String>().p(this).c(String.class).var("tabStr").o(tabStr);
 
-	/**	<br/>L'entité « tabStr »
+	/**	<br/> L'entité tabStr
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tabStr">Trouver l'entité tabStr dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:tabStr">Trouver l'entité tabStr dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -147,7 +148,7 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	// fichier //
 	/////////////
 
-	/**	L'entité « fichier »
+	/**	 L'entité fichier
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -155,9 +156,9 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<File> fichierCouverture = new Couverture<File>().p(this).c(File.class).var("fichier").o(fichier);
 
-	/**	<br/>L'entité « fichier »
+	/**	<br/> L'entité fichier
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:fichier">Trouver l'entité fichier dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:fichier">Trouver l'entité fichier dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -185,7 +186,7 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	// ecrivainString //
 	////////////////////
 
-	/**	L'entité « ecrivainString »
+	/**	 L'entité ecrivainString
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -193,9 +194,9 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<StringWriter> ecrivainStringCouverture = new Couverture<StringWriter>().p(this).c(StringWriter.class).var("ecrivainString").o(ecrivainString);
 
-	/**	<br/>L'entité « ecrivainString »
+	/**	<br/> L'entité ecrivainString
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:ecrivainString">Trouver l'entité ecrivainString dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:ecrivainString">Trouver l'entité ecrivainString dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -223,7 +224,7 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	// buffer //
 	////////////
 
-	/**	L'entité « buffer »
+	/**	 L'entité buffer
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -231,9 +232,9 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<Buffer> bufferCouverture = new Couverture<Buffer>().p(this).c(Buffer.class).var("buffer").o(buffer);
 
-	/**	<br/>L'entité « buffer »
+	/**	<br/> L'entité buffer
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:buffer">Trouver l'entité buffer dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:buffer">Trouver l'entité buffer dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -261,7 +262,7 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	// ecrivainImpression //
 	////////////////////////
 
-	/**	L'entité « ecrivainImpression »
+	/**	 L'entité ecrivainImpression
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -269,9 +270,9 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<PrintWriter> ecrivainImpressionCouverture = new Couverture<PrintWriter>().p(this).c(PrintWriter.class).var("ecrivainImpression").o(ecrivainImpression);
 
-	/**	<br/>L'entité « ecrivainImpression »
+	/**	<br/> L'entité ecrivainImpression
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:ecrivainImpression">Trouver l'entité ecrivainImpression dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:ecrivainImpression">Trouver l'entité ecrivainImpression dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/
@@ -299,7 +300,7 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	// vide //
 	//////////
 
-	/**	L'entité « vide »
+	/**	 L'entité vide
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -307,9 +308,9 @@ public abstract class ToutEcrivainGen<DEV> extends Object {
 	@JsonIgnore
 	public Couverture<Boolean> videCouverture = new Couverture<Boolean>().p(this).c(Boolean.class).var("vide").o(vide);
 
-	/**	<br/>L'entité « vide »
+	/**	<br/> L'entité vide
 	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:vide">Trouver l'entité vide dans Solr</a>
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_frFR_indexed_string:org.computate.medicale.frFR.ecrivain.ToutEcrivain&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_frFR_indexed_string:vide">Trouver l'entité vide dans Solr</a>
 	 * <br/>
 	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
 	 **/

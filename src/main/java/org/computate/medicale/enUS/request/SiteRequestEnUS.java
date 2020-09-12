@@ -212,6 +212,12 @@ public class SiteRequestEnUS extends SiteRequestEnUSGen<Object> implements Seria
 			c.o(operationRequest.getParams().getLong("pk"));
 	}
 
+	protected void _requestUri(Wrap<String> c) {
+	}
+
+	protected void _requestMethod(Wrap<String> c) {
+	}
+
 	protected void _tx(Wrap<Transaction> c) {
 	}
 

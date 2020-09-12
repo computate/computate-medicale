@@ -20,6 +20,7 @@ import java.lang.Boolean;
 import io.vertx.core.json.JsonObject;
 import java.lang.String;
 import io.vertx.core.logging.Logger;
+import java.math.RoundingMode;
 import org.computate.medicale.enUS.wrap.Wrap;
 import java.math.MathContext;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -47,7 +48,7 @@ import org.apache.solr.common.SolrInputDocument;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 /**	
- * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true">Trouver la classe  dans Solr</a>
+ * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstClasse_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true">Find the class  in Solr. </a>
  * <br/>
  **/
 public abstract class PageDesignGen<DEV> extends Cluster {
@@ -66,6 +67,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	public static final String PageDesign_NameActual = "current page design";
 	public static final String PageDesign_AllName = "all the page designs";
 	public static final String PageDesign_SearchAllNameBy = "search page designs by ";
+	public static final String PageDesign_Title = "page designs";
 	public static final String PageDesign_ThePluralName = "the page designs";
 	public static final String PageDesign_NoNameFound = "no page design found";
 	public static final String PageDesign_NameVar = "page-design";
@@ -82,7 +84,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	// pageDesignKey //
 	///////////////////
 
-	/**	L'entité « pageDesignKey »
+	/**	 The entity pageDesignKey
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonSerialize(using = ToStringSerializer.class)
@@ -91,11 +93,11 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<Long> pageDesignKeyWrap = new Wrap<Long>().p(this).c(Long.class).var("pageDesignKey").o(pageDesignKey);
 
-	/**	<br/>L'entité « pageDesignKey »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageDesignKey">Trouver l'entité pageDesignKey dans Solr</a>
+	/**	<br/> The entity pageDesignKey
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageDesignKey">Find the entity pageDesignKey in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _pageDesignKey(Wrap<Long> c);
 
@@ -151,7 +153,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	// childDesignKeys //
 	/////////////////////
 
-	/**	L'entité « childDesignKeys »
+	/**	 The entity childDesignKeys
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
@@ -160,11 +162,11 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<List<Long>> childDesignKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("childDesignKeys").o(childDesignKeys);
 
-	/**	<br/>L'entité « childDesignKeys »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:childDesignKeys">Trouver l'entité childDesignKeys dans Solr</a>
+	/**	<br/> The entity childDesignKeys
+	 *  It is constructed before being initialized with the constructor by default List<Long>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:childDesignKeys">Find the entity childDesignKeys in Solr</a>
 	 * <br/>
-	 * @param childDesignKeys est l'entité déjà construit. 
+	 * @param childDesignKeys is the entity already constructed. 
 	 **/
 	protected abstract void _childDesignKeys(List<Long> c);
 
@@ -238,7 +240,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	// parentDesignKeys //
 	//////////////////////
 
-	/**	L'entité « parentDesignKeys »
+	/**	 The entity parentDesignKeys
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
@@ -247,11 +249,11 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<List<Long>> parentDesignKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("parentDesignKeys").o(parentDesignKeys);
 
-	/**	<br/>L'entité « parentDesignKeys »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:parentDesignKeys">Trouver l'entité parentDesignKeys dans Solr</a>
+	/**	<br/> The entity parentDesignKeys
+	 *  It is constructed before being initialized with the constructor by default List<Long>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:parentDesignKeys">Find the entity parentDesignKeys in Solr</a>
 	 * <br/>
-	 * @param parentDesignKeys est l'entité déjà construit. 
+	 * @param parentDesignKeys is the entity already constructed. 
 	 **/
 	protected abstract void _parentDesignKeys(List<Long> c);
 
@@ -339,7 +341,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 				.fg();
 
 		} else {
-			sx(htmParentDesignKeys());
+			e("span").a("class", "varPageDesign", pk, "ParentDesignKeys ").f().sx(htmParentDesignKeys()).g("span");
 		}
 	}
 
@@ -397,7 +399,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	// htmlPartKeys //
 	//////////////////
 
-	/**	L'entité « htmlPartKeys »
+	/**	 The entity htmlPartKeys
 	 *	Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
 	 */
 	@JsonSerialize(contentUsing = ToStringSerializer.class)
@@ -406,11 +408,11 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<List<Long>> htmlPartKeysWrap = new Wrap<List<Long>>().p(this).c(List.class).var("htmlPartKeys").o(htmlPartKeys);
 
-	/**	<br/>L'entité « htmlPartKeys »
-	 * Il est construit avant d'être initialisé avec le constructeur par défaut List<Long>(). 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:htmlPartKeys">Trouver l'entité htmlPartKeys dans Solr</a>
+	/**	<br/> The entity htmlPartKeys
+	 *  It is constructed before being initialized with the constructor by default List<Long>(). 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:htmlPartKeys">Find the entity htmlPartKeys in Solr</a>
 	 * <br/>
-	 * @param htmlPartKeys est l'entité déjà construit. 
+	 * @param htmlPartKeys is the entity already constructed. 
 	 **/
 	protected abstract void _htmlPartKeys(List<Long> o);
 
@@ -498,7 +500,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 				.fg();
 
 		} else {
-			sx(htmHtmlPartKeys());
+			e("span").a("class", "varPageDesign", pk, "HtmlPartKeys ").f().sx(htmHtmlPartKeys()).g("span");
 		}
 	}
 
@@ -556,7 +558,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	// pageDesignCompleteName //
 	////////////////////////////
 
-	/**	L'entité « pageDesignCompleteName »
+	/**	 The entity pageDesignCompleteName
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -564,11 +566,11 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<String> pageDesignCompleteNameWrap = new Wrap<String>().p(this).c(String.class).var("pageDesignCompleteName").o(pageDesignCompleteName);
 
-	/**	<br/>L'entité « pageDesignCompleteName »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageDesignCompleteName">Trouver l'entité pageDesignCompleteName dans Solr</a>
+	/**	<br/> The entity pageDesignCompleteName
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:pageDesignCompleteName">Find the entity pageDesignCompleteName in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _pageDesignCompleteName(Wrap<String> c);
 
@@ -639,7 +641,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 			.fg();
 
 		} else {
-			sx(htmPageDesignCompleteName());
+			e("span").a("class", "varPageDesign", pk, "PageDesignCompleteName ").f().sx(htmPageDesignCompleteName()).g("span");
 		}
 	}
 
@@ -657,10 +659,10 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 
 								inputPageDesignCompleteName(classApiMethodMethod);
 							} g("div");
-								if(
-										CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
-										|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
-										) {
+							if(
+									CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
+									|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+									) {
 								if("Page".equals(classApiMethodMethod)) {
 									{ e("div").a("class", "w3-cell w3-left-align w3-cell-top ").f();
 										{ e("button")
@@ -684,7 +686,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	// designHidden //
 	//////////////////
 
-	/**	L'entité « designHidden »
+	/**	 The entity designHidden
 	 *	 is defined as null before being initialized. 
 	 */
 	@JsonInclude(Include.NON_NULL)
@@ -692,11 +694,11 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	@JsonIgnore
 	public Wrap<Boolean> designHiddenWrap = new Wrap<Boolean>().p(this).c(Boolean.class).var("designHidden").o(designHidden);
 
-	/**	<br/>L'entité « designHidden »
-	 *  est défini comme null avant d'être initialisé. 
-	 * <br/><a href="http://localhost:10383/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:designHidden">Trouver l'entité designHidden dans Solr</a>
+	/**	<br/> The entity designHidden
+	 *  is defined as null before being initialized. 
+	 * <br/><a href="http://localhost:8983/solr/computate/select?q=*:*&fq=partEstEntite_indexed_boolean:true&fq=classeNomCanonique_enUS_indexed_string:org.computate.medicale.enUS.design.PageDesign&fq=classeEtendGen_indexed_boolean:true&fq=entiteVar_enUS_indexed_string:designHidden">Find the entity designHidden in Solr</a>
 	 * <br/>
-	 * @param c est pour envelopper une valeur à assigner à cette entité lors de l'initialisation. 
+	 * @param c is for wrapping a value to assign to this entity during initialization. 
 	 **/
 	protected abstract void _designHidden(Wrap<Boolean> c);
 
@@ -785,7 +787,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 			}
 
 		} else {
-			sx(htmDesignHidden());
+			e("span").a("class", "varPageDesign", pk, "DesignHidden ").f().sx(htmDesignHidden()).g("span");
 		}
 	}
 
@@ -1212,6 +1214,8 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 		Object o = Optional.ofNullable(apiRequest).map(ApiRequest::getOriginal).orElse(null);
 		if(o != null && o instanceof PageDesign) {
 			PageDesign original = (PageDesign)o;
+			if(!Objects.equals(pageDesignKey, original.getPageDesignKey()))
+				apiRequest.addVars("pageDesignKey");
 			if(!Objects.equals(childDesignKeys, original.getChildDesignKeys()))
 				apiRequest.addVars("childDesignKeys");
 			if(!Objects.equals(parentDesignKeys, original.getParentDesignKeys()))
@@ -1231,7 +1235,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 	//////////////
 
 	@Override public int hashCode() {
-		return Objects.hash(super.hashCode(), childDesignKeys, parentDesignKeys, htmlPartKeys, pageDesignCompleteName, designHidden);
+		return Objects.hash(super.hashCode(), pageDesignKey, childDesignKeys, parentDesignKeys, htmlPartKeys, pageDesignCompleteName, designHidden);
 	}
 
 	////////////
@@ -1245,6 +1249,7 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 			return false;
 		PageDesign that = (PageDesign)o;
 		return super.equals(o)
+				&& Objects.equals( pageDesignKey, that.pageDesignKey )
 				&& Objects.equals( childDesignKeys, that.childDesignKeys )
 				&& Objects.equals( parentDesignKeys, that.parentDesignKeys )
 				&& Objects.equals( htmlPartKeys, that.htmlPartKeys )
@@ -1260,7 +1265,8 @@ public abstract class PageDesignGen<DEV> extends Cluster {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString() + "\n");
 		sb.append("PageDesign { ");
-		sb.append( "childDesignKeys: " ).append(childDesignKeys);
+		sb.append( "pageDesignKey: " ).append(pageDesignKey);
+		sb.append( ", childDesignKeys: " ).append(childDesignKeys);
 		sb.append( ", parentDesignKeys: " ).append(parentDesignKeys);
 		sb.append( ", htmlPartKeys: " ).append(htmlPartKeys);
 		sb.append( ", pageDesignCompleteName: \"" ).append(pageDesignCompleteName).append( "\"" );
