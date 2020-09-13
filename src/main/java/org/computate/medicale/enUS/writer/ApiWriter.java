@@ -585,7 +585,10 @@ public class ApiWriter extends ApiWriterGen<Object> implements Comparable<ApiWri
 			wPaths.tl(3, "operationId: ", classApiOperationIdMethod, (id ? "Id" : ""));
 			wPaths.tl(3, "x-vertx-event-bus: ", appName, "-", languageName, "-", classSimpleName);
 	
-			if(classRoleUserMethod || classRolesFound && BooleanUtils.isNotTrue(classRoleSession) && BooleanUtils.isNotTrue(classPublicRead)) {
+			if(classRoleUserMethod 
+					|| classRolesFound && BooleanUtils.isNotTrue(classRoleSession) && BooleanUtils.isNotTrue(classPublicRead)
+					|| classRolesFound && BooleanUtils.isNotTrue(classRoleSession) && BooleanUtils.isTrue(classPublicRead) && StringUtils.equalsAny(classApiMethodMethod, "POST", "PUT", "PATCH", "DELETE")
+					) {
 				wPaths.tl(3, "security:");
 				wPaths.tl(4, "- openIdConnect:");
 				wPaths.tl(5, "- DefaultAuthScope");

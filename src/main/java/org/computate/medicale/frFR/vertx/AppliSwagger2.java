@@ -1,4 +1,4 @@
-package org.computate.medicale.frFR.vertx;  
+package org.computate.medicale.frFR.vertx; 
 
 import java.io.File;
 import java.util.ArrayList;
@@ -24,8 +24,8 @@ import org.computate.medicale.frFR.requete.RequeteSiteFrFR;
 
 /**
  * NomCanonique.enUS: org.computate.medicale.enUS.vertx.AppSwagger2
- */
-public class AppliSwagger2 extends AppliSwagger2Gen<Object> {     
+ */ 
+public class AppliSwagger2 extends AppliSwagger2Gen<Object> {   
 
 	/**
 	 * r: initLoin

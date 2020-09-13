@@ -6810,6 +6810,9 @@ paths:
     post:
       operationId: postPageDesign
       x-vertx-event-bus: computate-medicale-enUS-PageDesign
+      security:
+        - openIdConnect:
+          - DefaultAuthScope
       description: >+
       summary: >+
       tags:
@@ -6877,6 +6880,9 @@ paths:
     patch:
       operationId: patchPageDesign
       x-vertx-event-bus: computate-medicale-enUS-PageDesign
+      security:
+        - openIdConnect:
+          - DefaultAuthScope
       description: >+
       summary: >+
       tags:
@@ -7129,6 +7135,9 @@ paths:
     put:
       operationId: putcopyPageDesign
       x-vertx-event-bus: computate-medicale-enUS-PageDesign
+      security:
+        - openIdConnect:
+          - DefaultAuthScope
       description: >+
       summary: >+
       tags:
@@ -7259,6 +7268,9 @@ paths:
     put:
       operationId: putimportPageDesign
       x-vertx-event-bus: computate-medicale-enUS-PageDesign
+      security:
+        - openIdConnect:
+          - DefaultAuthScope
       description: >+
       summary: >+
       tags:
@@ -7389,6 +7401,9 @@ paths:
     put:
       operationId: putmergePageDesign
       x-vertx-event-bus: computate-medicale-enUS-PageDesign
+      security:
+        - openIdConnect:
+          - DefaultAuthScope
       description: >+
       summary: >+
       tags:
