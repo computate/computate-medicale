@@ -2677,6 +2677,1172 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/requestBodies/ErrorResponse'
+  /api/admin/patient:
+    get:
+      operationId: adminsearchMedicalPatient
+      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
+      security:
+        - openIdConnect:
+          - DefaultAuthScope
+      description: >+
+      summary: >+
+      tags:
+        - Patient
+      parameters:
+        - name: vertx-web.session
+          in: cookie
+          schema:
+            type: string
+        - name: sessionIdBefore
+          in: cookie
+          schema:
+            type: string
+        - in: query
+          name: q
+          description: ''
+          required: false
+          schema:
+            type: string
+            default: '*:*'
+        - in: query
+          name: fq
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: fl
+          description: ''
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sort
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: start
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+        - in: query
+          name: rows
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 10
+            minimum: 0
+        - in: query
+          name: var
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+      responses:
+        '200':
+          description: >+
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/requestBodies/AdminSearchMedicalPatientResponse'
+        '400':
+          description: >+
+                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
+                or invalid Parameters</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '401':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
+                credentials are missing or invalid</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '403':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
+                request operation is not configured to access this
+                resource</td><td>Channel/Country/Business provided in the request is
+                not supported currently</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '404':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
+                requested resource was not found</td><td>Empty resource/resource not
+                found</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '500':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
+                request failed due to an internal error/server
+                unavailability</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+  /api/patient:
+    post:
+      operationId: postMedicalPatient
+      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
+      description: >+
+      summary: >+
+      tags:
+        - Patient
+      requestBody:
+        description: >+
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/POSTMedicalPatientRequest'
+      responses:
+        '200':
+          description: >+
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/requestBodies/POSTMedicalPatientResponse'
+        '400':
+          description: >+
+                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
+                or invalid Parameters</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '401':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
+                credentials are missing or invalid</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '403':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
+                request operation is not configured to access this
+                resource</td><td>Channel/Country/Business provided in the request is
+                not supported currently</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '404':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
+                requested resource was not found</td><td>Empty resource/resource not
+                found</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '500':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
+                request failed due to an internal error/server
+                unavailability</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+    patch:
+      operationId: patchMedicalPatient
+      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
+      description: >+
+      summary: >+
+      tags:
+        - Patient
+      parameters:
+        - name: vertx-web.session
+          in: cookie
+          schema:
+            type: string
+        - name: sessionIdBefore
+          in: cookie
+          schema:
+            type: string
+        - in: query
+          name: q
+          description: ''
+          required: false
+          schema:
+            type: string
+            default: '*:*'
+        - in: query
+          name: fq
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: fl
+          description: ''
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sort
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: start
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+        - in: query
+          name: rows
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 10
+            minimum: 0
+        - in: query
+          name: var
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+      requestBody:
+        description: >+
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PATCHMedicalPatientRequest'
+      responses:
+        '200':
+          description: >+
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/requestBodies/PATCHMedicalPatientResponse'
+        '400':
+          description: >+
+                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
+                or invalid Parameters</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '401':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
+                credentials are missing or invalid</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '403':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
+                request operation is not configured to access this
+                resource</td><td>Channel/Country/Business provided in the request is
+                not supported currently</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '404':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
+                requested resource was not found</td><td>Empty resource/resource not
+                found</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '500':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
+                request failed due to an internal error/server
+                unavailability</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+    get:
+      operationId: searchMedicalPatient
+      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
+      description: >+
+      summary: >+
+      tags:
+        - Patient
+      parameters:
+        - name: vertx-web.session
+          in: cookie
+          schema:
+            type: string
+        - name: sessionIdBefore
+          in: cookie
+          schema:
+            type: string
+        - in: query
+          name: q
+          description: ''
+          required: false
+          schema:
+            type: string
+            default: '*:*'
+        - in: query
+          name: fq
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: fl
+          description: ''
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sort
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: start
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+        - in: query
+          name: rows
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 10
+            minimum: 0
+        - in: query
+          name: var
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+      responses:
+        '200':
+          description: >+
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/requestBodies/SearchMedicalPatientResponse'
+        '400':
+          description: >+
+                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
+                or invalid Parameters</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '401':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
+                credentials are missing or invalid</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '403':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
+                request operation is not configured to access this
+                resource</td><td>Channel/Country/Business provided in the request is
+                not supported currently</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '404':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
+                requested resource was not found</td><td>Empty resource/resource not
+                found</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '500':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
+                request failed due to an internal error/server
+                unavailability</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+  /api/patient/copy:
+    put:
+      operationId: putcopyMedicalPatient
+      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
+      description: >+
+      summary: >+
+      tags:
+        - Patient
+      parameters:
+        - name: vertx-web.session
+          in: cookie
+          schema:
+            type: string
+        - name: sessionIdBefore
+          in: cookie
+          schema:
+            type: string
+        - in: query
+          name: q
+          description: ''
+          required: false
+          schema:
+            type: string
+            default: '*:*'
+        - in: query
+          name: fq
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: fl
+          description: ''
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sort
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: start
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+        - in: query
+          name: rows
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 10
+            minimum: 0
+        - in: query
+          name: var
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+      requestBody:
+        description: >+
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PUTCopyMedicalPatientRequest'
+      responses:
+        '200':
+          description: >+
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/requestBodies/PUTCopyMedicalPatientResponse'
+        '400':
+          description: >+
+                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
+                or invalid Parameters</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '401':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
+                credentials are missing or invalid</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '403':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
+                request operation is not configured to access this
+                resource</td><td>Channel/Country/Business provided in the request is
+                not supported currently</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '404':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
+                requested resource was not found</td><td>Empty resource/resource not
+                found</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '500':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
+                request failed due to an internal error/server
+                unavailability</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+  /api/patient/import:
+    put:
+      operationId: putimportMedicalPatient
+      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
+      security:
+        - openIdConnect:
+          - DefaultAuthScope
+      description: >+
+      summary: >+
+      tags:
+        - Patient
+      parameters:
+        - name: vertx-web.session
+          in: cookie
+          schema:
+            type: string
+        - name: sessionIdBefore
+          in: cookie
+          schema:
+            type: string
+        - in: query
+          name: q
+          description: ''
+          required: false
+          schema:
+            type: string
+            default: '*:*'
+        - in: query
+          name: fq
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: fl
+          description: ''
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sort
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: start
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+        - in: query
+          name: rows
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 10
+            minimum: 0
+        - in: query
+          name: var
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+      requestBody:
+        description: >+
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PUTImportMedicalPatientRequest'
+      responses:
+        '200':
+          description: >+
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/requestBodies/PUTImportMedicalPatientResponse'
+        '400':
+          description: >+
+                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
+                or invalid Parameters</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '401':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
+                credentials are missing or invalid</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '403':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
+                request operation is not configured to access this
+                resource</td><td>Channel/Country/Business provided in the request is
+                not supported currently</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '404':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
+                requested resource was not found</td><td>Empty resource/resource not
+                found</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '500':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
+                request failed due to an internal error/server
+                unavailability</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+  /api/patient/merge:
+    put:
+      operationId: putmergeMedicalPatient
+      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
+      description: >+
+      summary: >+
+      tags:
+        - Patient
+      parameters:
+        - name: vertx-web.session
+          in: cookie
+          schema:
+            type: string
+        - name: sessionIdBefore
+          in: cookie
+          schema:
+            type: string
+        - in: query
+          name: q
+          description: ''
+          required: false
+          schema:
+            type: string
+            default: '*:*'
+        - in: query
+          name: fq
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: fl
+          description: ''
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sort
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: start
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+        - in: query
+          name: rows
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 10
+            minimum: 0
+        - in: query
+          name: var
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+      requestBody:
+        description: >+
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PUTMergeMedicalPatientRequest'
+      responses:
+        '200':
+          description: >+
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/requestBodies/PUTMergeMedicalPatientResponse'
+        '400':
+          description: >+
+                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
+                or invalid Parameters</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '401':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
+                credentials are missing or invalid</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '403':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
+                request operation is not configured to access this
+                resource</td><td>Channel/Country/Business provided in the request is
+                not supported currently</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '404':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
+                requested resource was not found</td><td>Empty resource/resource not
+                found</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '500':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
+                request failed due to an internal error/server
+                unavailability</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+  /api/patient/{id}:
+    get:
+      operationId: getMedicalPatient
+      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
+      description: >+
+      summary: >+
+      tags:
+        - Patient
+      parameters:
+        - name: vertx-web.session
+          in: cookie
+          schema:
+            type: string
+        - name: sessionIdBefore
+          in: cookie
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: >+
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: >+
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/requestBodies/GETMedicalPatientResponse'
+        '400':
+          description: >+
+                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
+                or invalid Parameters</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '401':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
+                credentials are missing or invalid</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '403':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
+                request operation is not configured to access this
+                resource</td><td>Channel/Country/Business provided in the request is
+                not supported currently</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '404':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
+                requested resource was not found</td><td>Empty resource/resource not
+                found</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '500':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
+                request failed due to an internal error/server
+                unavailability</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+  /patient:
+    get:
+      operationId: searchpageMedicalPatient
+      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
+      description: >+
+      summary: >+
+      tags:
+        - Patient
+      parameters:
+        - name: vertx-web.session
+          in: cookie
+          schema:
+            type: string
+        - name: sessionIdBefore
+          in: cookie
+          schema:
+            type: string
+        - in: query
+          name: q
+          description: ''
+          required: false
+          schema:
+            type: string
+            default: '*:*'
+        - in: query
+          name: fq
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: fl
+          description: ''
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sort
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: start
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+        - in: query
+          name: rows
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 10
+            minimum: 0
+        - in: query
+          name: var
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+      responses:
+        '200':
+          description: >+
+          content:
+            text/html; charset=utf-8:
+              schema:
+                $ref: '#/components/requestBodies/SearchPageMedicalPatientResponse'
+        '400':
+          description: >+
+                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
+                or invalid Parameters</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '401':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
+                credentials are missing or invalid</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '403':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
+                request operation is not configured to access this
+                resource</td><td>Channel/Country/Business provided in the request is
+                not supported currently</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '404':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
+                requested resource was not found</td><td>Empty resource/resource not
+                found</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '500':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
+                request failed due to an internal error/server
+                unavailability</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+  /patient/{id}:
+    get:
+      operationId: searchpageMedicalPatientId
+      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
+      description: >+
+      summary: >+
+      tags:
+        - Patient
+      parameters:
+        - name: vertx-web.session
+          in: cookie
+          schema:
+            type: string
+        - name: sessionIdBefore
+          in: cookie
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: >+
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: q
+          description: ''
+          required: false
+          schema:
+            type: string
+            default: '*:*'
+        - in: query
+          name: fq
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: fl
+          description: ''
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sort
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+        - in: query
+          name: start
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+        - in: query
+          name: rows
+          description: ''
+          required: false
+          schema:
+            type: integer
+            default: 10
+            minimum: 0
+        - in: query
+          name: var
+          description: ''
+          required: false
+          schema:
+            type: array
+            items:
+                type: string
+      responses:
+        '200':
+          description: >+
+          content:
+            text/html; charset=utf-8:
+              schema:
+                $ref: '#/components/requestBodies/SearchPageMedicalPatientResponse'
+        '400':
+          description: >+
+                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
+                or invalid Parameters</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '401':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
+                credentials are missing or invalid</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '403':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
+                request operation is not configured to access this
+                resource</td><td>Channel/Country/Business provided in the request is
+                not supported currently</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '404':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
+                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
+                requested resource was not found</td><td>Empty resource/resource not
+                found</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
+        '500':
+          description: >+
+                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
+                request failed due to an internal error/server
+                unavailability</td></tr></table>
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/ErrorResponse'
   /api/html-part:
     post:
       operationId: postHtmlPart
@@ -7433,1172 +8599,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/requestBodies/ErrorResponse'
-  /api/admin/patient:
-    get:
-      operationId: adminsearchMedicalPatient
-      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
-      security:
-        - openIdConnect:
-          - DefaultAuthScope
-      description: >+
-      summary: >+
-      tags:
-        - Patient
-      parameters:
-        - name: vertx-web.session
-          in: cookie
-          schema:
-            type: string
-        - name: sessionIdBefore
-          in: cookie
-          schema:
-            type: string
-        - in: query
-          name: q
-          description: ''
-          required: false
-          schema:
-            type: string
-            default: '*:*'
-        - in: query
-          name: fq
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: fl
-          description: ''
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: sort
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: start
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 0
-            minimum: 0
-        - in: query
-          name: rows
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 10
-            minimum: 0
-        - in: query
-          name: var
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-      responses:
-        '200':
-          description: >+
-          content:
-            application/json; charset=utf-8:
-              schema:
-                $ref: '#/components/requestBodies/AdminSearchMedicalPatientResponse'
-        '400':
-          description: >+
-                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
-                or invalid Parameters</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '401':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
-                credentials are missing or invalid</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '403':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
-                request operation is not configured to access this
-                resource</td><td>Channel/Country/Business provided in the request is
-                not supported currently</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '404':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
-                requested resource was not found</td><td>Empty resource/resource not
-                found</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '500':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
-                request failed due to an internal error/server
-                unavailability</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-  /api/patient:
-    post:
-      operationId: postMedicalPatient
-      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
-      description: >+
-      summary: >+
-      tags:
-        - Patient
-      requestBody:
-        description: >+
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/POSTMedicalPatientRequest'
-      responses:
-        '200':
-          description: >+
-          content:
-            application/json; charset=utf-8:
-              schema:
-                $ref: '#/components/requestBodies/POSTMedicalPatientResponse'
-        '400':
-          description: >+
-                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
-                or invalid Parameters</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '401':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
-                credentials are missing or invalid</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '403':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
-                request operation is not configured to access this
-                resource</td><td>Channel/Country/Business provided in the request is
-                not supported currently</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '404':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
-                requested resource was not found</td><td>Empty resource/resource not
-                found</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '500':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
-                request failed due to an internal error/server
-                unavailability</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-    patch:
-      operationId: patchMedicalPatient
-      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
-      description: >+
-      summary: >+
-      tags:
-        - Patient
-      parameters:
-        - name: vertx-web.session
-          in: cookie
-          schema:
-            type: string
-        - name: sessionIdBefore
-          in: cookie
-          schema:
-            type: string
-        - in: query
-          name: q
-          description: ''
-          required: false
-          schema:
-            type: string
-            default: '*:*'
-        - in: query
-          name: fq
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: fl
-          description: ''
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: sort
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: start
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 0
-            minimum: 0
-        - in: query
-          name: rows
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 10
-            minimum: 0
-        - in: query
-          name: var
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-      requestBody:
-        description: >+
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PATCHMedicalPatientRequest'
-      responses:
-        '200':
-          description: >+
-          content:
-            application/json; charset=utf-8:
-              schema:
-                $ref: '#/components/requestBodies/PATCHMedicalPatientResponse'
-        '400':
-          description: >+
-                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
-                or invalid Parameters</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '401':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
-                credentials are missing or invalid</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '403':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
-                request operation is not configured to access this
-                resource</td><td>Channel/Country/Business provided in the request is
-                not supported currently</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '404':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
-                requested resource was not found</td><td>Empty resource/resource not
-                found</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '500':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
-                request failed due to an internal error/server
-                unavailability</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-    get:
-      operationId: searchMedicalPatient
-      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
-      description: >+
-      summary: >+
-      tags:
-        - Patient
-      parameters:
-        - name: vertx-web.session
-          in: cookie
-          schema:
-            type: string
-        - name: sessionIdBefore
-          in: cookie
-          schema:
-            type: string
-        - in: query
-          name: q
-          description: ''
-          required: false
-          schema:
-            type: string
-            default: '*:*'
-        - in: query
-          name: fq
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: fl
-          description: ''
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: sort
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: start
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 0
-            minimum: 0
-        - in: query
-          name: rows
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 10
-            minimum: 0
-        - in: query
-          name: var
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-      responses:
-        '200':
-          description: >+
-          content:
-            application/json; charset=utf-8:
-              schema:
-                $ref: '#/components/requestBodies/SearchMedicalPatientResponse'
-        '400':
-          description: >+
-                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
-                or invalid Parameters</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '401':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
-                credentials are missing or invalid</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '403':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
-                request operation is not configured to access this
-                resource</td><td>Channel/Country/Business provided in the request is
-                not supported currently</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '404':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
-                requested resource was not found</td><td>Empty resource/resource not
-                found</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '500':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
-                request failed due to an internal error/server
-                unavailability</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-  /api/patient/copy:
-    put:
-      operationId: putcopyMedicalPatient
-      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
-      description: >+
-      summary: >+
-      tags:
-        - Patient
-      parameters:
-        - name: vertx-web.session
-          in: cookie
-          schema:
-            type: string
-        - name: sessionIdBefore
-          in: cookie
-          schema:
-            type: string
-        - in: query
-          name: q
-          description: ''
-          required: false
-          schema:
-            type: string
-            default: '*:*'
-        - in: query
-          name: fq
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: fl
-          description: ''
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: sort
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: start
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 0
-            minimum: 0
-        - in: query
-          name: rows
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 10
-            minimum: 0
-        - in: query
-          name: var
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-      requestBody:
-        description: >+
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PUTCopyMedicalPatientRequest'
-      responses:
-        '200':
-          description: >+
-          content:
-            application/json; charset=utf-8:
-              schema:
-                $ref: '#/components/requestBodies/PUTCopyMedicalPatientResponse'
-        '400':
-          description: >+
-                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
-                or invalid Parameters</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '401':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
-                credentials are missing or invalid</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '403':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
-                request operation is not configured to access this
-                resource</td><td>Channel/Country/Business provided in the request is
-                not supported currently</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '404':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
-                requested resource was not found</td><td>Empty resource/resource not
-                found</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '500':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
-                request failed due to an internal error/server
-                unavailability</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-  /api/patient/import:
-    put:
-      operationId: putimportMedicalPatient
-      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
-      security:
-        - openIdConnect:
-          - DefaultAuthScope
-      description: >+
-      summary: >+
-      tags:
-        - Patient
-      parameters:
-        - name: vertx-web.session
-          in: cookie
-          schema:
-            type: string
-        - name: sessionIdBefore
-          in: cookie
-          schema:
-            type: string
-        - in: query
-          name: q
-          description: ''
-          required: false
-          schema:
-            type: string
-            default: '*:*'
-        - in: query
-          name: fq
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: fl
-          description: ''
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: sort
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: start
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 0
-            minimum: 0
-        - in: query
-          name: rows
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 10
-            minimum: 0
-        - in: query
-          name: var
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-      requestBody:
-        description: >+
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PUTImportMedicalPatientRequest'
-      responses:
-        '200':
-          description: >+
-          content:
-            application/json; charset=utf-8:
-              schema:
-                $ref: '#/components/requestBodies/PUTImportMedicalPatientResponse'
-        '400':
-          description: >+
-                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
-                or invalid Parameters</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '401':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
-                credentials are missing or invalid</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '403':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
-                request operation is not configured to access this
-                resource</td><td>Channel/Country/Business provided in the request is
-                not supported currently</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '404':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
-                requested resource was not found</td><td>Empty resource/resource not
-                found</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '500':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
-                request failed due to an internal error/server
-                unavailability</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-  /api/patient/merge:
-    put:
-      operationId: putmergeMedicalPatient
-      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
-      description: >+
-      summary: >+
-      tags:
-        - Patient
-      parameters:
-        - name: vertx-web.session
-          in: cookie
-          schema:
-            type: string
-        - name: sessionIdBefore
-          in: cookie
-          schema:
-            type: string
-        - in: query
-          name: q
-          description: ''
-          required: false
-          schema:
-            type: string
-            default: '*:*'
-        - in: query
-          name: fq
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: fl
-          description: ''
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: sort
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: start
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 0
-            minimum: 0
-        - in: query
-          name: rows
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 10
-            minimum: 0
-        - in: query
-          name: var
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-      requestBody:
-        description: >+
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PUTMergeMedicalPatientRequest'
-      responses:
-        '200':
-          description: >+
-          content:
-            application/json; charset=utf-8:
-              schema:
-                $ref: '#/components/requestBodies/PUTMergeMedicalPatientResponse'
-        '400':
-          description: >+
-                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
-                or invalid Parameters</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '401':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
-                credentials are missing or invalid</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '403':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
-                request operation is not configured to access this
-                resource</td><td>Channel/Country/Business provided in the request is
-                not supported currently</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '404':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
-                requested resource was not found</td><td>Empty resource/resource not
-                found</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '500':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
-                request failed due to an internal error/server
-                unavailability</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-  /api/patient/{id}:
-    get:
-      operationId: getMedicalPatient
-      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
-      description: >+
-      summary: >+
-      tags:
-        - Patient
-      parameters:
-        - name: vertx-web.session
-          in: cookie
-          schema:
-            type: string
-        - name: sessionIdBefore
-          in: cookie
-          schema:
-            type: string
-        - name: id
-          in: path
-          description: >+
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: >+
-          content:
-            application/json; charset=utf-8:
-              schema:
-                $ref: '#/components/requestBodies/GETMedicalPatientResponse'
-        '400':
-          description: >+
-                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
-                or invalid Parameters</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '401':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
-                credentials are missing or invalid</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '403':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
-                request operation is not configured to access this
-                resource</td><td>Channel/Country/Business provided in the request is
-                not supported currently</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '404':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
-                requested resource was not found</td><td>Empty resource/resource not
-                found</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '500':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
-                request failed due to an internal error/server
-                unavailability</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-  /patient:
-    get:
-      operationId: searchpageMedicalPatient
-      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
-      description: >+
-      summary: >+
-      tags:
-        - Patient
-      parameters:
-        - name: vertx-web.session
-          in: cookie
-          schema:
-            type: string
-        - name: sessionIdBefore
-          in: cookie
-          schema:
-            type: string
-        - in: query
-          name: q
-          description: ''
-          required: false
-          schema:
-            type: string
-            default: '*:*'
-        - in: query
-          name: fq
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: fl
-          description: ''
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: sort
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: start
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 0
-            minimum: 0
-        - in: query
-          name: rows
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 10
-            minimum: 0
-        - in: query
-          name: var
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-      responses:
-        '200':
-          description: >+
-          content:
-            text/html; charset=utf-8:
-              schema:
-                $ref: '#/components/requestBodies/SearchPageMedicalPatientResponse'
-        '400':
-          description: >+
-                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
-                or invalid Parameters</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '401':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
-                credentials are missing or invalid</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '403':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
-                request operation is not configured to access this
-                resource</td><td>Channel/Country/Business provided in the request is
-                not supported currently</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '404':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
-                requested resource was not found</td><td>Empty resource/resource not
-                found</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '500':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
-                request failed due to an internal error/server
-                unavailability</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-  /patient/{id}:
-    get:
-      operationId: searchpageMedicalPatientId
-      x-vertx-event-bus: computate-medicale-enUS-MedicalPatient
-      description: >+
-      summary: >+
-      tags:
-        - Patient
-      parameters:
-        - name: vertx-web.session
-          in: cookie
-          schema:
-            type: string
-        - name: sessionIdBefore
-          in: cookie
-          schema:
-            type: string
-        - name: id
-          in: path
-          description: >+
-          required: true
-          schema:
-            type: string
-        - in: query
-          name: q
-          description: ''
-          required: false
-          schema:
-            type: string
-            default: '*:*'
-        - in: query
-          name: fq
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: fl
-          description: ''
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: sort
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-        - in: query
-          name: start
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 0
-            minimum: 0
-        - in: query
-          name: rows
-          description: ''
-          required: false
-          schema:
-            type: integer
-            default: 10
-            minimum: 0
-        - in: query
-          name: var
-          description: ''
-          required: false
-          schema:
-            type: array
-            items:
-                type: string
-      responses:
-        '200':
-          description: >+
-          content:
-            text/html; charset=utf-8:
-              schema:
-                $ref: '#/components/requestBodies/SearchPageMedicalPatientResponse'
-        '400':
-          description: >+
-                <table><table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>invalidRequest</td><td>Missing
-                or invalid Parameters</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '401':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>error</td><td>unAuthorized</td><td>Authorization
-                credentials are missing or invalid</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '403':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>accessNotConfigured</td><td>The
-                request operation is not configured to access this
-                resource</td><td>Channel/Country/Business provided in the request is
-                not supported currently</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '404':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td><td>More
-                Info</td></tr><tr><td>error</td><td>resourceNotFound</td><td>The
-                requested resource was not found</td><td>Empty resource/resource not
-                found</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
-        '500':
-          description: >+
-                <table><tr><td>Type</td><td>Code</td><td>Details</td></tr><tr><td>fatal</td><td>serverUnavailable</td><td>The
-                request failed due to an internal error/server
-                unavailability</td></tr></table>
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/requestBodies/ErrorResponse'
 components:
   securitySchemes:
     openIdConnect:
@@ -8760,6 +8760,76 @@ components:
         text/html; charset=utf-8:
           schema:
             $ref: '#/components/schemas/SearchPageMedicalClinicResponse'
+    AdminSearchMedicalPatientResponse:
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: '#/components/schemas/AdminSearchMedicalPatientResponse'
+    POSTMedicalPatientRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/POSTMedicalPatientRequest'
+    POSTMedicalPatientResponse:
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: '#/components/schemas/POSTMedicalPatientResponse'
+    PATCHMedicalPatientRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PATCHMedicalPatientRequest'
+    PATCHMedicalPatientResponse:
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: '#/components/schemas/PATCHMedicalPatientResponse'
+    SearchMedicalPatientResponse:
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: '#/components/schemas/SearchMedicalPatientResponse'
+    PUTCopyMedicalPatientRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PUTCopyMedicalPatientRequest'
+    PUTCopyMedicalPatientResponse:
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: '#/components/schemas/PUTCopyMedicalPatientResponse'
+    PUTImportMedicalPatientRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PUTImportMedicalPatientRequest'
+    PUTImportMedicalPatientResponse:
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: '#/components/schemas/PUTImportMedicalPatientResponse'
+    PUTMergeMedicalPatientRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PUTMergeMedicalPatientRequest'
+    PUTMergeMedicalPatientResponse:
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: '#/components/schemas/PUTMergeMedicalPatientResponse'
+    GETMedicalPatientResponse:
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: '#/components/schemas/GETMedicalPatientResponse'
+    SearchPageMedicalPatientResponse:
+      content:
+        text/html; charset=utf-8:
+          schema:
+            $ref: '#/components/schemas/SearchPageMedicalPatientResponse'
     POSTHtmlPartRequest:
       content:
         application/json:
@@ -9010,76 +9080,6 @@ components:
         application/pdf:
           schema:
             $ref: '#/components/schemas/DesignPdfSearchPagePageDesignResponse'
-    AdminSearchMedicalPatientResponse:
-      content:
-        application/json; charset=utf-8:
-          schema:
-            $ref: '#/components/schemas/AdminSearchMedicalPatientResponse'
-    POSTMedicalPatientRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/POSTMedicalPatientRequest'
-    POSTMedicalPatientResponse:
-      content:
-        application/json; charset=utf-8:
-          schema:
-            $ref: '#/components/schemas/POSTMedicalPatientResponse'
-    PATCHMedicalPatientRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PATCHMedicalPatientRequest'
-    PATCHMedicalPatientResponse:
-      content:
-        application/json; charset=utf-8:
-          schema:
-            $ref: '#/components/schemas/PATCHMedicalPatientResponse'
-    SearchMedicalPatientResponse:
-      content:
-        application/json; charset=utf-8:
-          schema:
-            $ref: '#/components/schemas/SearchMedicalPatientResponse'
-    PUTCopyMedicalPatientRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PUTCopyMedicalPatientRequest'
-    PUTCopyMedicalPatientResponse:
-      content:
-        application/json; charset=utf-8:
-          schema:
-            $ref: '#/components/schemas/PUTCopyMedicalPatientResponse'
-    PUTImportMedicalPatientRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PUTImportMedicalPatientRequest'
-    PUTImportMedicalPatientResponse:
-      content:
-        application/json; charset=utf-8:
-          schema:
-            $ref: '#/components/schemas/PUTImportMedicalPatientResponse'
-    PUTMergeMedicalPatientRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PUTMergeMedicalPatientRequest'
-    PUTMergeMedicalPatientResponse:
-      content:
-        application/json; charset=utf-8:
-          schema:
-            $ref: '#/components/schemas/PUTMergeMedicalPatientResponse'
-    GETMedicalPatientResponse:
-      content:
-        application/json; charset=utf-8:
-          schema:
-            $ref: '#/components/schemas/GETMedicalPatientResponse'
-    SearchPageMedicalPatientResponse:
-      content:
-        text/html; charset=utf-8:
-          schema:
-            $ref: '#/components/schemas/SearchPageMedicalPatientResponse'
   schemas:
     AdminSearchMedicalEnrollmentResponse:
       allOf:
@@ -12880,6 +12880,743 @@ components:
     SearchPageMedicalClinicResponse:
       allOf:
         - type: string
+    AdminSearchMedicalPatientResponse:
+      allOf:
+        - type: array
+          items:
+            type: object
+            properties:
+              patientKey:
+                type: string
+              enrollmentKeys:
+                type: array
+                items:
+                  type: string
+              schoolSort:
+                type: string
+              userKeys:
+                type: array
+                items:
+                  type: string
+              clinicKeys:
+                type: array
+                items:
+                  type: string
+              patientFirstName:
+                type: string
+              patientFirstNamePreferred:
+                type: string
+              familyName:
+                type: string
+              patientCompleteName:
+                type: string
+              patientCompleteNamePreferred:
+                type: string
+              patientFormalName:
+                type: string
+              patientBirthDate:
+                type: string
+              patientBirthDateYear:
+                type: string
+              patientBirthDateMonthOfYear:
+                type: string
+              patientBirthDateDayOfWeek:
+                type: string
+    POSTMedicalPatientRequest:
+      allOf:
+        - $ref: "#/components/schemas/POSTClusterRequest"
+        - type: object
+          properties:
+            patientKey:
+              type: string
+            enrollmentKeys:
+              type: array
+              items:
+                type: string
+            schoolSort:
+              type: string
+            userKeys:
+              type: array
+              items:
+                type: string
+            clinicKeys:
+              type: array
+              items:
+                type: string
+            patientFirstName:
+              type: string
+            patientFirstNamePreferred:
+              type: string
+            familyName:
+              type: string
+            patientCompleteName:
+              type: string
+            patientCompleteNamePreferred:
+              type: string
+            patientFormalName:
+              type: string
+            patientBirthDate:
+              type: string
+            patientBirthDateYear:
+              type: string
+            patientBirthDateMonthOfYear:
+              type: string
+            patientBirthDateDayOfWeek:
+              type: string
+    POSTMedicalPatientResponse:
+      allOf:
+        - $ref: "#/components/schemas/POSTClusterResponse"
+        - type: object
+          properties:
+            patientKey:
+              type: string
+            enrollmentKeys:
+              type: array
+              items:
+                type: string
+            schoolSort:
+              type: string
+            userKeys:
+              type: array
+              items:
+                type: string
+            clinicKeys:
+              type: array
+              items:
+                type: string
+            patientFirstName:
+              type: string
+            patientFirstNamePreferred:
+              type: string
+            familyName:
+              type: string
+            patientCompleteName:
+              type: string
+            patientCompleteNamePreferred:
+              type: string
+            patientFormalName:
+              type: string
+            patientBirthDate:
+              type: string
+            patientBirthDateYear:
+              type: string
+            patientBirthDateMonthOfYear:
+              type: string
+            patientBirthDateDayOfWeek:
+              type: string
+    PATCHMedicalPatientRequest:
+      allOf:
+        - $ref: "#/components/schemas/PATCHClusterRequest"
+        - type: object
+          properties:
+            setPatientKey:
+              type: string
+              nullable: true
+            removePatientKey:
+              type: string
+            removeAllPatientKey:
+              type: string
+            setEnrollmentKeys:
+              type: array
+              nullable: true
+              items:
+                type: string
+            removeEnrollmentKeys:
+              type: string
+            removeAllEnrollmentKeys:
+              type: array
+              items:
+                type: string
+            addEnrollmentKeys:
+              type: string
+            addAllEnrollmentKeys:
+              type: array
+              items:
+                type: string
+            setSchoolSort:
+              type: string
+              nullable: true
+            removeSchoolSort:
+              type: string
+            removeAllSchoolSort:
+              type: string
+            setUserKeys:
+              type: array
+              nullable: true
+              items:
+                type: string
+            removeUserKeys:
+              type: string
+            removeAllUserKeys:
+              type: array
+              items:
+                type: string
+            addUserKeys:
+              type: string
+            addAllUserKeys:
+              type: array
+              items:
+                type: string
+            setClinicKeys:
+              type: array
+              nullable: true
+              items:
+                type: string
+            removeClinicKeys:
+              type: string
+            removeAllClinicKeys:
+              type: array
+              items:
+                type: string
+            addClinicKeys:
+              type: string
+            addAllClinicKeys:
+              type: array
+              items:
+                type: string
+            setPatientFirstName:
+              type: string
+              nullable: true
+            removePatientFirstName:
+              type: string
+            removeAllPatientFirstName:
+              type: string
+            setPatientFirstNamePreferred:
+              type: string
+              nullable: true
+            removePatientFirstNamePreferred:
+              type: string
+            removeAllPatientFirstNamePreferred:
+              type: string
+            setFamilyName:
+              type: string
+              nullable: true
+            removeFamilyName:
+              type: string
+            removeAllFamilyName:
+              type: string
+            setPatientCompleteName:
+              type: string
+              nullable: true
+            removePatientCompleteName:
+              type: string
+            removeAllPatientCompleteName:
+              type: string
+            setPatientCompleteNamePreferred:
+              type: string
+              nullable: true
+            removePatientCompleteNamePreferred:
+              type: string
+            removeAllPatientCompleteNamePreferred:
+              type: string
+            setPatientFormalName:
+              type: string
+              nullable: true
+            removePatientFormalName:
+              type: string
+            removeAllPatientFormalName:
+              type: string
+            setPatientBirthDate:
+              type: string
+              nullable: true
+            removePatientBirthDate:
+              type: string
+            removeAllPatientBirthDate:
+              type: string
+            setPatientBirthDateYear:
+              type: string
+              nullable: true
+            removePatientBirthDateYear:
+              type: string
+            removeAllPatientBirthDateYear:
+              type: string
+            setPatientBirthDateMonthOfYear:
+              type: string
+              nullable: true
+            removePatientBirthDateMonthOfYear:
+              type: string
+            removeAllPatientBirthDateMonthOfYear:
+              type: string
+            setPatientBirthDateDayOfWeek:
+              type: string
+              nullable: true
+            removePatientBirthDateDayOfWeek:
+              type: string
+            removeAllPatientBirthDateDayOfWeek:
+              type: string
+    PATCHMedicalPatientResponse:
+      allOf:
+        - $ref: "#/components/schemas/PATCHClusterResponse"
+        - type: object
+          properties:
+            setPatientKey:
+              type: string
+              nullable: true
+            removePatientKey:
+              type: string
+            removeAllPatientKey:
+              type: string
+            setEnrollmentKeys:
+              type: array
+              nullable: true
+              items:
+                type: string
+            removeEnrollmentKeys:
+              type: string
+            removeAllEnrollmentKeys:
+              type: array
+              items:
+                type: string
+            addEnrollmentKeys:
+              type: string
+            addAllEnrollmentKeys:
+              type: array
+              items:
+                type: string
+            setSchoolSort:
+              type: string
+              nullable: true
+            removeSchoolSort:
+              type: string
+            removeAllSchoolSort:
+              type: string
+            setUserKeys:
+              type: array
+              nullable: true
+              items:
+                type: string
+            removeUserKeys:
+              type: string
+            removeAllUserKeys:
+              type: array
+              items:
+                type: string
+            addUserKeys:
+              type: string
+            addAllUserKeys:
+              type: array
+              items:
+                type: string
+            setClinicKeys:
+              type: array
+              nullable: true
+              items:
+                type: string
+            removeClinicKeys:
+              type: string
+            removeAllClinicKeys:
+              type: array
+              items:
+                type: string
+            addClinicKeys:
+              type: string
+            addAllClinicKeys:
+              type: array
+              items:
+                type: string
+            setPatientFirstName:
+              type: string
+              nullable: true
+            removePatientFirstName:
+              type: string
+            removeAllPatientFirstName:
+              type: string
+            setPatientFirstNamePreferred:
+              type: string
+              nullable: true
+            removePatientFirstNamePreferred:
+              type: string
+            removeAllPatientFirstNamePreferred:
+              type: string
+            setFamilyName:
+              type: string
+              nullable: true
+            removeFamilyName:
+              type: string
+            removeAllFamilyName:
+              type: string
+            setPatientCompleteName:
+              type: string
+              nullable: true
+            removePatientCompleteName:
+              type: string
+            removeAllPatientCompleteName:
+              type: string
+            setPatientCompleteNamePreferred:
+              type: string
+              nullable: true
+            removePatientCompleteNamePreferred:
+              type: string
+            removeAllPatientCompleteNamePreferred:
+              type: string
+            setPatientFormalName:
+              type: string
+              nullable: true
+            removePatientFormalName:
+              type: string
+            removeAllPatientFormalName:
+              type: string
+            setPatientBirthDate:
+              type: string
+              nullable: true
+            removePatientBirthDate:
+              type: string
+            removeAllPatientBirthDate:
+              type: string
+            setPatientBirthDateYear:
+              type: string
+              nullable: true
+            removePatientBirthDateYear:
+              type: string
+            removeAllPatientBirthDateYear:
+              type: string
+            setPatientBirthDateMonthOfYear:
+              type: string
+              nullable: true
+            removePatientBirthDateMonthOfYear:
+              type: string
+            removeAllPatientBirthDateMonthOfYear:
+              type: string
+            setPatientBirthDateDayOfWeek:
+              type: string
+              nullable: true
+            removePatientBirthDateDayOfWeek:
+              type: string
+            removeAllPatientBirthDateDayOfWeek:
+              type: string
+    SearchMedicalPatientResponse:
+      allOf:
+        - $ref: "#/components/schemas/SearchClusterResponse"
+        - type: array
+          items:
+            type: object
+            properties:
+              patientKey:
+                type: string
+              enrollmentKeys:
+                type: array
+                items:
+                  type: string
+              schoolSort:
+                type: string
+              userKeys:
+                type: array
+                items:
+                  type: string
+              clinicKeys:
+                type: array
+                items:
+                  type: string
+              patientFirstName:
+                type: string
+              patientFirstNamePreferred:
+                type: string
+              familyName:
+                type: string
+              patientCompleteName:
+                type: string
+              patientCompleteNamePreferred:
+                type: string
+              patientFormalName:
+                type: string
+              patientBirthDate:
+                type: string
+              patientBirthDateYear:
+                type: string
+              patientBirthDateMonthOfYear:
+                type: string
+              patientBirthDateDayOfWeek:
+                type: string
+    PUTCopyMedicalPatientRequest:
+      allOf:
+        - $ref: "#/components/schemas/PUTCopyClusterRequest"
+        - type: object
+          properties:
+            patientKey:
+              type: string
+            enrollmentKeys:
+              type: array
+              items:
+                type: string
+            schoolSort:
+              type: string
+            userKeys:
+              type: array
+              items:
+                type: string
+            clinicKeys:
+              type: array
+              items:
+                type: string
+            patientFirstName:
+              type: string
+            patientFirstNamePreferred:
+              type: string
+            familyName:
+              type: string
+            patientCompleteName:
+              type: string
+            patientCompleteNamePreferred:
+              type: string
+            patientFormalName:
+              type: string
+            patientBirthDate:
+              type: string
+            patientBirthDateYear:
+              type: string
+            patientBirthDateMonthOfYear:
+              type: string
+            patientBirthDateDayOfWeek:
+              type: string
+    PUTCopyMedicalPatientResponse:
+      allOf:
+        - $ref: "#/components/schemas/PUTCopyClusterResponse"
+        - type: object
+          properties:
+            patientKey:
+              type: string
+            enrollmentKeys:
+              type: array
+              items:
+                type: string
+            schoolSort:
+              type: string
+            userKeys:
+              type: array
+              items:
+                type: string
+            clinicKeys:
+              type: array
+              items:
+                type: string
+            patientFirstName:
+              type: string
+            patientFirstNamePreferred:
+              type: string
+            familyName:
+              type: string
+            patientCompleteName:
+              type: string
+            patientCompleteNamePreferred:
+              type: string
+            patientFormalName:
+              type: string
+            patientBirthDate:
+              type: string
+            patientBirthDateYear:
+              type: string
+            patientBirthDateMonthOfYear:
+              type: string
+            patientBirthDateDayOfWeek:
+              type: string
+    PUTImportMedicalPatientRequest:
+      allOf:
+        - $ref: "#/components/schemas/PUTImportClusterRequest"
+        - type: object
+          properties:
+            patientKey:
+              type: string
+            enrollmentKeys:
+              type: array
+              items:
+                type: string
+            schoolSort:
+              type: string
+            userKeys:
+              type: array
+              items:
+                type: string
+            clinicKeys:
+              type: array
+              items:
+                type: string
+            patientFirstName:
+              type: string
+            patientFirstNamePreferred:
+              type: string
+            familyName:
+              type: string
+            patientCompleteName:
+              type: string
+            patientCompleteNamePreferred:
+              type: string
+            patientFormalName:
+              type: string
+            patientBirthDate:
+              type: string
+            patientBirthDateYear:
+              type: string
+            patientBirthDateMonthOfYear:
+              type: string
+            patientBirthDateDayOfWeek:
+              type: string
+    PUTImportMedicalPatientResponse:
+      allOf:
+        - $ref: "#/components/schemas/PUTImportClusterResponse"
+        - type: object
+          properties:
+            patientKey:
+              type: string
+            enrollmentKeys:
+              type: array
+              items:
+                type: string
+            schoolSort:
+              type: string
+            userKeys:
+              type: array
+              items:
+                type: string
+            clinicKeys:
+              type: array
+              items:
+                type: string
+            patientFirstName:
+              type: string
+            patientFirstNamePreferred:
+              type: string
+            familyName:
+              type: string
+            patientCompleteName:
+              type: string
+            patientCompleteNamePreferred:
+              type: string
+            patientFormalName:
+              type: string
+            patientBirthDate:
+              type: string
+            patientBirthDateYear:
+              type: string
+            patientBirthDateMonthOfYear:
+              type: string
+            patientBirthDateDayOfWeek:
+              type: string
+    PUTMergeMedicalPatientRequest:
+      allOf:
+        - $ref: "#/components/schemas/PUTMergeClusterRequest"
+        - type: object
+          properties:
+            patientKey:
+              type: string
+            enrollmentKeys:
+              type: array
+              items:
+                type: string
+            schoolSort:
+              type: string
+            userKeys:
+              type: array
+              items:
+                type: string
+            clinicKeys:
+              type: array
+              items:
+                type: string
+            patientFirstName:
+              type: string
+            patientFirstNamePreferred:
+              type: string
+            familyName:
+              type: string
+            patientCompleteName:
+              type: string
+            patientCompleteNamePreferred:
+              type: string
+            patientFormalName:
+              type: string
+            patientBirthDate:
+              type: string
+            patientBirthDateYear:
+              type: string
+            patientBirthDateMonthOfYear:
+              type: string
+            patientBirthDateDayOfWeek:
+              type: string
+    PUTMergeMedicalPatientResponse:
+      allOf:
+        - $ref: "#/components/schemas/PUTMergeClusterResponse"
+        - type: object
+          properties:
+            patientKey:
+              type: string
+            enrollmentKeys:
+              type: array
+              items:
+                type: string
+            schoolSort:
+              type: string
+            userKeys:
+              type: array
+              items:
+                type: string
+            clinicKeys:
+              type: array
+              items:
+                type: string
+            patientFirstName:
+              type: string
+            patientFirstNamePreferred:
+              type: string
+            familyName:
+              type: string
+            patientCompleteName:
+              type: string
+            patientCompleteNamePreferred:
+              type: string
+            patientFormalName:
+              type: string
+            patientBirthDate:
+              type: string
+            patientBirthDateYear:
+              type: string
+            patientBirthDateMonthOfYear:
+              type: string
+            patientBirthDateDayOfWeek:
+              type: string
+    GETMedicalPatientResponse:
+      allOf:
+        - $ref: "#/components/schemas/GETClusterResponse"
+        - type: object
+          properties:
+            patientKey:
+              type: string
+            enrollmentKeys:
+              type: array
+              items:
+                type: string
+            schoolSort:
+              type: string
+            userKeys:
+              type: array
+              items:
+                type: string
+            clinicKeys:
+              type: array
+              items:
+                type: string
+            patientFirstName:
+              type: string
+            patientFirstNamePreferred:
+              type: string
+            familyName:
+              type: string
+            patientCompleteName:
+              type: string
+            patientCompleteNamePreferred:
+              type: string
+            patientFormalName:
+              type: string
+            patientBirthDate:
+              type: string
+            patientBirthDateYear:
+              type: string
+            patientBirthDateMonthOfYear:
+              type: string
+            patientBirthDateDayOfWeek:
+              type: string
+    SearchPageMedicalPatientResponse:
+      allOf:
+        - type: string
     POSTHtmlPartRequest:
       allOf:
         - $ref: "#/components/schemas/POSTClusterRequest"
@@ -15600,743 +16337,6 @@ components:
       allOf:
         - type: string
         - format: binary
-    AdminSearchMedicalPatientResponse:
-      allOf:
-        - type: array
-          items:
-            type: object
-            properties:
-              patientKey:
-                type: string
-              enrollmentKeys:
-                type: array
-                items:
-                  type: string
-              schoolSort:
-                type: string
-              userKeys:
-                type: array
-                items:
-                  type: string
-              clinicKeys:
-                type: array
-                items:
-                  type: string
-              patientFirstName:
-                type: string
-              patientFirstNamePreferred:
-                type: string
-              familyName:
-                type: string
-              patientCompleteName:
-                type: string
-              patientCompleteNamePreferred:
-                type: string
-              patientFormalName:
-                type: string
-              patientBirthDate:
-                type: string
-              patientBirthDateYear:
-                type: string
-              patientBirthDateMonthOfYear:
-                type: string
-              patientBirthDateDayOfWeek:
-                type: string
-    POSTMedicalPatientRequest:
-      allOf:
-        - $ref: "#/components/schemas/POSTClusterRequest"
-        - type: object
-          properties:
-            patientKey:
-              type: string
-            enrollmentKeys:
-              type: array
-              items:
-                type: string
-            schoolSort:
-              type: string
-            userKeys:
-              type: array
-              items:
-                type: string
-            clinicKeys:
-              type: array
-              items:
-                type: string
-            patientFirstName:
-              type: string
-            patientFirstNamePreferred:
-              type: string
-            familyName:
-              type: string
-            patientCompleteName:
-              type: string
-            patientCompleteNamePreferred:
-              type: string
-            patientFormalName:
-              type: string
-            patientBirthDate:
-              type: string
-            patientBirthDateYear:
-              type: string
-            patientBirthDateMonthOfYear:
-              type: string
-            patientBirthDateDayOfWeek:
-              type: string
-    POSTMedicalPatientResponse:
-      allOf:
-        - $ref: "#/components/schemas/POSTClusterResponse"
-        - type: object
-          properties:
-            patientKey:
-              type: string
-            enrollmentKeys:
-              type: array
-              items:
-                type: string
-            schoolSort:
-              type: string
-            userKeys:
-              type: array
-              items:
-                type: string
-            clinicKeys:
-              type: array
-              items:
-                type: string
-            patientFirstName:
-              type: string
-            patientFirstNamePreferred:
-              type: string
-            familyName:
-              type: string
-            patientCompleteName:
-              type: string
-            patientCompleteNamePreferred:
-              type: string
-            patientFormalName:
-              type: string
-            patientBirthDate:
-              type: string
-            patientBirthDateYear:
-              type: string
-            patientBirthDateMonthOfYear:
-              type: string
-            patientBirthDateDayOfWeek:
-              type: string
-    PATCHMedicalPatientRequest:
-      allOf:
-        - $ref: "#/components/schemas/PATCHClusterRequest"
-        - type: object
-          properties:
-            setPatientKey:
-              type: string
-              nullable: true
-            removePatientKey:
-              type: string
-            removeAllPatientKey:
-              type: string
-            setEnrollmentKeys:
-              type: array
-              nullable: true
-              items:
-                type: string
-            removeEnrollmentKeys:
-              type: string
-            removeAllEnrollmentKeys:
-              type: array
-              items:
-                type: string
-            addEnrollmentKeys:
-              type: string
-            addAllEnrollmentKeys:
-              type: array
-              items:
-                type: string
-            setSchoolSort:
-              type: string
-              nullable: true
-            removeSchoolSort:
-              type: string
-            removeAllSchoolSort:
-              type: string
-            setUserKeys:
-              type: array
-              nullable: true
-              items:
-                type: string
-            removeUserKeys:
-              type: string
-            removeAllUserKeys:
-              type: array
-              items:
-                type: string
-            addUserKeys:
-              type: string
-            addAllUserKeys:
-              type: array
-              items:
-                type: string
-            setClinicKeys:
-              type: array
-              nullable: true
-              items:
-                type: string
-            removeClinicKeys:
-              type: string
-            removeAllClinicKeys:
-              type: array
-              items:
-                type: string
-            addClinicKeys:
-              type: string
-            addAllClinicKeys:
-              type: array
-              items:
-                type: string
-            setPatientFirstName:
-              type: string
-              nullable: true
-            removePatientFirstName:
-              type: string
-            removeAllPatientFirstName:
-              type: string
-            setPatientFirstNamePreferred:
-              type: string
-              nullable: true
-            removePatientFirstNamePreferred:
-              type: string
-            removeAllPatientFirstNamePreferred:
-              type: string
-            setFamilyName:
-              type: string
-              nullable: true
-            removeFamilyName:
-              type: string
-            removeAllFamilyName:
-              type: string
-            setPatientCompleteName:
-              type: string
-              nullable: true
-            removePatientCompleteName:
-              type: string
-            removeAllPatientCompleteName:
-              type: string
-            setPatientCompleteNamePreferred:
-              type: string
-              nullable: true
-            removePatientCompleteNamePreferred:
-              type: string
-            removeAllPatientCompleteNamePreferred:
-              type: string
-            setPatientFormalName:
-              type: string
-              nullable: true
-            removePatientFormalName:
-              type: string
-            removeAllPatientFormalName:
-              type: string
-            setPatientBirthDate:
-              type: string
-              nullable: true
-            removePatientBirthDate:
-              type: string
-            removeAllPatientBirthDate:
-              type: string
-            setPatientBirthDateYear:
-              type: string
-              nullable: true
-            removePatientBirthDateYear:
-              type: string
-            removeAllPatientBirthDateYear:
-              type: string
-            setPatientBirthDateMonthOfYear:
-              type: string
-              nullable: true
-            removePatientBirthDateMonthOfYear:
-              type: string
-            removeAllPatientBirthDateMonthOfYear:
-              type: string
-            setPatientBirthDateDayOfWeek:
-              type: string
-              nullable: true
-            removePatientBirthDateDayOfWeek:
-              type: string
-            removeAllPatientBirthDateDayOfWeek:
-              type: string
-    PATCHMedicalPatientResponse:
-      allOf:
-        - $ref: "#/components/schemas/PATCHClusterResponse"
-        - type: object
-          properties:
-            setPatientKey:
-              type: string
-              nullable: true
-            removePatientKey:
-              type: string
-            removeAllPatientKey:
-              type: string
-            setEnrollmentKeys:
-              type: array
-              nullable: true
-              items:
-                type: string
-            removeEnrollmentKeys:
-              type: string
-            removeAllEnrollmentKeys:
-              type: array
-              items:
-                type: string
-            addEnrollmentKeys:
-              type: string
-            addAllEnrollmentKeys:
-              type: array
-              items:
-                type: string
-            setSchoolSort:
-              type: string
-              nullable: true
-            removeSchoolSort:
-              type: string
-            removeAllSchoolSort:
-              type: string
-            setUserKeys:
-              type: array
-              nullable: true
-              items:
-                type: string
-            removeUserKeys:
-              type: string
-            removeAllUserKeys:
-              type: array
-              items:
-                type: string
-            addUserKeys:
-              type: string
-            addAllUserKeys:
-              type: array
-              items:
-                type: string
-            setClinicKeys:
-              type: array
-              nullable: true
-              items:
-                type: string
-            removeClinicKeys:
-              type: string
-            removeAllClinicKeys:
-              type: array
-              items:
-                type: string
-            addClinicKeys:
-              type: string
-            addAllClinicKeys:
-              type: array
-              items:
-                type: string
-            setPatientFirstName:
-              type: string
-              nullable: true
-            removePatientFirstName:
-              type: string
-            removeAllPatientFirstName:
-              type: string
-            setPatientFirstNamePreferred:
-              type: string
-              nullable: true
-            removePatientFirstNamePreferred:
-              type: string
-            removeAllPatientFirstNamePreferred:
-              type: string
-            setFamilyName:
-              type: string
-              nullable: true
-            removeFamilyName:
-              type: string
-            removeAllFamilyName:
-              type: string
-            setPatientCompleteName:
-              type: string
-              nullable: true
-            removePatientCompleteName:
-              type: string
-            removeAllPatientCompleteName:
-              type: string
-            setPatientCompleteNamePreferred:
-              type: string
-              nullable: true
-            removePatientCompleteNamePreferred:
-              type: string
-            removeAllPatientCompleteNamePreferred:
-              type: string
-            setPatientFormalName:
-              type: string
-              nullable: true
-            removePatientFormalName:
-              type: string
-            removeAllPatientFormalName:
-              type: string
-            setPatientBirthDate:
-              type: string
-              nullable: true
-            removePatientBirthDate:
-              type: string
-            removeAllPatientBirthDate:
-              type: string
-            setPatientBirthDateYear:
-              type: string
-              nullable: true
-            removePatientBirthDateYear:
-              type: string
-            removeAllPatientBirthDateYear:
-              type: string
-            setPatientBirthDateMonthOfYear:
-              type: string
-              nullable: true
-            removePatientBirthDateMonthOfYear:
-              type: string
-            removeAllPatientBirthDateMonthOfYear:
-              type: string
-            setPatientBirthDateDayOfWeek:
-              type: string
-              nullable: true
-            removePatientBirthDateDayOfWeek:
-              type: string
-            removeAllPatientBirthDateDayOfWeek:
-              type: string
-    SearchMedicalPatientResponse:
-      allOf:
-        - $ref: "#/components/schemas/SearchClusterResponse"
-        - type: array
-          items:
-            type: object
-            properties:
-              patientKey:
-                type: string
-              enrollmentKeys:
-                type: array
-                items:
-                  type: string
-              schoolSort:
-                type: string
-              userKeys:
-                type: array
-                items:
-                  type: string
-              clinicKeys:
-                type: array
-                items:
-                  type: string
-              patientFirstName:
-                type: string
-              patientFirstNamePreferred:
-                type: string
-              familyName:
-                type: string
-              patientCompleteName:
-                type: string
-              patientCompleteNamePreferred:
-                type: string
-              patientFormalName:
-                type: string
-              patientBirthDate:
-                type: string
-              patientBirthDateYear:
-                type: string
-              patientBirthDateMonthOfYear:
-                type: string
-              patientBirthDateDayOfWeek:
-                type: string
-    PUTCopyMedicalPatientRequest:
-      allOf:
-        - $ref: "#/components/schemas/PUTCopyClusterRequest"
-        - type: object
-          properties:
-            patientKey:
-              type: string
-            enrollmentKeys:
-              type: array
-              items:
-                type: string
-            schoolSort:
-              type: string
-            userKeys:
-              type: array
-              items:
-                type: string
-            clinicKeys:
-              type: array
-              items:
-                type: string
-            patientFirstName:
-              type: string
-            patientFirstNamePreferred:
-              type: string
-            familyName:
-              type: string
-            patientCompleteName:
-              type: string
-            patientCompleteNamePreferred:
-              type: string
-            patientFormalName:
-              type: string
-            patientBirthDate:
-              type: string
-            patientBirthDateYear:
-              type: string
-            patientBirthDateMonthOfYear:
-              type: string
-            patientBirthDateDayOfWeek:
-              type: string
-    PUTCopyMedicalPatientResponse:
-      allOf:
-        - $ref: "#/components/schemas/PUTCopyClusterResponse"
-        - type: object
-          properties:
-            patientKey:
-              type: string
-            enrollmentKeys:
-              type: array
-              items:
-                type: string
-            schoolSort:
-              type: string
-            userKeys:
-              type: array
-              items:
-                type: string
-            clinicKeys:
-              type: array
-              items:
-                type: string
-            patientFirstName:
-              type: string
-            patientFirstNamePreferred:
-              type: string
-            familyName:
-              type: string
-            patientCompleteName:
-              type: string
-            patientCompleteNamePreferred:
-              type: string
-            patientFormalName:
-              type: string
-            patientBirthDate:
-              type: string
-            patientBirthDateYear:
-              type: string
-            patientBirthDateMonthOfYear:
-              type: string
-            patientBirthDateDayOfWeek:
-              type: string
-    PUTImportMedicalPatientRequest:
-      allOf:
-        - $ref: "#/components/schemas/PUTImportClusterRequest"
-        - type: object
-          properties:
-            patientKey:
-              type: string
-            enrollmentKeys:
-              type: array
-              items:
-                type: string
-            schoolSort:
-              type: string
-            userKeys:
-              type: array
-              items:
-                type: string
-            clinicKeys:
-              type: array
-              items:
-                type: string
-            patientFirstName:
-              type: string
-            patientFirstNamePreferred:
-              type: string
-            familyName:
-              type: string
-            patientCompleteName:
-              type: string
-            patientCompleteNamePreferred:
-              type: string
-            patientFormalName:
-              type: string
-            patientBirthDate:
-              type: string
-            patientBirthDateYear:
-              type: string
-            patientBirthDateMonthOfYear:
-              type: string
-            patientBirthDateDayOfWeek:
-              type: string
-    PUTImportMedicalPatientResponse:
-      allOf:
-        - $ref: "#/components/schemas/PUTImportClusterResponse"
-        - type: object
-          properties:
-            patientKey:
-              type: string
-            enrollmentKeys:
-              type: array
-              items:
-                type: string
-            schoolSort:
-              type: string
-            userKeys:
-              type: array
-              items:
-                type: string
-            clinicKeys:
-              type: array
-              items:
-                type: string
-            patientFirstName:
-              type: string
-            patientFirstNamePreferred:
-              type: string
-            familyName:
-              type: string
-            patientCompleteName:
-              type: string
-            patientCompleteNamePreferred:
-              type: string
-            patientFormalName:
-              type: string
-            patientBirthDate:
-              type: string
-            patientBirthDateYear:
-              type: string
-            patientBirthDateMonthOfYear:
-              type: string
-            patientBirthDateDayOfWeek:
-              type: string
-    PUTMergeMedicalPatientRequest:
-      allOf:
-        - $ref: "#/components/schemas/PUTMergeClusterRequest"
-        - type: object
-          properties:
-            patientKey:
-              type: string
-            enrollmentKeys:
-              type: array
-              items:
-                type: string
-            schoolSort:
-              type: string
-            userKeys:
-              type: array
-              items:
-                type: string
-            clinicKeys:
-              type: array
-              items:
-                type: string
-            patientFirstName:
-              type: string
-            patientFirstNamePreferred:
-              type: string
-            familyName:
-              type: string
-            patientCompleteName:
-              type: string
-            patientCompleteNamePreferred:
-              type: string
-            patientFormalName:
-              type: string
-            patientBirthDate:
-              type: string
-            patientBirthDateYear:
-              type: string
-            patientBirthDateMonthOfYear:
-              type: string
-            patientBirthDateDayOfWeek:
-              type: string
-    PUTMergeMedicalPatientResponse:
-      allOf:
-        - $ref: "#/components/schemas/PUTMergeClusterResponse"
-        - type: object
-          properties:
-            patientKey:
-              type: string
-            enrollmentKeys:
-              type: array
-              items:
-                type: string
-            schoolSort:
-              type: string
-            userKeys:
-              type: array
-              items:
-                type: string
-            clinicKeys:
-              type: array
-              items:
-                type: string
-            patientFirstName:
-              type: string
-            patientFirstNamePreferred:
-              type: string
-            familyName:
-              type: string
-            patientCompleteName:
-              type: string
-            patientCompleteNamePreferred:
-              type: string
-            patientFormalName:
-              type: string
-            patientBirthDate:
-              type: string
-            patientBirthDateYear:
-              type: string
-            patientBirthDateMonthOfYear:
-              type: string
-            patientBirthDateDayOfWeek:
-              type: string
-    GETMedicalPatientResponse:
-      allOf:
-        - $ref: "#/components/schemas/GETClusterResponse"
-        - type: object
-          properties:
-            patientKey:
-              type: string
-            enrollmentKeys:
-              type: array
-              items:
-                type: string
-            schoolSort:
-              type: string
-            userKeys:
-              type: array
-              items:
-                type: string
-            clinicKeys:
-              type: array
-              items:
-                type: string
-            patientFirstName:
-              type: string
-            patientFirstNamePreferred:
-              type: string
-            familyName:
-              type: string
-            patientCompleteName:
-              type: string
-            patientCompleteNamePreferred:
-              type: string
-            patientFormalName:
-              type: string
-            patientBirthDate:
-              type: string
-            patientBirthDateYear:
-              type: string
-            patientBirthDateMonthOfYear:
-              type: string
-            patientBirthDateDayOfWeek:
-              type: string
-    SearchPageMedicalPatientResponse:
-      allOf:
-        - type: string
     ErrorResponse:
       required:
         - type
